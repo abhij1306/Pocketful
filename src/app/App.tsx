@@ -21,7 +21,7 @@ import {
 } from '@/app/components/ui/dialog';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/app/components/ui/table';
 import { toast, Toaster } from 'sonner';
-import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW, PERSONAS, PERSONA_INSIGHT, DEEP_COMPETITIVE_ANALYSIS, TARGET_BUSINESS_METRICS, FEATURE_MAPPING, PERSONA_COLORS, METRIC_COLORS } from './data';
+import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW, PERSONAS, PERSONA_INSIGHT, DEEP_COMPETITIVE_ANALYSIS, TARGET_BUSINESS_METRICS, FEATURE_MAPPING, PERSONA_COLORS, METRIC_COLORS, RISK_ASSESSMENT } from './data';
 
 type DemoMode = 'landing' | 'mobile-error' | 'desktop-algo';
 
@@ -816,8 +816,50 @@ export default function App() {
           </div>
         </section>
 
+        {/* Risk Assessment Section */}
+        <section id="risks" className="py-16 md:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-10">
+              <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-100 font-bold mb-4 px-3 py-1 text-xs">Risk Management</Badge>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Risk Assessment</h2>
+              <p className="text-gray-600 text-base max-w-3xl">Proactive identification of potential risks and mitigation strategies for proposed features.</p>
+            </div>
+
+            <div className="grid gap-4">
+              {RISK_ASSESSMENT.map((item) => (
+                <div key={item.featureId} className="bg-gray-50 rounded-xl border border-gray-100 p-5 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="font-bold text-gray-900">{item.feature}</h3>
+                    <Badge variant="outline" className="text-[10px] bg-white">{item.featureId}</Badge>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {item.risks.map((risk, i) => (
+                      <div key={i} className="bg-white rounded-lg border border-gray-100 p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${risk.type === 'Regulatory' ? 'bg-red-100 text-red-700' :
+                              risk.type === 'User Loss' ? 'bg-red-100 text-red-700' :
+                                risk.type === 'Technical' ? 'bg-yellow-100 text-yellow-700' :
+                                  risk.type === 'UX' ? 'bg-blue-100 text-blue-700' :
+                                    risk.type === 'Privacy' ? 'bg-purple-100 text-purple-700' :
+                                      'bg-gray-100 text-gray-700'
+                            }`}>{risk.type}</span>
+                        </div>
+                        <p className="text-sm text-gray-600 mb-2">{risk.description}</p>
+                        <div className="flex items-start gap-2">
+                          <span className="text-[10px] font-bold text-green-600 uppercase shrink-0 mt-0.5">Mitigation:</span>
+                          <span className="text-xs text-gray-500">{risk.mitigation}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Artifact Hub Section - FULL PREMIUM LIGHT */}
-        <section id="artifacts" className="py-16 md:py-24 bg-white border-t border-gray-50">
+        <section id="artifacts" className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="mb-10 md:mb-16">
               <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-none font-bold mb-4 px-3 py-1 uppercase tracking-widest text-[9px]">Submission Package</Badge>

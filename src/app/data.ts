@@ -142,6 +142,47 @@ export const METRIC_COLORS = {
     retention: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-400' }
 };
 
+// RISK ASSESSMENT
+export const RISK_ASSESSMENT = [
+    {
+        feature: 'Error Recovery Wizard',
+        featureId: 'ERW',
+        risks: [
+            { type: 'Technical', description: 'Over-classifying errors could mislead users', mitigation: 'Conservative error taxonomy; fallback to generic' },
+            { type: 'UX', description: 'Too many alternatives overwhelm users', mitigation: 'Limit to 2-3 options; A/B test for optimal count' }
+        ]
+    },
+    {
+        feature: 'Transparent Status Explainers',
+        featureId: 'TSE',
+        risks: [
+            { type: 'Content', description: 'Outdated explanations erode trust', mitigation: 'Content review process; user feedback loop' }
+        ]
+    },
+    {
+        feature: 'Resilient Offline Mode',
+        featureId: 'ROM',
+        risks: [
+            { type: 'Data Integrity', description: 'Stale data leads to poor decisions', mitigation: 'Clear timestamps; disable trading on old data' }
+        ]
+    },
+    {
+        feature: 'Smart Order Assistant',
+        featureId: 'SOA',
+        risks: [
+            { type: 'Regulatory', description: 'SEBI may view as algo trading', mitigation: 'Legal review; frame as conditional orders' },
+            { type: 'User Loss', description: 'Automation amplifies losses in volatility', mitigation: 'Mandatory stop-loss; position limits' }
+        ]
+    },
+    {
+        feature: 'Context-Aware Smart Home',
+        featureId: 'CASH',
+        risks: [
+            { type: 'Privacy', description: 'Behavioral tracking raises concerns', mitigation: 'Transparent policy; opt-out; on-device processing' }
+        ]
+    }
+];
+
 export const FLAWS = [
     {
         id: 1,
