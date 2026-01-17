@@ -18,18 +18,15 @@ export function CASHModal() {
                 </div>
 
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                    <TabsList className="inline-flex h-auto p-1.5 bg-gray-100/80 rounded-xl mb-6 w-full max-w-2xl mx-auto">
-                        <TabsTrigger value="pre" className="flex-1 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-orange-600 font-bold text-sm py-3 transition-all">
-                            <Sun className="size-4 mr-2" /> Pre-Market
-                            <span className="hidden sm:inline ml-1 text-xs opacity-60 font-normal">(7-9 AM)</span>
+                    <TabsList className="inline-flex h-auto p-1 md:p-1.5 bg-gray-100/80 rounded-lg md:rounded-xl mb-4 md:mb-6 w-full">
+                        <TabsTrigger value="pre" className="flex-1 rounded-md md:rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-orange-600 font-bold text-xs md:text-sm py-2 md:py-3 transition-all gap-1 md:gap-2">
+                            <Sun className="size-3 md:size-4" /> Pre-Market
                         </TabsTrigger>
-                        <TabsTrigger value="live" className="flex-1 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-green-600 font-bold text-sm py-3 transition-all">
-                            <Radio className="size-4 mr-2" /> Live Market
-                            <span className="hidden sm:inline ml-1 text-xs opacity-60 font-normal">(9:15-3:30)</span>
+                        <TabsTrigger value="live" className="flex-1 rounded-md md:rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-green-600 font-bold text-xs md:text-sm py-2 md:py-3 transition-all gap-1 md:gap-2">
+                            <Radio className="size-3 md:size-4" /> Live Market
                         </TabsTrigger>
-                        <TabsTrigger value="post" className="flex-1 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-blue-600 font-bold text-sm py-3 transition-all">
-                            <Moon className="size-4 mr-2" /> Post-Market
-                            <span className="hidden sm:inline ml-1 text-xs opacity-60 font-normal">(4:00 PM+)</span>
+                        <TabsTrigger value="post" className="flex-1 rounded-md md:rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-blue-600 font-bold text-xs md:text-sm py-2 md:py-3 transition-all gap-1 md:gap-2">
+                            <Moon className="size-3 md:size-4" /> Post-Market
                         </TabsTrigger>
                     </TabsList>
                 </Tabs>

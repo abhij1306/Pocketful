@@ -612,7 +612,6 @@ export default function App() {
                               <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-100 shadow-lg md:shadow-xl overflow-hidden">
                                 <div className="flex items-center justify-between mb-4 md:mb-6">
                                   <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest">API Protocol</h4>
-                                  <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50 font-mono text-[10px] font-bold">v2.1</Badge>
                                 </div>
                                 <div className="bg-gray-50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-200 overflow-x-auto -mx-1 px-1">
                                   <code className="block font-mono text-[10px] md:text-xs text-blue-600 font-bold">{f.techSpecs.api}</code>
