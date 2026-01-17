@@ -175,11 +175,11 @@ export default function App() {
                 <div className="h-px w-12 bg-gray-200"></div>
                 <span className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Abhineet Jain</span>
               </div>
-              <h1 className="text-7xl font-black text-gray-950 tracking-tighter mb-8 leading-[0.9]">
+              <h1 className="text-5xl font-bold text-gray-950 tracking-tight mb-8 leading-[1.1]">
                 High-Impact Trading <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Infrastructure.</span>
+                <span className="text-blue-600">Infrastructure.</span>
               </h1>
-              <p className="text-2xl text-gray-500 mb-10 leading-[1.4] max-w-2xl font-medium tracking-tight">
+              <p className="text-lg text-gray-500 mb-10 leading-relaxed max-w-2xl font-medium">
                 An institutional-grade evolution focusing on trust-engineering and democratizing Algorithmic Trading for retail investors.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -199,11 +199,11 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-4">
               {IMPACT_METRICS.map((metric, i) => (
-                <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] flex flex-col items-center text-center group hover:border-blue-100 transition-colors">
-                  <div className={`text-6xl font-black mb-3 tracking-tighter ${metric.color}`}>
+                <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center text-center group hover:border-blue-100 transition-colors">
+                  <div className={`text-4xl font-bold mb-3 tracking-tight ${metric.color}`}>
                     {metric.value}
                   </div>
-                  <div className="font-bold text-gray-950 uppercase tracking-[0.2em] text-[10px] mb-2">{metric.label}</div>
+                  <div className="font-bold text-gray-950 uppercase tracking-widest text-[10px] mb-2">{metric.label}</div>
                   <div className="text-sm font-medium text-gray-400">{metric.sublabel}</div>
                 </div>
               ))}
@@ -217,8 +217,8 @@ export default function App() {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
               <div>
                 <Badge className="bg-red-50 text-red-600 border-none font-bold mb-4 px-4 py-1 uppercase tracking-widest text-[10px]">Critical Analysis</Badge>
-                <h2 className="text-5xl font-black text-gray-950 tracking-tighter mb-4">Technical Flaw Analysis</h2>
-                <p className="text-gray-500 text-xl font-medium max-w-2xl tracking-tight">Systematic review of identified usability gaps following firsthand evaluation.</p>
+                <h2 className="text-3xl font-bold text-gray-950 tracking-tight mb-4">Technical Flaw Analysis</h2>
+                <p className="text-gray-500 text-lg font-medium max-w-2xl">Systematic review of identified usability gaps following firsthand evaluation.</p>
               </div>
               <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-3xl border border-gray-100 shadow-sm font-bold text-gray-700">
                 <ShieldAlert className="size-6 text-red-500" />
@@ -294,27 +294,27 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col items-center text-center mb-20">
               <Badge className="bg-indigo-50 text-indigo-600 border-none font-bold mb-6 px-4 py-1.5 uppercase tracking-widest text-[10px]">Market Intelligence</Badge>
-              <h2 className="text-6xl font-black text-gray-950 tracking-tighter mb-6 leading-none">Competitor Strategy Hub</h2>
-              <p className="text-gray-500 text-xl font-medium max-w-3xl tracking-tight leading-relaxed">
+              <h2 className="text-4xl font-bold text-gray-950 tracking-tight mb-6">Competitor Strategy Hub</h2>
+              <p className="text-gray-500 text-lg font-medium max-w-3xl leading-relaxed">
                 Positioning Pocketful relative to industry incumbents like Zerodha and Groww, identifying blue-ocean opportunities for retail adoption.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-20">
               {COMPETITOR_ANALYSIS.marketPositioning.map((comp) => (
-                <div key={comp.name} className="p-12 rounded-[3.5rem] border border-gray-100 bg-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.02)] flex flex-col items-start hover:border-blue-100 transition-all group hover:-translate-y-2">
-                  <div className="flex items-center justify-between w-full mb-10">
-                    <h3 className="text-3xl font-black text-gray-950 tracking-tighter group-hover:text-blue-600 transition-colors italic">{comp.name}</h3>
-                    <Badge className="bg-gray-100 text-gray-500 font-bold text-[10px] px-3">{comp.share} Market Share</Badge>
+                <div key={comp.name} className="p-8 rounded-3xl border border-gray-100 bg-white shadow-sm flex flex-col items-start hover:border-blue-100 transition-all group hover:-translate-y-1">
+                  <div className="flex items-center justify-between w-full mb-8">
+                    <h3 className="text-2xl font-bold text-gray-950 tracking-tight group-hover:text-blue-600 transition-colors uppercase">{comp.name}</h3>
+                    <Badge className="bg-gray-100 text-gray-500 font-bold text-[9px] px-2">{comp.share}</Badge>
                   </div>
-                  <div className="space-y-8 flex-1">
-                    <div className="space-y-3">
-                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Strength Pillar</span>
-                      <p className="text-sm font-bold text-gray-900 leading-relaxed">{comp.strength}</p>
+                  <div className="space-y-6 flex-1 text-sm">
+                    <div className="space-y-2">
+                      <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Strength Pillar</span>
+                      <p className="font-medium text-gray-900 leading-relaxed">{comp.strength}</p>
                     </div>
-                    <div className="space-y-3">
-                      <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest">Structural Weakness</span>
-                      <p className="text-sm font-medium text-gray-500 leading-relaxed">{comp.weakness}</p>
+                    <div className="space-y-2">
+                      <span className="text-[9px] font-bold text-red-500/70 uppercase tracking-widest">Structural Weakness</span>
+                      <p className="font-medium text-gray-500 leading-relaxed">{comp.weakness}</p>
                     </div>
                   </div>
                   <div className="mt-12 pt-8 border-t border-gray-50 w-full">
@@ -346,15 +346,15 @@ export default function App() {
                 <div className="space-y-24">
                   {/* Gap Chart */}
                   <div className="space-y-12">
-                    <div className="flex items-center gap-4">
-                      <div className="h-0.5 flex-1 bg-gray-100"></div>
-                      <h4 className="flex-none text-[12px] font-bold text-gray-400 uppercase tracking-[0.4em]">Comparison Matrix</h4>
-                      <div className="h-0.5 flex-1 bg-gray-100"></div>
+                    <div className="flex items-center gap-4 mb-12">
+                      <div className="h-px flex-1 bg-gray-100"></div>
+                      <h4 className="flex-none text-[11px] font-bold text-gray-400 uppercase tracking-widest">Comparison Matrix</h4>
+                      <div className="h-px flex-1 bg-gray-100"></div>
                     </div>
                     <div className="grid md:grid-cols-3 gap-10">
                       {COMPETITOR_ANALYSIS.gapAnalysis.map((gap) => (
-                        <div key={gap.category} className="p-10 rounded-[3rem] bg-gray-50 border border-gray-100 group hover:bg-white hover:shadow-xl transition-all">
-                          <h5 className="font-black text-2xl mb-10 tracking-tighter text-gray-950 uppercase">{gap.category}</h5>
+                        <div key={gap.category} className="p-8 rounded-3xl bg-gray-50 border border-gray-100 group hover:bg-white hover:shadow-lg transition-all">
+                          <h5 className="font-bold text-lg mb-6 tracking-tight text-gray-950">{gap.category}</h5>
                           <div className="space-y-10 mb-12">
                             <div className="space-y-3">
                               <div className="flex justify-between text-[11px] font-black uppercase tracking-widest mb-1">
@@ -375,7 +375,7 @@ export default function App() {
                               </div>
                             </div>
                             <div className="space-y-3">
-                              <div className="flex justify-between text-[11px] font-black uppercase tracking-widest mb-1">
+                              <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider mb-1">
                                 <span>Pocketful</span>
                                 <span className="text-red-500">{gap.pocketful}/5</span>
                               </div>
@@ -434,20 +434,20 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-24">
               <Badge className="bg-green-50 text-green-700 border-none font-bold mb-6 px-4 py-1.5 uppercase tracking-widest text-[10px]">Product Innovation</Badge>
-              <h2 className="text-6xl font-black text-gray-950 tracking-tighter mb-6 leading-none">The Innovation Suite</h2>
-              <p className="text-gray-500 text-xl font-medium max-w-3xl mx-auto tracking-tight leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
+              <h2 className="text-4xl font-bold text-gray-950 tracking-tight mb-6 leading-none">The Innovation Suite</h2>
+              <p className="text-gray-500 text-lg font-medium max-w-3xl mx-auto tracking-tight leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-20">
               {/* ERW Feature */}
               <div className="group space-y-12">
-                <div className="relative rounded-[4rem] overflow-hidden aspect-[4/3] bg-gray-950 shadow-2xl transition-all duration-700 group-hover:scale-105 group-hover:-translate-y-2">
+                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-gray-950 shadow-xl transition-all duration-700 group-hover:shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent opacity-90"></div>
                   <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-blue-600/0 transition-colors"></div>
-                  <div className="absolute bottom-16 left-16 right-16 text-white">
-                    <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-xl rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-white/20">Client Resilience Engine</span>
-                    <h3 className="text-5xl font-black mb-6 tracking-tighter leading-none">Error Recovery Wizard</h3>
-                    <p className="text-white/70 text-lg font-bold tracking-tight leading-relaxed">Converting opaque system failures into high-confidence, action-oriented loops.</p>
+                  <div className="absolute bottom-12 left-12 right-12 text-white">
+                    <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-xl rounded-full text-[9px] font-bold uppercase tracking-widest mb-6 border border-white/20">Client Resilience Engine</span>
+                    <h3 className="text-3xl font-bold mb-4 tracking-tight leading-none">Error Recovery Wizard</h3>
+                    <p className="text-white/70 text-base font-medium leading-relaxed">Converting opaque system failures into high-confidence, action-oriented loops.</p>
                   </div>
                 </div>
                 <div className="space-y-10 px-6">
@@ -477,15 +477,15 @@ export default function App() {
 
               {/* ASE Feature */}
               <div className="group space-y-12">
-                <div className="relative rounded-[4rem] overflow-hidden aspect-[4/3] bg-white border border-gray-100 shadow-2xl transition-all duration-700 group-hover:scale-105 group-hover:-translate-y-2">
+                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-white border border-gray-100 shadow-xl transition-all duration-700 group-hover:shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-50 via-white to-white opacity-40"></div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-16 text-center">
-                    <div className="bg-indigo-600 size-24 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/40 mb-10 group-hover:scale-110 transition-transform">
-                      <Zap className="size-12 text-white fill-white" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
+                    <div className="bg-indigo-600 size-20 rounded-2xl flex items-center justify-center shadow-lg mb-8 group-hover:scale-105 transition-transform">
+                      <Zap className="size-10 text-white fill-white" />
                     </div>
-                    <span className="inline-block px-5 py-2 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-100">Alpha Prototype</span>
-                    <h3 className="text-5xl font-black mb-6 tracking-tighter leading-none text-gray-950">Algo Strategy Engine</h3>
-                    <p className="text-gray-500 text-lg font-bold tracking-tight leading-relaxed">The visual strategy builder for the non-coding systematic trader.</p>
+                    <span className="inline-block px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-bold uppercase tracking-widest mb-6 border border-indigo-100">Alpha Prototype</span>
+                    <h3 className="text-3xl font-bold mb-4 tracking-tight leading-none text-gray-950">Algo Strategy Engine</h3>
+                    <p className="text-gray-500 text-base font-medium leading-relaxed">The visual strategy builder for the non-coding systematic trader.</p>
                   </div>
                 </div>
                 <div className="space-y-10 px-6">
@@ -548,31 +548,31 @@ export default function App() {
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-[4rem] p-16 bg-white shadow-2xl font-sans">
                   <DialogHeader className="mb-12">
-                    <Badge className="w-fit bg-blue-50 text-blue-600 font-black mb-6 px-4 py-1 uppercase tracking-widest text-[10px]">Internal Ref #4412</Badge>
-                    <DialogTitle className="text-5xl font-black tracking-tighter text-gray-950 mb-4 font-sans">Innovation PRD Repository</DialogTitle>
+                    <Badge className="w-fit bg-blue-50 text-blue-600 font-bold mb-6 px-4 py-1 uppercase tracking-widest text-[10px]">Internal Ref #4412</Badge>
+                    <DialogTitle className="text-3xl font-bold tracking-tight text-gray-950 mb-4 font-sans">Innovation PRD Repository</DialogTitle>
                   </DialogHeader>
-                  <div className="space-y-16">
-                    <div className="p-10 bg-gray-50 rounded-[3rem] border border-gray-100 italic">
-                      <span className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4">Strategic Narrative</span>
-                      <p className="text-gray-900 font-bold text-xl leading-relaxed">{PRD_DATA.executionSummary}</p>
+                  <div className="space-y-12">
+                    <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100">
+                      <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Strategic Narrative</span>
+                      <p className="text-gray-900 font-medium text-lg leading-relaxed">{PRD_DATA.executionSummary}</p>
                     </div>
                     <Tabs defaultValue="ERW" className="w-full">
                       <TabsList className="flex gap-4 bg-transparent mb-12 border-none">
-                        <TabsTrigger value="ERW" className="w-full py-6 rounded-3xl bg-gray-50 data-[state=active]:bg-blue-600 data-[state=active]:text-white font-black uppercase tracking-widest text-[11px] transition-all">Error Recovery</TabsTrigger>
-                        <TabsTrigger value="ASE" className="w-full py-6 rounded-3xl bg-gray-50 data-[state=active]:bg-blue-600 data-[state=active]:text-white font-black uppercase tracking-widest text-[11px] transition-all">Algo Strategy</TabsTrigger>
-                        <TabsTrigger value="RISKS" className="w-full py-6 rounded-3xl bg-gray-50 data-[state=active]:bg-red-600 data-[state=active]:text-white font-black uppercase tracking-widest text-[11px] transition-all">Risk Registry</TabsTrigger>
+                        <TabsTrigger value="ERW" className="w-full py-4 rounded-xl bg-gray-50 data-[state=active]:bg-blue-600 data-[state=active]:text-white font-bold text-xs transition-all">Error Recovery</TabsTrigger>
+                        <TabsTrigger value="ASE" className="w-full py-4 rounded-xl bg-gray-50 data-[state=active]:bg-blue-600 data-[state=active]:text-white font-bold text-xs transition-all">Algo Strategy</TabsTrigger>
+                        <TabsTrigger value="RISKS" className="w-full py-4 rounded-xl bg-gray-50 data-[state=active]:bg-red-600 data-[state=active]:text-white font-bold text-xs transition-all">Risk Registry</TabsTrigger>
                       </TabsList>
                       {PRD_DATA.features.map(f => (
                         <TabsContent key={f.id} value={f.id} className="animate-in fade-in zoom-in-95 duration-500">
                           <div className="grid md:grid-cols-2 gap-12">
                             <div className="space-y-8">
-                              <div className="space-y-3 px-10 py-8 bg-blue-50/30 rounded-[3rem] border border-blue-50 shadow-sm shadow-blue-500/5">
-                                <h5 className="font-black text-2xl tracking-tighter flex items-center gap-3"><Map className="size-6 text-blue-600" /> The Problem</h5>
-                                <p className="text-gray-600 font-bold leading-relaxed">{f.problem}</p>
+                              <div className="space-y-3 px-8 py-6 bg-blue-50/50 rounded-3xl border border-blue-50 shadow-sm">
+                                <h5 className="font-bold text-xl tracking-tight flex items-center gap-3"><Map className="size-5 text-blue-600" /> The Problem</h5>
+                                <p className="text-gray-600 font-medium leading-relaxed text-sm">{f.problem}</p>
                               </div>
-                              <div className="space-y-3 px-10 py-8 bg-indigo-50/30 rounded-[3rem] border border-indigo-100 shadow-sm">
-                                <h5 className="font-black text-2xl tracking-tighter flex items-center gap-3"><Zap className="size-6 text-indigo-600" /> Value Proposition</h5>
-                                <p className="text-gray-600 font-bold leading-relaxed italic text-lg">"{f.valueProp}"</p>
+                              <div className="space-y-3 px-8 py-6 bg-indigo-50/50 rounded-3xl border border-indigo-100 shadow-sm">
+                                <h5 className="font-bold text-xl tracking-tight flex items-center gap-3"><Zap className="size-5 text-indigo-600" /> Value Proposition</h5>
+                                <p className="text-gray-600 font-medium leading-relaxed italic text-base">"{f.valueProp}"</p>
                               </div>
                               <div className="p-8 bg-gray-950 rounded-[3rem] text-white shadow-xl shadow-gray-950/20">
                                 <div className="flex items-center justify-between mb-6">
@@ -596,13 +596,13 @@ export default function App() {
                                   <TableBody>
                                     {f.successMetrics.map((m, i) => (
                                       <TableRow key={i} className="hover:bg-slate-50/50 border-b border-gray-50 last:border-none transition-colors">
-                                        <TableCell className="py-6 pr-4">
-                                          <div className="font-black text-gray-950 text-base tracking-tighter leading-none">{m.metric}</div>
-                                          <div className="text-[10px] text-gray-400 font-bold uppercase mt-1">Status: {m.baseline || m.current}</div>
+                                        <TableCell className="py-4 pr-4">
+                                          <div className="font-bold text-gray-950 text-sm tracking-tight leading-none">{m.metric}</div>
+                                          <div className="text-[9px] text-gray-400 font-medium uppercase mt-1">Status: {m.baseline || m.current}</div>
                                         </TableCell>
-                                        <TableCell className="py-6 text-right">
-                                          <div className="font-black text-blue-600 text-2xl tracking-tighter leading-none">{m.targetM6}</div>
-                                          <div className="text-[10px] text-blue-300 font-bold uppercase mt-1">Target M6</div>
+                                        <TableCell className="py-4 text-right">
+                                          <div className="font-bold text-blue-600 text-xl tracking-tight leading-none">{m.targetM6}</div>
+                                          <div className="text-[9px] text-blue-400 font-medium uppercase mt-1">Target M6</div>
                                         </TableCell>
                                       </TableRow>
                                     ))}
@@ -619,18 +619,18 @@ export default function App() {
                             <div className="flex items-center justify-between mb-10 text-center md:text-left">
                               <h5 className="font-black text-4xl tracking-tighter flex items-center gap-4"><UserCheck className="size-10 text-blue-600" /> Strategic Scenarios</h5>
                             </div>
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid md:grid-cols-2 gap-4">
                               {f.userStories.map(s => (
-                                <div key={s.id} className="p-10 rounded-[3rem] border border-gray-50 bg-white hover:border-blue-200 hover:shadow-xl hover:scale-[1.01] transition-all flex items-start gap-8 shadow-sm group">
-                                  <div className="size-14 rounded-[1.5rem] bg-gray-50 flex items-center justify-center shrink-0 font-black text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+                                <div key={s.id} className="p-8 rounded-3xl border border-gray-100 bg-white hover:border-blue-200 transition-all flex items-start gap-6 shadow-sm group">
+                                  <div className="size-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 font-bold text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all text-xs">
                                     {s.id.split('-').length > 1 ? s.id.split('-')[1] : s.id}
                                   </div>
-                                  <div className="space-y-2">
+                                  <div className="space-y-1">
                                     <div className="flex items-center gap-2">
-                                      <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest">{s.id}</p>
+                                      <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">{s.id}</p>
                                       {s.priority === 'P0' && <div className="size-1.5 rounded-full bg-red-500 animate-pulse" />}
                                     </div>
-                                    <p className="text-gray-950 font-black text-xl tracking-tight leading-snug">{s.story}</p>
+                                    <p className="text-gray-950 font-bold text-base tracking-tight leading-snug">{s.story}</p>
                                   </div>
                                 </div>
                               ))}
@@ -665,13 +665,13 @@ export default function App() {
               {/* UAT Registry */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="p-12 rounded-[4rem] border border-gray-100 bg-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.04)] hover:shadow-2xl hover:border-purple-100 transition-all cursor-pointer group flex flex-col items-center text-center">
-                    <div className="size-24 rounded-[2rem] bg-purple-50 flex items-center justify-center mb-10 group-hover:bg-purple-600 group-hover:scale-110 transition-all duration-500 shadow-xl shadow-purple-500/5">
-                      <CheckCircle className="size-10 text-purple-600 group-hover:text-white transition-colors" />
+                  <div className="p-8 rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center">
+                    <div className="size-16 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-all">
+                      <CheckCircle className="size-8 text-purple-600 group-hover:text-white transition-colors" />
                     </div>
-                    <h3 className="text-3xl font-black tracking-tighter mb-4 text-gray-950 group-hover:text-purple-600 transition-colors">Logic Verification</h3>
-                    <p className="text-gray-400 font-bold mb-10 leading-relaxed text-sm">Strict validation scenarios ensuring feature performance meets institutional standards.</p>
-                    <Button variant="outline" className="w-full py-8 text-[11px] font-black uppercase tracking-[0.3em] rounded-[1.5rem] border-2 border-gray-100 group-hover:border-purple-600 group-hover:text-purple-600 transition-all">View UAT Scenarios</Button>
+                    <h3 className="text-xl font-bold tracking-tight mb-2 text-gray-950">Logic Verification</h3>
+                    <p className="text-gray-500 font-medium mb-6 leading-relaxed text-sm">Validation scenarios ensuring feature performance meets institutional standards.</p>
+                    <Button variant="outline" className="w-full py-6 text-xs font-bold rounded-xl">View UAT Scenarios</Button>
                   </div>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-[4rem] p-16 bg-white shadow-2xl font-sans">
@@ -718,32 +718,32 @@ export default function App() {
               {/* Roadmap */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="p-12 rounded-[4rem] border border-gray-100 bg-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.04)] hover:shadow-2xl hover:border-green-100 transition-all cursor-pointer group flex flex-col items-center text-center">
-                    <div className="size-24 rounded-[2rem] bg-green-50 flex items-center justify-center mb-10 group-hover:bg-green-600 group-hover:scale-110 transition-all duration-500 shadow-xl shadow-green-500/5">
-                      <Clock className="size-10 text-green-600 group-hover:text-white transition-colors" />
+                  <div className="p-8 rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center">
+                    <div className="size-16 rounded-2xl bg-green-50 flex items-center justify-center mb-6 group-hover:bg-green-600 transition-all">
+                      <Clock className="size-8 text-green-600 group-hover:text-white transition-colors" />
                     </div>
-                    <h3 className="text-3xl font-black tracking-tighter mb-4 text-gray-950 group-hover:text-green-600 transition-colors">Strategic Roadmap</h3>
-                    <p className="text-gray-400 font-bold mb-10 leading-relaxed text-sm">Phased rollout strategy prioritizing trust architecture followed by advanced strategy lab.</p>
-                    <Button variant="outline" className="w-full py-8 text-[11px] font-black uppercase tracking-[0.3em] rounded-[1.5rem] border-2 border-gray-100 group-hover:border-green-600 group-hover:text-green-600 transition-all">View Timeline</Button>
+                    <h3 className="text-xl font-bold tracking-tight mb-2 text-gray-950">Strategic Roadmap</h3>
+                    <p className="text-gray-500 font-medium mb-6 leading-relaxed text-sm">Phased rollout strategy prioritizing trust architecture followed by advanced strategy lab.</p>
+                    <Button variant="outline" className="w-full py-6 text-xs font-bold rounded-xl">View Timeline</Button>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="max-w-5xl rounded-[4rem] p-16 bg-gray-50/50 shadow-2xl border-none">
+                <DialogContent className="max-w-5xl rounded-3xl p-12 bg-white shadow-2xl border-none">
                   <DialogHeader className="mb-16">
-                    <DialogTitle className="text-6xl font-black tracking-tighter text-gray-950 italic">Execution Roadmap</DialogTitle>
-                    <DialogDescription className="text-gray-400 font-black uppercase text-xs tracking-[0.4em] mt-4 italic">Pocketful Propel Framework 2026</DialogDescription>
+                    <DialogTitle className="text-4xl font-bold tracking-tight text-gray-950">Execution Roadmap</DialogTitle>
+                    <DialogDescription className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mt-2">Pocketful Propel Framework 2026</DialogDescription>
                   </DialogHeader>
                   <div className="grid md:grid-cols-3 gap-10">
                     {(['now', 'next', 'later'] as const).map((phase, i) => (
-                      <div key={phase} className="space-y-10 group">
+                      <div key={phase} className="space-y-8 group">
                         <div className="flex items-center gap-4">
-                          <div className={`size-6 rounded-full shadow-lg ${i === 0 ? 'bg-blue-600 animate-pulse' : i === 1 ? 'bg-purple-600 shadow-purple-500/20' : 'bg-green-600 shadow-green-500/20'}`}></div>
-                          <h4 className="font-black text-3xl tracking-tighter capitalize group-hover:text-gray-950 transition-colors">{phase}</h4>
+                          <div className={`size-4 rounded-full ${i === 0 ? 'bg-blue-600 animate-pulse' : i === 1 ? 'bg-purple-600' : 'bg-green-600'}`}></div>
+                          <h4 className="font-bold text-xl capitalize text-gray-950">{phase}</h4>
                         </div>
-                        <div className="space-y-5">
+                        <div className="space-y-4">
                           {PRD_DATA.roadmap[phase].map((item, j) => (
-                            <div key={j} className="p-8 bg-white rounded-[2.5rem] border border-gray-100 shadow-sm font-black text-gray-950 tracking-tighter leading-tight text-lg hover:scale-[1.05] hover:-rotate-1 transition-all cursor-default">
-                              <div className="text-slate-800">{item.item}</div>
-                              <div className="text-[10px] text-gray-400 uppercase tracking-widest mt-2">Lead: {item.owner}</div>
+                            <div key={j} className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm font-bold text-gray-900 tracking-tight leading-snug text-sm hover:border-blue-200 transition-all cursor-default">
+                              <div>{item.item}</div>
+                              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-2 font-medium">Lead: {item.owner}</div>
                             </div>
                           ))}
                         </div>
@@ -752,26 +752,24 @@ export default function App() {
                   </div>
 
                   {/* Operational Frameworks */}
-                  <div className="mt-24 grid md:grid-cols-2 gap-12">
-                    <div className="p-12 bg-white rounded-[3rem] border border-gray-100 shadow-sm">
-                      <h5 className="font-black text-2xl tracking-tighter mb-8 flex items-center gap-3"><Users className="size-6 text-purple-600" /> RACI Accountability Matrix</h5>
-                      <div className="overflow-hidden rounded-2xl border border-gray-50">
-                        <table className="w-full text-left text-sm font-bold">
+                  <div className="mt-20 grid md:grid-cols-2 gap-8">
+                    <div className="p-8 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                      <h5 className="font-bold text-xl tracking-tight mb-6 flex items-center gap-3"><Users className="size-5 text-purple-600" /> RACI Matrix</h5>
+                      <div className="overflow-hidden rounded-xl border border-gray-50">
+                        <table className="w-full text-left text-sm font-medium">
                           <thead className="bg-gray-50 text-gray-400 uppercase text-[9px] tracking-widest">
                             <tr>
-                              <th className="px-6 py-4">Deliverable</th>
-                              <th className="px-6 py-4">PM</th>
-                              <th className="px-6 py-4">Eng</th>
-                              <th className="px-6 py-4">Design</th>
+                              <th className="px-5 py-3">Deliverable</th>
+                              <th className="px-5 py-3">PM</th>
+                              <th className="px-5 py-3">Eng</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-gray-50">
                             {RACI_MATRIX.slice(0, 5).map((row: any, i: number) => (
-                              <tr key={i} className="hover:bg-gray-50 transition-colors">
-                                <td className="px-6 py-4 text-gray-950">{row.deliverable}</td>
-                                <td className="px-6 py-4"><Badge className="bg-blue-50 text-blue-600 text-[9px] font-black">{row.pm}</Badge></td>
-                                <td className="px-6 py-4"><Badge className="bg-gray-100 text-gray-500 text-[9px] font-black">{row.eng}</Badge></td>
-                                <td className="px-6 py-4"><Badge className="bg-gray-100 text-gray-500 text-[9px] font-black">{row.design}</Badge></td>
+                              <tr key={i} className="hover:bg-gray-50 transition-colors text-xs">
+                                <td className="px-5 py-3 text-gray-950">{row.deliverable}</td>
+                                <td className="px-5 py-3"><Badge className="bg-blue-50 text-blue-600 text-[9px] font-bold">{row.pm}</Badge></td>
+                                <td className="px-5 py-3"><Badge className="bg-gray-100 text-gray-500 text-[9px] font-bold">{row.eng}</Badge></td>
                               </tr>
                             ))}
                           </tbody>
@@ -779,22 +777,22 @@ export default function App() {
                       </div>
                     </div>
                     <div className="space-y-8">
-                      <div className="p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm">
-                        <h5 className="font-black text-2xl tracking-tighter mb-6 flex items-center gap-3"><Wrench className="size-6 text-blue-600" /> PM Tooling Stack</h5>
+                      <div className="p-8 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                        <h5 className="font-bold text-xl tracking-tight mb-6 flex items-center gap-3"><Wrench className="size-5 text-blue-600" /> PM Tooling</h5>
                         <div className="grid grid-cols-2 gap-4">
                           {PM_TOOLING.map((s: any, i: number) => (
                             <div key={i} className="space-y-1">
-                              <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest">{s.purpose}</p>
-                              <p className="text-xs font-black text-gray-950 font-mono italic">{s.tools.join(", ")}</p>
+                              <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">{s.purpose}</p>
+                              <p className="text-xs font-semibold text-gray-950">{s.tools.join(", ")}</p>
                             </div>
                           ))}
                         </div>
                       </div>
-                      <div className="p-10 bg-green-50 rounded-[3rem] border border-green-100 italic shadow-sm">
-                        <h5 className="font-black text-xl tracking-tighter mb-4 text-green-700">Definition of Done (DoD)</h5>
+                      <div className="p-8 bg-green-50/50 rounded-3xl border border-green-100 shadow-sm">
+                        <h5 className="font-bold text-lg tracking-tight mb-4 text-green-700">Definition of Done</h5>
                         <ul className="space-y-2">
                           {DEFINITION_OF_DONE.slice(0, 3).map((d: string, i: number) => (
-                            <li key={i} className="text-xs font-bold text-green-600 flex items-start gap-2">
+                            <li key={i} className="text-xs font-medium text-green-600 flex items-start gap-2">
                               <div className="size-1.5 rounded-full bg-green-400 mt-1.5 shrink-0" />
                               {d}
                             </li>
