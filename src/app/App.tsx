@@ -260,7 +260,7 @@ export default function App() {
         </nav>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white">
+        <section className="pt-24 pb-16 md:pt-32 md:pb-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
@@ -270,17 +270,17 @@ export default function App() {
                 <div className="h-px w-12 bg-gray-200"></div>
                 <span className="text-xs font-bold text-gray-400">Phase 1 Submission</span>
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-8 leading-[1.1]">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 leading-[1.1] tracking-tight">
                 Strategic Platform Evolution.
               </h1>
               <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl">
                 A comprehensive audit and product roadmap designed to restore user trust and democratize institutional-grade trading tools.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-lg hover:shadow-xl" asChild>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-lg hover:shadow-xl w-full sm:w-auto" asChild>
                   <a href="#features">Explore Features</a>
                 </Button>
-                <Button size="lg" variant="outline" className="border border-gray-200 hover:bg-gray-50 text-gray-900 font-bold px-8 py-6 rounded-xl transition-all shadow-sm hover:shadow-md" asChild>
+                <Button size="lg" variant="outline" className="border border-gray-200 hover:bg-gray-50 text-gray-900 font-bold px-8 py-6 rounded-xl transition-all shadow-sm hover:shadow-md w-full sm:w-auto" asChild>
                   <a href="#audit">View Audit Findings</a>
                 </Button>
               </div>
@@ -289,21 +289,21 @@ export default function App() {
         </section>
 
         {/* Technical Audit Section */}
-        <section id="audit" className="py-32 bg-gray-50/50">
+        <section id="audit" className="py-20 md:py-32 bg-gray-50/50">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
               <div>
                 <Badge variant="outline" className="bg-red-50 text-red-600 border-red-100 font-bold mb-4 px-3 py-1 text-xs">Critical Analysis</Badge>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Flaw Analysis</h2>
                 <p className="text-gray-500 text-lg font-medium max-w-2xl">Systematic review of identified usability gaps following firsthand evaluation.</p>
               </div>
-              <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm font-bold text-gray-700">
+              <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm font-bold text-gray-700 w-fit">
                 <ShieldAlert className="size-6 text-red-500" />
                 <span className="text-sm font-bold text-gray-900">High-Severity Gaps Identified</span>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {FLAWS.map((flaw) => (
                 <Card key={String(flaw.id)} className="bg-white rounded-2xl border-gray-100 shadow-md group hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-2">
                   <CardHeader className="pb-3 pt-6 px-6">
@@ -325,16 +325,16 @@ export default function App() {
                           View Analysis <ArrowRight className="size-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-3xl block">
-                        <DialogHeader className="px-10 pt-10 pb-2 text-left bg-white">
+                      <DialogContent className="max-w-[95vw] md:max-w-4xl w-full max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-3xl block">
+                        <DialogHeader className="px-6 md:px-10 pt-10 pb-2 text-left bg-white">
                           <div className="flex items-center gap-3 mb-4">
                             <Badge className="bg-red-50 text-red-600 border-none font-bold uppercase tracking-widest text-[10px] px-3 py-1">{flaw.severity}</Badge>
                             <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase tracking-widest text-[10px] px-3 py-1">{flaw.risk}</Badge>
                           </div>
-                          <DialogTitle className="text-3xl font-bold text-gray-900 tracking-tight leading-tight">{flaw.title}</DialogTitle>
+                          <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight">{flaw.title}</DialogTitle>
                         </DialogHeader>
 
-                        <div className="p-10 pt-6 space-y-8">
+                        <div className="p-6 md:p-10 pt-6 space-y-8">
                           <div className="grid md:grid-cols-2 gap-8">
                             <div className="space-y-3">
                               <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Context</h4>
@@ -370,21 +370,21 @@ export default function App() {
         </section>
 
         {/* Competitor Analysis Section - PREMIUM LIGHT THEME */}
-        <section id="competitors" className="py-32 bg-white">
+        <section id="competitors" className="py-20 md:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col items-center text-center mb-20">
+            <div className="flex flex-col items-center text-center mb-16 md:mb-20">
               <Badge variant="outline" className="bg-indigo-50 text-indigo-700 border-indigo-100 font-bold mb-6 px-4 py-1.5 text-xs">Market Intelligence</Badge>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Competitor Strategy Hub</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Competitor Strategy Hub</h2>
               <p className="text-gray-500 text-lg max-w-3xl leading-relaxed">
                 Positioning Pocketful relative to industry incumbents like Zerodha and Groww, identifying blue-ocean opportunities for retail adoption.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6 mb-16">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {COMPETITOR_ANALYSIS.marketPositioning.map((comp) => (
-                <div key={comp.name} className="p-8 rounded-xl border border-gray-100 bg-white shadow-md flex flex-col items-start transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-blue-100">
+                <div key={comp.name} className="p-8 rounded-xl border border-gray-100 bg-white shadow-md flex flex-col items-start transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-blue-100 group">
                   <div className="flex items-center justify-between w-full mb-6">
-                    <h3 className="text-xl font-bold text-gray-900">{comp.name}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{comp.name}</h3>
                     <Badge variant="secondary" className="bg-gray-50 text-gray-600 font-bold text-xs px-2">{comp.share}</Badge>
                   </div>
                   <div className="space-y-4 flex-1 text-sm">
@@ -406,60 +406,62 @@ export default function App() {
             </div>
 
             {/* Strategic Deep Dive - Inline */}
-            <div className="mt-32 space-y-32">
+            <div className="mt-20 md:mt-32 space-y-20 md:space-y-32">
 
               {/* Comparison Matrix */}
               <div id="comparison-matrix" className="scroll-mt-32">
-                <div className="flex items-center gap-4 mb-12">
+                <div className="flex items-center gap-4 mb-8 md:mb-12">
                   <div className="h-px w-12 bg-gray-200"></div>
                   <h3 className="text-xl font-bold text-gray-900">Strategic Comparison Matrix</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
 
-                <div className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                  <Table>
-                    <TableHeader className="bg-gray-50/50">
-                      <TableRow className="hover:bg-transparent border-gray-100">
-                        <TableHead className="w-[300px] py-6 pl-8 font-bold text-gray-900 text-sm uppercase tracking-wide">Strategy Vector</TableHead>
-                        <TableHead className="text-center font-bold text-gray-500 text-xs uppercase tracking-widest">Zerodha</TableHead>
-                        <TableHead className="text-center font-bold text-gray-500 text-xs uppercase tracking-widest">Groww</TableHead>
-                        <TableHead className="text-center font-bold text-blue-700 text-xs uppercase tracking-widest bg-blue-50/50">Pocketful</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {COMPETITOR_ANALYSIS.gapAnalysis.map((gap) => (
-                        <TableRow key={gap.category} className="border-gray-100 hover:bg-gray-50/50 transition-colors">
-                          <TableCell className="py-6 pl-8">
-                            <div className="font-bold text-gray-900 text-base mb-1">{gap.category}</div>
-                            <div className="text-xs text-gray-500 font-medium">{gap.impact}</div>
-                          </TableCell>
-                          <TableCell className="text-center font-medium text-gray-400 text-lg">{gap.zerodha}/5</TableCell>
-                          <TableCell className="text-center font-medium text-gray-400 text-lg">{gap.groww}/5</TableCell>
-                          <TableCell className="text-center font-bold text-blue-600 text-lg bg-blue-50/30">{gap.pocketful}/5</TableCell>
+                <div className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm overflow-x-auto">
+                  <div className="min-w-[800px]">
+                    <Table>
+                      <TableHeader className="bg-gray-50/50">
+                        <TableRow className="hover:bg-transparent border-gray-100">
+                          <TableHead className="w-[300px] py-6 pl-8 font-bold text-gray-900 text-sm uppercase tracking-wide">Strategy Vector</TableHead>
+                          <TableHead className="text-center font-bold text-gray-500 text-xs uppercase tracking-widest">Zerodha</TableHead>
+                          <TableHead className="text-center font-bold text-gray-500 text-xs uppercase tracking-widest">Groww</TableHead>
+                          <TableHead className="text-center font-bold text-blue-700 text-xs uppercase tracking-widest bg-blue-50/50">Pocketful</TableHead>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                      </TableHeader>
+                      <TableBody>
+                        {COMPETITOR_ANALYSIS.gapAnalysis.map((gap) => (
+                          <TableRow key={gap.category} className="border-gray-100 hover:bg-gray-50/50 transition-colors">
+                            <TableCell className="py-6 pl-8">
+                              <div className="font-bold text-gray-900 text-base mb-1">{gap.category}</div>
+                              <div className="text-xs text-gray-500 font-medium">{gap.impact}</div>
+                            </TableCell>
+                            <TableCell className="text-center font-medium text-gray-400 text-lg">{gap.zerodha}/5</TableCell>
+                            <TableCell className="text-center font-medium text-gray-400 text-lg">{gap.groww}/5</TableCell>
+                            <TableCell className="text-center font-bold text-blue-600 text-lg bg-blue-50/30">{gap.pocketful}/5</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
               </div>
 
               {/* Strategic Blueprints */}
               <div id="strategic-blueprints" className="scroll-mt-32">
-                <div className="flex items-center gap-4 mb-12">
+                <div className="flex items-center gap-4 mb-8 md:mb-12">
                   <div className="h-px w-12 bg-gray-200"></div>
                   <h3 className="text-xl font-bold text-gray-900">Strategic Blueprints</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
 
-                <div className="grid gap-8">
+                <div className="grid gap-6 md:gap-8">
                   {COMPETITOR_ANALYSIS.strategicOpportunities.map((op) => (
-                    <div key={op.title} className="p-6 rounded-[2rem] border border-gray-100 bg-white flex flex-col md:flex-row gap-5 hover:border-blue-200 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 shadow-md">
-                      <div className="size-12 bg-blue-50/50 rounded-2xl flex items-center justify-center shrink-0">
+                    <div key={op.title} className="p-6 rounded-[2rem] border border-gray-100 bg-white flex flex-col md:flex-row gap-5 hover:border-blue-200 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 shadow-md group">
+                      <div className="size-12 bg-blue-50/50 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
                         <Zap className="size-6 text-blue-600" />
                       </div>
                       <div className="flex-1 space-y-3">
                         <div>
-                          <h4 className="text-xl font-bold text-gray-900 mb-1">{op.title}</h4>
+                          <h4 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">{op.title}</h4>
                           <p className="text-gray-600 font-medium leading-relaxed">{op.description}</p>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -478,7 +480,7 @@ export default function App() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-16 bg-gray-50">
+        <section id="features" className="py-20 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-12">
               <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-none font-bold mb-4 px-3 py-1 text-xs">Product Innovation</Badge>
@@ -537,7 +539,7 @@ export default function App() {
         </section>
 
         {/* Artifact Hub Section - FULL PREMIUM LIGHT */}
-        <section id="artifacts" className="py-24 bg-white border-t border-gray-50">
+        <section id="artifacts" className="py-16 md:py-24 bg-white border-t border-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-16">
               <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-none font-bold mb-4 px-3 py-1 uppercase tracking-widest text-[9px]">Submission Package</Badge>
@@ -547,7 +549,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="mt-24 space-y-32">
+            <div className="mt-16 md:mt-24 space-y-20 md:space-y-32">
 
               {/* 1. PRD Specs */}
               <div id="specs" className="scroll-mt-32">
@@ -665,29 +667,31 @@ export default function App() {
                   <h3 className="text-xl font-bold text-gray-900">Validation Protocols</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
-                <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-                  <Table>
-                    <TableHeader className="bg-gray-50/50">
-                      <TableRow>
-                        <TableHead className="w-[100px] pl-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">ID</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Scenario (UAT)</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Expected Protocol</TableHead>
-                        <TableHead className="text-right pr-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Status</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {UAT_SCENARIOS.map((uat: any) => (
-                        <TableRow key={uat.id} className="hover:bg-gray-50/50 transition-colors border-gray-50">
-                          <TableCell className="pl-6 py-4 font-mono text-xs font-bold text-purple-600">{uat.id}</TableCell>
-                          <TableCell className="py-4 font-medium text-gray-900 text-sm">{uat.scenario}</TableCell>
-                          <TableCell className="py-4 text-gray-500 text-sm italic">"{uat.expected}"</TableCell>
-                          <TableCell className="pr-6 py-4 text-right">
-                            <Badge variant="outline" className="border-green-200 text-green-700 bg-green-50 font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">Verified</Badge>
-                          </TableCell>
+                <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm overflow-x-auto">
+                  <div className="min-w-[700px]">
+                    <Table>
+                      <TableHeader className="bg-gray-50/50">
+                        <TableRow>
+                          <TableHead className="w-[100px] pl-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">ID</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Scenario (UAT)</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Expected Protocol</TableHead>
+                          <TableHead className="text-right pr-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Status</TableHead>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                      </TableHeader>
+                      <TableBody>
+                        {UAT_SCENARIOS.map((uat: any) => (
+                          <TableRow key={uat.id} className="hover:bg-gray-50/50 transition-colors border-gray-50">
+                            <TableCell className="pl-6 py-4 font-mono text-xs font-bold text-purple-600">{uat.id}</TableCell>
+                            <TableCell className="py-4 font-medium text-gray-900 text-sm">{uat.scenario}</TableCell>
+                            <TableCell className="py-4 text-gray-500 text-sm italic">"{uat.expected}"</TableCell>
+                            <TableCell className="pr-6 py-4 text-right">
+                              <Badge variant="outline" className="border-green-200 text-green-700 bg-green-50 font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">Verified</Badge>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
               </div>
 
@@ -698,7 +702,7 @@ export default function App() {
                   <h3 className="text-xl font-bold text-gray-900">Execution Roadmap</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                   {(['now', 'next', 'later'] as const).map((phase, i) => (
                     <div key={phase} className="space-y-6">
                       <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
@@ -718,7 +722,7 @@ export default function App() {
               </div>
 
               {/* 4. Operational Frameworks */}
-              <div id="ops" className="grid md:grid-cols-2 gap-8">
+              <div id="ops" className="grid gap-8 md:grid-cols-2">
                 <div className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
                   <h4 className="font-bold text-gray-900 mb-6">RACI Matrix</h4>
                   <Table>
@@ -769,7 +773,7 @@ export default function App() {
 
         {/* Footer */}
         {/* Footer */}
-        <footer id="footer" className="py-24 bg-white border-t border-gray-100">
+        <footer id="footer" className="py-16 md:py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">
