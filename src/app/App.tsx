@@ -66,9 +66,12 @@ export default function App() {
               onClick={() => {
                 setDemoMode('landing');
                 setShowErrorWizard(false);
+                setTimeout(() => {
+                  document.getElementById('features')?.scrollIntoView({ behavior: 'instant' });
+                }, 0);
               }}
             >
-              ← Back to Portfolio
+              ← Back to Innovation Suite
             </Button>
             <div className="flex items-center gap-2">
               <Smartphone className="size-4 text-blue-600" />
@@ -121,9 +124,12 @@ export default function App() {
               onClick={() => {
                 setDemoMode('landing');
                 setShowStrategyBuilder(false);
+                setTimeout(() => {
+                  document.getElementById('features')?.scrollIntoView({ behavior: 'instant' });
+                }, 0);
               }}
             >
-              ← Back to Portfolio
+              ← Back to Innovation Suite
             </Button>
             <div className="flex items-center gap-2">
               <Monitor className="size-4 text-blue-600" />
