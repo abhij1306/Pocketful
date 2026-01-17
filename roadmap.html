@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Roadmap | Pocketful PM Artifacts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .artifact-page {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .artifact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .artifact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .artifact-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c5ce7;
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-column {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .phase-header {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .phase-now .phase-header {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        }
+
+        .phase-next .phase-header {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+        }
+
+        .phase-later .phase-header {
+            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
+        }
+
+        .roadmap-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .phase-now .roadmap-item {
+            border-left-color: #00b894;
+        }
+
+        .phase-next .roadmap-item {
+            border-left-color: #6c5ce7;
+        }
+
+        .phase-later .roadmap-item {
+            border-left-color: #f39c12;
+        }
+
+        .roadmap-item h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .roadmap-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .roadmap-item .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        .badge-feature {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-infra {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-ux {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .metrics-section {
+            margin-top: 3rem;
+            background: #1a1a2e;
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00b894;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .roadmap-container {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="artifact-page">
+        <a href="index.html" class="back-link">← Back to Overview</a>
+
+        <div class="artifact-header">
+            <h1>📊 Product Roadmap</h1>
+            <p>Pocketful Innovation Suite | 6-Month Delivery Plan</p>
+        </div>
+
+        <div class="roadmap-container">
+            <div class="phase-column phase-now">
+                <div class="phase-header">🔥 NOW (Month 1-2)</div>
+
+                <div class="roadmap-item">
+                    <h4>Error Recovery Wizard MVP</h4>
+                    <p>Transform generic errors into actionable recovery journeys with retry, alternatives, and
+                        diagnostics.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Error Taxonomy Service</h4>
+                    <p>Backend service to classify and categorize all API errors for contextual messaging.</p>
+                    <span class="badge badge-infra">Infrastructure</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>API Error Standardization</h4>
+                    <p>Unified error response format across all endpoints with error codes and user messages.</p>
+                    <span class="badge badge-infra">Infrastructure</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Monitoring Dashboards</h4>
+                    <p>Real-time visibility into error rates, recovery metrics, and user impact.</p>
+                    <span class="badge badge-infra">Infrastructure</span>
+                </div>
+            </div>
+
+            <div class="phase-column phase-next">
+                <div class="phase-header">📈 NEXT (Month 3-4)</div>
+
+                <div class="roadmap-item">
+                    <h4>Algo Strategy Engine V1</h4>
+                    <p>Visual IF-THEN strategy builder with no-code interface for retail traders.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Backtest Engine</h4>
+                    <p>1-year historical data backtesting with P&L, win rate, and Sharpe ratio metrics.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Risk Management Layer</h4>
+                    <p>Mandatory stop-loss, take-profit, and position limits before strategy activation.</p>
+                    <span class="badge badge-infra">Infrastructure</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Smart Home V1</h4>
+                    <p>Context-aware dashboard that adapts to market phase (pre-market, open, closing).</p>
+                    <span class="badge badge-ux">UX</span>
+                </div>
+            </div>
+
+            <div class="phase-column phase-later">
+                <div class="phase-header">🚀 LATER (Month 5-6)</div>
+
+                <div class="roadmap-item">
+                    <h4>Algo Engine V2: Multi-leg</h4>
+                    <p>Complex strategies with multiple conditions, AND/OR logic, and chained actions.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Options Strategy Templates</h4>
+                    <p>Pre-built templates for straddles, strangles, iron condors, and spreads.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Social: Copy Strategies</h4>
+                    <p>Follow and copy successful strategies from top performers on the platform.</p>
+                    <span class="badge badge-feature">Feature</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <h4>Advanced Analytics</h4>
+                    <p>Portfolio performance attribution, tax optimization, and P&L insights.</p>
+                    <span class="badge badge-ux">UX</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics-section">
+            <h3>📊 Success Metrics (6-Month Targets)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">80%</div>
+                    <div class="metric-label">Error Recovery Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">15%</div>
+                    <div class="metric-label">Strategy Activation Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">-60%</div>
+                    <div class="metric-label">Support Tickets</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">+15</div>
+                    <div class="metric-label">NPS Improvement</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

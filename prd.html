@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRD Document | Pocketful PM Artifacts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+
+        .prd-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .prd-sidebar {
+            background: #1a1a2e;
+            color: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .prd-sidebar h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #6c5ce7;
+        }
+
+        .prd-sidebar a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            padding: 0.6rem 0;
+            font-size: 0.85rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+            transition: all 0.2s;
+        }
+
+        .prd-sidebar a:hover,
+        .prd-sidebar a.active {
+            color: white;
+            border-left-color: #6c5ce7;
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        .prd-sidebar .section-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .prd-sidebar .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .prd-content {
+            padding: 3rem;
+            max-width: 900px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c5ce7;
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .prd-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .prd-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prd-meta {
+            display: flex;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .prd-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .prd-section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+            border-bottom: 2px solid #6c5ce7;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .prd-section h3 {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem 0;
+            color: #333;
+        }
+
+        .prd-section p {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .prd-section ul,
+        .prd-section ol {
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .metric-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #6c5ce7;
+        }
+
+        .metric-item .label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .metric-item .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00b894;
+        }
+
+        .story-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #00b894;
+        }
+
+        .story-card .story-id {
+            font-family: monospace;
+            color: #6c5ce7;
+            font-size: 0.8rem;
+        }
+
+        .story-card .story-text {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        .story-card .acceptance {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .raci-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .raci-table th,
+        .raci-table td {
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .raci-table th {
+            background: #f8f9fa;
+        }
+
+        .raci-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .raci-r {
+            color: #00b894;
+            font-weight: 700;
+        }
+
+        .raci-a {
+            color: #6c5ce7;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .prd-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .prd-sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="prd-layout">
+        <nav class="prd-sidebar">
+            <h2>📄 PRD Navigation</h2>
+
+            <div class="section-group">
+                <div class="section-title">Error Recovery Wizard</div>
+                <a href="#erw-problem">Problem Statement</a>
+                <a href="#erw-metrics">Success Metrics</a>
+                <a href="#erw-stories">User Stories</a>
+                <a href="#erw-tech">Technical Reqs</a>
+            </div>
+
+            <div class="section-group">
+                <div class="section-title">Algo Strategy Engine</div>
+                <a href="#ase-problem">Problem Statement</a>
+                <a href="#ase-metrics">Success Metrics</a>
+                <a href="#ase-stories">User Stories</a>
+                <a href="#ase-tech">Technical Reqs</a>
+            </div>
+
+            <div class="section-group">
+                <div class="section-title">Execution</div>
+                <a href="#raci">RACI Matrix</a>
+                <a href="#tooling">PM Tooling</a>
+                <a href="#dod">Definition of Done</a>
+            </div>
+        </nav>
+
+        <main class="prd-content">
+            <a href="index.html" class="back-link">← Back to Overview</a>
+
+            <div class="prd-header">
+                <h1>Feature Design PRD</h1>
+                <p>Pocketful Innovation Suite</p>
+                <div class="prd-meta">
+                    <span>👤 Abhineet Jain</span>
+                    <span>📅 January 2026</span>
+                    <span>📌 v1.0</span>
+                </div>
+            </div>
+
+            <section class="prd-section" id="erw-problem">
+                <h2>Error Recovery Wizard</h2>
+                <h3>Problem Statement</h3>
+                <p>When Pocketful encounters API failures or data unavailability, users see a generic <em>"Something
+                        went wrong! Internal Server Error"</em> message. This provides zero actionable guidance, leaving
+                    users uncertain whether to retry, wait, or abandon the workflow.</p>
+
+                <h3>User Impact</h3>
+                <ul>
+                    <li><strong>Trust Erosion:</strong> 73% of fintech users cite unclear error messages as a primary
+                        driver of platform switching</li>
+                    <li><strong>Support Burden:</strong> Generic errors generate 4x more support tickets than contextual
+                        errors</li>
+                    <li><strong>Revenue Leakage:</strong> Users abandon trades worth an estimated ₹2.3L/day during error
+                        states</li>
+                </ul>
+
+                <h3>Value Proposition</h3>
+                <blockquote>"Transform every error into an opportunity to demonstrate platform reliability."
+                </blockquote>
+            </section>
+
+            <section class="prd-section" id="erw-metrics">
+                <h3>Success Metrics</h3>
+                <p><strong>North Star:</strong> Error Recovery Rate (% of users who complete their intended action after
+                    an error)</p>
+                <div class="metric-grid">
+                    <div class="metric-item">
+                        <div class="label">Baseline</div>
+                        <div class="value">12%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">M3 Target</div>
+                        <div class="value">65%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">M6 Target</div>
+                        <div class="value">80%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">Support Ticket Reduction</div>
+                        <div class="value">-60%</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prd-section" id="erw-stories">
+                <h3>User Stories</h3>
+                <div class="story-card">
+                    <div class="story-id">ERW-001 | P0</div>
+                    <p class="story-text">"As an active trader, I want to understand WHY an error occurred so I can
+                        decide whether to retry or try a different approach."</p>
+                    <p class="acceptance"><strong>Acceptance:</strong> Error message includes root cause category
+                        (Network/Data/Server) and plain-English explanation.</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-id">ERW-002 | P0</div>
+                    <p class="story-text">"As a user experiencing an error, I want to see alternative actions I can take
+                        so that I'm not stuck."</p>
+                    <p class="acceptance"><strong>Acceptance:</strong> At least 2 contextual alternatives displayed
+                        based on error type and user's intended action.</p>
+                </div>
+            </section>
+
+            <section class="prd-section" id="ase-problem">
+                <h2>Algo Strategy Engine</h2>
+                <h3>Problem Statement</h3>
+                <p>Algorithmic trading is currently the exclusive domain of institutional traders. Retail traders on
+                    Pocketful have no way to automate even simple rules-based strategies, leaving them disadvantaged
+                    during volatile market conditions.</p>
+
+                <h3>Value Proposition</h3>
+                <blockquote>"Bring the power of algorithmic trading to every retail investor—no coding required."
+                </blockquote>
+            </section>
+
+            <section class="prd-section" id="ase-metrics">
+                <h3>Success Metrics</h3>
+                <p><strong>North Star:</strong> Strategy Activation Rate (% of users who create AND activate a strategy)
+                </p>
+                <div class="metric-grid">
+                    <div class="metric-item">
+                        <div class="label">Baseline</div>
+                        <div class="value">0%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">M3 Target</div>
+                        <div class="value">8%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">M6 Target</div>
+                        <div class="value">15%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="label">Strategies Created</div>
+                        <div class="value">25,000</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prd-section" id="raci">
+                <h2>RACI Accountability Matrix</h2>
+                <table class="raci-table">
+                    <thead>
+                        <tr>
+                            <th>Deliverable</th>
+                            <th>PM</th>
+                            <th>Eng</th>
+                            <th>Design</th>
+                            <th>QA</th>
+                            <th>Compliance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PRD Documentation</td>
+                            <td class="raci-r">R/A</td>
+                            <td>C</td>
+                            <td>C</td>
+                            <td>I</td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>UI/UX Mockups</td>
+                            <td class="raci-a">A</td>
+                            <td>I</td>
+                            <td class="raci-r">R</td>
+                            <td>I</td>
+                            <td>I</td>
+                        </tr>
+                        <tr>
+                            <td>API Contract Design</td>
+                            <td>C</td>
+                            <td class="raci-r">R/A</td>
+                            <td>I</td>
+                            <td>C</td>
+                            <td>I</td>
+                        </tr>
+                        <tr>
+                            <td>UAT Test Cases</td>
+                            <td class="raci-r">R</td>
+                            <td>C</td>
+                            <td>C</td>
+                            <td class="raci-a">A</td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>Rollout Plan</td>
+                            <td class="raci-r">R/A</td>
+                            <td>C</td>
+                            <td>I</td>
+                            <td>C</td>
+                            <td>C</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: #666;"><strong>Legend:</strong> R = Responsible,
+                    A = Accountable, C = Consulted, I = Informed</p>
+            </section>
+
+            <section class="prd-section" id="dod">
+                <h2>Definition of Done</h2>
+                <p>A feature is considered "Done" when:</p>
+                <ul>
+                    <li>✅ All acceptance criteria from user stories are met</li>
+                    <li>✅ Code reviewed and merged to main branch</li>
+                    <li>✅ Unit test coverage ≥ 80%</li>
+                    <li>✅ E2E tests passing in staging environment</li>
+                    <li>✅ Design QA approved by Design Lead</li>
+                    <li>✅ Accessibility audit passed (WCAG 2.1 AA)</li>
+                    <li>✅ Performance benchmarks met (p95 latency targets)</li>
+                    <li>✅ Documentation updated in knowledge base</li>
+                    <li>✅ Rollout plan approved by Product Lead</li>
+                    <li>✅ Metrics instrumentation verified in staging</li>
+                </ul>
+            </section>
+
+            <p style="text-align: center; color: #666; margin-top: 3rem;">
+                <a href="feature_design_prd.md" target="_blank" style="color: #6c5ce7;">📥 Download Full PRD
+                    (Markdown)</a>
+            </p>
+        </main>
+    </div>
+</body>
+
+</html>
