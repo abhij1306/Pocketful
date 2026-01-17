@@ -66,6 +66,82 @@ export const PERSONA_INSIGHT = {
     opportunity: "Pocketful can be the platform that grows WITH users—from Raj's first trade to Priya's algo strategies—while reaching Amit in tier-2 cities."
 };
 
+// TARGET BUSINESS METRICS - What we're optimizing for
+export const TARGET_BUSINESS_METRICS = [
+    {
+        id: 'trust',
+        name: 'Platform Trust',
+        description: 'User confidence in app reliability during critical moments',
+        indicator: 'Reduced error-related abandonment, fewer support tickets',
+        color: 'blue' // Subtle blue for trust metrics
+    },
+    {
+        id: 'engagement',
+        name: 'Daily Engagement',
+        description: 'Frequency and depth of user sessions',
+        indicator: 'Time-to-action, session duration, return rate',
+        color: 'green' // Subtle green for engagement
+    },
+    {
+        id: 'accessibility',
+        name: 'Market Accessibility',
+        description: 'Reach to underserved segments (tier-2/3, beginners)',
+        indicator: 'Offline success rate, jargon comprehension, RM utilization',
+        color: 'purple' // Subtle purple for accessibility
+    },
+    {
+        id: 'retention',
+        name: 'User Retention',
+        description: 'Long-term platform stickiness',
+        indicator: 'Churn reduction, feature adoption, upgrade rate',
+        color: 'amber' // Subtle amber for retention
+    }
+];
+
+// FEATURE-PERSONA-METRIC MAPPING
+export const FEATURE_MAPPING = {
+    ERW: {
+        personas: ['priya', 'raj', 'amit'],
+        metrics: ['trust', 'retention'],
+        primaryPersona: 'priya'
+    },
+    SOA: {
+        personas: ['priya'],
+        metrics: ['engagement', 'retention'],
+        primaryPersona: 'priya'
+    },
+    TSE: {
+        personas: ['raj'],
+        metrics: ['accessibility', 'engagement'],
+        primaryPersona: 'raj'
+    },
+    ROM: {
+        personas: ['amit'],
+        metrics: ['accessibility', 'trust'],
+        primaryPersona: 'amit'
+    },
+    CASH: {
+        personas: ['priya', 'raj'],
+        metrics: ['engagement', 'retention'],
+        primaryPersona: 'priya'
+    }
+};
+
+// Persona colors (subtle, muted tones)
+export const PERSONA_COLORS = {
+    priya: { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-200' },
+    raj: { bg: 'bg-sky-50', text: 'text-sky-700', border: 'border-sky-200' },
+    amit: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200' }
+};
+
+// Metric colors (subtle tones)
+export const METRIC_COLORS = {
+    trust: { bg: 'bg-blue-50', text: 'text-blue-600', dot: 'bg-blue-400' },
+    engagement: { bg: 'bg-green-50', text: 'text-green-600', dot: 'bg-green-400' },
+    accessibility: { bg: 'bg-purple-50', text: 'text-purple-600', dot: 'bg-purple-400' },
+    retention: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-400' }
+};
+
 export const FLAWS = [
     {
         id: 1,

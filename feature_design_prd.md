@@ -321,6 +321,106 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 ---
 
+## Appendix: User Flow Diagram
+
+### Error Recovery Wizard Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          USER FLOW: ERROR RECOVERY WIZARD                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────┐
+    │  START  │ User taps "Technicals" or triggers data request
+    └────┬────┘
+         │
+         ▼
+    ┌─────────────┐
+    │  API Call   │ Request sent to data provider
+    └──────┬──────┘
+           │
+           ▼
+    ◆ Response OK? ◆──────── YES ──────► [Display Data] ──► END
+           │
+           NO
+           │
+           ▼
+    ┌─────────────────────┐
+    │  Error Detected     │ <500ms detection
+    │  Classify Error     │
+    └──────────┬──────────┘
+               │
+    ┌──────────┴──────────┬────────────────────┐
+    │                     │                    │
+    ▼                     ▼                    ▼
+┌─────────┐        ┌───────────┐        ┌──────────┐
+│ NETWORK │        │   DATA    │        │  SERVER  │
+│  ISSUE  │        │UNAVAILABLE│        │  ERROR   │
+└────┬────┘        └─────┬─────┘        └────┬─────┘
+     │                   │                   │
+     ▼                   ▼                   ▼
+┌──────────┐       ┌───────────┐       ┌───────────┐
+│ Check    │       │ View      │       │ Retry     │
+│ Network  │       │ Similar   │       │ Later     │
+├──────────┤       │ Symbols   │       │           │
+│ Retry    │       ├───────────┤       │ Contact   │
+│          │       │ Use Cache │       │ Support   │
+└────┬─────┘       └─────┬─────┘       └─────┬─────┘
+     │                   │                   │
+     └───────────────────┴───────────────────┘
+                         │
+                         ▼
+              ┌─────────────────┐
+              │ Log Recovery    │
+              │ Path for Future │
+              │ Personalization │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │  SESSION        │
+              │  CONTINUES      │
+              └─────────────────┘
+```
+
+### Flow States Legend
+
+| Shape | Meaning |
+|-------|---------|
+| `[ ]` Rectangle | User Action / Process |
+| `◆` Diamond | Decision Point |
+| `( )` Rounded | Start / End |
+| Arrows | Flow Direction |
+
+---
+
+## Appendix: Execution Roadmap
+
+### Phase Overview
+
+| Phase | Timeline | Focus | Key Deliverables |
+|-------|----------|-------|------------------|
+| **NOW** | Months 0-3 | Trust Recovery | Error Recovery Wizard, Offline basics |
+| **NEXT** | Months 3-6 | Cognitive Clarity | Status Explainers, Smart Home |
+| **LATER** | Months 6-12 | Differentiation | Conditional Orders, Vernacular |
+
+---
+
+### Detailed Roadmap
+
+| Phase | Feature | Why | Key Metric | Effort | Dependencies |
+|-------|---------|-----|------------|--------|--------------|
+| NOW | Error Recovery Wizard | Directly addresses #1 pain point: trust erosion from generic errors | Session continuation after error | M | API error taxonomy |
+| NOW | Resilient Offline Mode (Basic) | Enables tier-2/3 market access; reduces bounce on poor networks | App load success rate on 2G | L | Service worker setup |
+| NEXT | Transparent Status Explainers | Reduces jargon confusion; aligns with "teaching broker" positioning | Support query reduction | S | Content/UX writing |
+| NEXT | Context-Aware Smart Home | Personalization differentiator; reduces time-to-action | Daily engagement rate | M | User segmentation logic |
+| LATER | Smart Order Assistant | Democratizes algo trading; leverages PACE heritage | Conditional order adoption | L | SEBI compliance review |
+| LATER | RM Chat Integration | Surfaces hidden differentiator during high-friction moments | RM utilization rate | M | RM system integration |
+
+**Effort Legend:** S = Small (< 2 weeks), M = Medium (2-6 weeks), L = Large (> 6 weeks)
+
+---
+
 > **Document Owner:** Abhineet Jain  
 > **Stakeholders:** Engineering, Design, QA  
 > **Review Cycle:** As needed during development

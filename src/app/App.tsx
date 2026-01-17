@@ -21,7 +21,7 @@ import {
 } from '@/app/components/ui/dialog';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/app/components/ui/table';
 import { toast, Toaster } from 'sonner';
-import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW, PERSONAS, PERSONA_INSIGHT, DEEP_COMPETITIVE_ANALYSIS } from './data';
+import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW, PERSONAS, PERSONA_INSIGHT, DEEP_COMPETITIVE_ANALYSIS, TARGET_BUSINESS_METRICS, FEATURE_MAPPING, PERSONA_COLORS, METRIC_COLORS } from './data';
 
 type DemoMode = 'landing' | 'mobile-error' | 'desktop-algo';
 
@@ -706,52 +706,112 @@ export default function App() {
               <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {PRD_DATA.features.map((feature, idx) => (
-                <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
-                  <div className="mb-8">
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed">{feature.valueProp}</p>
-                  </div>
-
-                  <div className="space-y-6 mt-auto">
-                    <div className="grid gap-4">
-                      {feature.successMetrics.slice(0, 3).map((metric, i) => (
-                        <div key={i} className="flex items-start gap-4 text-gray-700">
-                          <div className="size-6 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
-                            <CheckCircle className="size-3.5 text-green-600" />
-                          </div>
-                          <span className="font-bold text-gray-900 text-sm leading-tight">{metric.metric}: {metric.targetM6}</span>
-                        </div>
-                      ))}
-                    </div>
-                    {feature.id === 'ERW' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
-                        Launch Mobile Demo <ArrowRight className="ml-2 size-4" />
-                      </Button>
-                    ) : feature.id === 'SOA' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
-                        Open Order Assistant <Monitor className="ml-2 size-4" />
-                      </Button>
-                    ) : feature.id === 'TSE' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowTSEModal(true)}>
-                        View Explainer Demo <Info className="ml-2 size-4" />
-                      </Button>
-                    ) : feature.id === 'ROM' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowROMModal(true)}>
-                        View Offline Mode <Users className="ml-2 size-4" />
-                      </Button>
-                    ) : feature.id === 'CASH' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowCASHModal(true)}>
-                        View Smart Home <Zap className="ml-2 size-4" />
-                      </Button>
-                    ) : null}
+            {/* Target Users & Business Metrics Legend */}
+            <div className="mb-12 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Target User Groups */}
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target User Groups</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {PERSONAS.map((p) => (
+                      <div key={p.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].bg} ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].border} border`}>
+                        <span className="text-sm">{p.icon}</span>
+                        <span className={`text-xs font-medium ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].text}`}>{p.name.split(' ')[0]}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+
+                {/* Target Business Metrics */}
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target Business Metrics</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {TARGET_BUSINESS_METRICS.map((m) => (
+                      <div key={m.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].bg} border border-transparent`}>
+                        <div className={`size-2 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].dot}`}></div>
+                        <span className={`text-xs font-medium ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].text}`}>{m.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {PRD_DATA.features.map((feature, idx) => {
+                const mapping = FEATURE_MAPPING[feature.id as keyof typeof FEATURE_MAPPING];
+                return (
+                  <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
+                    <div className="mb-6">
+                      <div className="flex flex-wrap items-center gap-2 mb-4">
+                        <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
+
+                        {/* Persona indicators */}
+                        {mapping?.personas.map((pId) => {
+                          const persona = PERSONAS.find(p => p.id === pId);
+                          const colors = PERSONA_COLORS[pId as keyof typeof PERSONA_COLORS];
+                          return persona && (
+                            <span key={pId} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${colors.bg} ${colors.text} ${colors.border} border`}>
+                              {persona.icon} {persona.name.split(' ')[0]}
+                            </span>
+                          );
+                        })}
+                      </div>
+
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+                      <p className="text-gray-600 text-base leading-relaxed">{feature.valueProp}</p>
+
+                      {/* Metric indicators */}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {mapping?.metrics.map((mId) => {
+                          const metric = TARGET_BUSINESS_METRICS.find(m => m.id === mId);
+                          const colors = METRIC_COLORS[mId as keyof typeof METRIC_COLORS];
+                          return metric && (
+                            <span key={mId} className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-medium ${colors.bg} ${colors.text}`}>
+                              <span className={`size-1.5 rounded-full ${colors.dot}`}></span>
+                              {metric.name}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="space-y-6 mt-auto">
+                      <div className="grid gap-4">
+                        {feature.successMetrics.slice(0, 3).map((metric, i) => (
+                          <div key={i} className="flex items-start gap-4 text-gray-700">
+                            <div className="size-6 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                              <CheckCircle className="size-3.5 text-green-600" />
+                            </div>
+                            <span className="font-bold text-gray-900 text-sm leading-tight">{metric.metric}: {metric.targetM6}</span>
+                          </div>
+                        ))}
+                      </div>
+                      {feature.id === 'ERW' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
+                          Launch Mobile Demo <ArrowRight className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'SOA' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
+                          Open Order Assistant <Monitor className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'TSE' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowTSEModal(true)}>
+                          View Explainer Demo <Info className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'ROM' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowROMModal(true)}>
+                          View Offline Mode <Users className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'CASH' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowCASHModal(true)}>
+                          View Smart Home <Zap className="ml-2 size-4" />
+                        </Button>
+                      ) : null}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
