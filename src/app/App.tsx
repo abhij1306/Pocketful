@@ -21,7 +21,7 @@ import {
 } from '@/app/components/ui/dialog';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/app/components/ui/table';
 import { toast, Toaster } from 'sonner';
-import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW } from './data';
+import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW, PERSONAS, PERSONA_INSIGHT, DEEP_COMPETITIVE_ANALYSIS } from './data';
 
 type DemoMode = 'landing' | 'mobile-error' | 'desktop-algo';
 
@@ -311,6 +311,70 @@ export default function App() {
           </div>
         </section>
 
+        {/* User Personas Section */}
+        <section id="personas" className="py-20 md:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12 md:mb-16">
+              <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-100 font-bold mb-4 px-3 py-1 text-xs">User Research</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We're Building For</h2>
+              <p className="text-gray-500 text-lg max-w-3xl mx-auto leading-relaxed">{PERSONA_INSIGHT.context}</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {PERSONAS.map((persona) => (
+                <div key={persona.id} className="bg-white rounded-2xl border border-gray-100 shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-4xl">{persona.icon}</div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 text-lg">{persona.name}, {persona.age}</h3>
+                      <p className="text-sm text-gray-500">{persona.title} • {persona.location}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 text-sm mb-4 italic border-l-2 border-purple-200 pl-3">{persona.quote}</p>
+
+                  <p className="text-gray-700 text-sm mb-4">{persona.description}</p>
+
+                  <div className="mb-4">
+                    <span className="text-xs font-bold text-red-500 uppercase tracking-wide">Pain Points</span>
+                    <ul className="mt-2 space-y-1">
+                      {persona.painPoints.slice(0, 2).map((point, i) => (
+                        <li key={i} className="text-xs text-gray-600 flex items-start gap-2">
+                          <span className="text-red-400 mt-0.5">•</span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mb-4">
+                    <span className="text-xs font-bold text-green-600 uppercase tracking-wide">Needs</span>
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {persona.needs.map((need) => (
+                        <Badge key={need} variant="outline" className="text-[10px] bg-green-50 text-green-700 border-green-200">{need}</Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-gray-100">
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">Feature Mapping</span>
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {persona.featureMapping.map((feature) => (
+                        <Badge key={feature} className="text-[10px] bg-blue-600 text-white">{feature}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-purple-50 rounded-2xl p-6 md:p-8 text-center">
+              <h3 className="font-bold text-purple-900 text-lg mb-2">{PERSONA_INSIGHT.headline}</h3>
+              <p className="text-purple-700 max-w-3xl mx-auto">{PERSONA_INSIGHT.opportunity}</p>
+            </div>
+          </div>
+        </section>
+
         {/* Technical Audit Section */}
         <section id="audit" className="py-20 md:py-32 bg-gray-50/50">
           <div className="max-w-7xl mx-auto px-6">
@@ -495,6 +559,137 @@ export default function App() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Specific Competitive Advantages */}
+              <div id="differentiators" className="scroll-mt-32">
+                <div className="flex items-center gap-4 mb-8 md:mb-12">
+                  <div className="h-px w-12 bg-gray-200"></div>
+                  <h3 className="text-xl font-bold text-gray-900">Exploitable Competitive Advantages</h3>
+                  <div className="h-px flex-1 bg-gray-100"></div>
+                </div>
+
+                <div className="grid gap-6">
+                  {DEEP_COMPETITIVE_ANALYSIS.specificDifferentiators.map((diff) => (
+                    <div key={diff.id} className="bg-white rounded-2xl border border-gray-100 shadow-md p-6 hover:shadow-xl transition-all">
+                      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <h4 className="text-lg font-bold text-gray-900">{diff.title}</h4>
+                            <Badge className="bg-yellow-100 text-yellow-800 text-[10px]">{diff.status}</Badge>
+                          </div>
+                          <p className="text-gray-600 text-sm">{diff.details}</p>
+                        </div>
+                        <div className="flex gap-2 shrink-0">
+                          <div className={`px-2 py-1 rounded text-[10px] font-bold ${diff.pocketfulHas ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                            Pocketful {diff.pocketfulHas ? '✓' : '✗'}
+                          </div>
+                          <div className={`px-2 py-1 rounded text-[10px] font-bold ${diff.zerodhaHas ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                            Zerodha {diff.zerodhaHas ? '✓' : '✗'}
+                          </div>
+                          <div className={`px-2 py-1 rounded text-[10px] font-bold ${diff.growwHas ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                            Groww {diff.growwHas ? '✓' : '✗'}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4 mt-4">
+                        <div className="bg-blue-50 rounded-xl p-4">
+                          <span className="text-xs font-bold text-blue-600 uppercase">Opportunity</span>
+                          <p className="text-sm text-blue-900 mt-1">{diff.opportunity}</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-xl p-4">
+                          <span className="text-xs font-bold text-gray-500 uppercase">Why Competitors Can't Copy</span>
+                          <p className="text-sm text-gray-700 mt-1">{diff.whyCompetitorsCant}</p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 pt-4 border-t border-gray-100">
+                        <span className="text-xs font-bold text-purple-600">Persona Impact: </span>
+                        <span className="text-xs text-gray-600">{diff.personaImpact}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Feature-by-Feature Comparison */}
+              <div id="feature-comparison" className="scroll-mt-32">
+                <div className="flex items-center gap-4 mb-8 md:mb-12">
+                  <div className="h-px w-12 bg-gray-200"></div>
+                  <h3 className="text-xl font-bold text-gray-900">Feature-by-Feature Comparison</h3>
+                  <div className="h-px flex-1 bg-gray-100"></div>
+                </div>
+
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-md overflow-hidden overflow-x-auto">
+                  <Table>
+                    <TableHeader className="bg-gray-50">
+                      <TableRow>
+                        <TableHead className="font-bold text-gray-900 pl-6 py-4">Feature</TableHead>
+                        <TableHead className="font-bold text-gray-500 text-center">Zerodha</TableHead>
+                        <TableHead className="font-bold text-gray-500 text-center">Groww</TableHead>
+                        <TableHead className="font-bold text-blue-700 text-center bg-blue-50">Pocketful</TableHead>
+                        <TableHead className="font-bold text-green-700 text-center pr-6">Winner</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {DEEP_COMPETITIVE_ANALYSIS.featureByFeatureComparison.map((row, i) => (
+                        <TableRow key={i} className="hover:bg-gray-50/50">
+                          <TableCell className="font-medium text-gray-900 pl-6 py-3">{row.feature}</TableCell>
+                          <TableCell className="text-center text-gray-600 text-sm">{row.zerodha}</TableCell>
+                          <TableCell className="text-center text-gray-600 text-sm">{row.groww}</TableCell>
+                          <TableCell className="text-center text-blue-700 text-sm font-medium bg-blue-50/30">{row.pocketful}</TableCell>
+                          <TableCell className="text-center pr-6">
+                            <Badge className={`text-[10px] ${row.winner.includes('Pocketful') ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
+                              {row.winner}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+
+              {/* Wireframe Mockups */}
+              <div id="wireframes" className="scroll-mt-32">
+                <div className="flex items-center gap-4 mb-8 md:mb-12">
+                  <div className="h-px w-12 bg-gray-200"></div>
+                  <h3 className="text-xl font-bold text-gray-900">Wireframe: Error Recovery Wizard</h3>
+                  <div className="h-px flex-1 bg-gray-100"></div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-white rounded-2xl border border-red-200 shadow-md p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Badge className="bg-red-100 text-red-700">Before</Badge>
+                      <span className="text-sm font-medium text-gray-500">Current Error State</span>
+                    </div>
+                    <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
+                      <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.errorWizardBefore} alt="Before: Generic error message" className="w-full h-auto" />
+                    </div>
+                    <ul className="mt-4 space-y-2">
+                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No explanation of what went wrong</li>
+                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No alternative actions offered</li>
+                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> User left stranded</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white rounded-2xl border border-green-200 shadow-md p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Badge className="bg-green-100 text-green-700">After</Badge>
+                      <span className="text-sm font-medium text-gray-500">Error Recovery Wizard</span>
+                    </div>
+                    <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
+                      <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.errorWizardAfter} alt="After: Error Recovery Wizard" className="w-full h-auto" />
+                    </div>
+                    <ul className="mt-4 space-y-2">
+                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Clear explanation of issue</li>
+                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Multiple recovery options</li>
+                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> User stays in control</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 

@@ -1,3 +1,71 @@
+// USER PERSONAS - Who we're building for
+export const PERSONAS = [
+    {
+        id: 'priya',
+        name: 'Priya Sharma',
+        age: 28,
+        title: 'Active F&O Trader',
+        location: 'Mumbai',
+        tradingFrequency: '10+ trades/week',
+        portfolioSize: '₹15-25 Lakhs',
+        description: 'Tech-savvy professional who trades F&O during market hours. Expects real-time reliability and zero friction during execution.',
+        painPoints: [
+            'Loses money when app errors delay action (Flaw #1)',
+            'Cold start lag causes anxiety at market open (Flaw #3)',
+            'Manual order execution while institutions use automation'
+        ],
+        needs: ['Speed', 'Reliability', 'Real-time data', 'Automation tools'],
+        featureMapping: ['Error Recovery Wizard', 'Smart Order Assistant'],
+        quote: '"Every second of delay during market hours costs me money."',
+        icon: '👩‍💼'
+    },
+    {
+        id: 'raj',
+        name: 'Raj Patel',
+        age: 24,
+        title: 'First-Time Investor',
+        location: 'Pune',
+        tradingFrequency: '2-3 trades/month',
+        portfolioSize: '₹50K-2 Lakhs',
+        description: 'Software engineer who started with MFs and is exploring stocks. Confused by trading jargon and needs guidance.',
+        painPoints: [
+            '"Internal Server Error" is scary with no explanation (Flaw #1)',
+            'Doesn\'t understand "0.0x Subscribed", "Delta", "AMO"',
+            'Overwhelmed by complex trading interfaces'
+        ],
+        needs: ['Education', 'Simplicity', 'Guidance', 'Confidence building'],
+        featureMapping: ['Transparent Status Explainers', 'Context-Aware Smart Home'],
+        quote: '"I don\'t know what half these terms mean. Am I doing this right?"',
+        icon: '👨‍💻'
+    },
+    {
+        id: 'amit',
+        name: 'Amit Verma',
+        age: 45,
+        title: 'Tier-2 City Moderate Trader',
+        location: 'Indore',
+        tradingFrequency: '5-10 trades/week',
+        portfolioSize: '₹8-15 Lakhs',
+        description: 'Business owner who trades between meetings. Faces network issues and values human support when stuck.',
+        painPoints: [
+            'White screens during network drops (Flaw #3)',
+            'Doesn\'t know if issue is his network or app',
+            'Wants someone to talk to when confused'
+        ],
+        needs: ['Offline access', 'RM support', 'Vernacular options', 'Reliability'],
+        featureMapping: ['Resilient Offline Mode', 'RM Integration'],
+        quote: '"My internet isn\'t always reliable. The app should still work."',
+        icon: '👨‍💼'
+    }
+];
+
+// Why personas matter for Pocketful
+export const PERSONA_INSIGHT = {
+    headline: "Bridging the Gap Neither Competitor Serves",
+    context: "India has 140M demat accounts but only ~30M active traders. Zerodha serves Priya but intimidates Raj. Groww serves Raj but limits Priya. Neither serves Amit well.",
+    opportunity: "Pocketful can be the platform that grows WITH users—from Raj's first trade to Priya's algo strategies—while reaching Amit in tier-2 cities."
+};
+
 export const FLAWS = [
     {
         id: 1,
@@ -293,6 +361,71 @@ export const COMPETITOR_ANALYSIS = {
             proofPoints: ["RM access (Zerodha doesn't offer)", "300+ PACE locations"]
         }
     ]
+};
+
+// DEEP COMPETITIVE ANALYSIS - Specific differentiators and exploitable advantages
+export const DEEP_COMPETITIVE_ANALYSIS = {
+    marketContext: {
+        totalDematAccounts: '140M',
+        activeTraders: '~30M',
+        untappedMarket: '110M accounts not actively trading',
+        nextWaveSource: 'Tier-2/3 cities with limited financial literacy'
+    },
+    appStoreRatings: {
+        zerodha: { rating: 4.4, platform: 'Play Store', reviews: '1.2M+' },
+        groww: { rating: 4.5, platform: 'Play Store', reviews: '2.1M+' },
+        pocketful: { rating: 3.8, platform: 'Play Store', reviews: 'Growing' }
+    },
+    specificDifferentiators: [
+        {
+            id: 'rm-access',
+            title: 'Dedicated Relationship Manager',
+            status: 'Underutilized',
+            pocketfulHas: true,
+            zerodhaHas: false,
+            growwHas: false,
+            details: 'FREE dedicated RM for all customers - buried in marketing, not surfaced in app',
+            opportunity: 'Integrate RM chat into error states and complex workflows. "Having trouble? Chat with your RM (Avg response: 2 mins)"',
+            whyCompetitorsCant: 'Zerodha deliberately avoids RMs (cost structure). Groww offers call support but not dedicated RMs.',
+            personaImpact: 'Amit (Tier-2 user) values human support when confused'
+        },
+        {
+            id: 'pace-legacy',
+            title: 'PACE Group Infrastructure',
+            status: 'Underutilized',
+            pocketfulHas: true,
+            zerodhaHas: false,
+            growwHas: false,
+            details: '25+ years institutional trading experience, 300+ physical locations, same-day payout capability',
+            opportunity: 'Surface "Powered by PACE" at high-trust moments. Show execution stats. During errors: "Your funds protected by PACE\'s 25-year track record"',
+            whyCompetitorsCant: 'Groww and Zerodha are pure-play digital startups without institutional heritage.',
+            personaImpact: 'All personas benefit from institutional credibility and trust signals'
+        },
+        {
+            id: 'algo-dna',
+            title: 'Algorithmic Trading Heritage',
+            status: 'Underutilized',
+            pocketfulHas: true,
+            zerodhaHas: false,
+            growwHas: false,
+            details: 'Built with algo-trading DNA from PACE institutional systems. Free SmartAPIs available.',
+            opportunity: 'Democratize for retail: Simple IF-THEN rules, bracket orders, templates. "Trade like an institution without coding."',
+            whyCompetitorsCant: 'Zerodha has Streak but separate/paid. Groww lacks algo infrastructure entirely.',
+            personaImpact: 'Priya (Active Trader) can automate strategies'
+        }
+    ],
+    featureByFeatureComparison: [
+        { feature: 'Error Handling', zerodha: 'Minimal, functional', groww: 'Friendly but generic', pocketful: 'Generic (can be best with ERW)', winner: 'Pocketful (with ERW)' },
+        { feature: 'Cold Start Time', zerodha: '~2-3 seconds', groww: '~4 seconds', pocketful: '>10 seconds', winner: 'Zerodha' },
+        { feature: 'Offline Mode', zerodha: 'Limited', groww: 'None', pocketful: 'None (ROM can differentiate)', winner: 'Pocketful (with ROM)' },
+        { feature: 'Jargon Explanation', zerodha: 'Varsity (separate)', groww: 'Inline basics', pocketful: 'None (TSE can win)', winner: 'Pocketful (with TSE)' },
+        { feature: 'Order Automation', zerodha: 'Streak (paid/separate)', groww: 'None', pocketful: 'SmartAPI (developer-only)', winner: 'Pocketful (with SOA)' },
+        { feature: 'Human Support', zerodha: 'No RMs', groww: 'Call only', pocketful: 'Dedicated RM (hidden)', winner: 'Pocketful (if surfaced)' }
+    ],
+    wireframeMockups: {
+        errorWizardBefore: '/wireframe_before.png',
+        errorWizardAfter: '/wireframe_after.png'
+    }
 };
 
 export const RACI_MATRIX = [
