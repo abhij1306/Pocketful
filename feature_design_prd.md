@@ -617,6 +617,10 @@ The following screenshots document the actual usability issues identified during
 ![Current State: Desktop Auth](Screenshot_5.png)
 *Screenshot showing the third-party OAuth consent screen lacking Pocketful branding.*
 
+### Desktop Dashboard Interface
+![Current State: Desktop Dashboard](desktop_dashboard.png)
+*Screenshot showing the Pocketful desktop trading interface with watchlist, positions, and sector navigation. This is the baseline for the Algorithmic Strategy Engine integration.*
+
 ---
 
 ## RACI Accountability Matrix
