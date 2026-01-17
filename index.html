@@ -590,108 +590,206 @@
             <span class="modal-close" onclick="closeModal('prd-modal')">&times;</span>
             <div class="artifact-inner-header">
                 <h2>📄 Product Requirements Document</h2>
-                <p>Pocketful Innovation Suite | Technical Specifications v1.0</p>
+                <p>Pocketful Innovation Suite v1.0 | Author: Abhineet Jain</p>
             </div>
             <div class="prd-scroll-view" style="max-height: 70vh; overflow-y: auto; padding-right: 1.5rem;">
 
-                <!-- Error Recovery Wizard PRD -->
+                <!-- PRD #1: Error Recovery Wizard -->
                 <section class="prd-section">
-                    <h3 style="color: #00b894; margin-bottom: 1rem;">Error Recovery Wizard (P0)</h3>
-                    <p><strong>Problem:</strong> Generic "Something went wrong! Internal Server Error" with no recovery
-                        path breaks trust during critical moments.</p>
+                    <h3
+                        style="color: #00b894; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem;">
+                        PRD #1: Error Recovery Wizard</h3>
+
                     <div class="prd-box">
-                        <h4>Key Components</h4>
+                        <h4>1.1 Problem Statement</h4>
+                        <p style="color: #ccc; margin-bottom: 0.5rem;"><strong>Current State:</strong> Users see generic
+                            "Something went wrong! Internal Server Error" with zero actionable guidance.</p>
+                        <p style="color: #ccc;"><strong>User Impact:</strong></p>
                         <ul>
-                            <li><strong>Contextual Explanations:</strong> No more "Internal Server Error" - explain in
-                                user terms</li>
-                            <li><strong>Alternative Pathways:</strong> Always offer 2-3 alternative actions</li>
-                            <li><strong>Proactive Detection:</strong> Pre-emptively show estimated margin with
-                                disclaimer</li>
-                            <li><strong>System Health Page:</strong> Real-time status of Order execution, Market data,
-                                Margin calculations</li>
+                            <li>73% of fintech users cite unclear errors as platform switching driver</li>
+                            <li>Generic errors generate 4x more support tickets</li>
+                            <li>Users abandon trades worth ₹2.3L/day during error states</li>
                         </ul>
                     </div>
+
                     <div class="prd-box">
-                        <h4>Impact</h4>
-                        <ul>
-                            <li>Reduces error-related abandonment</li>
-                            <li>Increases user-reported satisfaction during failures</li>
-                        </ul>
+                        <h4>1.2 User Stories</h4>
+                        <table class="modal-table" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Story</th>
+                                    <th>Priority</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ERW-001</td>
+                                    <td>Understand WHY an error occurred to decide next action</td>
+                                    <td>P0</td>
+                                </tr>
+                                <tr>
+                                    <td>ERW-002</td>
+                                    <td>See alternative actions (View Fundamental Data, Retry)</td>
+                                    <td>P0</td>
+                                </tr>
+                                <tr>
+                                    <td>ERW-003</td>
+                                    <td>App remembers my successful recovery paths</td>
+                                    <td>P1</td>
+                                </tr>
+                                <tr>
+                                    <td>ERW-004</td>
+                                    <td>Know if error is network-side for troubleshooting</td>
+                                    <td>P1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="prd-box">
+                        <h4>1.3 Success Metrics</h4>
+                        <table class="modal-table" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Current</th>
+                                    <th>Target (M3)</th>
+                                    <th>Target (M6)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Error Recovery Rate (North Star)</strong></td>
+                                    <td>12%</td>
+                                    <td>65%</td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>Support tickets/week</td>
+                                    <td>450</td>
+                                    <td>280</td>
+                                    <td>180</td>
+                                </tr>
+                                <tr>
+                                    <td>Session abandonment</td>
+                                    <td>68%</td>
+                                    <td>35%</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Error flow CSAT</td>
+                                    <td>2.1/5</td>
+                                    <td>3.8/5</td>
+                                    <td>4.2/5</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
-                <!-- Context-Aware Smart Home PRD -->
-                <section class="prd-section" style="margin-top: 2rem;">
-                    <h3 style="color: #6c5ce7; margin-bottom: 1rem;">Context-Aware Smart Home (P1)</h3>
-                    <p><strong>Problem:</strong> Users with different intents face the same overwhelming interface.</p>
-                    <div class="prd-box">
-                        <h4>Time-of-Day Intelligence</h4>
-                        <ul>
-                            <li><strong>Pre-market (7-9 AM):</strong> Market preview, overnight news, IPO updates</li>
-                            <li><strong>Market hours (9:15 AM-3:30 PM):</strong> Quick trade buttons, active positions
-                                front-and-centre</li>
-                            <li><strong>Post-market (3:30 PM+):</strong> P&L summary, execution quality report,
-                                educational content</li>
-                        </ul>
-                    </div>
-                    <div class="prd-box">
-                        <h4>User State Awareness</h4>
-                        <ul>
-                            <li><strong>New user:</strong> Onboarding checklist, demo trading</li>
-                            <li><strong>Active trader:</strong> Heat map, quick re-order buttons</li>
-                            <li><strong>Long-term investor:</strong> Portfolio performance, SIP status</li>
-                        </ul>
-                    </div>
-                </section>
+                <!-- PRD #2: Algorithmic Strategy Engine -->
+                <section class="prd-section" style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #444;">
+                    <h3
+                        style="color: #6c5ce7; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem;">
+                        PRD #2: Algorithmic Strategy Engine</h3>
 
-                <!-- Status Explainers PRD -->
-                <section class="prd-section" style="margin-top: 2rem;">
-                    <h3 style="color: #fdcb6e; margin-bottom: 1rem;">Transparent Status Explainers (P1)</h3>
-                    <p><strong>Problem:</strong> Financial apps use jargon without context, assuming user knowledge.</p>
                     <div class="prd-box">
-                        <h4>Implementation</h4>
+                        <h4>2.1 Problem Statement</h4>
+                        <p style="color: #ccc; margin-bottom: 0.5rem;"><strong>Current State:</strong> Algorithmic
+                            trading is exclusive to institutional traders. Retail users have no automation capabilities.
+                        </p>
+                        <p style="color: #ccc;"><strong>User Impact:</strong></p>
                         <ul>
-                            <li><strong>Plain English:</strong> "0.0x Subscribed" → "Demand is lower than available
-                                shares"</li>
-                            <li><strong>Social Context:</strong> "2,847 Pocketful users have applied"</li>
-                            <li><strong>Option Greeks:</strong> "Delta 0.65" → "Moves ₹0.65 for every ₹1 in Nifty"</li>
+                            <li>Retail traders miss multi-leg strategies and real-time triggers</li>
+                            <li>Emotional trading during volatility locks in losses</li>
+                            <li>Zerodha Streak capturing power users</li>
                         </ul>
                     </div>
-                </section>
 
-                <!-- Offline Mode PRD -->
-                <section class="prd-section" style="margin-top: 2rem;">
-                    <h3 style="color: #74b9ff; margin-bottom: 1rem;">Resilient Offline Mode (P2)</h3>
-                    <p><strong>Problem:</strong> India's mobile data is inconsistent; tier-2/3 traders are underserved.
-                    </p>
                     <div class="prd-box">
-                        <h4>3-Tier Architecture</h4>
-                        <ul>
-                            <li><strong>Tier 1:</strong> Cached prices, portfolio holdings, order history</li>
-                            <li><strong>Tier 2:</strong> Progressive loading - text first, charts later</li>
-                            <li><strong>Tier 3:</strong> Smart connection detection, "Lite Mode" toggle</li>
-                        </ul>
+                        <h4>2.2 User Stories</h4>
+                        <table class="modal-table" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Story</th>
+                                    <th>Priority</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ASE-001</td>
+                                    <td>Create IF-THEN price-trigger strategy without code</td>
+                                    <td>P0</td>
+                                </tr>
+                                <tr>
+                                    <td>ASE-002</td>
+                                    <td>Backtest against 1Y historical data before risking capital</td>
+                                    <td>P0</td>
+                                </tr>
+                                <tr>
+                                    <td>ASE-003</td>
+                                    <td>Set automatic stop-loss and take-profit limits</td>
+                                    <td>P0</td>
+                                </tr>
+                                <tr>
+                                    <td>ASE-004</td>
+                                    <td>Live dashboard of active strategies' performance</td>
+                                    <td>P1</td>
+                                </tr>
+                                <tr>
+                                    <td>ASE-005</td>
+                                    <td>Start with pre-built templates (momentum, breakout)</td>
+                                    <td>P1</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </section>
 
-                <!-- Algo Engine PRD -->
-                <section class="prd-section" style="margin-top: 2rem;">
-                    <h3 style="color: #a29bfe; margin-bottom: 1rem;">Algorithmic Strategy Engine (P0)</h3>
-                    <p><strong>Description:</strong> In-app algo-strategy templates for retail users. Configure IF-THEN
-                        rules (e.g., "buy when 5-day SMA crosses 20-day SMA").</p>
                     <div class="prd-box">
-                        <h4>Implementation</h4>
+                        <h4>2.3 Success Metrics</h4>
+                        <table class="modal-table" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Target (M3)</th>
+                                    <th>Target (M6)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Strategy Activation Rate (North Star)</strong></td>
+                                    <td>8%</td>
+                                    <td>15%</td>
+                                </tr>
+                                <tr>
+                                    <td>Strategies created (total)</td>
+                                    <td>5,000</td>
+                                    <td>25,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Backtest completion rate</td>
+                                    <td>70%</td>
+                                    <td>85%</td>
+                                </tr>
+                                <tr>
+                                    <td>User retention (strategy creators)</td>
+                                    <td>+30%</td>
+                                    <td>+45%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="prd-box">
+                        <h4>2.4 Technical Requirements</h4>
                         <ul>
-                            <li>Pre-built templates: momentum, mean-reversion, breakout</li>
-                            <li>Backtest on historical data before going live</li>
+                            <li>Support SMA, EMA, RSI, MACD, Bollinger Bands indicators</li>
+                            <li>Historical data: 1Y minimum, 5Y preferred</li>
+                            <li>Strategy persistence: 99.9% sync accuracy</li>
                             <li>TradingView webhook integration</li>
-                        </ul>
-                    </div>
-                    <div class="prd-box">
-                        <h4>Target Users</h4>
-                        <ul>
-                            <li>Algorithmic and quantitative traders</li>
-                            <li>Intraday/algo-savvy users wanting semi-automated trades</li>
+                            <li>SEBI compliance: IF-THEN rules only, user consent required</li>
                         </ul>
                     </div>
                 </section>
