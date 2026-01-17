@@ -783,13 +783,74 @@
                     </div>
 
                     <div class="prd-box">
-                        <h4>2.4 Technical Requirements</h4>
+                        <h4>2.4 Functional Requirements</h4>
+                        <p style="color: #a29bfe; margin-bottom: 0.5rem;"><strong>A. Logic Engine (The "If")</strong>
+                        </p>
                         <ul>
-                            <li>Support SMA, EMA, RSI, MACD, Bollinger Bands indicators</li>
-                            <li>Historical data: 1Y minimum, 5Y preferred</li>
-                            <li>Strategy persistence: 99.9% sync accuracy</li>
-                            <li>TradingView webhook integration</li>
-                            <li>SEBI compliance: IF-THEN rules only, user consent required</li>
+                            <li><strong>Technical Indicators:</strong> RSI, MACD, SMA/EMA, Bollinger Bands, VWAP,
+                                Supertrend</li>
+                            <li><strong>Price Action:</strong> Current Price, OHLC of previous candles (1m to 1d)</li>
+                            <li><strong>Time-based Triggers:</strong> "At 09:20 AM" or "30 min before market close"</li>
+                        </ul>
+                        <p style="color: #a29bfe; margin-bottom: 0.5rem; margin-top: 1rem;"><strong>B. Execution
+                                Parameters (The "Then")</strong></p>
+                        <ul>
+                            <li><strong>Order Type:</strong> Market, Limit, or Bracket Orders (Target & Stop Loss)</li>
+                            <li><strong>Position Sizing:</strong> Fixed qty, % of capital, or risk-based (₹500/trade)
+                            </li>
+                            <li><strong>Product Type:</strong> Intraday (MIS) or Delivery (CNC/NRML)</li>
+                        </ul>
+                        <p style="color: #ff7675; margin-bottom: 0.5rem; margin-top: 1rem;"><strong>C. Risk Management
+                                Guardrails</strong></p>
+                        <ul>
+                            <li><strong>Max Daily Loss:</strong> Strategy auto-terminates at specific drawdown</li>
+                            <li><strong>Max Trades/Day:</strong> Prevent over-trading or looping errors</li>
+                            <li><strong>Market Hours:</strong> Auto-square off at 3:15 PM for intraday</li>
+                        </ul>
+                    </div>
+
+                    <div class="prd-box">
+                        <h4>2.5 UX Workflow</h4>
+                        <ol style="color: #ccc;">
+                            <li><strong>Selection:</strong> Choose instrument (NIFTY 50, Reliance, etc.)</li>
+                            <li><strong>Condition Building:</strong> "Add Condition" → dropdown of indicators</li>
+                            <li><strong>Visual Logic:</strong> Blocks/cards (Zapier/IFTTT style)</li>
+                            <li><strong>Backtest (Mandatory):</strong> 30-day historical P&L curve required</li>
+                            <li><strong>Deployment:</strong> Toggle Paper Trading vs Live Trading</li>
+                        </ol>
+                    </div>
+
+                    <div class="prd-box">
+                        <h4>2.6 Technical Specifications</h4>
+                        <table class="modal-table" style="font-size: 0.85rem;">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Data Latency</strong></td>
+                                    <td>WebSockets for real-time tick data (&lt;100ms lag)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Order Execution</strong></td>
+                                    <td>OMS integration via REST APIs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Concurrency</strong></td>
+                                    <td>Handle 10,000+ simultaneous If-Then checks/second</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Logging</strong></td>
+                                    <td>Detailed Decision Log showing trade trigger reasons</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="prd-box" style="border-color: #ff7675;">
+                        <h4>2.7 Compliance & Regulatory</h4>
+                        <ul>
+                            <li><strong>Exchange Approval:</strong> SEBI/Exchange guidelines for non-pipelined algo
+                                trading</li>
+                            <li><strong>Disclaimers:</strong> Mandatory risk disclosures before Live activation</li>
+                            <li><strong>Risk Mitigation KPI:</strong> Zero instances of runaway orders or API loops</li>
                         </ul>
                     </div>
                 </section>
