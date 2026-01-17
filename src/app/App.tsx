@@ -14,7 +14,7 @@ import {
   Smartphone, Monitor, AlertCircle, TrendingUp, Sparkles,
   FileText, CheckCircle, Map, Clock, ShieldAlert,
   BarChart3, UserCheck, Search, ArrowRight, ExternalLink,
-  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown, Info
+  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown, Info, Wifi, WifiOff, Database
 } from 'lucide-react';
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger
@@ -57,12 +57,13 @@ export default function App() {
     return (
       <>
         <Toaster position="top-center" />
-        <div className="min-h-screen bg-gray-50 flex flex-col">
-          <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-sm">
+        <div className="min-h-screen bg-gray-50 flex flex-col font-sans text-gray-900">
+          {/* Header */}
+          <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm sticky top-0 z-30">
             <Button
               variant="ghost"
               size="sm"
-              className="text-gray-600 hover:text-blue-600 font-bold"
+              className="text-gray-600 hover:text-blue-600 font-bold -ml-2"
               onClick={() => {
                 setDemoMode('landing');
                 setShowErrorWizard(false);
@@ -73,31 +74,103 @@ export default function App() {
             >
               ← Back to Innovation Suite
             </Button>
-            <div className="flex items-center gap-2">
-              <Smartphone className="size-4 text-blue-600" />
-              <span className="text-sm font-bold text-gray-900 uppercase tracking-widest">Mobile Framework</span>
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-50 p-2 rounded-lg">
+                <Smartphone className="size-5 text-blue-600" />
+              </div>
+              <div>
+                <span className="block text-sm font-bold text-gray-900 leading-none">Resilient Mobile Framework</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Interactive Demo</span>
+              </div>
             </div>
           </div>
 
-          <div className="flex-1 flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-white">
-            <div className="w-full max-w-[320px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] rounded-[3rem] border-[12px] border-gray-900 overflow-hidden bg-black aspect-[9/19.5]">
-              <MobileTradingView onTriggerError={() => triggerError('DATA_UNAVAILABLE')} />
-            </div>
-          </div>
+          <div className="flex-1 flex max-w-7xl mx-auto w-full p-8 gap-12 items-start justify-center">
 
-          <div className="bg-white border-t border-gray-200 px-6 py-6 shadow-2xl">
-            <p className="text-xs font-bold text-gray-500 uppercase mb-4 tracking-[0.2em] text-center">Simulate Recovery Scenarios</p>
-            <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
-              {['DATA_UNAVAILABLE', 'NETWORK_TIMEOUT', 'SERVER_ERROR', 'RATE_LIMITED'].map((type) => (
-                <Button key={type} variant="outline" size="sm" className="font-bold border-gray-200 hover:border-blue-500 hover:text-blue-600 text-[10px]" onClick={() => triggerError(type as any)}>
-                  {type.replace('_', ' ')}
-                </Button>
-              ))}
+            {/* Phone Container - Centered/Left */}
+            <div className="flex-1 flex justify-center items-start pt-8">
+              <div className="relative w-[360px] h-[780px] bg-white rounded-[3rem] shadow-2xl border-4 border-gray-200 overflow-hidden ring-1 ring-gray-900/5">
+                {/* Status Bar Mockup */}
+                <div className="absolute top-0 w-full h-12 bg-white z-20 flex items-center justify-between px-6 pt-2">
+                  <span className="text-xs font-bold text-gray-900">9:41</span>
+                  <div className="flex gap-1.5">
+                    <Wifi className={`size-4 ${errorType === 'NETWORK_TIMEOUT' ? 'text-red-500' : 'text-gray-900'}`} />
+                    <div className="size-4 bg-gray-900 rounded-sm opacity-20"></div>
+                  </div>
+                </div>
+
+                {/* Dynamic Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-30"></div>
+
+                <div className="pt-12 h-full bg-white">
+                  <MobileTradingView
+                    onTriggerError={() => triggerError('DATA_UNAVAILABLE')}
+                    activeError={showErrorWizard ? errorType : null}
+                    onRecover={() => {
+                      setShowErrorWizard(false);
+                      toast.success('System Repaired & Data Re-Hydrated! ✓');
+                    }}
+                  />
+                </div>
+              </div>
             </div>
+
+            {/* Sidebar Controls - Right */}
+            <div className="w-80 shrink-0 sticky top-32 space-y-8 animate-in slide-in-from-right-4 duration-500 delay-100">
+              <div className="space-y-2">
+                <h2 className="text-xl font-bold text-gray-900">Recovery Console</h2>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Simulate critical failure states to observe the application's verification protocols and self-healing UI.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-sm space-y-3 transition-all hover:border-blue-300 hover:shadow-md group cursor-pointer" onClick={() => triggerError('DATA_UNAVAILABLE')}>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="size-8 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform">
+                      <Database className="size-4" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-sm">Data Interruption</span>
+                  </div>
+                  <p className="text-xs text-gray-500 leading-tight">Simulates a WebSocket disconnect or missing feed. Triggers inline contextual recovery.</p>
+                </div>
+
+                <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-sm space-y-3 transition-all hover:border-orange-300 hover:shadow-md group cursor-pointer" onClick={() => triggerError('NETWORK_TIMEOUT')}>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="size-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+                      <WifiOff className="size-4" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-sm">Network Timeout</span>
+                  </div>
+                  <p className="text-xs text-gray-500 leading-tight">Simulates complete connectivity loss. Triggers full-screen blocking wizard.</p>
+                </div>
+
+                <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-sm space-y-3 transition-all hover:border-purple-300 hover:shadow-md group cursor-pointer" onClick={() => triggerError('SERVER_ERROR')}>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="size-8 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
+                      <AlertCircle className="size-4" />
+                    </div>
+                    <span className="font-bold text-gray-900 text-sm">Server Outage</span>
+                  </div>
+                  <p className="text-xs text-gray-500 leading-tight">Simulates 500 API errors. Triggers escalation protocols.</p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <div className="flex gap-2 items-start">
+                  <Info className="size-4 text-blue-600 mt-0.5" />
+                  <p className="text-xs text-blue-800 font-medium">
+                    Note: "Data Interruption" demonstrates the new non-blocking, inline recovery UI requested in the latest design review.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {showErrorWizard && (
+        {/* Wizard Overlay - Only for Non-Inline Errors */}
+        {showErrorWizard && errorType !== 'DATA_UNAVAILABLE' && (
           <MobileErrorWizard
             errorType={errorType}
             onClose={() => setShowErrorWizard(false)}

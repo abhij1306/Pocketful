@@ -4,9 +4,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/ui/ta
 
 interface MobileTradingViewProps {
   onTriggerError: () => void;
+  activeError?: 'DATA_UNAVAILABLE' | 'NETWORK_TIMEOUT' | 'SERVER_ERROR' | 'RATE_LIMITED' | null;
+  onRecover?: () => void;
 }
 
-export function MobileTradingView({ onTriggerError }: MobileTradingViewProps) {
+export function MobileTradingView({ onTriggerError, activeError, onRecover }: MobileTradingViewProps) {
   const stockData = {
     symbol: 'IRCTC',
     name: 'Indian Railway Catering',
@@ -76,11 +78,39 @@ export function MobileTradingView({ onTriggerError }: MobileTradingViewProps) {
         </div>
       </div>
 
-      {/* Chart Placeholder */}
-      <div className="px-4 py-4 bg-gray-50">
-        <div className="h-48 bg-white rounded-lg border border-gray-200 flex items-center justify-center">
-          <p className="text-gray-400 text-sm">Chart placeholder</p>
-        </div>
+      {/* Chart Section with Inline Error Handling */}
+      <div className="px-4 py-4 bg-gray-50/50 min-h-[240px] flex flex-col">
+        {activeError === 'DATA_UNAVAILABLE' ? (
+          <div className="flex-1 bg-white rounded-xl border border-red-100 shadow-sm p-6 flex flex-col items-center justify-center text-center animate-in fade-in zoom-in-95 duration-300">
+            <div className="size-12 bg-red-50 rounded-full flex items-center justify-center mb-4">
+              <TrendingDown className="size-6 text-red-500" />
+            </div>
+            <h3 className="text-gray-900 font-bold mb-1">Data Unavailable</h3>
+            <p className="text-xs text-gray-500 mb-6 max-w-[200px] leading-relaxed">
+              Real-time feed for IRCTC interrupted. Auto-reconnecting...
+            </p>
+
+            <div className="w-full max-w-[180px] bg-gray-100 rounded-full h-1.5 overflow-hidden mb-4">
+              <div className="bg-blue-500 h-full w-1/3 animate-[shimmer_1.5s_infinite_linear] rounded-full" />
+            </div>
+
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={onRecover}
+              className="h-8 text-xs font-bold border-blue-200 text-blue-600 hover:bg-blue-50"
+            >
+              Use Cached Data
+            </Button>
+          </div>
+        ) : (
+          <div className="h-48 bg-white rounded-xl border border-gray-200 flex items-center justify-center shadow-sm">
+            <div className="text-center">
+              <TrendingUp className="size-8 text-gray-300 mx-auto mb-2" />
+              <p className="text-gray-400 text-xs font-medium">Interactive Chart Area</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Tabs */}
@@ -98,23 +128,15 @@ export function MobileTradingView({ onTriggerError }: MobileTradingViewProps) {
                 <p className="text-xs text-gray-500 mb-2">RSI (14)</p>
                 <p className="text-xl font-semibold">Loading...</p>
               </div>
-              
+
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-500 mb-2">MACD</p>
                 <p className="text-xl font-semibold">Loading...</p>
               </div>
 
-              <Button 
-                onClick={onTriggerError}
-                variant="outline"
-                className="w-full bg-red-50 text-red-600 hover:bg-red-100 border-red-200"
-              >
-                ⚠️ Simulate Data Error
-              </Button>
-
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <p className="text-xs text-blue-900">
-                  💡 Click "Simulate Data Error" to see the Error Recovery Wizard in action
+                <p className="text-xs text-blue-900 font-medium">
+                  💡 Use the recovery scenario controls on the right to simulate errors.
                 </p>
               </div>
             </div>
