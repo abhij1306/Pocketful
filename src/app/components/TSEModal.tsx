@@ -9,7 +9,7 @@ export function TSEModal() {
     const [showTooltip, setShowTooltip] = useState(false);
 
     return (
-        <DialogContent className="max-w-md w-full p-0 overflow-hidden bg-white border-none shadow-2xl rounded-3xl block">
+        <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md p-0 overflow-hidden bg-white border-none shadow-2xl rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader className="p-6 pb-2 border-b border-gray-100">
                 <DialogTitle className="text-xl font-bold text-gray-900">Transparent Status Explainers</DialogTitle>
                 <p className="text-sm text-gray-500">Interactive Concept Demo</p>

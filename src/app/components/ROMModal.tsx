@@ -5,7 +5,7 @@ import { WifiOff, RefreshCw, Clock } from "lucide-react";
 
 export function ROMModal() {
     return (
-        <DialogContent className="max-w-md w-full p-0 overflow-hidden bg-gray-50 border-none shadow-2xl rounded-3xl block h-[600px] flex flex-col">
+        <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md p-0 overflow-hidden bg-gray-50 border-none shadow-2xl rounded-2xl sm:rounded-3xl h-[80vh] sm:h-[600px] flex flex-col">
             {/* Fake Phone Status Bar */}
             <div className="bg-white px-6 py-2 flex justify-between items-center border-b border-gray-100 text-[10px] font-bold text-gray-400">
                 <span>9:41</span>

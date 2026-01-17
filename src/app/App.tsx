@@ -14,7 +14,7 @@ import {
   Smartphone, Monitor, AlertCircle, TrendingUp, Sparkles,
   FileText, CheckCircle, Map, Clock, ShieldAlert,
   BarChart3, UserCheck, Search, ArrowRight, ExternalLink,
-  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown, Info, Wifi, WifiOff, Database
+  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown, Info, Wifi, WifiOff, Database, Menu, X
 } from 'lucide-react';
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger
@@ -33,6 +33,7 @@ export default function App() {
   const [showTSEModal, setShowTSEModal] = useState(false);
   const [showROMModal, setShowROMModal] = useState(false);
   const [showCASHModal, setShowCASHModal] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMobileErrorDemo = () => {
     setDemoMode('mobile-error');
@@ -239,16 +240,18 @@ export default function App() {
       <div className="min-h-screen bg-white font-sans">
         {/* Navigation */}
         <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <div className="size-8 bg-blue-600 rounded-md flex items-center justify-center text-white font-bold">
                 A
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-sm font-bold text-gray-900 tracking-tight">Abhineet Jain</span>
-                <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">Candidate Submission</span>
+                <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider hidden sm:block">Candidate Submission</span>
               </div>
             </a>
+
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
               <a href="#audit" className="hover:text-gray-900 transition-colors">Audit Analysis</a>
               <a href="#competitors" className="hover:text-gray-900 transition-colors">Strategy</a>
@@ -256,7 +259,29 @@ export default function App() {
               <a href="#artifacts" className="hover:text-gray-900 transition-colors">Documentation</a>
               <a href="#footer" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold px-4 py-2 text-xs transition-all">Connect</a>
             </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl animate-in slide-in-from-top-2 duration-200">
+              <div className="flex flex-col p-4 gap-1">
+                <a href="#audit" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Audit Analysis</a>
+                <a href="#competitors" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Strategy</a>
+                <a href="#features" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Innovation</a>
+                <a href="#artifacts" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Documentation</a>
+                <a href="#footer" className="text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50 mt-2" onClick={() => setIsMobileMenuOpen(false)}>Connect →</a>
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* Hero Section */}
@@ -325,7 +350,7 @@ export default function App() {
                           View Analysis <ArrowRight className="size-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-[95vw] md:max-w-4xl w-full max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-3xl block">
+                      <DialogContent className="w-[calc(100%-2rem)] md:max-w-4xl max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-2xl md:rounded-3xl">
                         <DialogHeader className="px-6 md:px-10 pt-10 pb-2 text-left bg-white">
                           <div className="flex items-center gap-3 mb-4">
                             <Badge className="bg-red-50 text-red-600 border-none font-bold uppercase tracking-widest text-[10px] px-3 py-1">{flaw.severity}</Badge>
@@ -540,10 +565,10 @@ export default function App() {
 
         {/* Artifact Hub Section - FULL PREMIUM LIGHT */}
         <section id="artifacts" className="py-16 md:py-24 bg-white border-t border-gray-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="mb-10 md:mb-16">
               <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-none font-bold mb-4 px-3 py-1 uppercase tracking-widest text-[9px]">Submission Package</Badge>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Strategic Documentation Hub</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Strategic Documentation Hub</h2>
               <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">
                 Comprehensive repository spanning Product Requirements, UAT protocols, and execution timelines.
               </p>
@@ -559,8 +584,8 @@ export default function App() {
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
 
-                <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
-                  <div className="p-8 bg-gray-50 rounded-2xl border border-gray-100 mb-12">
+                <div className="bg-white rounded-2xl md:rounded-3xl border border-gray-100 p-4 md:p-8 shadow-sm">
+                  <div className="p-4 md:p-8 bg-gray-50 rounded-xl md:rounded-2xl border border-gray-100 mb-6 md:mb-12">
                     <span className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Strategic Narrative</span>
                     <p className="text-gray-900 font-medium text-lg leading-relaxed">{PRD_DATA.executionSummary}</p>
                   </div>

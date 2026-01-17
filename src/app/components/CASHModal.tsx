@@ -9,12 +9,12 @@ export function CASHModal() {
     const [activeTab, setActiveTab] = useState("live");
 
     return (
-        <DialogContent className="max-w-[95vw] md:max-w-7xl w-full p-0 overflow-hidden bg-white border-none shadow-2xl rounded-3xl block h-[90vh] flex flex-col">
+        <DialogContent className="w-[calc(100%-2rem)] md:max-w-7xl p-0 overflow-hidden bg-white border-none shadow-2xl rounded-2xl md:rounded-3xl h-[90vh] flex flex-col">
             {/* Header / Context Switcher */}
-            <div className="bg-white border-b border-gray-100 p-6 pb-0 flex-none">
-                <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">Smart Home</h2>
-                    <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-100 text-sm px-3 py-1">AI Context Active</Badge>
+            <div className="bg-white border-b border-gray-100 p-4 md:p-6 pb-0 flex-none">
+                <div className="flex justify-between items-center mb-4 md:mb-6">
+                    <h2 className="text-xl md:text-3xl font-bold text-gray-900">Smart Home</h2>
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-100 text-xs md:text-sm px-2 md:px-3 py-1">AI Context Active</Badge>
                 </div>
 
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
