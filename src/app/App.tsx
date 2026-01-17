@@ -290,10 +290,8 @@ export default function App() {
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
                 <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-blue-100 font-bold px-3 py-1 text-xs">
-                  Technical Product Challenge
+                  Product Management Task
                 </Badge>
-                <div className="h-px w-12 bg-gray-200"></div>
-                <span className="text-xs font-bold text-gray-400">Phase 1 Submission</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8 leading-[1.1] tracking-tight">
                 Strategic Platform Evolution.
@@ -808,7 +806,7 @@ export default function App() {
                   <span className="text-sm font-bold text-gray-900">Abhineet Jain</span>
                 </div>
                 <p className="text-gray-500 font-medium text-base max-w-sm">
-                  Submitted as part of the Phase 1 Technical Product Management evaluation process.
+                  Submitted as part of the Product Management evaluation process.
                 </p>
                 <div className="flex gap-6 text-xs font-bold text-gray-900">
                   <a href="https://www.linkedin.com/in/abhineet-jain/" target="_blank" className="hover:text-blue-600 transition-colors">LinkedIn</a>
@@ -833,7 +831,6 @@ export default function App() {
 
             <div className="mt-20 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between text-xs font-medium text-gray-400 gap-4">
               <span>© 2026 Abhineet Jain | TPM Feature Design Portfolio</span>
-              <span>Optimized for High-Fidelity Review</span>
             </div>
           </div>
         </footer>
