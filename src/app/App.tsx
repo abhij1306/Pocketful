@@ -173,7 +173,7 @@ export default function App() {
         </nav>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-white">
+        <section className="pt-32 pb-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
@@ -190,10 +190,10 @@ export default function App() {
                 A comprehensive audit and product roadmap designed to restore user trust and democratize institutional-grade trading tools.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-sm" asChild>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-lg hover:shadow-xl" asChild>
                   <a href="#features">Explore Features</a>
                 </Button>
-                <Button size="lg" variant="outline" className="border border-gray-200 hover:bg-gray-50 text-gray-900 font-bold px-8 py-6 rounded-xl transition-all" asChild>
+                <Button size="lg" variant="outline" className="border border-gray-200 hover:bg-gray-50 text-gray-900 font-bold px-8 py-6 rounded-xl transition-all shadow-sm hover:shadow-md" asChild>
                   <a href="#audit">View Audit Findings</a>
                 </Button>
               </div>
@@ -218,7 +218,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {FLAWS.map((flaw) => (
-                <Card key={String(flaw.id)} className="bg-white rounded-2xl border-gray-100 shadow-sm group hover:shadow-md hover:border-blue-200 transition-all duration-300 p-2">
+                <Card key={String(flaw.id)} className="bg-white rounded-2xl border-gray-100 shadow-md group hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-2">
                   <CardHeader className="pb-3 pt-6 px-6">
                     <div className="flex justify-between items-start mb-4">
                       <Badge variant="outline" className={`font-bold px-3 py-1 text-[10px] ${flaw.severity === 'High' ? 'text-red-600 border-red-100 bg-red-50' : 'text-amber-600 border-amber-100 bg-amber-50'}`}>
@@ -292,7 +292,7 @@ export default function App() {
 
             <div className="grid lg:grid-cols-3 gap-6 mb-16">
               {COMPETITOR_ANALYSIS.marketPositioning.map((comp) => (
-                <div key={comp.name} className="p-8 rounded-xl border border-gray-100 bg-white shadow-sm flex flex-col items-start transition-colors">
+                <div key={comp.name} className="p-8 rounded-xl border border-gray-100 bg-white shadow-md flex flex-col items-start transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-blue-100">
                   <div className="flex items-center justify-between w-full mb-6">
                     <h3 className="text-xl font-bold text-gray-900">{comp.name}</h3>
                     <Badge variant="secondary" className="bg-gray-50 text-gray-600 font-bold text-xs px-2">{comp.share}</Badge>
@@ -363,18 +363,18 @@ export default function App() {
 
                 <div className="grid gap-8">
                   {COMPETITOR_ANALYSIS.strategicOpportunities.map((op) => (
-                    <div key={op.title} className="p-10 rounded-[2rem] border border-gray-100 bg-white flex flex-col md:flex-row gap-10 hover:border-blue-100 transition-colors shadow-sm">
-                      <div className="size-16 bg-blue-50/50 rounded-2xl flex items-center justify-center shrink-0">
-                        <Zap className="size-8 text-blue-600" />
+                    <div key={op.title} className="p-6 rounded-[2rem] border border-gray-100 bg-white flex flex-col md:flex-row gap-5 hover:border-blue-200 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 shadow-md">
+                      <div className="size-12 bg-blue-50/50 rounded-2xl flex items-center justify-center shrink-0">
+                        <Zap className="size-6 text-blue-600" />
                       </div>
-                      <div className="flex-1 space-y-6">
+                      <div className="flex-1 space-y-3">
                         <div>
-                          <h4 className="text-2xl font-bold text-gray-900 mb-2">{op.title}</h4>
+                          <h4 className="text-xl font-bold text-gray-900 mb-1">{op.title}</h4>
                           <p className="text-gray-600 font-medium leading-relaxed">{op.description}</p>
                         </div>
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-2">
                           {op.proofPoints.map((p) => (
-                            <Badge key={p} variant="outline" className="border-gray-200 text-gray-500 font-bold px-4 py-1.5 text-[10px] uppercase tracking-widest bg-gray-50/50">{p}</Badge>
+                            <Badge key={p} variant="outline" className="border-gray-200 text-gray-500 font-bold px-3 py-1 text-[10px] uppercase tracking-widest bg-gray-50/50">{p}</Badge>
                           ))}
                         </div>
                       </div>
@@ -398,7 +398,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {PRD_DATA.features.map((feature, idx) => (
-                <div key={feature.id} className={`group flex flex-col h-full bg-gray-50 rounded-3xl border border-gray-100 p-8 hover:border-blue-100 transition-colors ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
+                <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
                   <div className="mb-8">
                     <div className="mb-4">
                       <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
@@ -419,18 +419,14 @@ export default function App() {
                       ))}
                     </div>
                     {feature.id === 'ERW' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-sm hover:shadow-md" onClick={handleMobileErrorDemo}>
+                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
                         Launch Mobile Demo <ArrowRight className="ml-2 size-4" />
                       </Button>
                     ) : feature.id === 'SOA' ? (
-                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-sm hover:shadow-md" onClick={handleDesktopAlgoDemo}>
+                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
                         Open Order Assistant <Monitor className="ml-2 size-4" />
                       </Button>
-                    ) : (
-                      <Button size="lg" variant="outline" className="w-full py-6 text-base border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-100 transition-all">
-                        View Specs in PRD <ArrowDown className="ml-2 size-4" />
-                      </Button>
-                    )}
+                    ) : null}
                   </div>
                 </div>
               ))}

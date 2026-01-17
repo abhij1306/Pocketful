@@ -90,6 +90,32 @@ export const PRD_DATA = {
             }
         },
         {
+            id: "SOA",
+            title: "Smart Order Assistant",
+            priority: "P2",
+            flawAddressed: "Gap: Personalization & Intelligence",
+            problem: "Retail traders lack automation tools, leading to emotional trading and missed opportunities.",
+            valueProp: "Compliant conditional orders: simple IF-THEN rules, bracket orders, and order templates—positioned within SEBI guidelines.",
+            successMetrics: [
+                { metric: "Conditional Order Usage", description: "Users setting up conditional orders", targetM6: "Adoption" },
+                { metric: "Bracket Order Completion", description: "Stop-loss/take-profit attached to orders", targetM6: "Increased" },
+                { metric: "Template Reuse", description: "Users reusing saved order templates", targetM6: "Enabled" }
+            ],
+            userStories: [
+                { id: "SOA-001", story: "I want to set 'Buy if price drops 5%' without coding.", priority: "P0" },
+                { id: "SOA-002", story: "I want bracket orders with pre-set stop-loss/take-profit.", priority: "P0" },
+                { id: "SOA-003", story: "I want to save and reuse my frequent order setups.", priority: "P1" }
+            ],
+            techSpecs: {
+                api: "POST /api/v2/conditional-orders",
+                payloads: [
+                    "condition: { type: 'PRICE_BELOW' | 'PRICE_ABOVE', threshold: number }",
+                    "action: { type: 'BUY' | 'SELL', quantity: number }",
+                    "bracket: { stop_loss_pct, take_profit_pct } | null"
+                ]
+            }
+        },
+        {
             id: "TSE",
             title: "Transparent Status Explainers",
             priority: "P1",
@@ -161,32 +187,6 @@ export const PRD_DATA = {
                     "time_zone: 'IST'",
                     "market_phase: 'PRE' | 'LIVE' | 'POST'",
                     "user_segment: 'TRADER' | 'INVESTOR'"
-                ]
-            }
-        },
-        {
-            id: "SOA",
-            title: "Smart Order Assistant",
-            priority: "P2",
-            flawAddressed: "Gap: Personalization & Intelligence",
-            problem: "Retail traders lack automation tools, leading to emotional trading and missed opportunities.",
-            valueProp: "Compliant conditional orders: simple IF-THEN rules, bracket orders, and order templates—positioned within SEBI guidelines.",
-            successMetrics: [
-                { metric: "Conditional Order Usage", description: "Users setting up conditional orders", targetM6: "Adoption" },
-                { metric: "Bracket Order Completion", description: "Stop-loss/take-profit attached to orders", targetM6: "Increased" },
-                { metric: "Template Reuse", description: "Users reusing saved order templates", targetM6: "Enabled" }
-            ],
-            userStories: [
-                { id: "SOA-001", story: "I want to set 'Buy if price drops 5%' without coding.", priority: "P0" },
-                { id: "SOA-002", story: "I want bracket orders with pre-set stop-loss/take-profit.", priority: "P0" },
-                { id: "SOA-003", story: "I want to save and reuse my frequent order setups.", priority: "P1" }
-            ],
-            techSpecs: {
-                api: "POST /api/v2/conditional-orders",
-                payloads: [
-                    "condition: { type: 'PRICE_BELOW' | 'PRICE_ABOVE', threshold: number }",
-                    "action: { type: 'BUY' | 'SELL', quantity: number }",
-                    "bracket: { stop_loss_pct, take_profit_pct } | null"
                 ]
             }
         }
