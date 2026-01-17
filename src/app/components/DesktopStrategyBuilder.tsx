@@ -48,46 +48,46 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
   if (step === 'backtest') {
     return (
-      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
-        <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-          <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Backtest Results</h2>
+      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-2 md:p-4" onClick={onClose}>
+        <div className="bg-white rounded-xl md:rounded-2xl w-[calc(100%-1rem)] md:w-full max-w-3xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="sticky top-0 bg-white border-b border-gray-200 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+            <h2 className="text-lg md:text-xl font-semibold">Backtest Results</h2>
             <button onClick={() => setStep('builder')} className="text-gray-400 hover:text-gray-600">
               <X className="size-5" />
             </button>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 md:p-6">
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
               <p className="text-sm text-blue-900 font-medium">
                 {instrument} Momentum Strategy (1 Year Backtest)
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-xs text-gray-500 mb-2">Total Trades</p>
-                <p className="text-3xl font-semibold">47</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-6">
+              <div className="bg-gray-50 rounded-lg p-3 md:p-4">
+                <p className="text-[10px] md:text-xs text-gray-500 mb-1 md:mb-2">Total Trades</p>
+                <p className="text-xl md:text-3xl font-semibold">47</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-xs text-gray-500 mb-2">Win Rate</p>
-                <p className="text-3xl font-semibold text-green-600">62%</p>
+              <div className="bg-gray-50 rounded-lg p-3 md:p-4">
+                <p className="text-[10px] md:text-xs text-gray-500 mb-1 md:mb-2">Win Rate</p>
+                <p className="text-xl md:text-3xl font-semibold text-green-600">62%</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-xs text-gray-500 mb-2">Net P&L</p>
-                <p className="text-3xl font-semibold text-green-600">+₹18,450</p>
-                <p className="text-xs text-gray-500">+7.4% return</p>
+              <div className="bg-gray-50 rounded-lg p-3 md:p-4 col-span-2 md:col-span-1">
+                <p className="text-[10px] md:text-xs text-gray-500 mb-1 md:mb-2">Net P&L</p>
+                <p className="text-xl md:text-3xl font-semibold text-green-600">+₹18,450</p>
+                <p className="text-[10px] md:text-xs text-gray-500">+7.4% return</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-xs text-gray-500 mb-2">Max Drawdown</p>
-                <p className="text-xl font-semibold text-red-600">-₹4,200</p>
+            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6">
+              <div className="bg-gray-50 rounded-lg p-3 md:p-4">
+                <p className="text-[10px] md:text-xs text-gray-500 mb-1 md:mb-2">Max Drawdown</p>
+                <p className="text-lg md:text-xl font-semibold text-red-600">-₹4,200</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-xs text-gray-500 mb-2">Sharpe Ratio</p>
-                <p className="text-xl font-semibold">1.8</p>
+              <div className="bg-gray-50 rounded-lg p-3 md:p-4">
+                <p className="text-[10px] md:text-xs text-gray-500 mb-1 md:mb-2">Sharpe Ratio</p>
+                <p className="text-lg md:text-xl font-semibold">1.8</p>
               </div>
             </div>
 
@@ -121,16 +121,16 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
   if (step === 'confirm') {
     return (
-      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
-        <div className="bg-white rounded-2xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
-          <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Confirm Activation</h2>
+      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-2 md:p-4" onClick={onClose}>
+        <div className="bg-white rounded-xl md:rounded-2xl w-[calc(100%-1rem)] md:w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+          <div className="border-b border-gray-200 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+            <h2 className="text-lg md:text-xl font-semibold">Confirm Activation</h2>
             <button onClick={() => setStep('backtest')} className="text-gray-400 hover:text-gray-600">
               <X className="size-5" />
             </button>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 md:p-6">
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
               <p className="text-sm font-medium text-amber-900 mb-2">⚠️ Important</p>
               <p className="text-sm text-amber-800">
@@ -183,16 +183,16 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
   }
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Create Strategy</h2>
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-2 md:p-4" onClick={onClose}>
+      <div className="bg-white rounded-xl md:rounded-2xl w-[calc(100%-1rem)] md:w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="sticky top-0 bg-white border-b border-gray-200 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+          <h2 className="text-lg md:text-xl font-semibold">Create Strategy</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="size-5" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-4 md:p-6 space-y-4 md:space-y-6">
           {/* IF Section */}
           <div className="border-l-4 border-blue-500 pl-6 py-2">
             <div className="flex items-center gap-2 mb-4">

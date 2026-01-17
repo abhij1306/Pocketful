@@ -62,11 +62,11 @@ export default function App() {
         <Toaster position="top-center" />
         <div className="min-h-screen bg-gray-50 flex flex-col font-sans text-gray-900">
           {/* Header */}
-          <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm sticky top-0 z-30">
+          <div className="bg-white border-b border-gray-200 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between shadow-sm sticky top-0 z-30">
             <Button
               variant="ghost"
               size="sm"
-              className="text-gray-600 hover:text-blue-600 font-bold -ml-2"
+              className="text-gray-600 hover:text-blue-600 font-bold -ml-2 text-xs md:text-sm"
               onClick={() => {
                 setDemoMode('landing');
                 setShowErrorWizard(false);
@@ -75,37 +75,37 @@ export default function App() {
                 }, 0);
               }}
             >
-              ← Back to Innovation Suite
+              ← <span className="hidden sm:inline">Back to Innovation Suite</span><span className="sm:hidden">Back</span>
             </Button>
-            <div className="flex items-center gap-3">
-              <div className="bg-blue-50 p-2 rounded-lg">
-                <Smartphone className="size-5 text-blue-600" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="bg-blue-50 p-1.5 md:p-2 rounded-lg">
+                <Smartphone className="size-4 md:size-5 text-blue-600" />
               </div>
               <div>
-                <span className="block text-sm font-bold text-gray-900 leading-none">Resilient Mobile Framework</span>
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Interactive Demo</span>
+                <span className="block text-xs md:text-sm font-bold text-gray-900 leading-none">Resilient Mobile</span>
+                <span className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider hidden sm:block">Interactive Demo</span>
               </div>
             </div>
           </div>
 
-          <div className="flex-1 flex max-w-7xl mx-auto w-full p-8 gap-12 items-start justify-center">
+          <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full p-4 md:p-8 gap-6 lg:gap-12 items-center lg:items-start justify-center">
 
-            {/* Phone Container - Centered/Left */}
-            <div className="flex-1 flex justify-center items-start pt-8">
-              <div className="relative w-[360px] h-[780px] bg-white rounded-[3rem] shadow-2xl border-4 border-gray-200 overflow-hidden ring-1 ring-gray-900/5">
+            {/* Phone Container - Centered */}
+            <div className="flex-1 flex justify-center items-start pt-4 md:pt-8 w-full max-w-[400px] lg:max-w-none">
+              <div className="relative w-full max-w-[320px] md:max-w-[360px] aspect-[9/19.5] bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-gray-200 overflow-hidden ring-1 ring-gray-900/5">
                 {/* Status Bar Mockup */}
-                <div className="absolute top-0 w-full h-12 bg-white z-20 flex items-center justify-between px-6 pt-2">
-                  <span className="text-xs font-bold text-gray-900">9:41</span>
+                <div className="absolute top-0 w-full h-10 md:h-12 bg-white z-20 flex items-center justify-between px-4 md:px-6 pt-1 md:pt-2">
+                  <span className="text-[10px] md:text-xs font-bold text-gray-900">9:41</span>
                   <div className="flex gap-1.5">
-                    <Wifi className={`size-4 ${errorType === 'NETWORK_TIMEOUT' ? 'text-red-500' : 'text-gray-900'}`} />
-                    <div className="size-4 bg-gray-900 rounded-sm opacity-20"></div>
+                    <Wifi className={`size-3 md:size-4 ${errorType === 'NETWORK_TIMEOUT' ? 'text-red-500' : 'text-gray-900'}`} />
+                    <div className="size-3 md:size-4 bg-gray-900 rounded-sm opacity-20"></div>
                   </div>
                 </div>
 
                 {/* Dynamic Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-30"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-5 md:h-7 bg-black rounded-b-xl md:rounded-b-2xl z-30"></div>
 
-                <div className="pt-12 h-full bg-white">
+                <div className="pt-10 md:pt-12 h-full bg-white overflow-y-auto">
                   <MobileTradingView
                     onTriggerError={() => triggerError('DATA_UNAVAILABLE')}
                     activeError={showErrorWizard ? errorType : null}
@@ -118,8 +118,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Sidebar Controls - Right */}
-            <div className="w-80 shrink-0 sticky top-32 space-y-8 animate-in slide-in-from-right-4 duration-500 delay-100">
+            {/* Sidebar Controls - Right - Hidden on mobile */}
+            <div className="hidden lg:block w-80 shrink-0 sticky top-32 space-y-8 animate-in slide-in-from-right-4 duration-500 delay-100">
               <div className="space-y-2">
                 <h2 className="text-xl font-bold text-gray-900">Recovery Console</h2>
                 <p className="text-sm text-gray-500 leading-relaxed">
@@ -192,11 +192,11 @@ export default function App() {
       <>
         <Toaster position="top-center" />
         <div className="min-h-screen bg-gray-50 flex flex-col">
-          <div className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shadow-sm">
+          <div className="bg-white border-b border-gray-200 px-4 md:px-6 py-2 md:py-3 flex items-center justify-between shadow-sm">
             <Button
               variant="ghost"
               size="sm"
-              className="text-gray-600 hover:text-blue-600 font-bold"
+              className="text-gray-600 hover:text-blue-600 font-bold text-xs md:text-sm"
               onClick={() => {
                 setDemoMode('landing');
                 setShowStrategyBuilder(false);
@@ -205,11 +205,11 @@ export default function App() {
                 }, 0);
               }}
             >
-              ← Back to Innovation Suite
+              ← <span className="hidden sm:inline">Back to Innovation Suite</span><span className="sm:hidden">Back</span>
             </Button>
             <div className="flex items-center gap-2">
-              <Monitor className="size-4 text-blue-600" />
-              <span className="text-sm font-bold text-gray-900 uppercase tracking-widest">Smart Order Assistant</span>
+              <Monitor className="size-3 md:size-4 text-blue-600" />
+              <span className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest">Smart Order</span>
             </div>
           </div>
 
