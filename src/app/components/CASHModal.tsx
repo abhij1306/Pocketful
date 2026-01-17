@@ -54,21 +54,21 @@ export function CASHModal() {
                     {/* Re-implementing structure to ensure scrolling works properly */}
                     {activeTab === 'pre' && (
                         <div className="h-full animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            <div className="grid lg:grid-cols-2 gap-10 h-full">
-                                <div className="space-y-8">
+                            <div className="grid lg:grid-cols-2 gap-6 md:gap-10 h-full">
+                                <div className="space-y-6 md:space-y-8">
                                     <section>
-                                        <h3 className="text-gray-900 font-bold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-                                            <Globe className="size-4 text-gray-400" /> Global Cues
+                                        <h3 className="text-gray-900 font-bold text-xs md:text-sm uppercase tracking-wider mb-4 md:mb-5 flex items-center gap-2">
+                                            <Globe className="size-3.5 md:size-4 text-gray-400" /> Global Cues
                                         </h3>
-                                        <div className="bg-orange-50/30 rounded-3xl p-8 border border-orange-100/50 hover:border-orange-200 transition-colors shadow-sm">
-                                            <div className="flex justify-between items-center mb-4">
+                                        <div className="bg-orange-50/30 rounded-2xl md:rounded-3xl p-4 md:p-8 border border-orange-100/50 hover:border-orange-200 transition-colors shadow-sm">
+                                            <div className="flex justify-between items-center mb-3 md:mb-4">
                                                 <div className="flex flex-col">
-                                                    <span className="font-bold text-2xl text-gray-900">SGX Nifty</span>
-                                                    <span className="text-sm text-gray-500 font-medium">Singapore Exchange</span>
+                                                    <span className="font-bold text-lg md:text-2xl text-gray-900">SGX Nifty</span>
+                                                    <span className="text-xs md:text-sm text-gray-500 font-medium">Singapore Exchange</span>
                                                 </div>
                                                 <div className="text-right">
-                                                    <span className="block font-bold text-3xl text-green-600">+124.50</span>
-                                                    <span className="block font-bold text-sm text-green-600 bg-green-50 px-2 py-0.5 rounded-lg inline-block mt-1">+0.65%</span>
+                                                    <span className="block font-bold text-xl md:text-3xl text-green-600">+124.50</span>
+                                                    <span className="block font-bold text-xs md:text-sm text-green-600 bg-green-50 px-2 py-0.5 rounded-lg inline-block mt-1">+0.65%</span>
                                                 </div>
                                             </div>
                                             <div className="h-2.5 w-full bg-gray-100 rounded-full mt-6 overflow-hidden">
@@ -105,15 +105,15 @@ export function CASHModal() {
                                     </section>
                                 </div>
 
-                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-3xl p-10 relative overflow-hidden border border-blue-100 h-fit">
+                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-2xl md:rounded-3xl p-6 md:p-10 relative overflow-hidden border border-blue-100 h-fit">
                                     <div className="absolute top-0 right-0 p-40 bg-white/40 rounded-full blur-3xl -mr-20 -mt-20"></div>
 
                                     <div className="relative z-10">
-                                        <div className="size-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6">
-                                            <Zap className="size-6 text-blue-600 fill-blue-600" />
+                                        <div className="size-10 md:size-12 bg-white rounded-xl md:rounded-2xl shadow-sm flex items-center justify-center mb-4 md:mb-6">
+                                            <Zap className="size-5 md:size-6 text-blue-600 fill-blue-600" />
                                         </div>
-                                        <h3 className="text-3xl font-bold text-gray-900 mb-3">Morning Setup</h3>
-                                        <p className="text-gray-600 text-lg mb-10 max-w-sm">Your personalized checklist to prepare for the opening bell.</p>
+                                        <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Morning Setup</h3>
+                                        <p className="text-gray-600 text-sm md:text-lg mb-6 md:mb-10 max-w-sm">Your personalized checklist to prepare for the opening bell.</p>
 
                                         <div className="space-y-4">
                                             <Button className="w-full justify-between bg-white hover:bg-blue-50 text-gray-900 border border-blue-100 h-16 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all group px-6">
@@ -152,34 +152,34 @@ export function CASHModal() {
 
                     {activeTab === 'live' && (
                         <div className="h-full animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            <div className="grid lg:grid-cols-4 gap-8 h-full">
-                                <div className="lg:col-span-3 space-y-8">
+                            <div className="grid lg:grid-cols-4 gap-4 md:gap-8 h-full">
+                                <div className="lg:col-span-3 space-y-4 md:space-y-8">
                                     {/* Indices */}
-                                    <div className="grid grid-cols-2 gap-6">
-                                        <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-3xl hover:border-green-200 transition-all group">
-                                            <div className="flex justify-between items-start mb-4">
-                                                <span className="text-sm text-gray-500 font-bold uppercase tracking-wider">Nifty 50</span>
-                                                <Badge className="bg-green-50 text-green-700 hover:bg-green-100 border-green-200">Bullish</Badge>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                                        <div className="bg-white border border-gray-200 shadow-sm p-4 md:p-6 rounded-2xl md:rounded-3xl hover:border-green-200 transition-all group">
+                                            <div className="flex justify-between items-start mb-2 md:mb-4">
+                                                <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">Nifty 50</span>
+                                                <Badge className="bg-green-50 text-green-700 hover:bg-green-100 border-green-200 text-[10px] md:text-xs">Bullish</Badge>
                                             </div>
-                                            <div className="flex items-end gap-3">
-                                                <span className="text-3xl font-bold text-gray-900 group-hover:text-green-700 transition-colors">22,145.00</span>
-                                                <span className="text-lg font-bold text-green-600 mb-1.5">+0.45%</span>
+                                            <div className="flex items-end gap-2 md:gap-3">
+                                                <span className="text-xl md:text-3xl font-bold text-gray-900 group-hover:text-green-700 transition-colors">22,145.00</span>
+                                                <span className="text-sm md:text-lg font-bold text-green-600 mb-0.5 md:mb-1.5">+0.45%</span>
                                             </div>
                                         </div>
-                                        <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-3xl hover:border-red-200 transition-all group">
-                                            <div className="flex justify-between items-start mb-4">
-                                                <span className="text-sm text-gray-500 font-bold uppercase tracking-wider">Bank Nifty</span>
-                                                <Badge className="bg-red-50 text-red-700 hover:bg-red-100 border-red-200">Bearish</Badge>
+                                        <div className="bg-white border border-gray-200 shadow-sm p-4 md:p-6 rounded-2xl md:rounded-3xl hover:border-red-200 transition-all group">
+                                            <div className="flex justify-between items-start mb-2 md:mb-4">
+                                                <span className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">Bank Nifty</span>
+                                                <Badge className="bg-red-50 text-red-700 hover:bg-red-100 border-red-200 text-[10px] md:text-xs">Bearish</Badge>
                                             </div>
-                                            <div className="flex items-end gap-3">
-                                                <span className="text-3xl font-bold text-gray-900 group-hover:text-red-700 transition-colors">46,800.20</span>
-                                                <span className="text-lg font-bold text-red-600 mb-1.5">-0.12%</span>
+                                            <div className="flex items-end gap-2 md:gap-3">
+                                                <span className="text-xl md:text-3xl font-bold text-gray-900 group-hover:text-red-700 transition-colors">46,800.20</span>
+                                                <span className="text-sm md:text-lg font-bold text-red-600 mb-0.5 md:mb-1.5">-0.12%</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Active Positions Widget */}
-                                    <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm h-full max-h-[400px]">
+                                    <div className="bg-white border border-gray-200 rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-sm h-full max-h-[400px]">
                                         <div className="flex justify-between items-center mb-6">
                                             <div className="flex items-center gap-3">
                                                 <h3 className="text-gray-900 font-bold text-xl">Active Positions</h3>

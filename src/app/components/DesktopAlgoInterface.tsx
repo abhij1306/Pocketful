@@ -137,74 +137,75 @@ export function DesktopAlgoInterface({ onNewStrategy, onEdit }: DesktopAlgoInter
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white h-full flex flex-col">
+    <div className="bg-gradient-to-br from-gray-50 to-white h-full flex flex-col overflow-x-hidden">
       {/* Header */}
-      <div className="bg-white border-b border-gray-100 px-8 py-6 shadow-sm">
-        <div className="flex items-center justify-between mb-6">
+      <div className="bg-white border-b border-gray-100 px-4 md:px-8 py-4 md:py-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 md:mb-6">
           <div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="size-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
-                <Zap className="size-5 text-white" />
+            <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
+              <div className="size-8 md:size-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg md:rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
+                <Zap className="size-4 md:size-5 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Smart Order Assistant</h1>
-                <p className="text-sm text-gray-500">Conditional orders & bracket setups</p>
+                <h1 className="text-lg md:text-2xl font-bold text-gray-900">Smart Order Assistant</h1>
+                <p className="text-xs md:text-sm text-gray-500 hidden sm:block">Conditional orders & bracket setups</p>
               </div>
             </div>
           </div>
           <Button
             onClick={onNewStrategy}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:shadow-xl hover:shadow-blue-600/30"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:shadow-xl hover:shadow-blue-600/30 text-sm w-full sm:w-auto"
           >
             <Plus className="size-4 mr-2" />
-            New Conditional Order
+            <span className="hidden sm:inline">New Conditional Order</span>
+            <span className="sm:hidden">New Order</span>
           </Button>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-4 gap-4">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl p-5 border border-blue-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="size-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Zap className="size-4 text-white" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl md:rounded-2xl p-3 md:p-5 border border-blue-100">
+            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+              <div className="size-6 md:size-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <Zap className="size-3 md:size-4 text-white" />
               </div>
-              <p className="text-sm font-medium text-blue-700">Active Orders</p>
+              <p className="text-xs md:text-sm font-medium text-blue-700">Active</p>
             </div>
-            <p className="text-3xl font-bold text-blue-900">{activeCount}</p>
+            <p className="text-xl md:text-3xl font-bold text-blue-900">{activeCount}</p>
           </div>
 
-          <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl p-5 border border-green-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="size-8 bg-green-600 rounded-lg flex items-center justify-center">
-                <TrendingUp className="size-4 text-white" />
+          <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-xl md:rounded-2xl p-3 md:p-5 border border-green-100">
+            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+              <div className="size-6 md:size-8 bg-green-600 rounded-lg flex items-center justify-center">
+                <TrendingUp className="size-3 md:size-4 text-white" />
               </div>
-              <p className="text-sm font-medium text-green-700">Today's P&L</p>
+              <p className="text-xs md:text-sm font-medium text-green-700">Today</p>
             </div>
-            <p className={`text-3xl font-bold ${todayPnL >= 0 ? 'text-green-700' : 'text-red-700'}`}>
+            <p className={`text-xl md:text-3xl font-bold ${todayPnL >= 0 ? 'text-green-700' : 'text-red-700'}`}>
               {todayPnL >= 0 ? '+' : ''}₹{todayPnL.toLocaleString('en-IN')}
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-2xl p-5 border border-purple-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="size-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                <Target className="size-4 text-white" />
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl md:rounded-2xl p-3 md:p-5 border border-purple-100">
+            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+              <div className="size-6 md:size-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                <Target className="size-3 md:size-4 text-white" />
               </div>
-              <p className="text-sm font-medium text-purple-700">Total P&L</p>
+              <p className="text-xs md:text-sm font-medium text-purple-700">Total</p>
             </div>
-            <p className={`text-3xl font-bold ${totalPnL >= 0 ? 'text-purple-700' : 'text-red-700'}`}>
+            <p className={`text-xl md:text-3xl font-bold ${totalPnL >= 0 ? 'text-purple-700' : 'text-red-700'}`}>
               {totalPnL >= 0 ? '+' : ''}₹{totalPnL.toLocaleString('en-IN')}
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl p-5 border border-orange-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="size-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                <Clock className="size-4 text-white" />
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl md:rounded-2xl p-3 md:p-5 border border-orange-100">
+            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+              <div className="size-6 md:size-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                <Clock className="size-3 md:size-4 text-white" />
               </div>
-              <p className="text-sm font-medium text-orange-700">Triggers Today</p>
+              <p className="text-xs md:text-sm font-medium text-orange-700">Triggers</p>
             </div>
-            <p className="text-3xl font-bold text-orange-700">
+            <p className="text-xl md:text-3xl font-bold text-orange-700">
               {orders.reduce((acc, o) => acc + o.triggersToday, 0)}
             </p>
           </div>
@@ -212,7 +213,7 @@ export function DesktopAlgoInterface({ onNewStrategy, onEdit }: DesktopAlgoInter
       </div>
 
       {/* Orders List */}
-      <div className="flex-1 overflow-y-auto p-8">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8">
         {orders.length === 0 ? (
           <div className="h-full flex items-center justify-center">
             <div className="text-center max-w-sm">

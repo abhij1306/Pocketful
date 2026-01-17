@@ -602,26 +602,26 @@ export default function App() {
 
                     {PRD_DATA.features.map(f => (
                       <TabsContent key={f.id} value={f.id} className="animate-in fade-in duration-300">
-                        <div className="space-y-12">
-                          <div className="grid lg:grid-cols-2 gap-12">
-                            <div className="space-y-8">
-                              <div className="bg-gray-50/50 rounded-2xl p-8 border border-gray-50">
-                                <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-4">Problem Scope</h4>
-                                <p className="font-medium text-gray-700 leading-relaxed">{f.problem}</p>
+                        <div className="space-y-6 md:space-y-12">
+                          <div className="grid lg:grid-cols-2 gap-6 md:gap-12">
+                            <div className="space-y-4 md:space-y-8">
+                              <div className="bg-gray-50/50 rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-50">
+                                <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest mb-3 md:mb-4">Problem Scope</h4>
+                                <p className="font-medium text-gray-700 leading-relaxed text-sm md:text-base">{f.problem}</p>
                               </div>
-                              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl">
-                                <div className="flex items-center justify-between mb-6">
-                                  <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest">API Protocol</h4>
+                              <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-100 shadow-lg md:shadow-xl">
+                                <div className="flex items-center justify-between mb-4 md:mb-6">
+                                  <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest">API Protocol</h4>
                                   <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50 font-mono text-[10px] font-bold">v2.1</Badge>
                                 </div>
-                                <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                                  <code className="block font-mono text-xs text-blue-600 font-bold">{f.techSpecs.api}</code>
+                                <div className="bg-gray-50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-200 overflow-x-auto">
+                                  <code className="block font-mono text-[10px] md:text-xs text-blue-600 font-bold whitespace-nowrap">{f.techSpecs.api}</code>
                                 </div>
                               </div>
                             </div>
 
-                            <div className="space-y-8">
-                              <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-lg bg-white">
+                            <div className="space-y-4 md:space-y-8">
+                              <div className="border border-gray-100 rounded-xl md:rounded-2xl overflow-hidden shadow-md md:shadow-lg bg-white overflow-x-auto">
                                 <Table>
                                   <TableHeader className="bg-gray-50/50">
                                     <TableRow>
