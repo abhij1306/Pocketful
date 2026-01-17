@@ -591,6 +591,132 @@ NOW (Month 1-2)                   NEXT (Month 3-4)                 LATER (Month 
 
 ---
 
+# Appendix: Professional PM Execution
+
+## Current State Evidence
+
+The following screenshots document the actual usability issues identified during the audit. These serve as the "Before" baseline against which proposed solutions will be measured.
+
+### Error Messaging (Flaw #1)
+![Current State: Generic Error](Screenshot_1.png)
+*Screenshot showing the generic "Something went wrong! Internal Server Error" message on the Technicals tab.*
+
+### Options UI Hierarchy (Flaw #2)
+![Current State: Options UI](Screenshot_2.png)
+*Screenshot showing the cluttered options trading screen with navbar interference.*
+
+### Margin Field Flicker (Flaw #4)
+![Current State: Margin Flicker](Screenshot_3.png)
+*Screenshot showing the margin calculation field without proper loading states.*
+
+### Order Cancel UX (Flaw #5)
+![Current State: Order Cancel](Screenshot_4.png)
+*Screenshot showing the order lifecycle with inconsistent cancel affordances.*
+
+### Desktop Authentication Flow (Flaw #6)
+![Current State: Desktop Auth](Screenshot_5.png)
+*Screenshot showing the third-party OAuth consent screen lacking Pocketful branding.*
+
+---
+
+## RACI Accountability Matrix
+
+Clear ownership ensures efficient execution. The following matrix defines accountability for each key deliverable.
+
+| Deliverable | PM (You) | Engineering | Design | QA | Compliance | Data |
+|-------------|:--------:|:-----------:|:------:|:--:|:----------:|:----:|
+| **PRD Documentation** | **R/A** | C | C | I | C | I |
+| **UI/UX Mockups** | A | I | **R** | I | I | I |
+| **API Contract Design** | C | **R/A** | I | C | I | C |
+| **Error Taxonomy Service** | C | **R/A** | I | C | I | C |
+| **Backtest Engine** | C | C | I | C | I | **R/A** |
+| **UAT Test Cases** | **R** | C | C | **A** | C | I |
+| **Compliance Review** | C | I | I | I | **R/A** | I |
+| **Rollout Plan** | **R/A** | C | I | C | C | I |
+| **Metrics Dashboard** | **R** | C | I | I | I | **A** |
+
+**Legend:** R = Responsible (does the work), A = Accountable (final decision), C = Consulted, I = Informed
+
+---
+
+## PM Tooling Stack
+
+The following tools are recommended for executing this product development lifecycle:
+
+### Documentation & Collaboration
+| Purpose | Tool | Why |
+|---------|------|-----|
+| **PRD & Specs** | [Notion](https://notion.so) | Free, real-time collaboration, version history, templates |
+| **Knowledge Base** | [Notion](https://notion.so) / [Confluence](https://atlassian.com/confluence) | Searchable, team wikis |
+
+### Design & Prototyping
+| Purpose | Tool | Why |
+|---------|------|-----|
+| **User Flows** | [FigJam](https://figma.com/figjam) / [Miro](https://miro.com) | Visual collaboration, infinite canvas, templates |
+| **UI Mockups** | [Figma](https://figma.com) | Industry standard, prototyping, design systems |
+| **Wireframes** | [Whimsical](https://whimsical.com) | Fast, focused, great for early concepts |
+
+### Roadmap & Planning
+| Purpose | Tool | Why |
+|---------|------|-----|
+| **Product Roadmap** | [Notion](https://notion.so) / [ProductBoard](https://productboard.com) | Timeline views, OKR alignment |
+| **Sprint Planning** | [Jira](https://atlassian.com/jira) / [Linear](https://linear.app) | Engineering integration, velocity tracking |
+| **Backlog Prioritization** | [Notion](https://notion.so) / [ClickUp](https://clickup.com) | Custom scoring, RICE framework |
+
+### Analytics & Metrics
+| Purpose | Tool | Why |
+|---------|------|-----|
+| **Product Analytics** | [Amplitude](https://amplitude.com) / [Mixpanel](https://mixpanel.com) | Funnel analysis, cohorts, retention |
+| **A/B Testing** | [Statsig](https://statsig.com) / [LaunchDarkly](https://launchdarkly.com) | Feature flags, experimentation |
+| **User Feedback** | [Hotjar](https://hotjar.com) / [Maze](https://maze.co) | Heatmaps, session recordings, surveys |
+
+---
+
+## Sprint Planning View
+
+### Sprint 1 (Week 1-2): Error Wizard Foundation
+
+| Ticket ID | Title | Story Points | Owner | Status |
+|-----------|-------|:------------:|-------|--------|
+| ERW-101 | Design error taxonomy schema | 3 | Backend Lead | To Do |
+| ERW-102 | Implement error classification service | 5 | Backend | To Do |
+| ERW-103 | Create wizard UI components | 5 | Frontend | To Do |
+| ERW-104 | Design wizard mockups (mobile) | 3 | Design | To Do |
+| ERW-105 | Write unit tests for error service | 2 | QA | To Do |
+
+**Sprint Goal:** Deployable error taxonomy service with basic wizard UI shell.
+
+### Sprint 2 (Week 3-4): Error Wizard Integration
+
+| Ticket ID | Title | Story Points | Owner | Status |
+|-----------|-------|:------------:|-------|--------|
+| ERW-201 | Integrate wizard with live error events | 5 | Frontend | To Do |
+| ERW-202 | Implement "View Similar" alternative logic | 3 | Backend | To Do |
+| ERW-203 | Add client-side network diagnostics | 3 | Mobile | To Do |
+| ERW-204 | E2E testing for wizard flows | 5 | QA | To Do |
+| ERW-205 | Staged rollout configuration (10%) | 2 | Infra | To Do |
+
+**Sprint Goal:** Error Wizard live for 10% of users; collecting recovery rate data.
+
+---
+
+## Definition of Done
+
+A feature is considered "Done" when:
+
+- [ ] All acceptance criteria from user stories are met
+- [ ] Code reviewed and merged to main branch
+- [ ] Unit test coverage ≥ 80%
+- [ ] E2E tests passing in staging environment
+- [ ] Design QA approved by Design Lead
+- [ ] Accessibility audit passed (WCAG 2.1 AA)
+- [ ] Performance benchmarks met (p95 latency targets)
+- [ ] Documentation updated in knowledge base
+- [ ] Rollout plan approved by Product Lead
+- [ ] Metrics instrumentation verified in staging
+
+---
+
 ## Appendix
 
 ### A. Competitive Landscape
@@ -607,6 +733,7 @@ NOW (Month 1-2)                   NEXT (Month 3-4)                 LATER (Month 
 - **Backtest:** Simulation of a strategy against historical data
 - **Kill-switch:** Immediate deactivation of all active strategies
 - **Trigger:** Condition that activates a strategy action
+- **RACI:** Responsibility assignment matrix (Responsible, Accountable, Consulted, Informed)
 
 ---
 
