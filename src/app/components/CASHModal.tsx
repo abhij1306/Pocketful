@@ -258,43 +258,43 @@ export function CASHModal() {
 
                     {activeTab === 'post' && (
                         <div className="h-full animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            <div className="grid lg:grid-cols-2 gap-10 h-full items-start">
-                                <div className="bg-white rounded-3xl p-10 border border-gray-200 shadow-xl relative overflow-hidden group">
+                            <div className="grid lg:grid-cols-2 gap-6 md:gap-10 h-full items-start">
+                                <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-gray-200 shadow-xl relative overflow-hidden group">
                                     <div className="absolute top-0 right-0 p-40 bg-blue-50 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-80 transition-opacity"></div>
-                                    <h3 className="text-xl font-bold text-gray-500 mb-2 uppercase tracking-wide">Day's Summary</h3>
-                                    <div className="flex items-baseline gap-4 mb-8">
-                                        <span className="text-5xl font-bold text-gray-900">+ ₹4,250.00</span>
-                                        <span className="text-lg font-bold bg-green-50 text-green-700 px-3 py-1 rounded-xl">+1.2%</span>
+                                    <h3 className="text-lg md:text-xl font-bold text-gray-500 mb-1 md:mb-2 uppercase tracking-wide">Day's Summary</h3>
+                                    <div className="flex items-baseline gap-2 md:gap-4 mb-6 md:mb-8">
+                                        <span className="text-3xl md:text-5xl font-bold text-gray-900">+ ₹4,250.00</span>
+                                        <span className="text-sm md:text-lg font-bold bg-green-50 text-green-700 px-2 md:px-3 py-0.5 md:py-1 rounded-lg md:rounded-xl">+1.2%</span>
                                     </div>
 
-                                    <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 mb-8 space-y-4">
-                                        <div className="flex justify-between text-base">
+                                    <div className="bg-gray-50 rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-100 mb-6 md:mb-8 space-y-3 md:space-y-4">
+                                        <div className="flex justify-between text-sm md:text-base">
                                             <span className="text-gray-500 font-medium">Brokerage & Charges</span>
                                             <span className="font-bold text-gray-900">₹124.50</span>
                                         </div>
                                         <div className="h-px bg-gray-200 w-full"></div>
-                                        <div className="flex justify-between text-lg">
+                                        <div className="flex justify-between text-base md:text-lg">
                                             <span className="text-gray-900 font-bold">Net P&L</span>
                                             <span className="font-bold text-green-600">₹4,125.50</span>
                                         </div>
                                     </div>
 
-                                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 font-bold h-14 rounded-2xl shadow-lg shadow-blue-100 text-base">
-                                        <FileText className="size-5 mr-3" /> View Contract Note
+                                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 font-bold h-12 md:h-14 rounded-xl md:rounded-2xl shadow-lg shadow-blue-100 text-sm md:text-base">
+                                        <FileText className="size-4 md:size-5 mr-2 md:mr-3" /> View Contract Note
                                     </Button>
                                 </div>
 
-                                <div className="space-y-8">
+                                <div className="space-y-6 md:space-y-8">
                                     <section>
-                                        <div className="flex justify-between items-center mb-5">
-                                            <h3 className="font-bold text-gray-900 text-lg">Trade Journal</h3>
-                                            <Button variant="ghost" className="text-blue-600 font-bold text-sm hover:bg-blue-50 px-3">View All <ChevronRight className="size-4 ml-1" /></Button>
+                                        <div className="flex justify-between items-center mb-4 md:mb-5">
+                                            <h3 className="font-bold text-gray-900 text-base md:text-lg">Trade Journal</h3>
+                                            <Button variant="ghost" className="text-blue-600 font-bold text-xs md:text-sm hover:bg-blue-50 px-2 md:px-3">View All <ChevronRight className="size-3 md:size-4 ml-1" /></Button>
                                         </div>
-                                        <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
-                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">You followed your rules in <span className="font-bold text-green-600 bg-green-50 px-1 rounded">2/3 trades</span> today.</p>
-                                            <div className="flex gap-3">
-                                                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 px-3 py-1.5 text-sm font-bold">disciplined</Badge>
-                                                <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200 px-3 py-1.5 text-sm font-bold">over-traded</Badge>
+                                        <div className="bg-white border border-gray-200 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all">
+                                            <p className="text-base md:text-lg text-gray-700 mb-4 md:mb-6 leading-relaxed">You followed your rules in <span className="font-bold text-green-600 bg-green-50 px-1 rounded">2/3 trades</span> today.</p>
+                                            <div className="flex gap-2 md:gap-3 flex-wrap">
+                                                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 px-2 md:px-3 py-1 md:py-1.5 text-xs md:text-sm font-bold">disciplined</Badge>
+                                                <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200 px-2 md:px-3 py-1 md:py-1.5 text-xs md:text-sm font-bold">over-traded</Badge>
                                             </div>
                                         </div>
                                     </section>

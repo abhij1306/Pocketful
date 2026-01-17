@@ -238,41 +238,41 @@ export function DesktopAlgoInterface({ onNewStrategy, onEdit }: DesktopAlgoInter
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-600/5 transition-all duration-300"
+                className="bg-white border border-gray-100 rounded-xl md:rounded-2xl p-4 md:p-6 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-600/5 transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-5">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 md:mb-5">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="size-10 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100">
+                    <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                      <div className="size-8 md:size-10 bg-gray-50 rounded-lg md:rounded-xl flex items-center justify-center border border-gray-100">
                         {getConditionIcon(order.conditionType)}
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900">{order.name}</h3>
-                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <h3 className="text-base md:text-lg font-bold text-gray-900">{order.name}</h3>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs md:text-sm text-gray-500">
                           <span className="font-semibold text-gray-700">{order.instrument}</span>
                           <span>•</span>
                           <span>{order.action} {order.quantity} units</span>
-                          <span>•</span>
-                          <span className="text-gray-400">Created {order.createdAt}</span>
+                          <span className="hidden md:inline">•</span>
+                          <span className="text-gray-400 hidden md:inline">Created {order.createdAt}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 mt-3">
+                    <div className="flex items-center gap-2 md:gap-3 mt-2 md:mt-3 flex-wrap">
                       {getStatusBadge(order.status)}
-                      <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-lg text-sm">
-                        <AlertCircle className="size-3.5 text-gray-400" />
-                        <span className="text-gray-600">{order.condition}</span>
+                      <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 bg-gray-50 rounded-lg text-xs md:text-sm">
+                        <AlertCircle className="size-3 md:size-3.5 text-gray-400" />
+                        <span className="text-gray-600 line-clamp-1">{order.condition}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="text-right pl-6 border-l border-gray-100">
-                    <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Today's P&L</p>
-                    <p className={`text-2xl font-bold ${order.todayPnL >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                  <div className="text-right md:pl-6 md:border-l md:border-gray-100 shrink-0">
+                    <p className="text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider mb-0.5 md:mb-1">Today's P&L</p>
+                    <p className={`text-xl md:text-2xl font-bold ${order.todayPnL >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {order.todayPnL >= 0 ? '+' : ''}₹{order.todayPnL.toLocaleString('en-IN')}
                     </p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-xs md:text-sm text-gray-500 mt-0.5 md:mt-1">
                       Total: <span className={`font-semibold ${order.totalPnL >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                         {order.totalPnL >= 0 ? '+' : ''}₹{order.totalPnL.toLocaleString('en-IN')}
                       </span>
