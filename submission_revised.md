@@ -23,13 +23,28 @@ This document presents a structured product evaluation of the Pocketful mobile a
 
 The following personas guide this analysis and feature recommendations:
 
-| Persona | Description | Key Needs | Feature Mapping |
-|---------|-------------|-----------|----------------|
-| **Priya, 28** | Active F&O trader, 10+ trades/week | Speed, reliability, real-time data | Error Recovery Wizard, Smart Order Assistant |
-| **Raj, 24** | First-time investor, started with MFs | Education, simplicity, guidance | Transparent Status Explainers, Smart Home |
-| **Amit, 45** | Tier-2 city, moderate trader | Offline access, RM support, vernacular | Resilient Offline Mode, RM Integration |
+### 👩‍💼 Priya Sharma, 28 — Active F&O Trader (Mumbai)
+- **Profile:** Tech-savvy professional, 10+ trades/week, ₹15-25 Lakhs portfolio
+- **Quote:** *"Every second of delay during market hours costs me money."*
+- **Pain Points:** Loses money when errors delay action; cold start lag at market open
+- **Needs:** Speed, reliability, automation tools
+- **Feature Mapping:** Error Recovery Wizard, Smart Order Assistant
 
-> These personas represent Pocketful's opportunity to bridge the gap between Zerodha's trader-focus and Groww's beginner-focus.
+### 👨‍💻 Raj Patel, 24 — First-Time Investor (Pune)
+- **Profile:** Software engineer, started with MFs, 2-3 trades/month
+- **Quote:** *"I don't know what half these terms mean. Am I doing this right?"*
+- **Pain Points:** "Internal Server Error" is scary; doesn't understand jargon
+- **Needs:** Education, simplicity, guidance
+- **Feature Mapping:** Transparent Status Explainers, Context-Aware Smart Home
+
+### 👨‍💼 Amit Verma, 45 — Tier-2 City Trader (Indore)
+- **Profile:** Business owner, trades between meetings, ₹8-15 Lakhs portfolio
+- **Quote:** *"My internet isn't always reliable. The app should still work."*
+- **Pain Points:** White screens during network drops; wants human support
+- **Needs:** Offline access, RM support, reliability
+- **Feature Mapping:** Resilient Offline Mode, RM Integration
+
+> **Market Context:** India has 140M demat accounts but only ~30M active traders. Zerodha serves Priya but intimidates Raj. Groww serves Raj but limits Priya. Neither serves Amit well. **Pocketful's opportunity:** Be the platform that grows WITH users—from Raj's first trade to Priya's algo strategies—while reaching Amit in tier-2 cities.
 
 ---
 
@@ -84,15 +99,31 @@ The following personas guide this analysis and feature recommendations:
 
 # Deliverable 2: Top 5 Feature Enhancement Suggestions
 
-Based on the audit findings and competitive gaps, I propose the following feature enhancements:
+Based on the audit findings and competitive gaps, I propose the following feature enhancements.
 
-| Rank | Feature | Problem Addressed | Impact | Effort |
-|------|---------|------------------|--------|--------|
-| 1 | **Error Recovery Wizard** | Generic error messaging erodes trust | High | Medium |
-| 2 | **Transparent Status Explainers** | Jargon confuses beginners | Medium | Low |
-| 3 | **Resilient Offline Mode** | Network issues cause abandonment | High | High |
-| 4 | **Context-Aware Smart Home** | Static layout ignores user intent | Medium | High |
-| 5 | **Smart Order Assistant** | Retail traders lack automation | Medium | Medium |
+## Target Business Metrics
+
+Each feature is designed to improve one or more of these key metrics:
+
+| Metric | Description | How We'll Measure |
+|--------|-------------|-------------------|
+| 🔵 **Platform Trust** | User confidence in app reliability | Error-related abandonment, support tickets |
+| 🟢 **Daily Engagement** | Frequency and depth of sessions | Time-to-action, session duration |
+| 🟣 **Market Accessibility** | Reach to underserved segments | Offline success, jargon comprehension |
+| 🟠 **User Retention** | Long-term platform stickiness | Churn reduction, feature adoption |
+
+---
+
+## Feature-Persona-Metric Matrix
+
+| Rank | Feature | Target Personas | Target Metrics | Impact | Effort |
+|------|---------|-----------------|----------------|--------|--------|
+| 1 | **Error Recovery Wizard** | Priya, Raj, Amit | 🔵 Trust, 🟠 Retention | High | Medium |
+| 2 | **Transparent Status Explainers** | Raj | 🟣 Accessibility, 🟢 Engagement | Medium | Low |
+| 3 | **Resilient Offline Mode** | Amit | 🟣 Accessibility, 🔵 Trust | High | High |
+| 4 | **Context-Aware Smart Home** | Priya, Raj | 🟢 Engagement, 🟠 Retention | Medium | High |
+| 5 | **Smart Order Assistant** | Priya | 🟢 Engagement, 🟠 Retention | Medium | Medium |
+
 
 ---
 
@@ -157,6 +188,22 @@ Based on the audit findings and competitive gaps, I propose the following featur
 - Order templates for repeated setups
 
 **Note:** Designed to comply with SEBI regulations—positioned as "conditional orders" rather than algorithmic trading.
+
+---
+
+## Risk Assessment
+
+| Feature | Risk Type | Risk Description | Mitigation Strategy |
+|---------|-----------|------------------|---------------------|
+| **Error Recovery Wizard** | Technical | Over-classifying errors could mislead users about actual issues | Extensive error taxonomy testing; conservative initial rollout |
+| **Error Recovery Wizard** | UX | Too many alternatives could overwhelm users | Limit to 2-3 contextual options; A/B test for optimal count |
+| **Transparent Status Explainers** | Content | Outdated or incorrect explanations erode trust | Content review process; user feedback loop for corrections |
+| **Resilient Offline Mode** | Data Integrity | Stale cached data could lead to poor trading decisions | Clear "Last updated X minutes ago" timestamps; disable trading on very old data |
+| **Smart Order Assistant** | Regulatory | SEBI may view as "algo trading" if not positioned carefully | Legal review; frame as "conditional orders"; require user acknowledgment |
+| **Smart Order Assistant** | User Loss | Automated orders could amplify losses in volatile markets | Mandatory stop-loss; position limits; educational warnings |
+| **Context-Aware Smart Home** | Privacy | Behavioral tracking could raise data concerns | Transparent data usage policy; opt-out option; on-device processing where possible |
+
+> **Note:** Risks are identified proactively to inform implementation decisions. Actual severity and mitigation will be refined during development.
 
 ---
 

@@ -306,6 +306,30 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 ---
 
+## 12. Risk Assessment
+
+### Identified Risks
+
+| Risk ID | Risk Type | Description | Probability | Impact | Mitigation |
+|---------|-----------|-------------|-------------|--------|------------|
+| ERW-R1 | Technical | Error classification inaccuracy: Wizard may misclassify errors, providing wrong context | Medium | High | Extensive testing with real error logs; fallback to "general issue" for uncertain cases |
+| ERW-R2 | UX | Alternative overload: Too many recovery options could confuse users | Low | Medium | Limit to max 3 alternatives; user testing to find optimal count |
+| ERW-R3 | Adoption | Users ignore wizard: May dismiss without reading if too intrusive | Medium | Medium | Make dismissible but not auto-dismiss; track engagement metrics |
+| ERW-R4 | Performance | Wizard adds latency: Classification logic delays error display | Low | High | Error classification must complete in <100ms; async processing |
+| ERW-R5 | Data | Privacy concerns: Logging user actions during errors | Low | Medium | Anonymize all logged data; transparent privacy notice |
+
+### Risk Response Strategy
+
+| Risk ID | Response | Owner | Trigger |
+|---------|----------|-------|---------|
+| ERW-R1 | Implement conservative classification with "Unknown Error" fallback | Engineering | >5% misclassification rate in testing |
+| ERW-R2 | A/B test 2 vs. 3 alternatives; choose based on recovery rate | Product | Pre-launch testing |
+| ERW-R3 | Add "helpful" rating to wizard; iterate based on feedback | Product | <50% engagement rate |
+| ERW-R4 | Optimize with pre-computed error mappings; cache common patterns | Engineering | P99 latency >100ms |
+| ERW-R5 | Legal review of logging; implement data retention policy | Product + Legal | Before launch |
+
+---
+
 ## Appendix: RACI Matrix
 
 | Deliverable | Product (You) | Engineering | Design | QA |
