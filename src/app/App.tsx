@@ -7,11 +7,14 @@ import { MobileErrorWizard } from '@/app/components/MobileErrorWizard';
 import { MobileTradingView } from '@/app/components/MobileTradingView';
 import { DesktopAlgoInterface } from '@/app/components/DesktopAlgoInterface';
 import { DesktopStrategyBuilder } from '@/app/components/DesktopStrategyBuilder';
+import { TSEModal } from "@/app/components/TSEModal";
+import { ROMModal } from "@/app/components/ROMModal";
+import { CASHModal } from "@/app/components/CASHModal";
 import {
   Smartphone, Monitor, AlertCircle, TrendingUp, Sparkles,
   FileText, CheckCircle, Map, Clock, ShieldAlert,
   BarChart3, UserCheck, Search, ArrowRight, ExternalLink,
-  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown
+  Target, Globe, Zap, Users, Milestone, Wrench, ClipboardCheck, Code2, Check, ArrowDown, Info
 } from 'lucide-react';
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger
@@ -27,6 +30,9 @@ export default function App() {
   const [showErrorWizard, setShowErrorWizard] = useState(false);
   const [errorType, setErrorType] = useState<'DATA_UNAVAILABLE' | 'NETWORK_TIMEOUT' | 'SERVER_ERROR' | 'RATE_LIMITED'>('DATA_UNAVAILABLE');
   const [showStrategyBuilder, setShowStrategyBuilder] = useState(false);
+  const [showTSEModal, setShowTSEModal] = useState(false);
+  const [showROMModal, setShowROMModal] = useState(false);
+  const [showCASHModal, setShowCASHModal] = useState(false);
 
   const handleMobileErrorDemo = () => {
     setDemoMode('mobile-error');
@@ -429,6 +435,18 @@ export default function App() {
                       <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
                         Open Order Assistant <Monitor className="ml-2 size-4" />
                       </Button>
+                    ) : feature.id === 'TSE' ? (
+                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowTSEModal(true)}>
+                        View Explainer Demo <Info className="ml-2 size-4" />
+                      </Button>
+                    ) : feature.id === 'ROM' ? (
+                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowROMModal(true)}>
+                        View Offline Mode <Users className="ml-2 size-4" />
+                      </Button>
+                    ) : feature.id === 'CASH' ? (
+                      <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowCASHModal(true)}>
+                        View Smart Home <Zap className="ml-2 size-4" />
+                      </Button>
                     ) : null}
                   </div>
                 </div>
@@ -708,6 +726,15 @@ export default function App() {
             </div>
           </div>
         </footer>
+        <Dialog open={showTSEModal} onOpenChange={setShowTSEModal}>
+          <TSEModal />
+        </Dialog>
+        <Dialog open={showROMModal} onOpenChange={setShowROMModal}>
+          <ROMModal />
+        </Dialog>
+        <Dialog open={showCASHModal} onOpenChange={setShowCASHModal}>
+          <CASHModal />
+        </Dialog>
       </div>
     </>
   );
