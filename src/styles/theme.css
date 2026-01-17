@@ -24,21 +24,10 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: #04081c;
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 }
 
-.dark {
-  --background: #04081c;
-  --foreground: #f9fafb;
-  --card: #04081c;
-  --card-foreground: #f9fafb;
-  --primary: #f9fafb;
-  --primary-foreground: #04081c;
-  --border: #1f2937;
-  --input: #1f2937;
-  --muted: #111827;
-  --muted-foreground: #9ca3af;
-}
+
 
 @theme inline {
   --font-family-sans: var(--font-family);
@@ -75,6 +64,6 @@
   h4,
   h5,
   h6 {
-    @apply tracking-tight font-black text-foreground;
+    @apply font-bold text-foreground;
   }
 }
