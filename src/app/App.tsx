@@ -36,6 +36,8 @@ export default function App() {
 
   const handleMobileErrorDemo = () => {
     setDemoMode('mobile-error');
+    setErrorType('DATA_UNAVAILABLE');
+    setShowErrorWizard(true);
     window.scrollTo(0, 0);
   };
 
