@@ -35,7 +35,7 @@ export function CASHModal() {
                 </Tabs>
             </div>
 
-            <div className="flex-1 overflow-y-auto bg-white p-6 pt-2">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden bg-white p-4 md:p-6 pt-2">
                 <Tabs value={activeTab} className="w-full h-full">
                     {/* Note: We reuse the Tabs context but don't need TabsList again. 
                          We put TabsContent directly here controlled by the parent Tabs value 

@@ -604,40 +604,42 @@ export default function App() {
                       <TabsContent key={f.id} value={f.id} className="animate-in fade-in duration-300">
                         <div className="space-y-6 md:space-y-12">
                           <div className="grid lg:grid-cols-2 gap-6 md:gap-12">
-                            <div className="space-y-4 md:space-y-8">
+                            <div className="space-y-4 md:space-y-8 overflow-hidden">
                               <div className="bg-gray-50/50 rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-50">
                                 <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest mb-3 md:mb-4">Problem Scope</h4>
-                                <p className="font-medium text-gray-700 leading-relaxed text-sm md:text-base">{f.problem}</p>
+                                <p className="font-medium text-gray-700 leading-relaxed text-sm md:text-base break-words">{f.problem}</p>
                               </div>
-                              <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-100 shadow-lg md:shadow-xl">
+                              <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-100 shadow-lg md:shadow-xl overflow-hidden">
                                 <div className="flex items-center justify-between mb-4 md:mb-6">
                                   <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest">API Protocol</h4>
                                   <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50 font-mono text-[10px] font-bold">v2.1</Badge>
                                 </div>
-                                <div className="bg-gray-50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-200 overflow-x-auto">
-                                  <code className="block font-mono text-[10px] md:text-xs text-blue-600 font-bold whitespace-nowrap">{f.techSpecs.api}</code>
+                                <div className="bg-gray-50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-200 overflow-x-auto -mx-1 px-1">
+                                  <code className="block font-mono text-[10px] md:text-xs text-blue-600 font-bold">{f.techSpecs.api}</code>
                                 </div>
                               </div>
                             </div>
 
-                            <div className="space-y-4 md:space-y-8">
-                              <div className="border border-gray-100 rounded-xl md:rounded-2xl overflow-hidden shadow-md md:shadow-lg bg-white overflow-x-auto">
-                                <Table>
-                                  <TableHeader className="bg-gray-50/50">
-                                    <TableRow>
-                                      <TableHead className="font-bold text-gray-900 text-xs uppercase pl-6 py-4">Metric</TableHead>
-                                      <TableHead className="text-right font-bold text-blue-600 text-xs uppercase pr-6 py-4">Target (M6)</TableHead>
-                                    </TableRow>
-                                  </TableHeader>
-                                  <TableBody>
-                                    {f.successMetrics.map((m, i) => (
-                                      <TableRow key={i} className="border-gray-50 hover:bg-gray-50/50 transition-colors">
-                                        <TableCell className="font-medium text-gray-700 text-sm pl-6 py-4">{m.metric}</TableCell>
-                                        <TableCell className="text-right font-bold text-blue-600 text-sm pr-6 py-4">{m.targetM6}</TableCell>
+                            <div className="space-y-4 md:space-y-8 overflow-hidden">
+                              <div className="border border-gray-100 rounded-xl md:rounded-2xl overflow-hidden shadow-md md:shadow-lg bg-white">
+                                <div className="overflow-x-auto">
+                                  <Table>
+                                    <TableHeader className="bg-gray-50/50">
+                                      <TableRow>
+                                        <TableHead className="font-bold text-gray-900 text-[10px] md:text-xs uppercase pl-4 md:pl-6 py-3 md:py-4">Metric</TableHead>
+                                        <TableHead className="text-right font-bold text-blue-600 text-[10px] md:text-xs uppercase pr-4 md:pr-6 py-3 md:py-4">Target (M6)</TableHead>
                                       </TableRow>
-                                    ))}
-                                  </TableBody>
-                                </Table>
+                                    </TableHeader>
+                                    <TableBody>
+                                      {f.successMetrics.map((m, i) => (
+                                        <TableRow key={i} className="border-gray-50 hover:bg-gray-50/50 transition-colors">
+                                          <TableCell className="font-medium text-gray-700 text-xs md:text-sm pl-4 md:pl-6 py-3 md:py-4">{m.metric}</TableCell>
+                                          <TableCell className="text-right font-bold text-blue-600 text-xs md:text-sm pr-4 md:pr-6 py-3 md:py-4">{m.targetM6}</TableCell>
+                                        </TableRow>
+                                      ))}
+                                    </TableBody>
+                                  </Table>
+                                </div>
                               </div>
                             </div>
                           </div>
