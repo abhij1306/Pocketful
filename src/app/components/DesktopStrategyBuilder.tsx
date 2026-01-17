@@ -48,8 +48,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
   if (step === 'backtest') {
     return (
-      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
+        <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
           <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <h2 className="text-xl font-semibold">Backtest Results</h2>
             <button onClick={() => setStep('builder')} className="text-gray-400 hover:text-gray-600">
@@ -93,20 +93,20 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
             <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
               <p className="text-sm text-green-900">
-                ✓ Your strategy showed profitable results in backtesting with a 62% win rate and 
+                ✓ Your strategy showed profitable results in backtesting with a 62% win rate and
                 positive risk-adjusted returns (Sharpe ratio: 1.8).
               </p>
             </div>
 
             <div className="flex gap-3">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => setStep('builder')}
                 className="flex-1"
               >
                 Modify Strategy
               </Button>
-              <Button 
+              <Button
                 onClick={handleActivate}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white"
               >
@@ -121,8 +121,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
   if (step === 'confirm') {
     return (
-      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl w-full max-w-lg">
+      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
+        <div className="bg-white rounded-2xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
           <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
             <h2 className="text-xl font-semibold">Confirm Activation</h2>
             <button onClick={() => setStep('backtest')} className="text-gray-400 hover:text-gray-600">
@@ -162,14 +162,14 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
             </div>
 
             <div className="flex gap-3">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => setStep('backtest')}
                 className="flex-1"
               >
                 Cancel
               </Button>
-              <Button 
+              <Button
                 onClick={handleConfirm}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white"
               >
@@ -183,8 +183,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
   }
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold">Create Strategy</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
@@ -199,7 +199,7 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
               <h3 className="text-lg font-semibold">IF</h3>
               <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Trigger Condition</span>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Instrument</label>
@@ -231,8 +231,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
               <div className="col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Threshold Value</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={threshold}
                   onChange={(e) => setThreshold(e.target.value)}
                   placeholder="2500"
@@ -248,7 +248,7 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
               <h3 className="text-lg font-semibold">THEN</h3>
               <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Action</span>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Action</label>
@@ -265,8 +265,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Quantity (Shares)</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                   placeholder="10"
@@ -282,12 +282,12 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
               <h3 className="text-lg font-semibold">RISK LIMITS</h3>
               <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Required</span>
             </div>
-            
+
             <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Stop Loss (%)</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={stopLoss}
                   onChange={(e) => setStopLoss(e.target.value)}
                   placeholder="2"
@@ -297,8 +297,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Take Profit (%)</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={takeProfit}
                   onChange={(e) => setTakeProfit(e.target.value)}
                   placeholder="5"
@@ -308,8 +308,8 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Max Trades/Day</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={maxTrades}
                   onChange={(e) => setMaxTrades(e.target.value)}
                   placeholder="3"
@@ -321,20 +321,20 @@ export function DesktopStrategyBuilder({ onClose, onSave }: DesktopStrategyBuild
 
           {/* Actions */}
           <div className="flex gap-3 pt-4 border-t border-gray-200">
-            <Button 
+            <Button
               variant="outline"
               className="flex-1"
             >
               Save as Draft
             </Button>
-            <Button 
+            <Button
               onClick={handleBacktest}
               variant="outline"
               className="flex-1"
             >
               Run Backtest
             </Button>
-            <Button 
+            <Button
               onClick={handleActivate}
               className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
             >

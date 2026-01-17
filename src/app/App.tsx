@@ -153,21 +153,21 @@ export default function App() {
         {/* Navigation */}
         <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="size-8 bg-gray-900 rounded-md flex items-center justify-center text-white font-bold">
+            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <div className="size-8 bg-blue-600 rounded-md flex items-center justify-center text-white font-bold">
                 A
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-sm font-bold text-gray-900 tracking-tight">Abhineet Jain</span>
                 <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">Candidate Submission</span>
               </div>
-            </div>
+            </a>
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
               <a href="#audit" className="hover:text-gray-900 transition-colors">Audit Analysis</a>
               <a href="#competitors" className="hover:text-gray-900 transition-colors">Strategy</a>
               <a href="#features" className="hover:text-gray-900 transition-colors">Innovation</a>
               <a href="#artifacts" className="hover:text-gray-900 transition-colors">Documentation</a>
-              <a href="mailto:abhij1306@gmail.com" className="bg-gray-900 hover:bg-black text-white rounded-lg font-bold px-4 py-2 text-xs transition-all">Hire Me</a>
+              <a href="#footer" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold px-4 py-2 text-xs transition-all">Connect</a>
             </div>
           </div>
         </nav>
@@ -238,34 +238,37 @@ export default function App() {
                           View Analysis <ArrowRight className="size-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto rounded-[3rem] p-12 bg-white border-none shadow-2xl">
-                        <DialogHeader>
-                          <div className="flex items-center gap-3 mb-6">
-                            <Badge className="bg-red-50 text-red-600 border-none font-bold uppercase tracking-widest text-[10px] px-4 py-1">{flaw.severity}</Badge>
-                            <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase tracking-widest text-[10px] px-4 py-1">{flaw.risk}</Badge>
+                      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-3xl block">
+                        <DialogHeader className="px-10 pt-10 pb-2 text-left bg-white">
+                          <div className="flex items-center gap-3 mb-4">
+                            <Badge className="bg-red-50 text-red-600 border-none font-bold uppercase tracking-widest text-[10px] px-3 py-1">{flaw.severity}</Badge>
+                            <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase tracking-widest text-[10px] px-3 py-1">{flaw.risk}</Badge>
                           </div>
-                          <DialogTitle className="text-4xl font-black text-gray-950 tracking-tighter mb-4">{flaw.title}</DialogTitle>
+                          <DialogTitle className="text-3xl font-bold text-gray-900 tracking-tight leading-tight">{flaw.title}</DialogTitle>
                         </DialogHeader>
-                        <div className="space-y-10 mt-8">
+
+                        <div className="p-10 pt-6 space-y-8">
                           <div className="grid md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
+                            <div className="space-y-3">
                               <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Context</h4>
-                              <p className="text-gray-600 font-bold leading-relaxed">{flaw.observed}</p>
+                              <p className="text-gray-700 font-medium leading-relaxed">{flaw.observed}</p>
                             </div>
-                            <div className="space-y-4">
+                            <div className="space-y-3">
                               <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Impact Analysis</h4>
                               <p className="text-gray-600 font-medium leading-relaxed">{flaw.impact}</p>
                             </div>
                           </div>
-                          <div className="p-8 bg-blue-50/50 rounded-3xl border border-blue-100 shadow-sm">
-                            <h4 className="text-[10px] font-bold text-blue-900 mb-4 uppercase tracking-[0.2em]">Resolution Hypothesis (Root Cause)</h4>
+
+                          <div className="p-6 bg-blue-50/50 rounded-2xl border border-blue-100 shadow-sm">
+                            <h4 className="text-[10px] font-bold text-blue-900 mb-3 uppercase tracking-[0.2em]">Resolution Hypothesis (Root Cause)</h4>
                             <p className="text-blue-800 font-bold leading-relaxed">{flaw.rootCause}</p>
                           </div>
+
                           {flaw.screenshot && (
-                            <div className="space-y-4">
-                              <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Reference Screenshot</h4>
-                              <div className="rounded-[2rem] border-8 border-gray-50 shadow-inner overflow-hidden">
-                                <img src={flaw.screenshot} alt={flaw.title} className="w-full h-auto grayscale-50 hover:grayscale-0 transition-all duration-700" />
+                            <div className="space-y-4 pt-2">
+                              <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Evidence Capture</h4>
+                              <div className="rounded-2xl border-4 border-gray-100 shadow-lg overflow-hidden bg-gray-50">
+                                <img src={flaw.screenshot} alt={flaw.title} className="w-full h-auto" />
                               </div>
                             </div>
                           )}
@@ -667,7 +670,7 @@ export default function App() {
 
         {/* Footer */}
         {/* Footer */}
-        <footer className="py-24 bg-white border-t border-gray-100">
+        <footer id="footer" className="py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">

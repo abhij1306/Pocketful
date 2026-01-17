@@ -48,6 +48,16 @@ export const FLAWS = [
         impact: "False sense of order success; confuses new traders; breaks interaction patterns.",
         rootCause: "Missing pre-submission validation; insufficient progressive disclosure.",
         screenshot: "/Screenshot_4.png"
+    },
+    {
+        id: 6,
+        title: "Desktop OAuth Branding Leak",
+        severity: "Medium",
+        risk: "Brand Dilution",
+        observed: "Desktop login screen shows default 'Sign in with Google' Firebase UI without custom branding.",
+        impact: "Users question platform legitimacy; looks like a generic student project rather than a financial institution.",
+        rootCause: "Default Firebase UI used without white-label customization.",
+        screenshot: "/Screenshot_5.png"
     }
 ];
 
