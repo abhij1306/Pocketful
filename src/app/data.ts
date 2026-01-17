@@ -331,3 +331,35 @@ export const KYC_JOURNEY = {
         { issue: "No option to save and resume later", suggestion: "Enable draft state persistence" }
     ]
 };
+
+// Focused roadmap table - key features only
+export const ROADMAP_TABLE = [
+    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Error Recovery Wizard', why: 'Immediate trust repair for critical failures', metric: 'Error recovery rate', effort: 'M', dependencies: 'None' },
+    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Transparent Status Explainers', why: 'Reduce cognitive load on order states', metric: 'Support ticket volume', effort: 'S', dependencies: 'None' },
+    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Resilient Offline Mode', why: 'Critical for tier-2/3 users on patchy networks', metric: 'Session continuity rate', effort: 'M', dependencies: 'Error Wizard' },
+    { phase: 'NEXT', phaseLabel: '3-6 months', feature: 'Context-Aware Smart Home', why: 'Leverage collected analytics for personalization', metric: 'Screen engagement time', effort: 'L', dependencies: 'User state detection' },
+    { phase: 'NEXT', phaseLabel: '3-6 months', feature: 'Smart Order Assistant', why: 'Extend value for active traders', metric: 'Conditional order usage', effort: 'L', dependencies: 'Smart Home' },
+    { phase: 'LATER', phaseLabel: '6-12 months', feature: 'Advanced Algo Features', why: 'Complex feature requiring stable base', metric: 'Template usage rate', effort: 'L', dependencies: 'Smart Order Assistant' },
+];
+
+// User flow for Error Recovery Wizard
+export const USER_FLOW = {
+    title: 'Error Recovery Wizard - User Flow',
+    steps: [
+        { id: 1, type: 'start', label: 'User Action', description: 'User taps Technicals tab' },
+        { id: 2, type: 'process', label: 'API Call', description: 'GET /technicals' },
+        { id: 3, type: 'decision', label: 'Response?', description: 'Check API response' },
+        { id: 4, type: 'process', label: 'Success', description: 'Display data' },
+        { id: 5, type: 'error', label: 'Error', description: 'API returns error' },
+        { id: 6, type: 'process', label: 'Classify Error', description: 'Determine error type' },
+        { id: 7, type: 'decision', label: 'Error Type?', description: 'Categorize error' },
+        { id: 8, type: 'process', label: 'Data Unavailable', description: 'Show countdown wizard' },
+        { id: 9, type: 'process', label: 'Network Issue', description: 'Show network guidance' },
+        { id: 10, type: 'process', label: 'Server Error', description: 'Show support options' },
+        { id: 11, type: 'decision', label: 'User Choice', description: 'Recovery action' },
+        { id: 12, type: 'process', label: 'Retry', description: 'Re-attempt request' },
+        { id: 13, type: 'process', label: 'Alternative', description: 'Navigate to similar' },
+        { id: 14, type: 'process', label: 'Report', description: 'Log issue' },
+        { id: 15, type: 'end', label: 'Resolved', description: 'Session continues' },
+    ]
+};

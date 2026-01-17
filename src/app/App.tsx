@@ -21,7 +21,7 @@ import {
 } from '@/app/components/ui/dialog';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/app/components/ui/table';
 import { toast, Toaster } from 'sonner';
-import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY } from './data';
+import { FLAWS, IMPACT_METRICS, PRD_DATA, UAT_SCENARIOS, COMPETITOR_ANALYSIS, RACI_MATRIX, KYC_JOURNEY, ROADMAP_TABLE, USER_FLOW } from './data';
 
 type DemoMode = 'landing' | 'mobile-error' | 'desktop-algo';
 
@@ -719,29 +719,188 @@ export default function App() {
                 </div>
               </div>
 
+              {/* 2.5 User Flow Diagram */}
+              <div id="userflow" className="scroll-mt-32 mt-20">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="h-px w-12 bg-gray-200"></div>
+                  <h3 className="text-xl font-bold text-gray-900">User Flow: Error Recovery Wizard</h3>
+                  <div className="h-px flex-1 bg-gray-100"></div>
+                </div>
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 md:p-8 overflow-hidden">
+                  <div className="overflow-x-auto pb-4">
+                    <div className="flex items-center gap-2 md:gap-3 min-w-[900px]">
+                      {/* Start */}
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
+                          <div className="size-4 rounded-full bg-white"></div>
+                        </div>
+                        <span className="text-[10px] font-medium text-gray-500 mt-1">Start</span>
+                      </div>
+                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                      {/* User Action */}
+                      <div className="bg-yellow-100 border border-yellow-300 rounded-lg px-3 py-2 text-center min-w-[100px]">
+                        <span className="text-xs font-medium text-yellow-800">Tap Technicals</span>
+                      </div>
+                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                      {/* API Call */}
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center min-w-[90px]">
+                        <span className="text-xs font-medium text-blue-700">API Call</span>
+                      </div>
+                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                      {/* Decision */}
+                      <div className="relative flex items-center justify-center">
+                        <div className="size-16 bg-blue-100 border border-blue-300 rotate-45"></div>
+                        <span className="absolute text-[10px] font-bold text-blue-700">Response?</span>
+                      </div>
+
+                      {/* Branches */}
+                      <div className="flex flex-col gap-4 ml-4">
+                        {/* Success Path */}
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">200</span>
+                          <ArrowRight className="size-3 text-green-400 shrink-0" />
+                          <div className="bg-green-100 border border-green-300 rounded-lg px-3 py-1.5 text-center">
+                            <span className="text-xs font-medium text-green-700">Display Data</span>
+                          </div>
+                        </div>
+
+                        {/* Error Path */}
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-medium text-red-600 bg-red-50 px-1.5 py-0.5 rounded">Error</span>
+                          <ArrowRight className="size-3 text-red-400 shrink-0" />
+                          <div className="bg-red-100 border border-red-300 rounded-lg px-3 py-1.5 text-center">
+                            <span className="text-xs font-medium text-red-700">Classify Error</span>
+                          </div>
+                          <ArrowRight className="size-3 text-gray-300 shrink-0" />
+
+                          {/* Error Type Decision */}
+                          <div className="relative flex items-center justify-center">
+                            <div className="size-12 bg-orange-100 border border-orange-300 rotate-45"></div>
+                            <span className="absolute text-[8px] font-bold text-orange-700">Type?</span>
+                          </div>
+
+                          <div className="flex flex-col gap-1 ml-2">
+                            <div className="flex items-center gap-1">
+                              <div className="bg-yellow-50 border border-yellow-200 rounded px-2 py-0.5">
+                                <span className="text-[10px] text-yellow-700">Countdown Wizard</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <div className="bg-purple-50 border border-purple-200 rounded px-2 py-0.5">
+                                <span className="text-[10px] text-purple-700">Network Guide</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <div className="bg-gray-50 border border-gray-200 rounded px-2 py-0.5">
+                                <span className="text-[10px] text-gray-700">Support Options</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <ArrowRight className="size-3 text-gray-300 shrink-0 ml-2" />
+
+                          {/* Recovery Actions */}
+                          <div className="flex flex-col gap-1">
+                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                              <span className="text-[10px] text-blue-700">Retry</span>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                              <span className="text-[10px] text-blue-700">Alternative</span>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                              <span className="text-[10px] text-blue-700">Report</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ArrowRight className="size-4 text-gray-300 shrink-0 ml-4" />
+
+                      {/* End */}
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
+                          <div className="size-6 rounded-full bg-green-600 flex items-center justify-center">
+                            <div className="size-3 rounded-full bg-white"></div>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-medium text-gray-500 mt-1">Session Continues</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-4 mt-4 pt-4 border-t border-gray-100 text-[10px]">
+                    <div className="flex items-center gap-1.5">
+                      <div className="size-3 rounded-full bg-green-500"></div>
+                      <span className="text-gray-500">Start/End</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="size-3 bg-yellow-100 border border-yellow-300 rounded"></div>
+                      <span className="text-gray-500">User Action</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="size-3 bg-blue-50 border border-blue-200 rounded"></div>
+                      <span className="text-gray-500">Process</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="size-3 bg-blue-100 border border-blue-300 rotate-45"></div>
+                      <span className="text-gray-500">Decision</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="size-3 bg-red-100 border border-red-300 rounded"></div>
+                      <span className="text-gray-500">Error State</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* 3. Execution Roadmap */}
               <div id="roadmap" className="scroll-mt-32 mb-20">
-                <div className="flex items-center gap-4 mb-12">
+                <div className="flex items-center gap-4 mb-8">
                   <div className="h-px w-12 bg-gray-200"></div>
                   <h3 className="text-xl font-bold text-gray-900">Execution Roadmap</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                  {(['now', 'next', 'later'] as const).map((phase, i) => (
-                    <div key={phase} className="space-y-6">
-                      <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
-                        <div className={`size-3 rounded-full ${i === 0 ? 'bg-blue-600' : i === 1 ? 'bg-purple-600' : 'bg-green-600'}`}></div>
-                        <h4 className="font-bold text-lg capitalize text-gray-900">{phase}</h4>
-                      </div>
-                      <div className="space-y-4">
-                        {PRD_DATA.roadmap[phase].map((item, j) => (
-                          <div key={j} className="p-5 bg-white rounded-xl border border-gray-100 shadow-sm font-medium text-gray-700 text-sm">
-                            {item.item}
-                          </div>
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader className="bg-gray-50/80">
+                        <TableRow>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-900 pl-4 md:pl-6 py-3 md:py-4 w-[100px]">Phase</TableHead>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-900 py-3 md:py-4">Feature</TableHead>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-500 py-3 md:py-4 hidden md:table-cell">Why Now/Next/Later</TableHead>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-500 py-3 md:py-4 hidden lg:table-cell">Key Metric</TableHead>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-500 py-3 md:py-4 text-center w-[60px]">Effort</TableHead>
+                          <TableHead className="text-[10px] md:text-xs font-bold uppercase text-gray-500 pr-4 md:pr-6 py-3 md:py-4 hidden lg:table-cell">Dependencies</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {ROADMAP_TABLE.map((row, i) => (
+                          <TableRow key={i} className="hover:bg-gray-50/50 transition-colors border-gray-50">
+                            <TableCell className="pl-4 md:pl-6 py-3 md:py-4">
+                              <Badge className={`text-[10px] font-bold px-2 py-0.5 ${row.phase === 'NOW' ? 'bg-blue-600 text-white' :
+                                row.phase === 'NEXT' ? 'bg-purple-100 text-purple-700 border border-purple-200' :
+                                  'bg-green-100 text-green-700 border border-green-200'
+                                }`}>
+                                {row.phase} <span className="hidden sm:inline opacity-70">({row.phaseLabel})</span>
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="font-medium text-gray-900 text-xs md:text-sm py-3 md:py-4">{row.feature}</TableCell>
+                            <TableCell className="text-gray-600 text-xs py-3 md:py-4 hidden md:table-cell max-w-[200px]">{row.why}</TableCell>
+                            <TableCell className="text-gray-600 text-xs py-3 md:py-4 hidden lg:table-cell">{row.metric}</TableCell>
+                            <TableCell className="text-center py-3 md:py-4">
+                              <Badge variant="outline" className={`text-[10px] font-bold ${row.effort === 'S' ? 'bg-green-50 text-green-700 border-green-200' :
+                                row.effort === 'M' ? 'bg-yellow-50 text-yellow-700 border-yellow-200' :
+                                  'bg-orange-50 text-orange-700 border-orange-200'
+                                }`}>{row.effort}</Badge>
+                            </TableCell>
+                            <TableCell className="text-gray-500 text-xs pr-4 md:pr-6 py-3 md:py-4 hidden lg:table-cell">{row.dependencies}</TableCell>
+                          </TableRow>
                         ))}
-                      </div>
-                    </div>
-                  ))}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
               </div>
 
