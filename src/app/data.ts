@@ -406,12 +406,16 @@ export const PRD_DATA = {
 };
 
 export const UAT_SCENARIOS = [
-    { id: "UAT-01", scenario: "Trigger 500 error on Technicals tab", expected: "Wizard appears within 500ms with categorized message" },
-    { id: "UAT-02", scenario: "Trigger error on poor network (2G)", expected: "Network issue detected; appropriate guidance shown" },
-    { id: "UAT-03", scenario: "Trigger >3 errors in 30 seconds", expected: "Consolidated error view appears" },
-    { id: "UAT-04", scenario: "Select 'View Similar' alternative", expected: "Navigates to similar instrument successfully" },
-    { id: "UAT-05", scenario: "Use wizard with screen reader", expected: "All elements announced correctly (WCAG 2.1 AA)" },
-    { id: "UAT-06", scenario: "Error during market hours (9:15-3:30)", expected: "Wizard prioritizes speed, loads quickly" }
+    { id: 'HS-001', userState: 'New User', timeWindow: 'Market Hours', device: 'iOS', behavior: 'Default onboarding layout with sign-up CTA and market overview', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-002', userState: 'New User', timeWindow: 'Market Hours', device: 'Android', behavior: 'Same layout as iOS with platform-specific adjustments', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-003', userState: 'KYC Pending', timeWindow: 'Market Hours', device: 'iOS', behavior: 'KYC completion prompt at top, limited trading access', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-004', userState: 'Active Trader', timeWindow: 'Pre-market', device: 'iOS', behavior: 'Pre-market data highlighted, watchlist prioritized', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-005', userState: 'Active Trader', timeWindow: 'Market Hours', device: 'iOS', behavior: 'Quick trade buttons expanded, real-time charts, alerts', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-006', userState: 'Active Trader', timeWindow: 'Post-market', device: 'iOS', behavior: 'After-hours summary, earnings calendar, next-day outlook', priority: 'P1', status: 'Not Started' },
+    { id: 'HS-007', userState: 'Long-term Investor', timeWindow: 'Market Hours', device: 'Android', behavior: 'Portfolio performance, dividend calendar, research tools', priority: 'P0', status: 'Not Started' },
+    { id: 'HS-008', userState: 'Long-term Investor', timeWindow: 'Weekend', device: 'Web', behavior: 'Portfolio review tools, weekly performance, planning features', priority: 'P1', status: 'Not Started' },
+    { id: 'HS-009', userState: 'New User', timeWindow: 'Weekend', device: 'iOS', behavior: 'Educational content prioritized, market closed indicators', priority: 'P1', status: 'Not Started' },
+    { id: 'HS-010', userState: 'KYC Pending', timeWindow: 'Pre-market', device: 'Android', behavior: 'KYC reminder, pre-market data visible but trading locked', priority: 'P1', status: 'Not Started' }
 ];
 
 export const COMPETITOR_ANALYSIS = {

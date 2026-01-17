@@ -283,14 +283,32 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 | Improved sentiment | App store reviews; in-app feedback |
 | Session continuation | Compare abandonment rates pre/post launch |
 
-### 10.2 Test Scenarios
+### 10.2 User Acceptance Test Scenarios
 
-| Scenario | Expected Behavior | How to Test |
-|----------|-------------------|-------------|
-| API returns 500 on Technicals | Wizard appears with "Data Unavailable" + alternatives | Force error in staging |
-| User on poor network | Network issue detected; appropriate guidance shown | Throttle network in dev tools |
-| 4 errors in 30 seconds | Consolidated view appears | Rapid-fire error triggers |
-| Screen reader usage | All elements announced correctly | VoiceOver/TalkBack testing |
+| ID | User State | Time Window | Device | Expected Behavior | Priority |
+|-----|------------|-------------|--------|-------------------|----------|
+| HS-001 | New User | Market Hours | iOS | Onboarding layout with sign-up CTA and market overview | P0 |
+| HS-002 | New User | Market Hours | Android | Same layout with platform-specific adjustments | P0 |
+| HS-003 | KYC Pending | Market Hours | iOS | KYC prompt at top, limited trading access | P0 |
+| HS-004 | Active Trader | Pre-market | iOS | Pre-market data highlighted, watchlist prioritized | P0 |
+| HS-005 | Active Trader | Market Hours | iOS | Quick trade buttons expanded, real-time charts | P0 |
+| HS-006 | Active Trader | Post-market | iOS | After-hours summary, earnings calendar | P1 |
+| HS-007 | Long-term Investor | Market Hours | Android | Portfolio performance, research tools | P0 |
+| HS-008 | Long-term Investor | Weekend | Web | Weekly review tools, planning features | P1 |
+| HS-009 | New User | Weekend | iOS | Educational content, market closed indicators | P1 |
+| HS-010 | KYC Pending | Pre-market | Android | KYC reminder, trading locked | P1 |
+
+**User States:**
+- **New User** — First-time visitor, no account
+- **KYC Pending** — Account created, verification incomplete
+- **Active Trader** — Verified, frequent trades (>5/week)
+- **Long-term Investor** — Verified, portfolio-focused
+
+**Time Windows:**
+- **Pre-market** — Before 9:15 AM IST
+- **Market Hours** — 9:15 AM - 3:30 PM IST
+- **Post-market** — After 3:30 PM IST
+- **Weekend** — Saturday/Sunday
 
 ---
 

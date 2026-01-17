@@ -837,11 +837,11 @@ export default function App() {
                       <div key={i} className="bg-white rounded-lg border border-gray-100 p-4">
                         <div className="flex items-center gap-2 mb-2">
                           <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${risk.type === 'Regulatory' ? 'bg-red-100 text-red-700' :
-                              risk.type === 'User Loss' ? 'bg-red-100 text-red-700' :
-                                risk.type === 'Technical' ? 'bg-yellow-100 text-yellow-700' :
-                                  risk.type === 'UX' ? 'bg-blue-100 text-blue-700' :
-                                    risk.type === 'Privacy' ? 'bg-purple-100 text-purple-700' :
-                                      'bg-gray-100 text-gray-700'
+                            risk.type === 'User Loss' ? 'bg-red-100 text-red-700' :
+                              risk.type === 'Technical' ? 'bg-yellow-100 text-yellow-700' :
+                                risk.type === 'UX' ? 'bg-blue-100 text-blue-700' :
+                                  risk.type === 'Privacy' ? 'bg-purple-100 text-purple-700' :
+                                    'bg-gray-100 text-gray-700'
                             }`}>{risk.type}</span>
                         </div>
                         <p className="text-sm text-gray-600 mb-2">{risk.description}</p>
@@ -985,28 +985,56 @@ export default function App() {
               <div id="uat" className="scroll-mt-32">
                 <div className="flex items-center gap-4 mb-12">
                   <div className="h-px w-12 bg-gray-200"></div>
-                  <h3 className="text-xl font-bold text-gray-900">Validation Protocols</h3>
+                  <h3 className="text-xl font-bold text-gray-900">User Acceptance Test Scenarios</h3>
                   <div className="h-px flex-1 bg-gray-100"></div>
                 </div>
                 <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm overflow-x-auto">
-                  <div className="min-w-[700px]">
+                  <div className="min-w-[900px]">
                     <Table>
                       <TableHeader className="bg-gray-50/50">
                         <TableRow>
-                          <TableHead className="w-[100px] pl-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">ID</TableHead>
-                          <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Scenario (UAT)</TableHead>
-                          <TableHead className="font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Expected Protocol</TableHead>
-                          <TableHead className="text-right pr-6 font-bold text-gray-900 text-xs uppercase tracking-wide py-4">Status</TableHead>
+                          <TableHead className="w-[80px] pl-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">ID</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">User State</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">Time Window</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">Device</TableHead>
+                          <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">Expected Behavior</TableHead>
+                          <TableHead className="text-center font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">Priority</TableHead>
+                          <TableHead className="text-right pr-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-3">Status</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {UAT_SCENARIOS.map((uat: any) => (
                           <TableRow key={uat.id} className="hover:bg-gray-50/50 transition-colors border-gray-50">
-                            <TableCell className="pl-6 py-4 font-mono text-xs font-bold text-purple-600">{uat.id}</TableCell>
-                            <TableCell className="py-4 font-medium text-gray-900 text-sm">{uat.scenario}</TableCell>
-                            <TableCell className="py-4 text-gray-500 text-sm italic">"{uat.expected}"</TableCell>
-                            <TableCell className="pr-6 py-4 text-right">
-                              <Badge variant="outline" className="border-green-200 text-green-700 bg-green-50 font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">Verified</Badge>
+                            <TableCell className="pl-4 py-3 font-mono text-xs font-bold text-gray-600">{uat.id}</TableCell>
+                            <TableCell className="py-3">
+                              <Badge className={`text-[10px] font-medium ${uat.userState === 'New User' ? 'bg-green-100 text-green-700' :
+                                  uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
+                                    uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
+                                      'bg-purple-100 text-purple-700'
+                                }`}>{uat.userState}</Badge>
+                            </TableCell>
+                            <TableCell className="py-3">
+                              <Badge variant="outline" className={`text-[10px] ${uat.timeWindow === 'Market Hours' ? 'border-green-200 text-green-700' :
+                                  uat.timeWindow === 'Pre-market' ? 'border-blue-200 text-blue-700' :
+                                    uat.timeWindow === 'Post-market' ? 'border-orange-200 text-orange-700' :
+                                      'border-gray-200 text-gray-600'
+                                }`}>{uat.timeWindow}</Badge>
+                            </TableCell>
+                            <TableCell className="py-3">
+                              <Badge className={`text-[10px] ${uat.device === 'iOS' ? 'bg-gray-800 text-white' :
+                                  uat.device === 'Android' ? 'bg-green-600 text-white' :
+                                    'bg-blue-500 text-white'
+                                }`}>{uat.device}</Badge>
+                            </TableCell>
+                            <TableCell className="py-3 text-gray-600 text-xs max-w-[250px]">{uat.behavior}</TableCell>
+                            <TableCell className="py-3 text-center">
+                              <Badge className={`text-[10px] ${uat.priority === 'P0' ? 'bg-red-100 text-red-700' :
+                                  uat.priority === 'P1' ? 'bg-orange-100 text-orange-700' :
+                                    'bg-gray-100 text-gray-600'
+                                }`}>{uat.priority}</Badge>
+                            </TableCell>
+                            <TableCell className="pr-4 py-3 text-right">
+                              <Badge variant="outline" className="border-gray-200 text-gray-500 text-[10px]">{uat.status}</Badge>
                             </TableCell>
                           </TableRow>
                         ))}
