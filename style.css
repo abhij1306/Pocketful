@@ -1344,3 +1344,338 @@ h3,
         display: none;
     }
 }
+
+/* --- Modal System --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    z-index: 2000;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: #111;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 20px;
+    position: relative;
+    padding: 3rem;
+    color: white;
+    box-shadow: 0 0 50px rgba(108, 92, 231, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-close {
+    position: sticky;
+    top: 1rem;
+    right: 1rem;
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: white;
+}
+
+/* --- Artifact Specific Overrides for Dark Theme --- */
+.artifact-inner-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.artifact-inner-header h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.artifact-inner-header p {
+    color: #aaa;
+}
+
+/* Roadmap Tables/Grids in Modal */
+.modal-roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.modal-phase {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+}
+
+.modal-phase h4 {
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.now-h {
+    background: rgba(0, 184, 148, 0.2);
+    color: #00b894;
+    border: 1px solid #00b894;
+}
+
+.next-h {
+    background: rgba(108, 92, 231, 0.2);
+    color: #a29bfe;
+    border: 1px solid #6c5ce7;
+}
+
+.later-h {
+    background: rgba(253, 203, 110, 0.2);
+    color: #fdcb6e;
+    border: 1px solid #fdcb6e;
+}
+
+.modal-card {
+    background: #222;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid transparent;
+}
+
+.now-c {
+    border-left-color: #00b894;
+}
+
+.next-c {
+    border-left-color: #6c5ce7;
+}
+
+.later-c {
+    border-left-color: #fdcb6e;
+}
+
+/* UAT Table in Modal */
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.modal-table th {
+    text-align: left;
+    padding: 1rem;
+    background: #222;
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.modal-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #222;
+    font-size: 0.9rem;
+}
+
+.modal-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* User Flow in Modal */
+.modal-flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+}
+
+.modal-flow-step {
+    min-width: 180px;
+    background: #222;
+    border: 1px solid #333;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.modal-flow-arrow {
+    display: flex;
+    align-items: center;
+    color: #444;
+    font-size: 1.5rem;
+}
+
+/* Mockup Gallery in Modal */
+.modal-mockup-comp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.mockup-item {
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.mockup-label {
+    padding: 0.8rem;
+    background: #222;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mockup-img-wrap {
+    padding: 1.5rem;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+}
+
+.mockup-img-wrap img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+
+/* Modal Interior Refinements */
+.prd-section {
+    margin-bottom: 2rem;
+}
+
+.prd-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+}
+
+.prd-box h4 {
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.prd-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.prd-box li {
+    margin-bottom: 0.6rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.prd-box li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.modal-roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.modal-phase h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-card {
+    background: #1a1a1a;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+    transition: transform 0.3s;
+}
+
+.modal-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.modal-card h5 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.modal-card p {
+    color: #888;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    background: rgba(99, 57, 249, 0.1);
+    color: var(--primary);
+}
+
+.flows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.flow-block h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+/* Ensure contrast for badges in UAT */
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.modal-table th,
+.modal-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.modal-table th {
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.modal-table td {
+    color: #fff;
+}

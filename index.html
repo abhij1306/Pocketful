@@ -220,22 +220,55 @@
             </div>
 
             <div class="enhancement-grid">
-                <!-- Feature 1: Error Recovery Wizard -->
+                <!-- Feature 1: Algorithmic Strategy Engine -->
                 <div class="enhancement-card feature-highlight" id="f1">
                     <div class="card-num">01</div>
                     <div class="card-content">
-                        <h3>Error Recovery Wizard <span class="badge technical">Technical Moat</span></h3>
-                        <p>Addresses Flaw #1. Replaces generic "500 Errors" with proactive debugging and alternative
-                            internal pathways (e.g., Fundamental data fallback when Technicals fail).</p>
+                        <h3>Algorithmic Strategy Engine <span class="badge reliability">Pro-Grade</span></h3>
+                        <p>Bridges manual and automated trading. Simple IF-THEN rule templates for retail users,
+                            leveraging Pocketful’s ultra-fast execution and free SmartAPIs.</p>
 
                         <div class="visual-mock">
-                            <div class="error-wizard-mock">
-                                <div class="error-header">⚠️ Technical Analysis Unavailable</div>
-                                <div class="alt-paths">
-                                    <span>✓ View Fundamental Data</span>
-                                    <span>✓ Check Live Chart</span>
+                            <div class="algo-wizard-mock"
+                                style="background: #1a1a2e; border: 1px solid #333; padding: 1rem; border-radius: 10px;">
+                                <div class="strategy-row"
+                                    style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.8rem;">
+                                    <span class="indicator" style="color: #a29bfe;">SMA(5) > SMA(20)</span>
+                                    <span class="action" style="color: #00b894;">BUY 10 QTY</span>
                                 </div>
-                                <button class="btn glow-btn">Notify Me When Fixed</button>
+                                <div class="strategy-row"
+                                    style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                                    <span class="indicator" style="color: #a29bfe;">Momentum Breakout</span>
+                                    <span class="status active" style="color: #00b894;">Active</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="impact-stats">
+                            <div class="stat"><strong>+15%</strong><span>Active Traders</span></div>
+                            <div class="stat"><strong>+22%</strong><span>Volume</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Error Recovery Wizard -->
+                <div class="enhancement-card" id="f2">
+                    <div class="card-num">02</div>
+                    <div class="card-content">
+                        <h3>Error Recovery Wizard <span class="badge technical">Technical Moat</span></h3>
+                        <p>Addresses Flaw #1. Replaces generic "500 Errors" with proactive debugging and alternative
+                            internal pathways (e.g., Fundamental data fallback).</p>
+
+                        <div class="visual-mock">
+                            <div class="error-wizard-mock"
+                                style="background: rgba(255,118,117,0.1); border: 1px solid #ff7675; padding: 1rem; border-radius: 10px;">
+                                <div class="error-header"
+                                    style="color: #ff7675; font-size: 0.85rem; margin-bottom: 0.5rem;">⚠️ Data Link
+                                    Unstable</div>
+                                <div class="alt-paths" style="font-size: 0.75rem; color: #aaa;">
+                                    <span>✓ View Fundamental Data</span>
+                                    <br><span>✓ Auto-Retry in 3s</span>
+                                </div>
                             </div>
                         </div>
 
@@ -246,86 +279,40 @@
                     </div>
                 </div>
 
-                <!-- Feature 2: Smart Home -->
-                <div class="enhancement-card" id="f2">
-                    <div class="card-num">02</div>
-                    <div class="card-content">
-                        <h3>Context-Aware Smart Home <span class="badge intelligence">AI-Powered</span></h3>
-                        <p>Addresses Flaw #4. An ML-powered interface that adapts based on time-of-day intelligence
-                            (Pre-market news vs Live-market action) and User State Awareness.</p>
-
-                        <div class="intent-toggles">
-                            <button class="toggle-btn active" data-time="pre">Pre-Market</button>
-                            <button class="toggle-btn" data-time="live">Market Hours</button>
-                            <button class="toggle-btn" data-time="post">Post-Market</button>
-                        </div>
-
-                        <div id="home-preview" class="home-mock-preview">
-                            <div class="preview-placeholder">Select Market Phase...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 3: Status Explainers -->
+                <!-- Feature 3: Smart Home -->
                 <div class="enhancement-card" id="f3">
                     <div class="card-num">03</div>
                     <div class="card-content">
-                        <h3>Transparent Status Explainers <span class="badge education">Trust-First</span></h3>
-                        <p>Solving Flaw #3 (Jargon Confusion). Inline tooltips providing plain English explanations,
-                            social context ("2,847 users applied"), and actionable guidance.</p>
+                        <h3>Context-Aware Smart Home <span class="badge intelligence">AI-Powered</span></h3>
+                        <p>Addresses Flaw #4. An ML-powered interface that adapts based on time-of-day intelligence
+                            (Pre-market news vs Live-market action).</p>
 
-                        <div class="ipo-card-sample">
-                            <h4>IREDA IPO</h4>
-                            <div class="status-row">
-                                <span>0.0x Subscribed</span>
-                                <span class="info-trigger"
-                                    data-tip="Demand is lower than available shares. Similar IPOs averaged 0.3x at this stage.">ⓘ</span>
-                            </div>
-                            <div id="jargon-tip" class="tip-overlay">Hover over ⓘ to decode.</div>
+                        <div class="intent-toggles" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span
+                                style="font-size: 0.7rem; background: #333; padding: 0.2rem 0.5rem; border-radius: 4px;">Pre-Market</span>
+                            <span
+                                style="font-size: 0.7rem; background: #6c5ce7; padding: 0.2rem 0.5rem; border-radius: 4px;">Live</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature 4: Resilient Offline Mode -->
+                <!-- Feature 4: Status Explainers -->
                 <div class="enhancement-card" id="f4">
                     <div class="card-num">04</div>
                     <div class="card-content">
-                        <h3>Resilient Offline Mode <span class="badge resilience">Engineering Moat</span></h3>
-                        <p>Solving network inconsistency. A 3-tier architecture: Cached Critical Data, Progressive
-                            Loading (text first), and Smart Connection Management (Lite Mode).</p>
-
-                        <div class="resilience-controls">
-                            <div id="offline-bar" class="status-bar">🟡 Slow Connection</div>
-                            <button class="btn secondary sm" id="sim-offline">Simulate 2G Mode</button>
-                        </div>
-
-                        <div class="resilience-summary">
-                            <div class="tier"><strong>Tier 1:</strong> Prepare Offline Orders</div>
-                            <div class="tier"><strong>Tier 2:</strong> Skeleton Screens</div>
-                            <div class="tier"><strong>Tier 3:</strong> EXP Backoff Retry</div>
-                        </div>
+                        <h3>Transparent Status Explainers <span class="badge education">Trust-First</span></h3>
+                        <p>Solving Flaw #3 (Jargon Confusion). Inline tooltips providing plain English explanations and
+                            actionable guidance.</p>
                     </div>
                 </div>
 
-                <!-- Feature 5: Algorithmic Strategy Engine -->
+                <!-- Feature 5: Resilient Offline Mode -->
                 <div class="enhancement-card" id="f5">
                     <div class="card-num">05</div>
                     <div class="card-content">
-                        <h3>Algorithmic Strategy Engine <span class="badge reliability">Pro-Grade</span></h3>
-                        <p>Bridges manual and automated trading. Simple IF-THEN rule templates for retail users,
-                            leveraging Pocketful’s ultra-fast execution and free SmartAPIs.</p>
-
-                        <div class="algo-wizard-mock">
-                            <div class="strategy-row">
-                                <span class="indicator">SMA(5) > SMA(20)</span>
-                                <span class="action">BUY 10 QTY</span>
-                            </div>
-                            <div class="strategy-row">
-                                <span class="indicator">Momentum Breakout</span>
-                                <span class="status active">Active</span>
-                            </div>
-                            <button class="btn sm">Link TradingView Webhook</button>
-                        </div>
+                        <h3>Resilient Offline Mode <span class="badge resilience">Engineering Moat</span></h3>
+                        <p>Solving network inconsistency via a 3-tier architecture: Cached Critical Data, Progressive
+                            Loading, and Smart Connection Management.</p>
                     </div>
                 </div>
             </div>
@@ -426,68 +413,61 @@
             <p class="section-desc" style="color: #aaa;">Click any card to explore the detailed artifact. These
                 demonstrate how I execute product management in practice.</p>
 
-            <div
+            <div <div
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
                 <!-- Roadmap Card -->
-                <a href="roadmap.html" style="text-decoration: none;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
-                        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#6c5ce7';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
-                        <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">Product Roadmap</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin: 0;">Now-Next-Later timeline with metrics
-                            milestones</p>
-                    </div>
-                </a>
+                <div onclick="openModal('roadmap-modal')"
+                    style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#6c5ce7';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">Product Roadmap</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin: 0;">Now-Next-Later timeline with metrics
+                        milestones</p>
+                </div>
 
                 <!-- PRD Card -->
-                <a href="prd.html" style="text-decoration: none;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
-                        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#00b894';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
-                        <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">PRD Document</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin: 0;">Full specs with user stories & RACI matrix
-                        </p>
-                    </div>
-                </a>
+                <div onclick="openModal('prd-modal')"
+                    style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#00b894';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
+                    <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">PRD Document</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin: 0;">Full specs with user stories & RACI matrix</p>
+                </div>
 
                 <!-- User Flows Card -->
-                <a href="userflows.html" style="text-decoration: none;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
-                        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#fdcb6e';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔄</div>
-                        <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">User Flows</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin: 0;">Visual flow diagrams for key features</p>
-                    </div>
-                </a>
+                <div onclick="openModal('flows-modal')"
+                    style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#fdcb6e';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔄</div>
+                    <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">User Flows</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin: 0;">Visual flow diagrams for key features</p>
+                </div>
 
                 <!-- UAT Card -->
-                <a href="uat.html" style="text-decoration: none;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
-                        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#ff7675';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
-                        <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">UAT Tracker</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin: 0;">Interactive test case checklist</p>
-                    </div>
-                </a>
+                <div onclick="openModal('uat-modal')"
+                    style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#ff7675';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">UAT Tracker</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin: 0;">Interactive test case checklist</p>
+                </div>
 
                 <!-- Mockups Card -->
-                <a href="mockups.html" style="text-decoration: none;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
-                        onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#74b9ff';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
-                        <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">Feature Mockups</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin: 0;">Before/After design comparisons</p>
-                    </div>
-                </a>
+                <div onclick="openModal('mockups-modal')"
+                    style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer;"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#74b9ff';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
+                    <h3 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.2rem;">Feature Mockups</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin: 0;">Before/After design comparisons</p>
+                </div>
             </div>
         </div>
     </section>
-
 
     <section class="summary-section">
         <div class="container">
@@ -522,39 +502,283 @@
         </div>
     </div>
 
-    <footer id="contact" class="footer">
-        <div class="container">
+    <footer id="contact" style="background: #09090d; border-top: 1px solid #1a1a24;">
+        <div class="container" style="padding: 4rem 2rem;">
             <div class="footer-grid">
-                <div class="footer-info">
+                <div class="footer-brand">
                     <div class="logo">
                         <span class="logo-icon">📂</span>
-                        <span class="logo-text">TPM Submission</span>
+                        <span class="logo-text">Abhineet Jain</span>
                     </div>
-                    <p>Prepared by Abhineet Jain. This is a technical product management case study for Pocketful.</p>
+                    <p style="color: #a0a0ab; margin-top: 1rem;">Technical Product Manager candidate specializing in
+                        high-resilience trading systems and user-centric innovation.</p>
                 </div>
-                <div class="footer-contact">
-                    <h4>Contact Abhineet</h4>
-                    <p><a href="mailto:abhij1306@gmail.com" class="footer-link">abhij1306@gmail.com</a></p>
-                    <p><a href="tel:+918999635679" class="footer-link">+91 89996 35679</a></p>
-                    <p><a href="Pocketful-submission.docx" class="btn-primary sm"
-                            style="margin-top: 1rem; display: inline-block;">Download Full Proposal (DOCX)</a></p>
-                </div>
-                <div class="footer-social">
-                    <h4>Social Profiles</h4>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/abhineet-jain/" target="_blank"
-                            class="social-icon">LinkedIn</a>
-                        <a href="https://github.com/abhij1306" target="_blank" class="social-icon">GitHub</a>
-                    </div>
+                <div class="footer-links">
+                    <h4 style="color: #6339f9; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase;">
+                        Direct Contact</h4>
+                    <p style="margin-bottom: 0.8rem;">📧 <a href="mailto:abhij1306@gmail.com"
+                            style="color: #fff; text-decoration: none;">abhij1306@gmail.com</a></p>
+                    <p style="margin-bottom: 0.8rem; color: #fff;">📱 +91 9770513813</p>
+                    <p style="margin-bottom: 0.8rem;">💼 <a href="https://www.linkedin.com/in/abhineet-jain-5a6397217"
+                            target="_blank" style="color: #fff; text-decoration: none;">LinkedIn Profile</a></p>
+                    <p>📥 <a href="https://docs.google.com/document/d/1X5X578z6mX6f6h..." target="_blank"
+                            style="color: #6339f9; font-weight: 700; text-decoration: none; border-bottom: 1px dashed #6339f9;">Download
+                            Full Resume</a></p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Abhineet | Technical Product Management Portfolio</p>
+            <div class="footer-bottom"
+                style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #1a1a24; text-align: center; color: #444; font-size: 0.8rem;">
+                <p>&copy; 2026 Abhineet | Technical Product Management Portfolio Produced for Pocketful Evaluation</p>
             </div>
         </div>
     </footer>
 
+    <!-- --- Modals for Artifacts --- -->
+    <div id="roadmap-modal" class="modal-overlay" onclick="closeModalOnSideClick(event, 'roadmap-modal')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('roadmap-modal')">&times;</span>
+            <div class="artifact-inner-header">
+                <h2>📊 Product Roadmap</h2>
+                <p>Pocketful Innovation Suite | 6-Month Strategic Delivery Plan</p>
+            </div>
+            <div class="modal-roadmap-grid">
+                <div class="modal-phase">
+                    <h4 class="now-h">🔥 NOW (Month 1-2)</h4>
+                    <div class="modal-card now-c">
+                        <h5>Error Recovery Wizard (MVP)</h5>
+                        <p>Self-healing API failures and contextual recovery journeys. Focus on trust restoration.</p>
+                        <div class="pill">P0 Priority</div>
+                    </div>
+                    <div class="modal-card now-c">
+                        <h5>Tech Debt: Error Taxonomy</h5>
+                        <p>Standardizing system errors across backend services for unified handling.</p>
+                        <div class="pill">Infrastructure</div>
+                    </div>
+                </div>
+                <div class="modal-phase">
+                    <h4 class="next-h">📈 NEXT (Month 3-4)</h4>
+                    <div class="modal-card next-c">
+                        <h5>Algorithmic Strategy Engine V1</h5>
+                        <p>No-code visual strategy builder and historical backtest engine for retail traders.</p>
+                        <div class="pill">Growth Feature</div>
+                    </div>
+                    <div class="modal-card next-c">
+                        <h5>Context-Aware Smart Home</h5>
+                        <p>Intent-based dashboard adaptation (Pre-market news vs. Live-market execution).</p>
+                        <div class="pill">UX Moat</div>
+                    </div>
+                </div>
+                <div class="modal-phase">
+                    <h4 class="later-h">🚀 LATER (Month 5-6)</h4>
+                    <div class="modal-card later-c">
+                        <h5>Algo Engine V2: Options & Multi-leg</h5>
+                        <p>Advanced strategy templates and social copy-trading for automated strategies.</p>
+                        <div class="pill">Scaling</div>
+                    </div>
+                    <div class="modal-card later-c">
+                        <h5>Resilient Offline Mode</h5>
+                        <p>3-tier architecture for smart degradation during network volatility.</p>
+                        <div class="pill">Product Moat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="prd-modal" class="modal-overlay" onclick="closeModalOnSideClick(event, 'prd-modal')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('prd-modal')">&times;</span>
+            <div class="artifact-inner-header">
+                <h2>📄 Product Requirements (PRD)</h2>
+                <p>Comprehensive Specs for High-Impact Innovation</p>
+            </div>
+            <div class="prd-scroll-view" style="max-height: 70vh; overflow-y: auto; padding-right: 1.5rem;">
+                <section class="prd-section">
+                    <h3 style="color: #6c5ce7; margin-bottom: 1rem;">1. Algorithmic Strategy Engine (P0)</h3>
+                    <p><strong>Goal:</strong> Democratize automated trading for retail users who lack coding skills.</p>
+                    <div class="prd-box">
+                        <h4>User Stories</h4>
+                        <ul>
+                            <li><strong>ASE-001:</strong> As a retail trader, I want to create a price-trigger strategy
+                                without code.</li>
+                            <li><strong>ASE-002:</strong> As a user, I want to backtest against 1Y historical data
+                                before risking capital.</li>
+                        </ul>
+                    </div>
+                    <div class="prd-box">
+                        <h4>Success Metrics</h4>
+                        <ul>
+                            <li><strong>North Star:</strong> 15% Activation Rate for curated strategies.</li>
+                            <li><strong>Impact:</strong> +25% Volume from systematic trading accounts.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="prd-section" style="margin-top: 3rem;">
+                    <h3 style="color: #00b894; margin-bottom: 1rem;">2. Error Recovery Wizard (P0)</h3>
+                    <p><strong>Goal:</strong> Transform generic "500 Errors" into actionable, trust-building recovery
+                        steps.</p>
+                    <div class="prd-box">
+                        <h4>User Stories</h4>
+                        <ul>
+                            <li><strong>ERW-001:</strong> As an active trader, I want to understand WHY an error
+                                occurred to decide my next move.</li>
+                            <li><strong>ERW-002:</strong> I want to see contextually relevant alternatives (e.g., View
+                                Fundamental Data).</li>
+                        </ul>
+                    </div>
+                    <div class="prd-box">
+                        <h4>UAT Scenarios</h4>
+                        <ul>
+                            <li><strong>UAT-01:</strong> Triggering 500 error on Tech tab must surface Wizard within
+                                <500ms.< /li>
+                            <li><strong>UAT-02:</strong> Selecting "Alternative Path" must resolve without secondary
+                                failure.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="flows-modal" class="modal-overlay" onclick="closeModalOnSideClick(event, 'flows-modal')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('flows-modal')">&times;</span>
+            <div class="artifact-inner-header">
+                <h2>🔄 User Interaction Flows</h2>
+                <p>Mapping the resilience and automation journey</p>
+            </div>
+            <div class="flows-container">
+                <div class="flow-block">
+                    <h4>Flow A: Self-Healing Error Journey</h4>
+                    <div class="modal-flow">
+                        <div class="modal-flow-step">Trig: API 500</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step">Diagnostic Check</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #ff7675;">Surface Wizard</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #00b894;">Recovery Action</div>
+                    </div>
+                </div>
+                <div class="flow-block" style="margin-top: 2rem;">
+                    <h4>Flow B: Strategy Activation Journey</h4>
+                    <div class="modal-flow">
+                        <div class="modal-flow-step">Config Logic</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step">Run Backtest</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #6c5ce7;">Set Risk Limits</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #00b894;">Go Live</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="uat-modal" class="modal-overlay" onclick="closeModalOnSideClick(event, 'uat-modal')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('uat-modal')">&times;</span>
+            <div class="artifact-inner-header">
+                <h2>✅ UAT Readiness Tracker</h2>
+                <p>Real-time verification status for Engineering & Product</p>
+            </div>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Verification Point</th>
+                        <th>Target Metric</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>UAT-01</td>
+                        <td>Algo engine persistence check</td>
+                        <td>99.9% Sync Accuracy</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>UAT-02</td>
+                        <td>Error Wizard trigger latency</td>
+                        <td>
+                            < 500ms load</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>UAT-03</td>
+                        <td>Risk limit enforcement</td>
+                        <td>Zero-fail blocking</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="mockups-modal" class="modal-overlay" onclick="closeModalOnSideClick(event, 'mockups-modal')">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('mockups-modal')">&times;</span>
+            <div class="artifact-inner-header">
+                <h2>🎨 Design Evolution Lab</h2>
+                <p>Visual comparison of current pain points vs. proposed technical solutions</p>
+            </div>
+            <div class="modal-mockup-comp">
+                <div class="mockup-item">
+                    <div class="mockup-label"><span>Baseline: Market Dashboard</span></div>
+                    <div class="mockup-img-wrap">
+                        <img src="uploaded_image_1768624968118.png" alt="Desktop Baseline">
+                    </div>
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-label"><span>Proposed: Algo Control Center</span></div>
+                    <div class="mockup-img-wrap">
+                        <img src="mockups/algo_engine_revised.png" alt="Desktop Proposed">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-mockup-comp">
+                <div class="mockup-item">
+                    <div class="mockup-label"><span>Baseline: Generic 500 Error</span></div>
+                    <div class="mockup-img-wrap">
+                        <img src="Screenshot_1.png" alt="Mobile Baseline">
+                    </div>
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-label"><span>Proposed: Recovery Journey</span></div>
+                    <div class="mockup-img-wrap">
+                        <img src="mockups/error_wizard_revised.png" alt="Mobile Proposed">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        function closeModalOnSideClick(event, id) {
+            if (event.target.classList.contains('modal-overlay')) closeModal(id);
+        }
+    </script>
 </body>
 
 </html>
