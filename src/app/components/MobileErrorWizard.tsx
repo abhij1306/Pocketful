@@ -9,16 +9,24 @@ interface MobileErrorWizardProps {
   onRecover: () => void;
 }
 
-export function MobileErrorWizard({ 
-  errorType, 
+export function MobileErrorWizard({
+  errorType,
   instrument = 'IRCTC',
   onClose,
-  onRecover 
+  onRecover
 }: MobileErrorWizardProps) {
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isRetrying, setIsRetrying] = useState(false);
 
-  const errorConfigs = {
+  interface ErrorConfig {
+    title: string;
+    message: string;
+    icon: string;
+    estimatedTime?: number;
+    actions: { label: string; action: string; primary?: boolean }[];
+  }
+
+  const errorConfigs: Record<string, ErrorConfig> = {
     DATA_UNAVAILABLE: {
       title: 'Data Temporarily Unavailable',
       message: `Technical indicators for ${instrument} are being updated. This usually takes ~30 seconds.`,
@@ -91,14 +99,17 @@ export function MobileErrorWizard({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center">
+    <div className="fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center" onClick={onClose}>
       {/* Mobile Bottom Sheet Style */}
-      <div className="bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-3xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:animate-in sm:fade-in">
+      <div
+        className="bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-3xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:animate-in sm:fade-in"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="px-6 pt-6 pb-4 border-b border-gray-100">
           <div className="flex items-start justify-between mb-3">
             <div className="text-4xl mb-2">{config.icon}</div>
-            <button 
+            <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 p-1"
             >
@@ -124,10 +135,10 @@ export function MobileErrorWizard({
                 <span className="text-sm font-semibold text-gray-900">{countdown}s</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                <div 
+                <div
                   className="bg-blue-500 h-full rounded-full transition-all duration-1000"
-                  style={{ 
-                    width: `${config.estimatedTime ? ((config.estimatedTime - countdown) / config.estimatedTime) * 100 : 100}%` 
+                  style={{
+                    width: `${config.estimatedTime ? ((config.estimatedTime - countdown) / config.estimatedTime) * 100 : 100}%`
                   }}
                 />
               </div>
@@ -146,8 +157,8 @@ export function MobileErrorWizard({
                 disabled={isRetrying || (action.action === 'RETRY' && countdown !== null && countdown > 0)}
                 className={`
                   w-full px-4 py-4 rounded-xl font-medium text-left transition-all
-                  ${action.primary 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm' 
+                  ${action.primary
+                    ? 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm'
                     : 'bg-gray-50 text-gray-900 hover:bg-gray-100 active:bg-gray-200'
                   }
                   ${(isRetrying || (action.action === 'RETRY' && countdown !== null && countdown > 0)) ? 'opacity-50 cursor-not-allowed' : ''}
@@ -168,7 +179,7 @@ export function MobileErrorWizard({
 
         {/* Footer */}
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-          <button 
+          <button
             onClick={onRecover}
             className="text-sm text-blue-600 hover:text-blue-700 font-medium"
           >
