@@ -589,54 +589,113 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('prd-modal')">&times;</span>
             <div class="artifact-inner-header">
-                <h2>📄 Product Requirements (PRD)</h2>
-                <p>Comprehensive Specs for High-Impact Innovation</p>
+                <h2>📄 Product Requirements Document</h2>
+                <p>Top 5 Feature Enhancements for Pocketful</p>
             </div>
             <div class="prd-scroll-view" style="max-height: 70vh; overflow-y: auto; padding-right: 1.5rem;">
+
+                <!-- Feature 1: Error Recovery Wizard -->
                 <section class="prd-section">
-                    <h3 style="color: #6c5ce7; margin-bottom: 1rem;">1. Algorithmic Strategy Engine (P0)</h3>
-                    <p><strong>Goal:</strong> Democratize automated trading for retail users who lack coding skills.</p>
+                    <h3 style="color: #00b894; margin-bottom: 1rem;">Feature 1: Error Recovery Wizard</h3>
+                    <p><strong>Problem:</strong> Generic "Something went wrong! Internal Server Error" with no recovery
+                        path breaks trust during critical moments.</p>
                     <div class="prd-box">
-                        <h4>User Stories</h4>
+                        <h4>Key Components</h4>
                         <ul>
-                            <li><strong>ASE-001:</strong> As a retail trader, I want to create a price-trigger strategy
-                                without code.</li>
-                            <li><strong>ASE-002:</strong> As a user, I want to backtest against 1Y historical data
-                                before risking capital.</li>
+                            <li><strong>Contextual Explanations:</strong> No more "Internal Server Error" - explain in
+                                user terms</li>
+                            <li><strong>Alternative Pathways:</strong> Always offer 2-3 alternative actions</li>
+                            <li><strong>Proactive Detection:</strong> Pre-emptively show estimated margin with
+                                disclaimer</li>
+                            <li><strong>System Health Page:</strong> Real-time status of Order execution, Market data,
+                                Margin calculations</li>
                         </ul>
                     </div>
                     <div class="prd-box">
-                        <h4>Success Metrics</h4>
+                        <h4>Impact</h4>
                         <ul>
-                            <li><strong>North Star:</strong> 15% Activation Rate for curated strategies.</li>
-                            <li><strong>Impact:</strong> +25% Volume from systematic trading accounts.</li>
+                            <li>Reduces error-related abandonment</li>
+                            <li>Increases user-reported satisfaction during failures</li>
                         </ul>
                     </div>
                 </section>
 
-                <section class="prd-section" style="margin-top: 3rem;">
-                    <h3 style="color: #00b894; margin-bottom: 1rem;">2. Error Recovery Wizard (P0)</h3>
-                    <p><strong>Goal:</strong> Transform generic "500 Errors" into actionable, trust-building recovery
-                        steps.</p>
+                <!-- Feature 2: Context-Aware Smart Home -->
+                <section class="prd-section" style="margin-top: 2rem;">
+                    <h3 style="color: #6c5ce7; margin-bottom: 1rem;">Feature 2: Context-Aware Smart Home</h3>
+                    <p><strong>Problem:</strong> Users with different intents face the same overwhelming interface.</p>
                     <div class="prd-box">
-                        <h4>User Stories</h4>
+                        <h4>Time-of-Day Intelligence</h4>
                         <ul>
-                            <li><strong>ERW-001:</strong> As an active trader, I want to understand WHY an error
-                                occurred to decide my next move.</li>
-                            <li><strong>ERW-002:</strong> I want to see contextually relevant alternatives (e.g., View
-                                Fundamental Data).</li>
+                            <li><strong>Pre-market (7-9 AM):</strong> Market preview, overnight news, IPO updates</li>
+                            <li><strong>Market hours (9:15 AM-3:30 PM):</strong> Quick trade buttons, active positions
+                                front-and-centre</li>
+                            <li><strong>Post-market (3:30 PM+):</strong> P&L summary, execution quality report,
+                                educational content</li>
                         </ul>
                     </div>
                     <div class="prd-box">
-                        <h4>UAT Scenarios</h4>
+                        <h4>User State Awareness</h4>
                         <ul>
-                            <li><strong>UAT-01:</strong> Triggering 500 error on Tech tab must surface Wizard within
-                                <500ms.< /li>
-                            <li><strong>UAT-02:</strong> Selecting "Alternative Path" must resolve without secondary
-                                failure.</li>
+                            <li><strong>New user:</strong> Onboarding checklist, demo trading</li>
+                            <li><strong>Active trader:</strong> Heat map, quick re-order buttons</li>
+                            <li><strong>Long-term investor:</strong> Portfolio performance, SIP status</li>
                         </ul>
                     </div>
                 </section>
+
+                <!-- Feature 3: Status Explainers -->
+                <section class="prd-section" style="margin-top: 2rem;">
+                    <h3 style="color: #fdcb6e; margin-bottom: 1rem;">Feature 3: Transparent Status Explainers</h3>
+                    <p><strong>Problem:</strong> Financial apps use jargon without context, assuming user knowledge.</p>
+                    <div class="prd-box">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Plain English:</strong> "0.0x Subscribed" → "Demand is lower than available
+                                shares"</li>
+                            <li><strong>Social Context:</strong> "2,847 Pocketful users have applied"</li>
+                            <li><strong>Option Greeks:</strong> "Delta 0.65" → "Moves ₹0.65 for every ₹1 in Nifty"</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Feature 4: Offline Mode -->
+                <section class="prd-section" style="margin-top: 2rem;">
+                    <h3 style="color: #74b9ff; margin-bottom: 1rem;">Feature 4: Resilient Offline Mode</h3>
+                    <p><strong>Problem:</strong> India's mobile data is inconsistent; tier-2/3 traders are underserved.
+                    </p>
+                    <div class="prd-box">
+                        <h4>3-Tier Architecture</h4>
+                        <ul>
+                            <li><strong>Tier 1:</strong> Cached prices, portfolio holdings, order history</li>
+                            <li><strong>Tier 2:</strong> Progressive loading - text first, charts later</li>
+                            <li><strong>Tier 3:</strong> Smart connection detection, "Lite Mode" toggle</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Feature 5: Algo Engine -->
+                <section class="prd-section" style="margin-top: 2rem;">
+                    <h3 style="color: #a29bfe; margin-bottom: 1rem;">Feature 5: Algorithmic Strategy Engine</h3>
+                    <p><strong>Description:</strong> In-app algo-strategy templates for retail users. Configure IF-THEN
+                        rules (e.g., "buy when 5-day SMA crosses 20-day SMA").</p>
+                    <div class="prd-box">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li>Pre-built templates: momentum, mean-reversion, breakout</li>
+                            <li>Backtest on historical data before going live</li>
+                            <li>TradingView webhook integration</li>
+                        </ul>
+                    </div>
+                    <div class="prd-box">
+                        <h4>Target Users</h4>
+                        <ul>
+                            <li>Algorithmic and quantitative traders</li>
+                            <li>Intraday/algo-savvy users wanting semi-automated trades</li>
+                        </ul>
+                    </div>
+                </section>
+
             </div>
         </div>
     </div>
