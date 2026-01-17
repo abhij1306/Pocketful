@@ -31,13 +31,13 @@ This message:
 - Significant support ticket volume for error-related queries
 - Users unsure whether to retry, wait, or abandon the action
 
-### 1.3 Target Persona
+### 1.3 Target Personas
 
-**Priya, 28, Active Trader**  
-- Executes multiple trades daily
-- Expects real-time reliability
-- Low tolerance for unexplained failures
-- Will switch to competitors if trust is broken
+| Persona | Profile | Pain Point | Value from ERW |
+|---------|---------|------------|----------------|
+| **Priya, 28** | Active F&O trader, 10+ trades/week | Loses money when errors delay action | Contextual alternatives keep her trading |
+| **Raj, 24** | First-time investor, confused by jargon | "Internal Server Error" is scary | Plain-English explanations reduce anxiety |
+| **Amit, 45** | Tier-2 city, patchy network | Doesn't know if it's his network or app | Network detection + RM access provides support |
 
 ---
 
@@ -45,10 +45,25 @@ This message:
 
 > *"Transform every error into an opportunity to demonstrate platform reliability."*
 
+### Why This Feature Matters
+
+**Business Impact:**
+- **Trust Recovery:** Errors are inevitable; recovery experience determines if users stay or leave
+- **Differentiation:** Neither Zerodha (sparse handling) nor Groww (friendly but generic) offers personalized recovery
+- **Support Reduction:** Clear guidance reduces ticket volume by ~40% (industry benchmark)
+
+**User Impact:**
+- Users feel supported, not abandoned
+- Reduces decision paralysis during critical trading moments
+- Builds long-term platform loyalty through transparency
+
+### How It Works
+
 The Error Recovery Wizard:
 1. **Diagnoses** the root cause and translates it into user-friendly language
 2. **Offers** contextually relevant alternatives based on user intent
-3. **Builds trust** by being transparent about what happened and what's being done
+3. **Integrates** with RM support for complex issues (Pocketful's unique advantage)
+4. **Learns** from recovery patterns to personalize future error handling
 
 ---
 
