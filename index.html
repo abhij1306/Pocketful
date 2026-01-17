@@ -705,33 +705,93 @@
             <span class="modal-close" onclick="closeModal('flows-modal')">&times;</span>
             <div class="artifact-inner-header">
                 <h2>🔄 User Interaction Flows</h2>
-                <p>Mapping the resilience and automation journey</p>
+                <p>Detailed journey mapping for Error Recovery and Algo Strategy features</p>
             </div>
-            <div class="flows-container">
-                <div class="flow-block">
-                    <h4>Flow A: Self-Healing Error Journey</h4>
-                    <div class="modal-flow">
-                        <div class="modal-flow-step">Trig: API 500</div>
+            <div class="flows-container" style="max-height: 70vh; overflow-y: auto;">
+
+                <!-- Error Recovery Flow -->
+                <div class="flow-block"
+                    style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid #333;">
+                    <h4 style="color: #00b894; margin-bottom: 1.5rem;">Flow A: Error Recovery Wizard Journey</h4>
+                    <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem;">When user encounters API 500 or data
+                        unavailability</p>
+
+                    <div class="modal-flow" style="margin-bottom: 1.5rem;">
+                        <div class="modal-flow-step">User taps "Technicals"</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step">Diagnostic Check</div>
+                        <div class="modal-flow-step" style="border-color: #ff7675;">API returns 500/timeout</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step" style="border-color: #ff7675;">Surface Wizard</div>
+                        <div class="modal-flow-step" style="border-color: #fdcb6e;">Wizard activates (&lt;500ms)</div>
+                    </div>
+
+                    <div class="prd-box" style="margin-top: 1rem;">
+                        <h4 style="color: #fff;">Quick Actions Presented</h4>
+                        <ul>
+                            <li>🔄 Retry in 30s (with countdown)</li>
+                            <li>📊 View Similar Stock (e.g., RVNL for IRCTC)</li>
+                            <li>📈 Use Cached Data (with timestamp warning)</li>
+                            <li>💬 Report Issue</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-flow" style="margin-top: 1.5rem;">
+                        <div class="modal-flow-step" style="border-color: #00b894;">Recovery path selected</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step" style="border-color: #00b894;">Recovery Action</div>
+                        <div class="modal-flow-step" style="border-color: #6c5ce7;">Success logged</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #00b894;">Path saved for personalization</div>
                     </div>
                 </div>
-                <div class="flow-block" style="margin-top: 2rem;">
-                    <h4>Flow B: Strategy Activation Journey</h4>
-                    <div class="modal-flow">
-                        <div class="modal-flow-step">Config Logic</div>
+
+                <!-- Algo Strategy Flow -->
+                <div class="flow-block"
+                    style="margin-top: 2rem; background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid #333;">
+                    <h4 style="color: #6c5ce7; margin-bottom: 1.5rem;">Flow B: Strategy Activation Journey</h4>
+                    <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem;">From strategy creation to live
+                        deployment</p>
+
+                    <div class="modal-flow" style="margin-bottom: 1.5rem;">
+                        <div class="modal-flow-step">Select Template</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step">Run Backtest</div>
+                        <div class="modal-flow-step">Configure IF-THEN Rules</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step" style="border-color: #6c5ce7;">Set Risk Limits</div>
+                        <div class="modal-flow-step" style="border-color: #fdcb6e;">Set Parameters</div>
+                    </div>
+
+                    <div class="prd-box" style="margin-top: 1rem;">
+                        <h4 style="color: #fff;">Strategy Parameters</h4>
+                        <ul>
+                            <li><strong>Indicators:</strong> SMA(5), SMA(20), RSI, MACD</li>
+                            <li><strong>Triggers:</strong> Price cross, Volume spike, Momentum breakout</li>
+                            <li><strong>Actions:</strong> Buy/Sell quantity, Stop-loss %, Take-profit %</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-flow" style="margin-top: 1.5rem;">
+                        <div class="modal-flow-step">Run Backtest (1Y data)</div>
                         <div class="modal-flow-arrow">→</div>
-                        <div class="modal-flow-step" style="border-color: #00b894;">Go Live</div>
+                        <div class="modal-flow-step" style="border-color: #ff7675;">Review Results</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #fdcb6e;">Set Risk Limits</div>
+                        <div class="modal-flow-arrow">→</div>
+                        <div class="modal-flow-step" style="border-color: #00b894;">GO LIVE</div>
                     </div>
                 </div>
+
+                <!-- Cascading Error Flow -->
+                <div class="flow-block"
+                    style="margin-top: 2rem; background: rgba(255,118,117,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #ff7675;">
+                    <h4 style="color: #ff7675; margin-bottom: 1rem;">Edge Case: Cascading Errors</h4>
+                    <p style="color: #888; font-size: 0.9rem;">If 3+ errors occur within 60 seconds, show consolidated
+                        view:</p>
+                    <div class="prd-box" style="margin-top: 1rem; border-color: #ff7675;">
+                        <ul>
+                            <li>⚠️ "Multiple Issues Detected - 3 requests affected"</li>
+                            <li>[🔄 Retry All] [⏸️ Pause &amp; Wait]</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -755,31 +815,75 @@
                 <tbody>
                     <tr>
                         <td>UAT-01</td>
-                        <td>Algo engine persistence check</td>
-                        <td>99.9% Sync Accuracy</td>
+                        <td>Trigger 500 error on Technicals tab</td>
+                        <td>Wizard appears &lt;500ms</td>
                         <td><span class="badge"
                                 style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
-                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
-                        </td>
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
                     </tr>
                     <tr>
                         <td>UAT-02</td>
-                        <td>Error Wizard trigger latency</td>
-                        <td>
-                            < 500ms load</td>
+                        <td>Error on poor network (2G simulation)</td>
+                        <td>Network status shown</td>
                         <td><span class="badge"
                                 style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
-                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
-                        </td>
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
                     </tr>
                     <tr>
                         <td>UAT-03</td>
-                        <td>Risk limit enforcement</td>
+                        <td>4 consecutive errors in 30s</td>
+                        <td>Consolidated view shown</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-04</td>
+                        <td>Select "View Similar" alternative</td>
+                        <td>Correct instrument loaded</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-05</td>
+                        <td>Screen reader accessibility</td>
+                        <td>WCAG 2.1 AA compliant</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-06</td>
+                        <td>Error during market hours</td>
+                        <td>Load &lt;300ms cached</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-07</td>
+                        <td>Algo: Create SMA crossover strategy</td>
+                        <td>99.9% persistence</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-08</td>
+                        <td>Algo: Run 1Y backtest</td>
+                        <td>Results in &lt;10s</td>
+                        <td><span class="badge"
+                                style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>UAT-09</td>
+                        <td>Algo: Activate with risk limits</td>
                         <td>Zero-fail blocking</td>
                         <td><span class="badge"
                                 style="background:#222; color:#fdcb6e; border:1px solid #fdcb6e; cursor:pointer;"
-                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ In-Progress</span>
-                        </td>
+                                onclick="this.innerHTML='✅ Passed'; this.style.color='#00b894';">⏳ Pending</span></td>
                     </tr>
                 </tbody>
             </table>
