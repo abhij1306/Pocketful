@@ -8,12 +8,12 @@
 
 ## Executive Summary
 
-This document presents a structured product evaluation of the Pocketful mobile application, based on hands-on testing including KYC completion and simulated trading activities. The analysis identifies critical usability gaps impacting user trust and proposes prioritized feature enhancements.
+This document presents a structured product evaluation of the Pocketful mobile application, rooted in a **"Trust → Clarity → Differentiation"** strategic framework. Based on hands-on testing including KYC completion and simulated trading activities, the analysis identifies critical usability gaps and proposes a phased roadmap to transform Pocketful from an "Emerging Player" to the **"Reliable Innovator"** of the Indian brokerage market.
 
 **Deliverables Covered:**
 1. ✅ User Journey Report (KYC Experience)
 2. ✅ Top 5 Feature Enhancement Suggestions
-3. ✅ Feature Design for One High-Impact Feature (Error Recovery Wizard)
+3. ✅ Feature Design for One High-Impact Feature (Smart Error Recovery)
 4. ✅ Top 5 Mobile App Usability Flaws
 5. ✅ Competitive Differentiation Analysis
 
@@ -28,7 +28,7 @@ The following personas guide this analysis and feature recommendations:
 - **Quote:** *"Every second of delay during market hours costs me money."*
 - **Pain Points:** Loses money when errors delay action; cold start lag at market open
 - **Needs:** Speed, reliability, automation tools
-- **Feature Mapping:** Error Recovery Wizard, Smart Order Assistant
+- **Feature Mapping:** Smart Error Recovery, Smart Order Assistant
 
 ### 👨‍💻 Raj Patel, 24 — First-Time Investor (Pune)
 - **Profile:** Software engineer, started with MFs, 2-3 trades/month
@@ -52,7 +52,7 @@ The following personas guide this analysis and feature recommendations:
 
 ## KYC Experience Documentation
 
-**Platform Tested:** Pocketful Android App (v3.x) on Pixel 8 Pro  
+**Platform Tested:** Pocketful Android App  on Pixel 8 Pro  
 **Network:** 100 Mbps Wi-Fi / 5G  
 **Date:** January 2026
 
@@ -60,29 +60,31 @@ The following personas guide this analysis and feature recommendations:
 
 | Step | Action | Time Taken | Experience |
 |------|--------|------------|------------|
-| 1 | App Download & Install | ~2 min | Standard Play Store flow |
+| 1 | App Download & Install | ~1 min | Seamless experience (Play Store) |
 | 2 | Mobile Number Verification | ~1 min | OTP received promptly |
-| 3 | PAN & Aadhaar Entry | ~3 min | Clean form, auto-fetch worked |
-| 4 | e-Sign (DigiLocker) | ~5 min | Redirect flow was smooth |
-| 5 | Bank Account Linking | ~4 min | UPI autopay setup straightforward |
-| 6 | Video KYC / Selfie | ~2 min | Quick capture, no retries needed |
-| **Total** | | **~17 min** | |
+| 3 | Registration | ~2 min | **Lag with Gmail**; Direct email smooth |
+| 4 | PAN & Aadhaar Entry | ~2 min | Clean form, auto-fetch worked |
+| 5 | e-Sign (DigiLocker) | ~3 min | Redirect flow was smooth |
+| 6 | Bank Account Linking | ~2 min | UPI autopay setup straightforward |
+| 7 | Selfie Capture (No Video) | ~1 min | Minor issue: reflection on specs |
+| **Total** | | **~12 min** | **Comparable to Zerodha/Groww** |
 
 ### Highlights (What Worked Well)
 
 - **Auto-fetch from PAN/Aadhaar:** Reduced manual data entry significantly
-- **Progress indicator:** Clear visibility of remaining steps
 - **DigiLocker integration:** Seamless redirect with no session drops
-- **Same-day activation:** Account was trading-ready within hours
+- **Account Status Visibility:** Clear status indicators in the app for account status
+
+### Pain Points Observed
 
 ### Pain Points Observed
 
 | Issue | Impact | Suggested Improvement |
 |-------|--------|----------------------|
-| No estimated time shown at start | Users can't plan—"Will this take 5 min or 30 min?" | Display "Estimated time: 15-20 minutes" on intro screen |
-| Video KYC instructions were text-heavy | Could cause confusion for first-time app users | Add short video demo or animated guide |
-| Bank linking showed "processing" for ~30s with no progress | Created anxiety about whether it was working | Add progress animation or percentage indicator |
-| No option to save and resume later | If interrupted, user must restart certain steps | Enable draft state persistence |
+| **Cold Start Lag** | **High** | App takes >10s to load on all devices (Flaw #3). | Implement progressive hydration. |
+| **Gmail Registration Lag** | Medium | "Sign up with Gmail" was noticeably slower than direct email. | Optimize OAuth callback or spinner feedback. |
+| **Selfie Reflection Error** | Low | Capture bot gave "Eyes Closed" error due to specs reflection. | Add "Please remove spectacles" prompt before UI capture. |
+| **No Time Estimate** | Low | User anxiety about process length. | Add "Estimated time: 10-15 mins" at start. |
 
 ### Comparison to Competitors
 
@@ -118,7 +120,7 @@ Each feature is designed to improve one or more of these key metrics:
 
 | Rank | Feature | Target Personas | Target Metrics | Impact | Effort |
 |------|---------|-----------------|----------------|--------|--------|
-| 1 | **Error Recovery Wizard** | Priya, Raj, Amit | 🔵 Trust, 🟠 Retention | High | Medium |
+| 1 | **Smart Error Recovery** | Priya, Raj, Amit | 🔵 Trust, 🟠 Retention | High | Medium |
 | 2 | **Transparent Status Explainers** | Raj | 🟣 Accessibility, 🟢 Engagement | Medium | Low |
 | 3 | **Resilient Offline Mode** | Amit | 🟣 Accessibility, 🔵 Trust | High | High |
 | 4 | **Context-Aware Smart Home** | Priya, Raj | 🟢 Engagement, 🟠 Retention | Medium | High |
@@ -127,7 +129,7 @@ Each feature is designed to improve one or more of these key metrics:
 
 ---
 
-## Feature 1: Error Recovery Wizard
+## Feature 1: Smart Error Recovery
 
 > **Selected as the high-impact feature for detailed design (See Deliverable 3)**
 
@@ -195,8 +197,8 @@ Each feature is designed to improve one or more of these key metrics:
 
 | Feature | Risk Type | Risk Description | Mitigation Strategy |
 |---------|-----------|------------------|---------------------|
-| **Error Recovery Wizard** | Technical | Over-classifying errors could mislead users about actual issues | Extensive error taxonomy testing; conservative initial rollout |
-| **Error Recovery Wizard** | UX | Too many alternatives could overwhelm users | Limit to 2-3 contextual options; A/B test for optimal count |
+| **Smart Error Recovery** | Technical | Over-classifying errors could mislead users about actual issues | Extensive error taxonomy testing; conservative initial rollout |
+| **Smart Error Recovery** | UX | Too many alternatives could overwhelm users | Limit to 2-3 contextual options; A/B test for optimal count |
 | **Transparent Status Explainers** | Content | Outdated or incorrect explanations erode trust | Content review process; user feedback loop for corrections |
 | **Resilient Offline Mode** | Data Integrity | Stale cached data could lead to poor trading decisions | Clear "Last updated X minutes ago" timestamps; disable trading on very old data |
 | **Smart Order Assistant** | Regulatory | SEBI may view as "algo trading" if not positioned carefully | Legal review; frame as "conditional orders"; require user acknowledgment |
@@ -207,9 +209,9 @@ Each feature is designed to improve one or more of these key metrics:
 
 ---
 
-# Deliverable 3: Feature Design (Error Recovery Wizard)
+# Deliverable 3: Feature Design (Smart Error Recovery)
 
-## High-Impact Feature: Error Recovery Wizard
+## High-Impact Feature: Smart Error Recovery
 
 **Full PRD with wireframes available in separate document: `feature_design_prd.md`**
 
@@ -233,7 +235,7 @@ This provides:
 
 ### The Solution
 
-Replace all error states with an intelligent recovery wizard:
+Replace all error states with an intelligent recovery system (Actionable Toasts):
 
 ```
 ┌─────────────────────────────────┐
@@ -267,7 +269,7 @@ Replace all error states with an intelligent recovery wizard:
 ### User Flow
 
 ```
-[User Action] → [Error Detected] → [Wizard Activates <500ms]
+[User Action] → [Error Detected] → [Recovery Options Active <100ms]
                                           │
                     ┌─────────────────────┼─────────────────────┐
                     ▼                     ▼                     ▼
@@ -321,7 +323,7 @@ The "Technicals" tab for certain instruments displays *"Something went wrong! In
 
 **Root Cause Hypothesis:** Backend returns catch-all 500 errors; frontend lacks error stratification.
 
-**Suggested Solution:** → Error Recovery Wizard (Feature #1 above)
+**Suggested Solution:** → Smart Error Recovery (Feature #1 above)
 
 *Reference: Screenshot 1*
 
@@ -497,13 +499,29 @@ India has 140M demat accounts but only ~30M active traders. The next wave comes 
 
 ---
 
+
+## Portfolio Risk Assessment
+
+While individual features have user-level risks, the broader product strategy faces execution risks that must be managed at the portfolio level:
+
+| Risk Domain | Risk Description | Mitigation Strategy |
+|-------------|------------------|---------------------|
+| **Resource Contention** | "Smart Home" (Phase 2) and "Client Diagnostics" (Phase 1) both heavily tax the Mobile Engineering team. | **Staggered Sprinting**: Mobile team focuses on Diagnostics in Q1 while Design/Data teams prep Smart Home specs. |
+| **Dependency Chain** | "Status Explainers" (Phase 2) rely on the same taxonomy service as "Smart Error Recovery" (Phase 1). | **Unified Taxonomy Service**: Build the error classification backend to be extensible for status explanations from Day 1. |
+| **Market Timing** | "Differentiation" (Phase 3) comes late (Month 6+); competitors might copy features. | **Fast-Follow "Lite" Features**: Ship basic "Status Tooltips" in Phase 1 (as hidden delighters) to signal innovation early. |
+
+---
+
 ## Recommended Execution Roadmap
 
-| Phase | Timeline | Goal | Key Actions |
-|-------|----------|------|-------------|
-| **1: Fix Trust** | Months 0-3 | Match Zerodha's reliability | Ship Error Recovery Wizard, Offline basics |
-| **2: Establish Clarity** | Months 3-6 | Easier than Groww, friendlier than Zerodha | Status Explainers, Smart Home |
-| **3: Differentiate** | Months 6-12 | Own unique positioning | Conditional orders, Vernacular support |
+| Phase | Timeline | Feature | Strategic Rationale ("Why") | Success Metric | Effort |
+|-------|----------|---------|-----------------------------|----------------|--------|
+| **NOW** | 0-3 mo | **Smart Error Recovery** | Immediate trust repair for critical failures | Error recovery rate | M |
+| **NOW** | 0-3 mo | **Transparent Status Explainers** | Reduce cognitive load on order states | Support ticket vol. | S |
+| **NOW** | 0-3 mo | **Resilient Offline Mode** | Critical for tier-2/3 users on patchy networks | Session continuity | M |
+| **NEXT** | 3-6 mo | **Context-Aware Smart Home** | Leverage collected analytics for personalization | Screen engagement | L |
+| **NEXT** | 3-6 mo | **Smart Order Assistant** | Extend value for active traders | Conditional order usage | L |
+| **LATER** | 6-12 mo | **Advanced Algo Features** | Complex feature requiring stable base | Template usage rate | L |
 
 ---
 
@@ -527,7 +545,7 @@ This submission includes a **functional interactive prototype** demonstrating th
 
 | Feature | Demo Type | What It Shows |
 |---------|-----------|---------------|
-| **Error Recovery Wizard** | Mobile simulation | Contextual error handling with recovery options |
+| **Smart Error Recovery** | Mobile simulation | Contextual error handling with recovery options |
 | **Smart Order Assistant** | Desktop interface | Conditional order creation with backtest |
 | **Context-Aware Smart Home** | Modal demo | Time-based adaptive layouts |
 
@@ -535,7 +553,7 @@ This submission includes a **functional interactive prototype** demonstrating th
 
 ## Detailed PRD
 
-For the Error Recovery Wizard, a comprehensive Product Requirements Document is provided:
+For the Smart Error Recovery system, a comprehensive Product Requirements Document is provided:
 
 **Document:** `feature_design_prd.md`
 

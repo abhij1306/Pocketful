@@ -15,7 +15,7 @@ export const PERSONAS = [
             'Manual order execution while institutions use automation'
         ],
         needs: ['Speed', 'Reliability', 'Real-time data', 'Automation tools'],
-        featureMapping: ['Error Recovery Wizard', 'Smart Order Assistant'],
+        featureMapping: ['Smart Error Recovery', 'Smart Order Assistant'],
         quote: '"Every second of delay during market hours costs me money."',
         icon: '👩‍💼'
     },
@@ -100,7 +100,7 @@ export const TARGET_BUSINESS_METRICS = [
 
 // FEATURE-PERSONA-METRIC MAPPING
 export const FEATURE_MAPPING = {
-    ERW: {
+    SER: {
         personas: ['priya', 'raj', 'amit'],
         metrics: ['trust', 'retention'],
         primaryPersona: 'priya'
@@ -145,10 +145,10 @@ export const METRIC_COLORS = {
 // RISK ASSESSMENT
 export const RISK_ASSESSMENT = [
     {
-        feature: 'Error Recovery Wizard',
-        featureId: 'ERW',
+        feature: 'Smart Error Recovery',
+        featureId: 'SER',
         risks: [
-            { type: 'Technical', description: 'Over-classifying errors could mislead users', mitigation: 'Conservative error taxonomy; fallback to generic' },
+            { type: 'Technical', description: 'Over-classifying errors could mislead users', mitigation: 'Conservative classification: Default to "Connection Issue" (System Blame) if ambiguous.' },
             { type: 'UX', description: 'Too many alternatives overwhelm users', mitigation: 'Limit to 2-3 options; A/B test for optimal count' }
         ]
     },
@@ -254,11 +254,11 @@ export const IMPACT_METRICS = [
 ];
 
 export const PRD_DATA = {
-    executionSummary: "This document details five feature enhancements designed to address critical trust and usability gaps identified in the Pocketful trading platform audit. The primary focus is on the Error Recovery Wizard—a high-impact feature that transforms generic error states into intelligent, actionable recovery experiences.",
+    executionSummary: "This document details five feature enhancements designed to address critical trust and usability gaps identified in the Pocketful trading platform audit. The primary focus is on Smart Error Recovery—a high-impact feature that transforms generic error states into intelligent, actionable recovery experiences.",
     features: [
         {
-            id: "ERW",
-            title: "Error Recovery Wizard",
+            id: "SER",
+            title: "Smart Error Recovery",
             priority: "P0",
             flawAddressed: "Flaw #1: Generic Error Messaging",
             problem: "When Pocketful encounters API failures, users see 'Something went wrong! Internal Server Error.' Priya (active trader) loses critical seconds; Raj (beginner) panics with no guidance.",
@@ -269,10 +269,10 @@ export const PRD_DATA = {
                 { metric: "Support Ticket Volume", description: "Error-related support queries", targetM6: "Meaningful reduction" }
             ],
             userStories: [
-                { id: "ERW-001", story: "As a trader, I want to understand WHY an error occurred so I can decide whether to retry.", priority: "P0" },
-                { id: "ERW-002", story: "As a user experiencing an error, I want to see alternative actions so I'm not stuck.", priority: "P0" },
-                { id: "ERW-003", story: "As a user on poor network, I want to know if the issue is on my end.", priority: "P1" },
-                { id: "ERW-004", story: "During market hours, I want the wizard to prioritize speed.", priority: "P1" }
+                { id: "SER-001", story: "As a trader, I want to understand WHY an error occurred so I can decide whether to retry.", priority: "P0" },
+                { id: "SER-002", story: "As a user experiencing an error, I want to see alternative actions so I'm not stuck.", priority: "P0" },
+                { id: "SER-003", story: "As a user on poor network, I want to know if the issue is on my end.", priority: "P1" },
+                { id: "SER-004", story: "During market hours, I want the system to prioritize speed.", priority: "P1" }
             ],
             techSpecs: {
                 api: "GET /api/v2/error-context/{error_id}",
@@ -388,9 +388,9 @@ export const PRD_DATA = {
     ],
     roadmap: {
         now: [
-            { item: "Error Recovery Wizard (MVP)", owner: "Product + Eng" },
+            { item: "Smart Error Recovery (MVP)", owner: "Product + Eng" },
             { item: "Error Classification Service", owner: "Backend" },
-            { item: "Wizard UI (Mobile)", owner: "Frontend" }
+            { item: "Recovery UI (Mobile)", owner: "Frontend" }
         ],
         next: [
             { item: "Transparent Status Explainers", owner: "Frontend" },
@@ -406,16 +406,11 @@ export const PRD_DATA = {
 };
 
 export const UAT_SCENARIOS = [
-    { id: 'HS-001', userState: 'New User', timeWindow: 'Market Hours', device: 'iOS', behavior: 'Default onboarding layout with sign-up CTA and market overview', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-002', userState: 'New User', timeWindow: 'Market Hours', device: 'Android', behavior: 'Same layout as iOS with platform-specific adjustments', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-003', userState: 'KYC Pending', timeWindow: 'Market Hours', device: 'iOS', behavior: 'KYC completion prompt at top, limited trading access', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-004', userState: 'Active Trader', timeWindow: 'Pre-market', device: 'iOS', behavior: 'Pre-market data highlighted, watchlist prioritized', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-005', userState: 'Active Trader', timeWindow: 'Market Hours', device: 'iOS', behavior: 'Quick trade buttons expanded, real-time charts, alerts', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-006', userState: 'Active Trader', timeWindow: 'Post-market', device: 'iOS', behavior: 'After-hours summary, earnings calendar, next-day outlook', priority: 'P1', status: 'Not Started' },
-    { id: 'HS-007', userState: 'Long-term Investor', timeWindow: 'Market Hours', device: 'Android', behavior: 'Portfolio performance, dividend calendar, research tools', priority: 'P0', status: 'Not Started' },
-    { id: 'HS-008', userState: 'Long-term Investor', timeWindow: 'Weekend', device: 'Web', behavior: 'Portfolio review tools, weekly performance, planning features', priority: 'P1', status: 'Not Started' },
-    { id: 'HS-009', userState: 'New User', timeWindow: 'Weekend', device: 'iOS', behavior: 'Educational content prioritized, market closed indicators', priority: 'P1', status: 'Not Started' },
-    { id: 'HS-010', userState: 'KYC Pending', timeWindow: 'Pre-market', device: 'Android', behavior: 'KYC reminder, pre-market data visible but trading locked', priority: 'P1', status: 'Not Started' }
+    { id: 'ER-001', userState: 'Active Trader', timeWindow: 'Market Hours', device: 'iOS', behavior: 'Simulate 500 Error -> Verify "System Maintenance" Bottom Sheet appears <100ms', priority: 'P0', status: 'Not Started' },
+    { id: 'ER-002', userState: 'Commuter', timeWindow: 'Market Hours', device: 'Android', behavior: 'Simulate Network Timeout -> Verify "Connection Issue" message (System Blame)', priority: 'P0', status: 'Not Started' },
+    { id: 'ER-003', userState: 'Active Trader', timeWindow: 'Pre-market', device: 'Web', behavior: 'Simulate Data Delay -> Verify "Instant Retry" option works', priority: 'P1', status: 'Not Started' },
+    { id: 'ER-004', userState: 'New User', timeWindow: 'Any', device: 'Any', behavior: 'Simulate Rate Limit -> Verify "Traffic Optimization" friendly message', priority: 'P1', status: 'Not Started' },
+    { id: 'ER-005', userState: 'Any', timeWindow: 'Any', device: 'Any', behavior: 'Ambiguous Error -> Verify default to "Connection Issue" (No User Blame)', priority: 'P0', status: 'Not Started' }
 ];
 
 export const COMPETITOR_ANALYSIS = {
@@ -536,7 +531,7 @@ export const DEEP_COMPETITIVE_ANALYSIS = {
         }
     ],
     featureByFeatureComparison: [
-        { feature: 'Error Handling', zerodha: 'Minimal, functional', groww: 'Friendly but generic', pocketful: 'Generic (can be best with ERW)', winner: 'Pocketful (with ERW)' },
+        { feature: 'Error Handling', zerodha: 'Minimal, functional', groww: 'Friendly but generic', pocketful: 'Generic (can be best with SER)', winner: 'Pocketful (with SER)' },
         { feature: 'Cold Start Time', zerodha: '~2-3 seconds', groww: '~4 seconds', pocketful: '>10 seconds', winner: 'Zerodha' },
         { feature: 'Offline Mode', zerodha: 'Limited', groww: 'None', pocketful: 'None (ROM can differentiate)', winner: 'Pocketful (with ROM)' },
         { feature: 'Jargon Explanation', zerodha: 'Varsity (separate)', groww: 'Inline basics', pocketful: 'None (TSE can win)', winner: 'Pocketful (with TSE)' },
@@ -544,15 +539,15 @@ export const DEEP_COMPETITIVE_ANALYSIS = {
         { feature: 'Human Support', zerodha: 'No RMs', groww: 'Call only', pocketful: 'Dedicated RM (hidden)', winner: 'Pocketful (if surfaced)' }
     ],
     wireframeMockups: {
-        errorWizardBefore: '/wireframe_before.png',
-        errorWizardAfter: '/wireframe_after.png'
+        smartRecoveryBefore: '/wireframe_before.png',
+        smartRecoveryAfter: '/wireframe_after.png'
     }
 };
 
 export const RACI_MATRIX = [
     { deliverable: "PRD & Requirements", pm: "R/A", eng: "C", design: "C", qa: "I" },
     { deliverable: "Error Taxonomy Design", pm: "C", eng: "R/A", design: "I", qa: "C" },
-    { deliverable: "Wizard UI Design", pm: "A", eng: "I", design: "R", qa: "I" },
+    { deliverable: "Recovery System UI Design", pm: "A", eng: "I", design: "R", qa: "I" },
     { deliverable: "Implementation", pm: "C", eng: "R/A", design: "I", qa: "C" },
     { deliverable: "Test Cases", pm: "R", eng: "C", design: "I", qa: "A" },
     { deliverable: "Rollout Decision", pm: "R/A", eng: "C", design: "I", qa: "C" }
@@ -565,40 +560,40 @@ export const KYC_JOURNEY = {
         network: "100 Mbps Wi-Fi / 5G"
     },
     steps: [
-        { step: 1, action: "App Download & Install", time: "~2 min", experience: "Standard Play Store flow" },
-        { step: 2, action: "Mobile Number Verification", time: "~1 min", experience: "OTP received promptly" },
-        { step: 3, action: "PAN & Aadhaar Entry", time: "~3 min", experience: "Auto-fetch worked well" },
-        { step: 4, action: "e-Sign (DigiLocker)", time: "~5 min", experience: "Smooth redirect flow" },
-        { step: 5, action: "Bank Account Linking", time: "~4 min", experience: "UPI autopay straightforward" },
-        { step: 6, action: "Video KYC / Selfie", time: "~2 min", experience: "Quick capture, no retries" }
+        { step: 1, action: "App Download & Install", time: "~1 min", experience: "Seamless experience" },
+        { step: 2, action: "Authentication", time: "~2 min", experience: "Lag on Gmail; Direct email smooth" },
+        { step: 3, action: "PAN & Aadhaar Entry", time: "~2 min", experience: "Auto-fetch worked well" },
+        { step: 4, action: "e-Sign (DigiLocker)", time: "~3 min", experience: "Smooth redirect flow" },
+        { step: 5, action: "Bank Account Linking", time: "~2 min", experience: "UPI autopay straightforward" },
+        { step: 6, action: "Selfie Capture", time: "~1 min", experience: "Specs reflection caused retry" }
     ],
     highlights: [
+        "Total time ~12 mins (faster than expected)",
         "Auto-fetch from PAN/Aadhaar reduced manual entry",
-        "Clear progress indicator throughout",
         "DigiLocker integration was seamless",
-        "Same-day activation"
+        "Clear status indicators in the app for account status"
     ],
     painPoints: [
-        { issue: "No estimated time shown at start", suggestion: "Display 'Estimated time: 15-20 minutes'" },
-        { issue: "Video KYC instructions were text-heavy", suggestion: "Add short video demo or animated guide" },
-        { issue: "Bank linking showed 'processing' for ~30s", suggestion: "Add progress animation" },
-        { issue: "No option to save and resume later", suggestion: "Enable draft state persistence" }
+        { issue: "Cold Start Lag (>10s)", suggestion: "Implement progressive hydration" },
+        { issue: "Gmail Registration Lag", suggestion: "Optimize OAuth callback performance" },
+        { issue: "Selfie: Specs Reflection", suggestion: "Add 'Remove Spectacles' prompt" },
+        { issue: "No Progress/Time Estimate", suggestion: "Add 'Estimated Time: 12 mins' header" }
     ]
 };
 
 // Focused roadmap table - key features only
 export const ROADMAP_TABLE = [
-    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Error Recovery Wizard', why: 'Immediate trust repair for critical failures', metric: 'Error recovery rate', effort: 'M', dependencies: 'None' },
+    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Smart Error Recovery', why: 'Immediate trust repair for critical failures', metric: 'Error recovery rate', effort: 'M', dependencies: 'None' },
     { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Transparent Status Explainers', why: 'Reduce cognitive load on order states', metric: 'Support ticket volume', effort: 'S', dependencies: 'None' },
-    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Resilient Offline Mode', why: 'Critical for tier-2/3 users on patchy networks', metric: 'Session continuity rate', effort: 'M', dependencies: 'Error Wizard' },
+    { phase: 'NOW', phaseLabel: '0-3 months', feature: 'Resilient Offline Mode', why: 'Critical for tier-2/3 users on patchy networks', metric: 'Session continuity rate', effort: 'M', dependencies: 'Smart Recovery' },
     { phase: 'NEXT', phaseLabel: '3-6 months', feature: 'Context-Aware Smart Home', why: 'Leverage collected analytics for personalization', metric: 'Screen engagement time', effort: 'L', dependencies: 'User state detection' },
     { phase: 'NEXT', phaseLabel: '3-6 months', feature: 'Smart Order Assistant', why: 'Extend value for active traders', metric: 'Conditional order usage', effort: 'L', dependencies: 'Smart Home' },
     { phase: 'LATER', phaseLabel: '6-12 months', feature: 'Advanced Algo Features', why: 'Complex feature requiring stable base', metric: 'Template usage rate', effort: 'L', dependencies: 'Smart Order Assistant' },
 ];
 
-// User flow for Error Recovery Wizard
+// User flow for Smart Error Recovery
 export const USER_FLOW = {
-    title: 'Error Recovery Wizard - User Flow',
+    title: 'Smart Error Recovery - User Flow',
     steps: [
         { id: 1, type: 'start', label: 'User Action', description: 'User taps Technicals tab' },
         { id: 2, type: 'process', label: 'API Call', description: 'GET /technicals' },
@@ -607,7 +602,7 @@ export const USER_FLOW = {
         { id: 5, type: 'error', label: 'Error', description: 'API returns error' },
         { id: 6, type: 'process', label: 'Classify Error', description: 'Determine error type' },
         { id: 7, type: 'decision', label: 'Error Type?', description: 'Categorize error' },
-        { id: 8, type: 'process', label: 'Data Unavailable', description: 'Show countdown wizard' },
+        { id: 8, type: 'process', label: 'Data Unavailable', description: 'Show smart recovery options' },
         { id: 9, type: 'process', label: 'Network Issue', description: 'Show network guidance' },
         { id: 10, type: 'process', label: 'Server Error', description: 'Show support options' },
         { id: 11, type: 'decision', label: 'User Choice', description: 'Recovery action' },

@@ -1,4 +1,4 @@
-# Feature Design PRD: Error Recovery Wizard
+# Feature Design PRD: Smart Error Recovery
 
 > **Author:** Abhineet Jain  
 > **Version:** 2.0 | **Last Updated:** January 17, 2026  
@@ -10,7 +10,7 @@
 
 ### 1.1 Feature Summary
 
-The **Error Recovery Wizard** transforms generic, unhelpful error messages into intelligent, context-aware recovery experiences. Instead of leaving users stuck with "Something went wrong," the wizard classifies errors, explains them in plain language, and offers actionable next steps.
+The **Smart Error Recovery** system transforms generic, unhelpful error messages into intelligent, context-aware recovery experiences. Instead of leaving users stuck with "Something went wrong," the system classifies errors, explains them in plain language, and offers actionable next steps.
 
 ### 1.2 Problem Statement
 
@@ -33,7 +33,7 @@ This message:
 
 ### 1.3 Target Personas
 
-| Persona | Profile | Pain Point | Value from ERW |
+| Persona | Profile | Pain Point | Value from SER |
 |---------|---------|------------|----------------|
 | **Priya, 28** | Active F&O trader, 10+ trades/week | Loses money when errors delay action | Contextual alternatives keep her trading |
 | **Raj, 24** | First-time investor, confused by jargon | "Internal Server Error" is scary | Plain-English explanations reduce anxiety |
@@ -59,7 +59,7 @@ This message:
 
 ### How It Works
 
-The Error Recovery Wizard:
+The Smart Error Recovery System:
 1. **Diagnoses** the root cause and translates it into user-friendly language
 2. **Offers** contextually relevant alternatives based on user intent
 3. **Integrates** with RM support for complex issues (Pocketful's unique advantage)
@@ -91,18 +91,18 @@ The Error Recovery Wizard:
 
 | ID | User Story | Priority | Acceptance Criteria |
 |----|------------|----------|---------------------|
-| ERW-001 | As a trader, I want to understand WHY an error occurred so I can decide whether to retry or try a different approach. | P0 | Error message includes category (Network/Data/Server) and plain-English explanation. |
-| ERW-002 | As a user experiencing an error, I want to see alternative actions so I'm not stuck. | P0 | At least 2 contextual alternatives displayed based on error type and intended action. |
-| ERW-003 | As a user on a poor network, I want to know if the error is on my end so I can troubleshoot my connection. | P1 | Client-side network check runs before displaying error; shows network-specific guidance if detected. |
-| ERW-004 | As a trader during market hours, I want the wizard to prioritize speed over diagnostics. | P1 | During 9:15 AM - 3:30 PM IST, wizard loads quickly with pre-cached responses. |
+| SER-001 | As a trader, I want to understand WHY an error occurred so I can decide whether to retry or try a different approach. | P0 | Error message includes category (Network/Data/Server) and plain-English explanation. |
+| SER-002 | As a user experiencing an error, I want to see alternative actions so I'm not stuck. | P0 | At least 2 contextual alternatives displayed based on error type and intended action. |
+| SER-003 | As a user on a poor network, I want to know if the error is on my end so I can troubleshoot my connection. | P1 | Client-side network check runs before displaying error; shows network-specific guidance if detected. |
+| SER-004 | As a trader during market hours, I want the recovery options to appear instantly. | P1 | During 9:15 AM - 3:30 PM IST, system loads <100ms with pre-computed responses. |
 
 ### 4.2 Edge Cases
 
 | ID | Scenario | Handling |
 |----|----------|----------|
-| ERW-E01 | Multiple errors in rapid succession (>3 in 60 seconds) | Show consolidated error summary instead of multiple wizards |
-| ERW-E02 | Error occurs when user is offline | Show cached portfolio with "Last updated" timestamp; queue action for when online |
-| ERW-E03 | Accessibility requirement | All elements have proper labels for screen readers (WCAG 2.1 AA) |
+| SER-E01 | Multiple errors in rapid succession (>3 in 60 seconds) | Show consolidated error summary instead of multiple toasts |
+| SER-E02 | Error occurs when user is offline | Show cached portfolio with "Last updated" timestamp; queue action for when online |
+| SER-E03 | Accessibility requirement | All elements have proper labels for screen readers (WCAG 2.1 AA) |
 
 ---
 
@@ -118,7 +118,7 @@ The Error Recovery Wizard:
 └─────────────────┘          └──────────┬──────────┘
                                         │
                                         ▼
-                          [3. WIZARD ACTIVATES]
+                          [3. RECOVERY ACTIVE]
                           ┌───────────────────────────────┐
                           │ ⚠️ Data Temporarily Unavailable │
                           │                               │
@@ -158,10 +158,10 @@ The Error Recovery Wizard:
 When multiple errors occur within a short timeframe:
 
 ```
-Error 1 → Wizard shown
+Error 1 → Message shown
    │
    ▼ (within 60 seconds)
-Error 2 → Wizard updated silently
+Error 2 → Message updated silently
    │
    ▼ (within 60 seconds)
 Error 3+ → CONSOLIDATED VIEW
@@ -186,7 +186,7 @@ Error 3+ → CONSOLIDATED VIEW
 | Component | Purpose | States |
 |-----------|---------|--------|
 | **Error Header** | Displays categorized error type with icon | Warning (⚠️), Critical (🚫), Info (ℹ️) |
-| **Explanation Card** | Plain-language root cause + estimated resolution | Loading, Loaded |
+| **Actionable Toast** | Plain-language root cause + estimated resolution | Loading, Loaded |
 | **Recovery Actions** | 2-4 contextual buttons | Default, Pressed, Disabled |
 | **Progress Indicator** | Shows retry countdown or loading | Counting, Loading, Complete |
 | **Feedback Link** | Opens lightweight issue reporter | Default, Expanded |
@@ -216,7 +216,7 @@ Error 3+ → CONSOLIDATED VIEW
 
 ## 7. Error Classification System
 
-The wizard requires a backend error taxonomy service to classify errors. Here's the proposed classification:
+The system requires a backend error taxonomy service to classify errors. Here's the proposed classification:
 
 | Error Type | User Message Example | Recovery Options |
 |------------|---------------------|------------------|
@@ -233,8 +233,8 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 | Requirement | Description |
 |-------------|-------------|
-| **Latency** | Wizard must appear within 500ms of error detection |
-| **Offline Support** | Basic wizard should work even when partially offline |
+| **Latency** | UI must render within 100ms (pre-fetch alternatives) |
+| **Offline Support** | Basic recovery should work even when partially offline |
 | **Client Diagnostics** | Should detect if user's network is the issue |
 | **Error Logging** | All errors and recovery paths logged for analytics |
 
@@ -267,7 +267,7 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 ### 9.2 Rollback Conditions
 
 - Recovery rate drops below current baseline for 24 hours
-- Wizard load time exceeds 1 second at p95
+- Recovery UI load time exceeds 1 second at p95
 - User-reported issues spike significantly
 
 ---
@@ -285,30 +285,14 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 ### 10.2 User Acceptance Test Scenarios
 
-| ID | User State | Time Window | Device | Expected Behavior | Priority |
-|-----|------------|-------------|--------|-------------------|----------|
-| HS-001 | New User | Market Hours | iOS | Onboarding layout with sign-up CTA and market overview | P0 |
-| HS-002 | New User | Market Hours | Android | Same layout with platform-specific adjustments | P0 |
-| HS-003 | KYC Pending | Market Hours | iOS | KYC prompt at top, limited trading access | P0 |
-| HS-004 | Active Trader | Pre-market | iOS | Pre-market data highlighted, watchlist prioritized | P0 |
-| HS-005 | Active Trader | Market Hours | iOS | Quick trade buttons expanded, real-time charts | P0 |
-| HS-006 | Active Trader | Post-market | iOS | After-hours summary, earnings calendar | P1 |
-| HS-007 | Long-term Investor | Market Hours | Android | Portfolio performance, research tools | P0 |
-| HS-008 | Long-term Investor | Weekend | Web | Weekly review tools, planning features | P1 |
-| HS-009 | New User | Weekend | iOS | Educational content, market closed indicators | P1 |
-| HS-010 | KYC Pending | Pre-market | Android | KYC reminder, trading locked | P1 |
+| ID | Scenario | Input / Action | Expected Result | Priority |
+|----|----------|----------------|-----------------|----------|
+| ER-001 | **Server 500 Error** | User taps "Buy" on Order Pad → Simulate 500 API Error | "Retry" action toast appears <100ms; Copy "Connection slow" | P0 |
+| ER-002 | **Network Failure** | User tries to load Watchlist → Simulate Offline Mode | "You are offline" message; Cached data displayed (no empty state) | P0 |
+| ER-003 | **Latency Check** | Market Hours (9:15-3:30) → Trigger Error | Render time <100ms (Measure via perf monitor) | P0 |
+| ER-004 | **Rate Limit** | User rapid-taps refresh 5 times | Consolidated "Too many requests" toast; cooldown timer shown | P1 |
+| ER-005 | **Unclear Error** | Trigger generic 400 error (Unknown cause) | Message blames System ("We are having trouble"), NOT User | P1 |
 
-**User States:**
-- **New User** — First-time visitor, no account
-- **KYC Pending** — Account created, verification incomplete
-- **Active Trader** — Verified, frequent trades (>5/week)
-- **Long-term Investor** — Verified, portfolio-focused
-
-**Time Windows:**
-- **Pre-market** — Before 9:15 AM IST
-- **Market Hours** — 9:15 AM - 3:30 PM IST
-- **Post-market** — After 3:30 PM IST
-- **Weekend** — Saturday/Sunday
 
 ---
 
@@ -330,21 +314,21 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 | Risk ID | Risk Type | Description | Probability | Impact | Mitigation |
 |---------|-----------|-------------|-------------|--------|------------|
-| ERW-R1 | Technical | Error classification inaccuracy: Wizard may misclassify errors, providing wrong context | Medium | High | Extensive testing with real error logs; fallback to "general issue" for uncertain cases |
-| ERW-R2 | UX | Alternative overload: Too many recovery options could confuse users | Low | Medium | Limit to max 3 alternatives; user testing to find optimal count |
-| ERW-R3 | Adoption | Users ignore wizard: May dismiss without reading if too intrusive | Medium | Medium | Make dismissible but not auto-dismiss; track engagement metrics |
-| ERW-R4 | Performance | Wizard adds latency: Classification logic delays error display | Low | High | Error classification must complete in <100ms; async processing |
-| ERW-R5 | Data | Privacy concerns: Logging user actions during errors | Low | Medium | Anonymize all logged data; transparent privacy notice |
+| SER-R1 | Technical | Error classification inaccuracy: System may misclassify errors, providing wrong context | Medium | High | Conservative classification: If ambiguous, default to "Connection Issue" (blame system), NEVER blame user. |
+| SER-R2 | UX | Alternative overload: Too many recovery options could confuse users | Low | Medium | Limit to max 2 critical alternatives; use compact "Toast" design |
+| SER-R3 | Adoption | Users ignore wizard: May dismiss without reading if too intrusive | Medium | Medium | Make dismissible but not auto-dismiss; track engagement metrics |
+| SER-R4 | Performance | Latency overhead: Classification logic delays UI | Low | High | Pre-fetch alternative maps; Render UI immediately (<50ms) before classification finishes |
+| SER-R5 | Data | Privacy concerns: Logging user actions during errors | Low | Medium | Anonymize all logged data; transparent privacy notice |
 
 ### Risk Response Strategy
 
 | Risk ID | Response | Owner | Trigger |
 |---------|----------|-------|---------|
-| ERW-R1 | Implement conservative classification with "Unknown Error" fallback | Engineering | >5% misclassification rate in testing |
-| ERW-R2 | A/B test 2 vs. 3 alternatives; choose based on recovery rate | Product | Pre-launch testing |
-| ERW-R3 | Add "helpful" rating to wizard; iterate based on feedback | Product | <50% engagement rate |
-| ERW-R4 | Optimize with pre-computed error mappings; cache common patterns | Engineering | P99 latency >100ms |
-| ERW-R5 | Legal review of logging; implement data retention policy | Product + Legal | Before launch |
+| SER-R1 | Default to "We're having trouble" (System blame) for all ambiguous errors | Engineering | >0% ambiguity in testing |
+| SER-R2 | A/B test 2 vs. 3 alternatives; choose based on recovery rate | Product | Pre-launch testing |
+| SER-R3 | Add "helpful" rating to wizard; iterate based on feedback | Product | <50% engagement rate |
+| SER-R4 | Pre-fetch "Alternative Instruments" mapping at app launch | Engineering | P99 latency >50ms |
+| SER-R5 | Legal review of logging; implement data retention policy | Product + Legal | Before launch |
 
 ---
 
@@ -354,7 +338,7 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 |-------------|:-------------:|:-----------:|:------:|:--:|
 | PRD & Requirements | **R/A** | C | C | I |
 | Error Taxonomy Design | C | **R/A** | I | C |
-| Wizard UI Design | A | I | **R** | I |
+| System UI Design | A | I | **R** | I |
 | Implementation | C | **R/A** | I | C |
 | Test Cases | **R** | C | I | **A** |
 | Rollout Decision | **R/A** | C | I | C |
@@ -365,11 +349,11 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 ## Appendix: User Flow Diagram
 
-### Error Recovery Wizard Flow
+### Smart Error Recovery Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                          USER FLOW: ERROR RECOVERY WIZARD                    │
+│                          USER FLOW: SMART ERROR RECOVERY                     │
 └─────────────────────────────────────────────────────────────────────────────┘
 
     ┌─────────┐
@@ -388,7 +372,7 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
            │
            ▼
     ┌─────────────────────┐
-    │  Error Detected     │ <500ms detection
+    │  Error Detected     │ <50ms detection (Pre-fetched)
     │  Classify Error     │
     └──────────┬──────────┘
                │
@@ -436,32 +420,6 @@ The wizard requires a backend error taxonomy service to classify errors. Here's 
 
 ---
 
-## Appendix: Execution Roadmap
-
-### Phase Overview
-
-| Phase | Timeline | Focus | Key Deliverables |
-|-------|----------|-------|------------------|
-| **NOW** | Months 0-3 | Trust Recovery | Error Recovery Wizard, Offline basics |
-| **NEXT** | Months 3-6 | Cognitive Clarity | Status Explainers, Smart Home |
-| **LATER** | Months 6-12 | Differentiation | Conditional Orders, Vernacular |
-
----
-
-### Detailed Roadmap
-
-| Phase | Feature | Why | Key Metric | Effort | Dependencies |
-|-------|---------|-----|------------|--------|--------------|
-| NOW | Error Recovery Wizard | Directly addresses #1 pain point: trust erosion from generic errors | Session continuation after error | M | API error taxonomy |
-| NOW | Resilient Offline Mode (Basic) | Enables tier-2/3 market access; reduces bounce on poor networks | App load success rate on 2G | L | Service worker setup |
-| NEXT | Transparent Status Explainers | Reduces jargon confusion; aligns with "teaching broker" positioning | Support query reduction | S | Content/UX writing |
-| NEXT | Context-Aware Smart Home | Personalization differentiator; reduces time-to-action | Daily engagement rate | M | User segmentation logic |
-| LATER | Smart Order Assistant | Democratizes algo trading; leverages PACE heritage | Conditional order adoption | L | SEBI compliance review |
-| LATER | RM Chat Integration | Surfaces hidden differentiator during high-friction moments | RM utilization rate | M | RM system integration |
-
-**Effort Legend:** S = Small (< 2 weeks), M = Medium (2-6 weeks), L = Large (> 6 weeks)
-
----
 
 > **Document Owner:** Abhineet Jain  
 > **Stakeholders:** Engineering, Design, QA  

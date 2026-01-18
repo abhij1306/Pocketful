@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/ui/ta
 import { Button } from '@/app/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/app/components/ui/card';
 import { Badge } from '@/app/components/ui/badge';
-import { MobileErrorWizard } from '@/app/components/MobileErrorWizard';
+import { SmartErrorRecovery } from '@/app/components/SmartErrorRecovery';
 import { MobileTradingView } from '@/app/components/MobileTradingView';
 import { DesktopAlgoInterface } from '@/app/components/DesktopAlgoInterface';
 import { DesktopStrategyBuilder } from '@/app/components/DesktopStrategyBuilder';
@@ -27,7 +27,7 @@ type DemoMode = 'landing' | 'mobile-error' | 'desktop-algo';
 
 export default function App() {
   const [demoMode, setDemoMode] = useState<DemoMode>('landing');
-  const [showErrorWizard, setShowErrorWizard] = useState(false);
+  const [showSmartRecovery, setShowSmartRecovery] = useState(false);
   const [errorType, setErrorType] = useState<'DATA_UNAVAILABLE' | 'NETWORK_TIMEOUT' | 'SERVER_ERROR' | 'RATE_LIMITED'>('DATA_UNAVAILABLE');
   const [showStrategyBuilder, setShowStrategyBuilder] = useState(false);
   const [showTSEModal, setShowTSEModal] = useState(false);
@@ -38,7 +38,7 @@ export default function App() {
   const handleMobileErrorDemo = () => {
     setDemoMode('mobile-error');
     setErrorType('DATA_UNAVAILABLE');
-    setShowErrorWizard(true);
+    setShowSmartRecovery(true);
     window.scrollTo(0, 0);
   };
 
@@ -49,7 +49,7 @@ export default function App() {
 
   const triggerError = (type: typeof errorType) => {
     setErrorType(type);
-    setShowErrorWizard(true);
+    setShowSmartRecovery(true);
   };
 
   const handleSaveStrategy = () => {
@@ -69,7 +69,7 @@ export default function App() {
               className="text-gray-600 hover:text-blue-600 font-bold -ml-2 text-xs md:text-sm"
               onClick={() => {
                 setDemoMode('landing');
-                setShowErrorWizard(false);
+                setShowSmartRecovery(false);
                 setTimeout(() => {
                   document.getElementById('features')?.scrollIntoView({ behavior: 'instant' });
                 }, 0);
@@ -108,9 +108,9 @@ export default function App() {
                 <div className="pt-10 md:pt-12 h-full bg-white overflow-y-auto">
                   <MobileTradingView
                     onTriggerError={() => triggerError('DATA_UNAVAILABLE')}
-                    activeError={showErrorWizard ? errorType : null}
+                    activeError={showSmartRecovery ? errorType : null}
                     onRecover={() => {
-                      setShowErrorWizard(false);
+                      setShowSmartRecovery(false);
                       toast.success('System Repaired & Data Re-Hydrated! ✓');
                     }}
                   />
@@ -145,7 +145,7 @@ export default function App() {
                     </div>
                     <span className="font-bold text-gray-900 text-sm">Network Timeout</span>
                   </div>
-                  <p className="text-xs text-gray-500 leading-tight">Simulates complete connectivity loss. Triggers full-screen blocking wizard.</p>
+                  <p className="text-xs text-gray-500 leading-tight">Simulates complete connectivity loss. Triggers full-screen blocking smart recovery.</p>
                 </div>
 
                 <div className="p-4 bg-white rounded-xl border border-gray-200 shadow-sm space-y-3 transition-all hover:border-purple-300 hover:shadow-md group cursor-pointer" onClick={() => triggerError('SERVER_ERROR')}>
@@ -172,13 +172,13 @@ export default function App() {
           </div>
         </div>
 
-        {/* Wizard Overlay - Only for Non-Inline Errors */}
-        {showErrorWizard && errorType !== 'DATA_UNAVAILABLE' && (
-          <MobileErrorWizard
+        {/* Recovery Overlay - Only for Non-Inline Errors */}
+        {showSmartRecovery && errorType !== 'DATA_UNAVAILABLE' && (
+          <SmartErrorRecovery
             errorType={errorType}
-            onClose={() => setShowErrorWizard(false)}
+            onClose={() => setShowSmartRecovery(false)}
             onRecover={() => {
-              setShowErrorWizard(false);
+              setShowSmartRecovery(false);
               toast.success('System Repaired & Data Re-Hydrated! ✓');
             }}
           />
@@ -253,10 +253,11 @@ export default function App() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
-              <a href="#audit" className="hover:text-gray-900 transition-colors">Audit Analysis</a>
-              <a href="#competitors" className="hover:text-gray-900 transition-colors">Strategy</a>
+              <a href="#journey" className="hover:text-gray-900 transition-colors">KYC Analysis</a>
               <a href="#features" className="hover:text-gray-900 transition-colors">Innovation</a>
-              <a href="#artifacts" className="hover:text-gray-900 transition-colors">Documentation</a>
+              <a href="#wireframes" className="hover:text-gray-900 transition-colors">Feature Design</a>
+              <a href="#audit" className="hover:text-gray-900 transition-colors">Performance Analysis</a>
+              <a href="#competitors" className="hover:text-gray-900 transition-colors">Competition Analysis</a>
               <a href="#footer" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold px-4 py-2 text-xs transition-all">Connect</a>
             </div>
 
@@ -274,10 +275,11 @@ export default function App() {
           {isMobileMenuOpen && (
             <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl animate-in slide-in-from-top-2 duration-200">
               <div className="flex flex-col p-4 gap-1">
-                <a href="#audit" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Audit Analysis</a>
-                <a href="#competitors" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Strategy</a>
+                <a href="#journey" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>KYC Analysis</a>
                 <a href="#features" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Innovation</a>
-                <a href="#artifacts" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Documentation</a>
+                <a href="#wireframes" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Feature Design</a>
+                <a href="#audit" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Performance Analysis</a>
+                <a href="#competitors" className="text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Competition Analysis</a>
                 <a href="#footer" className="text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50 mt-2" onClick={() => setIsMobileMenuOpen(false)}>Connect →</a>
               </div>
             </div>
@@ -375,13 +377,443 @@ export default function App() {
           </div>
         </section>
 
-        {/* Technical Audit Section */}
+        {/* User Journey Audit Section */}
+        <section id="journey" className="py-20 md:py-24 bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-teal-50 text-teal-700 border border-teal-100 rounded-full text-xs font-bold uppercase tracking-wider">
+                <FileText className="size-3" />
+                Live User Audit
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">KYC Analysis</h2>
+              <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                Real-world verification of the account opening process on {KYC_JOURNEY.summary.platform}.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Summary Card */}
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-6 h-fit">
+                <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <Clock className="size-5 text-teal-600" />
+                  Execution Summary
+                </h3>
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-3xl font-bold text-gray-900 mb-1">~12 min</div>
+                    <div className="text-sm font-medium text-gray-500">Total Time to Trade-Ready</div>
+                    <div className="mt-2 w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                      <div className="bg-teal-500 h-full w-[70%]" title="Pocketful (12m)"></div>
+                    </div>
+                    <div className="flex justify-between text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-wide">
+                      <span>Pocketful (12m)</span>
+                      <span>Avg (15m)</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-gray-100 space-y-3">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">Platform</span>
+                      <span className="font-bold text-gray-900">{KYC_JOURNEY.summary.platform}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">Network</span>
+                      <span className="font-bold text-gray-900">{KYC_JOURNEY.summary.network}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-gray-100">
+                    <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">Highlights</h4>
+                    <ul className="space-y-2">
+                      {KYC_JOURNEY.highlights.map((highlight, i) => (
+                        <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
+                          <CheckCircle className="size-4 text-green-500 shrink-0 mt-0.5" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step Timeline */}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+                  <h3 className="text-lg font-bold text-gray-900 mb-6">Journey Timeline</h3>
+                  <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-200 before:to-transparent">
+                    {KYC_JOURNEY.steps.map((step, i) => (
+                      <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-xl border-4 border-white bg-teal-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-teal-700 font-bold text-sm">
+                          {step.step}
+                        </div>
+                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-teal-200 transition-colors">
+                          <div className="flex justify-between items-start mb-1">
+                            <span className="font-bold text-gray-900 text-sm">{step.action}</span>
+                            <span className="text-xs font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded-md">{step.time}</span>
+                          </div>
+                          <p className="text-sm text-gray-500">{step.experience}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pain Points */}
+                <div className="bg-red-50/50 rounded-2xl border border-red-100 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-red-100 rounded-lg text-red-600">
+                      <ShieldAlert className="size-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-red-900">Friction Points Identified</h3>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {KYC_JOURNEY.painPoints.map((point, i) => (
+                      <div key={i} className="bg-white p-4 rounded-xl border border-red-100 shadow-sm">
+                        <div className="text-xs font-bold text-red-500 uppercase tracking-wider mb-1">{point.issue}</div>
+                        <div className="text-sm font-medium text-gray-900">{point.suggestion}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="features" className="py-20 md:py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-12 text-center">
+              <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-none font-bold mb-4 px-3 py-1 text-xs">Product Innovation</Badge>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">The Innovation Suite</h2>
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
+            </div>
+
+            {/* Target Users & Business Metrics Legend */}
+            <div className="mb-12 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Target User Groups */}
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target User Groups</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {PERSONAS.map((p) => (
+                      <div key={p.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].bg} ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].border} border`}>
+                        <span className="text-sm">{p.icon}</span>
+                        <span className={`text-xs font-medium ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].text}`}>{p.name.split(' ')[0]}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Target Business Metrics */}
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target Business Metrics</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {TARGET_BUSINESS_METRICS.map((m) => (
+                      <div key={m.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].bg} border border-transparent`}>
+                        <div className={`size-2 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].dot}`}></div>
+                        <span className={`text-xs font-medium ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].text}`}>{m.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {PRD_DATA.features.map((feature, idx) => {
+                const mapping = FEATURE_MAPPING[feature.id as keyof typeof FEATURE_MAPPING];
+                return (
+                  <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
+                    <div className="mb-6">
+                      <div className="flex flex-wrap items-center gap-2 mb-4">
+                        <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
+
+                        {/* Persona indicators */}
+                        {mapping?.personas.map((pId) => {
+                          const persona = PERSONAS.find(p => p.id === pId);
+                          const colors = PERSONA_COLORS[pId as keyof typeof PERSONA_COLORS];
+                          return persona && (
+                            <span key={pId} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${colors.bg} ${colors.text} ${colors.border} border`}>
+                              {persona.icon} {persona.name.split(' ')[0]}
+                            </span>
+                          );
+                        })}
+                      </div>
+
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+                      <p className="text-gray-600 text-base leading-relaxed">{feature.valueProp}</p>
+
+                      {/* Metric indicators */}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {mapping?.metrics.map((mId) => {
+                          const metric = TARGET_BUSINESS_METRICS.find(m => m.id === mId);
+                          const colors = METRIC_COLORS[mId as keyof typeof METRIC_COLORS];
+                          return metric && (
+                            <span key={mId} className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-medium ${colors.bg} ${colors.text}`}>
+                              <span className={`size-1.5 rounded-full ${colors.dot}`}></span>
+                              {metric.name}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="space-y-6 mt-auto">
+                      <div className="grid gap-4">
+                        {feature.successMetrics.slice(0, 3).map((metric, i) => (
+                          <div key={i} className="flex items-start gap-4 text-gray-700">
+                            <div className="size-6 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                              <CheckCircle className="size-3.5 text-green-600" />
+                            </div>
+                            <span className="font-bold text-gray-900 text-sm leading-tight">{metric.metric}: {metric.targetM6}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Embedded Risk Assessment */}
+                      {(() => {
+                        const riskItem = RISK_ASSESSMENT.find(r => r.featureId === feature.id);
+                        if (!riskItem) return null;
+                        return (
+                          <div className="mt-6 p-4 bg-orange-50/50 rounded-xl border border-orange-100">
+                            <h4 className="flex items-center gap-2 text-[10px] font-bold text-orange-800 uppercase tracking-widest mb-3">
+                              <AlertCircle className="size-3" /> Risk Profile
+                            </h4>
+                            <div className="space-y-3">
+                              {riskItem.risks.map((risk, idx) => (
+                                <div key={idx} className="text-xs">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <Badge variant="outline" className="bg-white text-orange-700 border-orange-200 text-[9px] px-1.5 py-0 h-5">
+                                      {risk.type}
+                                    </Badge>
+                                    <span className="font-medium text-gray-700">{risk.description}</span>
+                                  </div>
+                                  <div className="pl-2 border-l-2 border-orange-200 ml-1">
+                                    <p className="text-[10px] text-gray-500 pl-2 leading-snug"><span className="font-bold text-orange-600">Mitigation:</span> {risk.mitigation}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })()}
+
+                      {feature.id === 'SER' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
+                          Launch Mobile Demo <ArrowRight className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'SOA' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
+                          Open Order Assistant <Monitor className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'TSE' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowTSEModal(true)}>
+                          View Explainer Demo <Info className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'ROM' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowROMModal(true)}>
+                          View Offline Mode <Users className="ml-2 size-4" />
+                        </Button>
+                      ) : feature.id === 'CASH' ? (
+                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowCASHModal(true)}>
+                          View Smart Home <Zap className="ml-2 size-4" />
+                        </Button>
+                      ) : null}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Feature Design (Wireframes) Section */}
+        <section id="wireframes" className="py-16 md:py-24 bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-10 text-center">
+              <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-100 font-bold mb-4 px-3 py-1 text-xs">Feature Design</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Visual Interface Design</h2>
+              <p className="text-gray-500 text-lg max-w-3xl mx-auto">High-fidelity schematic representation of the proposed Smart Error Recovery system.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-2xl border border-red-200 shadow-md p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Badge className="bg-red-100 text-red-700">Before</Badge>
+                  <span className="text-sm font-medium text-gray-500">Current Error State</span>
+                </div>
+                <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
+                  <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.smartRecoveryBefore} alt="Before: Generic error message" className="w-full h-auto" />
+                </div>
+                <ul className="mt-4 space-y-2">
+                  <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No explanation of what went wrong</li>
+                  <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No alternative actions offered</li>
+                  <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> User left stranded</li>
+                </ul>
+              </div>
+
+              <div className="bg-white rounded-2xl border border-green-200 shadow-md p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Badge className="bg-green-100 text-green-700">After</Badge>
+                  <span className="text-sm font-medium text-gray-500">Smart Error Recovery</span>
+                </div>
+                <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
+                  <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.smartRecoveryAfter} alt="After: Smart Error Recovery" className="w-full h-auto" />
+                </div>
+                <ul className="mt-4 space-y-2">
+                  <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Clear explanation of issue</li>
+                  <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Multiple recovery options</li>
+                  <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> User stays in control</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* User Flow Diagram */}
+            <div className="mt-20">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-px w-12 bg-gray-200"></div>
+                <h3 className="text-xl font-bold text-gray-900">User Flow: Smart Error Recovery</h3>
+                <div className="h-px flex-1 bg-gray-100"></div>
+              </div>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 md:p-8 overflow-hidden">
+                <div className="overflow-x-auto pb-4">
+                  <div className="flex items-center gap-2 md:gap-3 min-w-[900px]">
+                    {/* Start */}
+                    <div className="flex flex-col items-center">
+                      <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
+                        <div className="size-4 rounded-full bg-white"></div>
+                      </div>
+                      <span className="text-[10px] font-medium text-gray-500 mt-1">Start</span>
+                    </div>
+                    <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                    {/* User Action */}
+                    <div className="bg-yellow-100 border border-yellow-300 rounded-lg px-3 py-2 text-center min-w-[100px]">
+                      <span className="text-xs font-medium text-yellow-800">Tap Technicals</span>
+                    </div>
+                    <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                    {/* API Call */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center min-w-[90px]">
+                      <span className="text-xs font-medium text-blue-700">API Call</span>
+                    </div>
+                    <ArrowRight className="size-4 text-gray-300 shrink-0" />
+
+                    {/* Decision */}
+                    <div className="relative flex items-center justify-center">
+                      <div className="size-16 bg-blue-100 border border-blue-300 rotate-45"></div>
+                      <span className="absolute text-[10px] font-bold text-blue-700">Response?</span>
+                    </div>
+
+                    {/* Branches */}
+                    <div className="flex flex-col gap-4 ml-4">
+                      {/* Success Path */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">200</span>
+                        <ArrowRight className="size-3 text-green-400 shrink-0" />
+                        <div className="bg-green-100 border border-green-300 rounded-lg px-3 py-1.5 text-center">
+                          <span className="text-xs font-medium text-green-700">Display Data</span>
+                        </div>
+                      </div>
+
+                      {/* Error Path */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-medium text-red-600 bg-red-50 px-1.5 py-0.5 rounded">Error</span>
+                        <ArrowRight className="size-3 text-red-400 shrink-0" />
+                        <div className="bg-red-100 border border-red-300 rounded-lg px-3 py-1.5 text-center">
+                          <span className="text-xs font-medium text-red-700">Classify Error</span>
+                        </div>
+                        <ArrowRight className="size-3 text-gray-300 shrink-0" />
+
+                        {/* Error Type Decision */}
+                        <div className="relative flex items-center justify-center">
+                          <div className="size-12 bg-orange-100 border border-orange-300 rotate-45"></div>
+                          <span className="absolute text-[8px] font-bold text-orange-700">Type?</span>
+                        </div>
+
+                        <div className="flex flex-col gap-1 ml-2">
+                          <div className="flex items-center gap-1">
+                            <div className="bg-yellow-50 border border-yellow-200 rounded px-2 py-0.5">
+                              <span className="text-[10px] text-yellow-700">Smart Recovery</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <div className="bg-purple-50 border border-purple-200 rounded px-2 py-0.5">
+                              <span className="text-[10px] text-purple-700">Network Guide</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <div className="bg-gray-50 border border-gray-200 rounded px-2 py-0.5">
+                              <span className="text-[10px] text-gray-700">Support Options</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <ArrowRight className="size-3 text-gray-300 shrink-0 ml-2" />
+
+                        {/* Recovery Actions */}
+                        <div className="flex flex-col gap-1">
+                          <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                            <span className="text-[10px] text-blue-700">Retry</span>
+                          </div>
+                          <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                            <span className="text-[10px] text-blue-700">Alternative</span>
+                          </div>
+                          <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
+                            <span className="text-[10px] text-blue-700">Report</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ArrowRight className="size-4 text-gray-300 shrink-0 ml-4" />
+
+                    {/* End */}
+                    <div className="flex flex-col items-center">
+                      <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
+                        <div className="size-6 rounded-full bg-green-600 flex items-center justify-center">
+                          <div className="size-3 rounded-full bg-white"></div>
+                        </div>
+                      </div>
+                      <span className="text-[10px] font-medium text-gray-500 mt-1">Session Continues</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-4 mt-4 pt-4 border-t border-gray-100 text-[10px]">
+                  <div className="flex items-center gap-1.5">
+                    <div className="size-3 rounded-full bg-green-500"></div>
+                    <span className="text-gray-500">Start/End</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="size-3 bg-yellow-100 border border-yellow-300 rounded"></div>
+                    <span className="text-gray-500">User Action</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="size-3 bg-blue-50 border border-blue-200 rounded"></div>
+                    <span className="text-gray-500">Process</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="size-3 bg-blue-100 border border-blue-300 rotate-45"></div>
+                    <span className="text-gray-500">Decision</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="size-3 bg-red-100 border border-red-300 rounded"></div>
+                    <span className="text-gray-500">Error State</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Performance Analysis (Formerly Audit) Section */}
         <section id="audit" className="py-20 md:py-32 bg-gray-50/50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
               <div>
                 <Badge variant="outline" className="bg-red-50 text-red-600 border-red-100 font-bold mb-4 px-3 py-1 text-xs">Critical Analysis</Badge>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Flaw Analysis</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Performance Analysis</h2>
                 <p className="text-gray-500 text-lg font-medium max-w-2xl">Systematic review of identified usability gaps following firsthand evaluation.</p>
               </div>
               <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm font-bold text-gray-700 w-fit">
@@ -456,12 +888,16 @@ export default function App() {
           </div>
         </section>
 
+
+
+        {/* Artifact Hub Section - FULL PREMIUM LIGHT */}
+
         {/* Competitor Analysis Section - PREMIUM LIGHT THEME */}
         <section id="competitors" className="py-20 md:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col items-center text-center mb-16 md:mb-20">
               <Badge variant="outline" className="bg-indigo-50 text-indigo-700 border-indigo-100 font-bold mb-6 px-4 py-1.5 text-xs">Market Intelligence</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Competitor Strategy Hub</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Competition Analysis</h2>
               <p className="text-gray-500 text-lg max-w-3xl leading-relaxed">
                 Positioning Pocketful relative to industry incumbents like Zerodha and Groww, identifying blue-ocean opportunities for retail adoption.
               </p>
@@ -652,219 +1088,18 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Wireframe Mockups */}
-              <div id="wireframes" className="scroll-mt-32">
-                <div className="flex items-center gap-4 mb-8 md:mb-12">
-                  <div className="h-px w-12 bg-gray-200"></div>
-                  <h3 className="text-xl font-bold text-gray-900">Wireframe: Error Recovery Wizard</h3>
-                  <div className="h-px flex-1 bg-gray-100"></div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="bg-white rounded-2xl border border-red-200 shadow-md p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Badge className="bg-red-100 text-red-700">Before</Badge>
-                      <span className="text-sm font-medium text-gray-500">Current Error State</span>
-                    </div>
-                    <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
-                      <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.errorWizardBefore} alt="Before: Generic error message" className="w-full h-auto" />
-                    </div>
-                    <ul className="mt-4 space-y-2">
-                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No explanation of what went wrong</li>
-                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> No alternative actions offered</li>
-                      <li className="text-sm text-red-600 flex items-start gap-2"><span>✗</span> User left stranded</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-white rounded-2xl border border-green-200 shadow-md p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Badge className="bg-green-100 text-green-700">After</Badge>
-                      <span className="text-sm font-medium text-gray-500">Error Recovery Wizard</span>
-                    </div>
-                    <div className="rounded-xl overflow-hidden border-4 border-gray-100 shadow-lg">
-                      <img src={DEEP_COMPETITIVE_ANALYSIS.wireframeMockups.errorWizardAfter} alt="After: Error Recovery Wizard" className="w-full h-auto" />
-                    </div>
-                    <ul className="mt-4 space-y-2">
-                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Clear explanation of issue</li>
-                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> Multiple recovery options</li>
-                      <li className="text-sm text-green-600 flex items-start gap-2"><span>✓</span> User stays in control</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="py-20 md:py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-12">
-              <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-none font-bold mb-4 px-3 py-1 text-xs">Product Innovation</Badge>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">The Innovation Suite</h2>
-              <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
-            </div>
 
-            {/* Target Users & Business Metrics Legend */}
-            <div className="mb-12 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Target User Groups */}
-                <div>
-                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target User Groups</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {PERSONAS.map((p) => (
-                      <div key={p.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].bg} ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].border} border`}>
-                        <span className="text-sm">{p.icon}</span>
-                        <span className={`text-xs font-medium ${PERSONA_COLORS[p.id as keyof typeof PERSONA_COLORS].text}`}>{p.name.split(' ')[0]}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Target Business Metrics */}
-                <div>
-                  <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Target Business Metrics</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {TARGET_BUSINESS_METRICS.map((m) => (
-                      <div key={m.id} className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].bg} border border-transparent`}>
-                        <div className={`size-2 rounded-full ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].dot}`}></div>
-                        <span className={`text-xs font-medium ${METRIC_COLORS[m.id as keyof typeof METRIC_COLORS].text}`}>{m.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {PRD_DATA.features.map((feature, idx) => {
-                const mapping = FEATURE_MAPPING[feature.id as keyof typeof FEATURE_MAPPING];
-                return (
-                  <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
-                    <div className="mb-6">
-                      <div className="flex flex-wrap items-center gap-2 mb-4">
-                        <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
-
-                        {/* Persona indicators */}
-                        {mapping?.personas.map((pId) => {
-                          const persona = PERSONAS.find(p => p.id === pId);
-                          const colors = PERSONA_COLORS[pId as keyof typeof PERSONA_COLORS];
-                          return persona && (
-                            <span key={pId} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${colors.bg} ${colors.text} ${colors.border} border`}>
-                              {persona.icon} {persona.name.split(' ')[0]}
-                            </span>
-                          );
-                        })}
-                      </div>
-
-                      <h3 className="text-2xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-                      <p className="text-gray-600 text-base leading-relaxed">{feature.valueProp}</p>
-
-                      {/* Metric indicators */}
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {mapping?.metrics.map((mId) => {
-                          const metric = TARGET_BUSINESS_METRICS.find(m => m.id === mId);
-                          const colors = METRIC_COLORS[mId as keyof typeof METRIC_COLORS];
-                          return metric && (
-                            <span key={mId} className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-medium ${colors.bg} ${colors.text}`}>
-                              <span className={`size-1.5 rounded-full ${colors.dot}`}></span>
-                              {metric.name}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    <div className="space-y-6 mt-auto">
-                      <div className="grid gap-4">
-                        {feature.successMetrics.slice(0, 3).map((metric, i) => (
-                          <div key={i} className="flex items-start gap-4 text-gray-700">
-                            <div className="size-6 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
-                              <CheckCircle className="size-3.5 text-green-600" />
-                            </div>
-                            <span className="font-bold text-gray-900 text-sm leading-tight">{metric.metric}: {metric.targetM6}</span>
-                          </div>
-                        ))}
-                      </div>
-                      {feature.id === 'ERW' ? (
-                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
-                          Launch Mobile Demo <ArrowRight className="ml-2 size-4" />
-                        </Button>
-                      ) : feature.id === 'SOA' ? (
-                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleDesktopAlgoDemo}>
-                          Open Order Assistant <Monitor className="ml-2 size-4" />
-                        </Button>
-                      ) : feature.id === 'TSE' ? (
-                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowTSEModal(true)}>
-                          View Explainer Demo <Info className="ml-2 size-4" />
-                        </Button>
-                      ) : feature.id === 'ROM' ? (
-                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowROMModal(true)}>
-                          View Offline Mode <Users className="ml-2 size-4" />
-                        </Button>
-                      ) : feature.id === 'CASH' ? (
-                        <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={() => setShowCASHModal(true)}>
-                          View Smart Home <Zap className="ml-2 size-4" />
-                        </Button>
-                      ) : null}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Risk Assessment Section */}
-        <section id="risks" className="py-16 md:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-10">
-              <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-100 font-bold mb-4 px-3 py-1 text-xs">Risk Management</Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Risk Assessment</h2>
-              <p className="text-gray-600 text-base max-w-3xl">Proactive identification of potential risks and mitigation strategies for proposed features.</p>
-            </div>
-
-            <div className="grid gap-4">
-              {RISK_ASSESSMENT.map((item) => (
-                <div key={item.featureId} className="bg-gray-50 rounded-xl border border-gray-100 p-5 hover:shadow-md transition-all">
-                  <div className="flex items-center gap-3 mb-4">
-                    <h3 className="font-bold text-gray-900">{item.feature}</h3>
-                    <Badge variant="outline" className="text-[10px] bg-white">{item.featureId}</Badge>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    {item.risks.map((risk, i) => (
-                      <div key={i} className="bg-white rounded-lg border border-gray-100 p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${risk.type === 'Regulatory' ? 'bg-red-100 text-red-700' :
-                            risk.type === 'User Loss' ? 'bg-red-100 text-red-700' :
-                              risk.type === 'Technical' ? 'bg-yellow-100 text-yellow-700' :
-                                risk.type === 'UX' ? 'bg-blue-100 text-blue-700' :
-                                  risk.type === 'Privacy' ? 'bg-purple-100 text-purple-700' :
-                                    'bg-gray-100 text-gray-700'
-                            }`}>{risk.type}</span>
-                        </div>
-                        <p className="text-sm text-gray-600 mb-2">{risk.description}</p>
-                        <div className="flex items-start gap-2">
-                          <span className="text-[10px] font-bold text-green-600 uppercase shrink-0 mt-0.5">Mitigation:</span>
-                          <span className="text-xs text-gray-500">{risk.mitigation}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Artifact Hub Section - FULL PREMIUM LIGHT */}
         <section id="artifacts" className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <div className="mb-10 md:mb-16">
+            <div className="mb-10 md:mb-16 text-center">
               <Badge variant="secondary" className="bg-purple-50 text-purple-700 border-none font-bold mb-4 px-3 py-1 uppercase tracking-widest text-[9px]">Submission Package</Badge>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Strategic Documentation Hub</h2>
-              <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
                 Comprehensive repository spanning Product Requirements, UAT protocols, and execution timelines.
               </p>
             </div>
@@ -903,14 +1138,6 @@ export default function App() {
                               <div className="bg-gray-50/50 rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-50">
                                 <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest mb-3 md:mb-4">Problem Scope</h4>
                                 <p className="font-medium text-gray-700 leading-relaxed text-sm md:text-base break-words">{f.problem}</p>
-                              </div>
-                              <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border border-gray-100 shadow-lg md:shadow-xl overflow-hidden">
-                                <div className="flex items-center justify-between mb-4 md:mb-6">
-                                  <h4 className="text-xs md:text-sm font-bold text-gray-900 uppercase tracking-widest">API Protocol</h4>
-                                </div>
-                                <div className="bg-gray-50 p-3 md:p-4 rounded-lg md:rounded-xl border border-gray-200 overflow-x-auto -mx-1 px-1">
-                                  <code className="block font-mono text-[10px] md:text-xs text-blue-600 font-bold">{f.techSpecs.api}</code>
-                                </div>
                               </div>
                             </div>
 
@@ -981,6 +1208,9 @@ export default function App() {
                 </div>
               </div>
 
+
+
+
               {/* 2. UAT Scenarios */}
               <div id="uat" className="scroll-mt-32">
                 <div className="flex items-center gap-4 mb-12">
@@ -1008,29 +1238,29 @@ export default function App() {
                             <TableCell className="pl-4 py-3 font-mono text-xs font-bold text-gray-600">{uat.id}</TableCell>
                             <TableCell className="py-3">
                               <Badge className={`text-[10px] font-medium ${uat.userState === 'New User' ? 'bg-green-100 text-green-700' :
-                                  uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
-                                    uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
-                                      'bg-purple-100 text-purple-700'
+                                uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
+                                  uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
+                                    'bg-purple-100 text-purple-700'
                                 }`}>{uat.userState}</Badge>
                             </TableCell>
                             <TableCell className="py-3">
                               <Badge variant="outline" className={`text-[10px] ${uat.timeWindow === 'Market Hours' ? 'border-green-200 text-green-700' :
-                                  uat.timeWindow === 'Pre-market' ? 'border-blue-200 text-blue-700' :
-                                    uat.timeWindow === 'Post-market' ? 'border-orange-200 text-orange-700' :
-                                      'border-gray-200 text-gray-600'
+                                uat.timeWindow === 'Pre-market' ? 'border-blue-200 text-blue-700' :
+                                  uat.timeWindow === 'Post-market' ? 'border-orange-200 text-orange-700' :
+                                    'border-gray-200 text-gray-600'
                                 }`}>{uat.timeWindow}</Badge>
                             </TableCell>
                             <TableCell className="py-3">
                               <Badge className={`text-[10px] ${uat.device === 'iOS' ? 'bg-gray-800 text-white' :
-                                  uat.device === 'Android' ? 'bg-green-600 text-white' :
-                                    'bg-blue-500 text-white'
+                                uat.device === 'Android' ? 'bg-green-600 text-white' :
+                                  'bg-blue-500 text-white'
                                 }`}>{uat.device}</Badge>
                             </TableCell>
                             <TableCell className="py-3 text-gray-600 text-xs max-w-[250px]">{uat.behavior}</TableCell>
                             <TableCell className="py-3 text-center">
                               <Badge className={`text-[10px] ${uat.priority === 'P0' ? 'bg-red-100 text-red-700' :
-                                  uat.priority === 'P1' ? 'bg-orange-100 text-orange-700' :
-                                    'bg-gray-100 text-gray-600'
+                                uat.priority === 'P1' ? 'bg-orange-100 text-orange-700' :
+                                  'bg-gray-100 text-gray-600'
                                 }`}>{uat.priority}</Badge>
                             </TableCell>
                             <TableCell className="pr-4 py-3 text-right">
@@ -1044,141 +1274,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* 2.5 User Flow Diagram */}
-              <div id="userflow" className="scroll-mt-32 mt-20">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="h-px w-12 bg-gray-200"></div>
-                  <h3 className="text-xl font-bold text-gray-900">User Flow: Error Recovery Wizard</h3>
-                  <div className="h-px flex-1 bg-gray-100"></div>
-                </div>
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 md:p-8 overflow-hidden">
-                  <div className="overflow-x-auto pb-4">
-                    <div className="flex items-center gap-2 md:gap-3 min-w-[900px]">
-                      {/* Start */}
-                      <div className="flex flex-col items-center">
-                        <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
-                          <div className="size-4 rounded-full bg-white"></div>
-                        </div>
-                        <span className="text-[10px] font-medium text-gray-500 mt-1">Start</span>
-                      </div>
-                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
 
-                      {/* User Action */}
-                      <div className="bg-yellow-100 border border-yellow-300 rounded-lg px-3 py-2 text-center min-w-[100px]">
-                        <span className="text-xs font-medium text-yellow-800">Tap Technicals</span>
-                      </div>
-                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
-
-                      {/* API Call */}
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center min-w-[90px]">
-                        <span className="text-xs font-medium text-blue-700">API Call</span>
-                      </div>
-                      <ArrowRight className="size-4 text-gray-300 shrink-0" />
-
-                      {/* Decision */}
-                      <div className="relative flex items-center justify-center">
-                        <div className="size-16 bg-blue-100 border border-blue-300 rotate-45"></div>
-                        <span className="absolute text-[10px] font-bold text-blue-700">Response?</span>
-                      </div>
-
-                      {/* Branches */}
-                      <div className="flex flex-col gap-4 ml-4">
-                        {/* Success Path */}
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded">200</span>
-                          <ArrowRight className="size-3 text-green-400 shrink-0" />
-                          <div className="bg-green-100 border border-green-300 rounded-lg px-3 py-1.5 text-center">
-                            <span className="text-xs font-medium text-green-700">Display Data</span>
-                          </div>
-                        </div>
-
-                        {/* Error Path */}
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-medium text-red-600 bg-red-50 px-1.5 py-0.5 rounded">Error</span>
-                          <ArrowRight className="size-3 text-red-400 shrink-0" />
-                          <div className="bg-red-100 border border-red-300 rounded-lg px-3 py-1.5 text-center">
-                            <span className="text-xs font-medium text-red-700">Classify Error</span>
-                          </div>
-                          <ArrowRight className="size-3 text-gray-300 shrink-0" />
-
-                          {/* Error Type Decision */}
-                          <div className="relative flex items-center justify-center">
-                            <div className="size-12 bg-orange-100 border border-orange-300 rotate-45"></div>
-                            <span className="absolute text-[8px] font-bold text-orange-700">Type?</span>
-                          </div>
-
-                          <div className="flex flex-col gap-1 ml-2">
-                            <div className="flex items-center gap-1">
-                              <div className="bg-yellow-50 border border-yellow-200 rounded px-2 py-0.5">
-                                <span className="text-[10px] text-yellow-700">Countdown Wizard</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <div className="bg-purple-50 border border-purple-200 rounded px-2 py-0.5">
-                                <span className="text-[10px] text-purple-700">Network Guide</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <div className="bg-gray-50 border border-gray-200 rounded px-2 py-0.5">
-                                <span className="text-[10px] text-gray-700">Support Options</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <ArrowRight className="size-3 text-gray-300 shrink-0 ml-2" />
-
-                          {/* Recovery Actions */}
-                          <div className="flex flex-col gap-1">
-                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
-                              <span className="text-[10px] text-blue-700">Retry</span>
-                            </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
-                              <span className="text-[10px] text-blue-700">Alternative</span>
-                            </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5 text-center">
-                              <span className="text-[10px] text-blue-700">Report</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <ArrowRight className="size-4 text-gray-300 shrink-0 ml-4" />
-
-                      {/* End */}
-                      <div className="flex flex-col items-center">
-                        <div className="size-10 rounded-full bg-green-500 flex items-center justify-center">
-                          <div className="size-6 rounded-full bg-green-600 flex items-center justify-center">
-                            <div className="size-3 rounded-full bg-white"></div>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-medium text-gray-500 mt-1">Session Continues</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-4 mt-4 pt-4 border-t border-gray-100 text-[10px]">
-                    <div className="flex items-center gap-1.5">
-                      <div className="size-3 rounded-full bg-green-500"></div>
-                      <span className="text-gray-500">Start/End</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className="size-3 bg-yellow-100 border border-yellow-300 rounded"></div>
-                      <span className="text-gray-500">User Action</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className="size-3 bg-blue-50 border border-blue-200 rounded"></div>
-                      <span className="text-gray-500">Process</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className="size-3 bg-blue-100 border border-blue-300 rotate-45"></div>
-                      <span className="text-gray-500">Decision</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className="size-3 bg-red-100 border border-red-300 rounded"></div>
-                      <span className="text-gray-500">Error State</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* 3. Execution Roadmap */}
               <div id="roadmap" className="scroll-mt-32 mb-20">
