@@ -314,7 +314,7 @@ export default function App() {
         </section>
 
         {/* User Personas Section */}
-        <section id="personas" className="py-20 md:py-24 bg-white">
+        <section id="personas" className="py-12 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-12 md:mb-16">
               <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-100 font-bold mb-4 px-3 py-1 text-xs">User Research</Badge>
@@ -378,7 +378,7 @@ export default function App() {
         </section>
 
         {/* User Journey Audit Section */}
-        <section id="journey" className="py-20 md:py-24 bg-white border-t border-gray-100">
+        <section id="journey" className="py-12 md:py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-teal-50 text-teal-700 border border-teal-100 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -481,7 +481,7 @@ export default function App() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-20 md:py-24 bg-gray-50">
+        <section id="features" className="py-12 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-12 text-center">
               <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-none font-bold mb-4 px-3 py-1 text-xs">Product Innovation</Badge>
@@ -524,7 +524,7 @@ export default function App() {
               {PRD_DATA.features.map((feature, idx) => {
                 const mapping = FEATURE_MAPPING[feature.id as keyof typeof FEATURE_MAPPING];
                 return (
-                  <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
+                  <div key={feature.id} className={`group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-6 md:p-8 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ${idx === PRD_DATA.features.length - 1 ? 'md:col-span-2' : ''}`}>
                     <div className="mb-6">
                       <div className="flex flex-wrap items-center gap-2 mb-4">
                         <span className="inline-block px-3 py-1 bg-white rounded-md text-xs font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
@@ -576,7 +576,7 @@ export default function App() {
                         const riskItem = RISK_ASSESSMENT.find(r => r.featureId === feature.id);
                         if (!riskItem) return null;
                         return (
-                          <div className="mt-6 p-4 bg-orange-50/50 rounded-xl border border-orange-100">
+                          <div className="mt-6 p-3 md:p-4 bg-orange-50/50 rounded-xl border border-orange-100">
                             <h4 className="flex items-center gap-2 text-[10px] font-bold text-orange-800 uppercase tracking-widest mb-3">
                               <AlertCircle className="size-3" /> Risk Profile
                             </h4>
@@ -629,7 +629,7 @@ export default function App() {
         </section>
 
         {/* Feature Design (Wireframes) Section */}
-        <section id="wireframes" className="py-16 md:py-24 bg-white border-t border-gray-100">
+        <section id="wireframes" className="py-12 md:py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-10 text-center">
               <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-100 font-bold mb-4 px-3 py-1 text-xs">Feature Design</Badge>
@@ -670,7 +670,7 @@ export default function App() {
             </div>
 
             {/* User Flow Diagram */}
-            <div className="mt-20">
+            <div className="mt-12 md:mt-20">
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px w-12 bg-gray-200"></div>
                 <h3 className="text-xl font-bold text-gray-900">User Flow: Smart Error Recovery</h3>
