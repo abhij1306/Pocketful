@@ -416,48 +416,48 @@ export const UAT_SCENARIOS = [
 export const COMPETITOR_ANALYSIS = {
     marketPositioning: [
         {
-            name: "Zerodha",
-            share: "~40%",
-            strength: "Execution reliability, Varsity education, trader-first platform",
-            weakness: "Intimidating for beginners, minimal hand-holding",
-            persona: "Experienced traders, active F&O participants"
+            name: "Groww",
+            share: "27.1%",
+            strength: "Extreme simplicity, mobile-first, huge millennial base (~12.1M active)",
+            weakness: "Basic tools, missing segments (Commodity/Currency), delayed support",
+            persona: "First-time investors, SIP-focused, Millennials"
         },
         {
-            name: "Groww",
-            share: "~25%",
-            strength: "Beautiful UI, beginner-friendly, seamless MF integration",
-            weakness: "Limited advanced features, lacks depth for serious traders",
-            persona: "First-time investors, SIP-focused, millennials"
+            name: "Zerodha",
+            share: "15.3%",
+            strength: "Technical depth, profitability focus, educational authority (Varsity)",
+            weakness: "Steep user erosion (-15% in 2025), perceived complexity for new retail",
+            persona: "Sophisticated traders, high-frequency participants"
         },
         {
             name: "Pocketful",
-            share: "Emerging",
-            strength: "Hybrid positioning, PACE Group infrastructure, algo DNA",
-            weakness: "Execution reliability gaps, unclear differentiation",
-            persona: "Bridging beginners and advanced traders"
+            share: "<1%",
+            strength: "Institutional execution DNA (PACE), dedicated RM support",
+            weakness: "Low brand awareness, current reliance on manual workflows",
+            persona: "The 'Upgrading' Retailer: Wants more than Groww, but less friction than Zerodha"
         }
     ],
     gapAnalysis: [
         {
-            category: "Trust & Reliability",
+            category: "Execution Pedigree",
             zerodha: 5,
-            groww: 4,
-            pocketful: 2,
-            impact: "Critical foundation—traders won't risk money on unreliable platforms."
-        },
-        {
-            category: "Cognitive Clarity",
-            zerodha: 3,
-            groww: 5,
-            pocketful: 2,
-            impact: "Users feel overwhelmed, leading to low engagement and abandonment."
-        },
-        {
-            category: "Personalization",
-            zerodha: 1,
             groww: 3,
-            pocketful: 2,
-            impact: "Opportunity to differentiate with adaptive, intelligent experiences."
+            pocketful: 5,
+            impact: "PACE group's 25-yr institutional heritage vs pure digital startups."
+        },
+        {
+            category: "Retail Simplicity",
+            zerodha: 2,
+            groww: 5,
+            pocketful: 4,
+            impact: "Pocketful bridges technical depth with accessible, high-density UI."
+        },
+        {
+            category: "Human Persistence",
+            zerodha: 1,
+            groww: 2,
+            pocketful: 5,
+            impact: "Dedicated RMs & physical presence vs ticket-based automated support."
         }
     ],
     strategicOpportunities: [
@@ -483,9 +483,9 @@ export const COMPETITOR_ANALYSIS = {
 export const DEEP_COMPETITIVE_ANALYSIS = {
     marketContext: {
         totalDematAccounts: '140M',
-        activeTraders: '~30M',
-        untappedMarket: '110M accounts not actively trading',
-        nextWaveSource: 'Tier-2/3 cities with limited financial literacy'
+        activeTraders: '44.8M',
+        untappedMarket: '70% Dormancy',
+        nextWaveSource: 'Tier-2/3 Retail requiring high-trust, guidance-led platforms'
     },
     appStoreRatings: {
         zerodha: { rating: 4.4, platform: 'Play Store', reviews: '1.2M+' },
@@ -564,7 +564,7 @@ export const KYC_JOURNEY = {
         { step: 2, action: "Authentication", time: "~2 min", experience: "Lag on Gmail; Direct email smooth" },
         { step: 3, action: "PAN & Aadhaar Entry", time: "~2 min", experience: "Auto-fetch worked well" },
         { step: 4, action: "e-Sign (DigiLocker)", time: "~3 min", experience: "Smooth redirect flow" },
-        { step: 5, action: "Bank Account Linking", time: "~2 min", experience: "UPI autopay straightforward" },
+        { step: 5, action: "Bank Account Linking", time: "~2 min", experience: "Penny drop verification (1 INR credit) confirmed account" },
         { step: 6, action: "Selfie Capture", time: "~1 min", experience: "Specs reflection caused retry" }
     ],
     highlights: [
