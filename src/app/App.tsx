@@ -481,11 +481,11 @@ export default function App() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-12 md:py-24 bg-gray-50">
+        <section id="features" className="py-12 md:py-24 bg-gray-50 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-12 text-center">
               <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-none font-bold mb-4 px-3 py-1 text-xs">Product Innovation</Badge>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">The Innovation Suite</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The Innovation Suite</h2>
               <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">Institutional-grade mechanics engineered for the next generation of retail traders.</p>
             </div>
 
@@ -808,7 +808,7 @@ export default function App() {
         </section>
 
         {/* Performance Analysis (Formerly Audit) Section */}
-        <section id="audit" className="py-20 md:py-32 bg-gray-50/50">
+        <section id="audit" className="py-20 md:py-32 bg-gray-50/50 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
               <div>
@@ -1120,13 +1120,13 @@ export default function App() {
                     <p className="text-gray-900 font-medium text-lg leading-relaxed">{PRD_DATA.executionSummary}</p>
                   </div>
 
-                  <Tabs defaultValue="ERW" className="w-full">
+                  <Tabs defaultValue="SER" className="w-full">
                     <div className="overflow-x-auto pb-4 mb-8">
                       <TabsList className="bg-gray-50 p-1 rounded-xl h-auto w-full flex min-w-max">
                         {PRD_DATA.features.map(f => (
                           <TabsTrigger key={f.id} value={f.id} className="rounded-lg flex-1 min-w-[140px] data-[state=active]:bg-white data-[state=active]:shadow-sm py-3 px-4 font-bold text-xs">{f.title}</TabsTrigger>
                         ))}
-                        <TabsTrigger value="RISKS" className="rounded-lg flex-1 min-w-[140px] data-[state=active]:bg-white data-[state=active]:shadow-sm py-3 px-4 font-bold text-xs">Risk Registry</TabsTrigger>
+
                       </TabsList>
                     </div>
 
@@ -1184,26 +1184,7 @@ export default function App() {
                         </div>
                       </TabsContent>
                     ))}
-                    <TabsContent value="RISKS">
-                      <div className="grid gap-6">
-                        {[
-                          { risk: "Regulatory Uncertainty", impact: "High", mitigation: "Design conditional orders within SEBI guidelines; exclude algorithmic automation" },
-                          { risk: "User Confusion", impact: "Medium", mitigation: "Template-first onboarding; in-app tutorials for complex flows" },
-                          { risk: "Error Wizard Overload", impact: "Low", mitigation: "Consolidated error view for cascading failures; auto-escalation" }
-                        ].map((r, i) => (
-                          <div key={i} className="p-6 rounded-2xl border border-red-50 bg-white shadow-md flex justify-between gap-8 hover:shadow-lg transition-all">
-                            <div>
-                              <div className="font-bold text-gray-900 text-lg mb-2">{r.risk}</div>
-                              <p className="text-gray-600 font-medium">{r.mitigation}</p>
-                            </div>
-                            <div className="text-right shrink-0">
-                              <div className="text-xs font-bold text-red-500 uppercase tracking-widest mb-1">Impact</div>
-                              <div className="text-xl font-bold text-red-600">{r.impact}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </TabsContent>
+
                   </Tabs>
                 </div>
               </div>
@@ -1380,15 +1361,33 @@ export default function App() {
         <footer id="footer" className="py-16 md:py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-center gap-3">
-                  <div className="size-10 bg-gray-100 rounded-xl flex items-center justify-center text-gray-900 font-bold text-sm">A</div>
+                  <div className="size-10 bg-gray-900 rounded-xl flex items-center justify-center text-white font-bold text-sm">A</div>
                   <span className="text-sm font-bold text-gray-900">Abhineet Jain</span>
                 </div>
-                <p className="text-gray-500 font-medium text-base max-w-sm">
-                  Submitted as part of the Product Management evaluation process.
-                </p>
-                <div className="flex gap-6 text-xs font-bold text-gray-900">
+
+                <div className="space-y-4">
+                  <h5 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Submission Deliverables</h5>
+                  <ul className="space-y-2">
+                    {[
+                      { label: "User Journey Report (KYC)", status: "Completed", link: "#journey" },
+                      { label: "Top 5 Feature Enhancements", status: "Completed", link: "#features" },
+                      { label: "High-Impact Feature Design", status: "Completed", link: "#wireframes" },
+                      { label: "Usability Flaws Audit", status: "Completed", link: "#audit" },
+                      { label: "Competitive Analysis", status: "Completed", link: "#competitors" }
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm font-medium text-gray-600">
+                        <CheckCircle className="size-4 text-green-500 shrink-0" />
+                        <a href={item.link} className="hover:text-blue-600 hover:underline decoration-blue-200 underline-offset-4 transition-all">
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex gap-6 text-xs font-bold text-gray-900 pt-4">
                   <a href="https://www.linkedin.com/in/abhineet-jain/" target="_blank" className="hover:text-blue-600 transition-colors">LinkedIn</a>
                   <a href="https://github.com/abhij1306" target="_blank" className="hover:text-blue-600 transition-colors">GitHub</a>
                   <a href="mailto:abhij1306@gmail.com" className="hover:text-blue-600 transition-colors">Email</a>
@@ -1403,9 +1402,12 @@ export default function App() {
                     <a href="tel:+918999635679" className="block text-gray-500 font-medium hover:text-blue-600 transition-colors">+91 89996 35679</a>
                   </div>
                 </div>
-                <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-gray-200 text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300">
-                  Download Proposal <ExternalLink className="ml-2 size-4" />
-                </Button>
+                <div className="flex flex-col md:items-end gap-3">
+                  <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-gray-200 text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 w-full md:w-auto">
+                    Download Proposal PDF <ExternalLink className="ml-2 size-4" />
+                  </Button>
+                  <p className="text-[10px] text-gray-400 font-medium">Includes full PRD, wireframes, and strategic roadmap.</p>
+                </div>
               </div>
             </div>
 
