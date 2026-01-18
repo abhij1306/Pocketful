@@ -66,7 +66,7 @@ The following personas guide this analysis and feature recommendations:
 | 4 | PAN & Aadhaar Entry | ~2 min | Clean form, auto-fetch worked |
 | 5 | e-Sign (DigiLocker) | ~3 min | Redirect flow was smooth |
 | 6 | Bank Account Linking | ~2 min | Penny drop verification (1 INR credit) confirmed account |
-| 7 | Selfie Capture (No Video) | ~1 min | Minor issue: reflection on specs |
+| 7 | Selfie Capture | ~1 min | Minor issue: reflection on specs |
 | **Total** | | **~12 min** | **Comparable to Zerodha/Groww** |
 
 ### Highlights (What Worked Well)

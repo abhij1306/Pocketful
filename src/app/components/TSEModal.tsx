@@ -1,4 +1,4 @@
-import { DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { StatusExplainer } from "./StatusExplainer";
@@ -9,7 +9,7 @@ export function TSEModal() {
         <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md p-0 bg-white border-none shadow-2xl rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader className="p-6 pb-2 border-b border-gray-100">
                 <DialogTitle className="text-xl font-bold text-gray-900">Transparent Status Explainers</DialogTitle>
-                <p className="text-sm text-gray-500">Interactive Concept Demo</p>
+                <DialogDescription className="text-sm text-gray-500">Interactive Concept Demo</DialogDescription>
             </DialogHeader>
 
             <div className="p-8 bg-gray-50/50">

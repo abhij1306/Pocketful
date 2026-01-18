@@ -1,4 +1,4 @@
-import { DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { WifiOff, RefreshCw, Clock } from "lucide-react";
@@ -33,6 +33,7 @@ export function ROMModal() {
 
             <DialogHeader className="p-6 pb-2 bg-white">
                 <DialogTitle className="text-xl font-bold text-gray-900">Portfolio</DialogTitle>
+                <DialogDescription className="sr-only">Offline portfolio view</DialogDescription>
                 <div className="flex items-center gap-2 mt-1">
                     <Badge variant="outline" className="text-xs font-normal text-gray-400 border-gray-200 gap-1 bg-gray-50">
                         <Clock className="size-3" /> Updated 14m ago

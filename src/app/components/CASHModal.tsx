@@ -1,4 +1,4 @@
-import { DialogContent } from "./ui/dialog";
+import { DialogContent, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
@@ -13,7 +13,10 @@ export function CASHModal() {
             {/* Header / Context Switcher */}
             <div className="bg-white border-b border-gray-100 p-4 md:p-6 pb-0 flex-none">
                 <div className="flex justify-between items-center mb-4 md:mb-6">
-                    <h2 className="text-xl md:text-3xl font-bold text-gray-900">Smart Home</h2>
+                    <div>
+                        <DialogTitle className="text-xl md:text-3xl font-bold text-gray-900">Smart Home</DialogTitle>
+                        <DialogDescription className="text-gray-500 text-sm mt-1">Context-aware dashboard tailored to your session.</DialogDescription>
+                    </div>
                     <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-100 text-xs md:text-sm px-2 md:px-3 py-1">AI Context Active</Badge>
                 </div>
 

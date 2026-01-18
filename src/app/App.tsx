@@ -243,7 +243,7 @@ export default function App() {
   return (
     <>
       <Toaster position="top-center" />
-      <div className="min-h-screen bg-white font-sans">
+      <div className="min-h-screen bg-white font-sans overflow-x-hidden lg:overflow-x-visible">
         {/* Navigation */}
         <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 md:py-3 flex items-center justify-between">
@@ -429,9 +429,9 @@ export default function App() {
 
                   <div className="pt-5 border-t border-gray-100">
                     <h4 className="text-[10px] font-bold text-gray-900 uppercase tracking-wide mb-2.5">Highlights</h4>
-                    <ul className="space-y-1.5">
+                    <ul className="flex overflow-x-auto snap-x py-2 gap-3 -mx-4 px-4 scroll-pl-4 md:block md:space-y-1.5 md:mx-0 md:px-0 scroll-smooth">
                       {KYC_JOURNEY.highlights.map((highlight, i) => (
-                        <li key={i} className="text-xs text-gray-600 flex items-start gap-2">
+                        <li key={i} className="min-w-[60vw] snap-center shrink-0 md:min-w-0 md:shrink text-xs text-gray-600 flex items-start gap-2 bg-gray-50 md:bg-transparent p-2 md:p-0 rounded-lg md:rounded-none">
                           <CheckCircle className="size-3.5 text-green-500 shrink-0 mt-0.5" />
                           {highlight}
                         </li>
@@ -445,9 +445,9 @@ export default function App() {
               <div className="lg:col-span-2 space-y-5">
                 <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-7">
                   <h3 className="text-base font-bold text-gray-900 mb-5">Journey Timeline</h3>
-                  <div className="flex overflow-x-auto snap-x py-2 px-1 gap-4 md:grid md:grid-cols-3 md:overflow-visible md:p-0">
+                  <div className="flex overflow-x-auto snap-x py-2 gap-4 pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 scroll-smooth">
                     {KYC_JOURNEY.steps.map((step, i) => (
-                      <div key={i} className="min-w-[280px] snap-center shrink-0 md:min-w-0 md:shrink group relative p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-teal-200 transition-all hover:shadow-md">
+                      <div key={i} className="min-w-[75vw] sm:min-w-[280px] snap-center shrink-0 md:min-w-0 md:shrink group relative p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-teal-200 transition-all hover:shadow-md">
                         <div className="flex justify-between items-start mb-2">
                           <div className="flex items-center justify-center w-6 h-6 rounded-md bg-teal-50 text-teal-700 font-bold text-[10px] border border-teal-100">
                             {step.step}
@@ -469,9 +469,9 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-bold text-red-900">Friction Points Identified</h3>
                   </div>
-                  <div className="flex overflow-x-auto snap-x py-2 px-1 gap-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:p-0">
+                  <div className="flex overflow-x-auto snap-x py-2 gap-3 pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 scroll-smooth">
                     {KYC_JOURNEY.painPoints.map((point, i) => (
-                      <div key={i} className="min-w-[240px] snap-center shrink-0 sm:min-w-0 sm:shrink bg-white p-3.5 rounded-xl border border-red-100 shadow-sm">
+                      <div key={i} className="min-w-[70vw] sm:min-w-[240px] snap-center shrink-0 sm:min-w-0 sm:shrink bg-white p-3.5 rounded-xl border border-red-100 shadow-sm">
                         <div className="text-[10px] font-bold text-red-500 uppercase tracking-wider mb-0.5">{point.issue}</div>
                         <div className="text-xs font-medium text-gray-900 leading-tight">{point.suggestion}</div>
                       </div>
@@ -524,11 +524,11 @@ export default function App() {
             </div>
 
             {/* Mobile View: Stacked Cards (Optimized Scroll) */}
-            <div className="flex overflow-x-auto snap-x py-4 px-1 gap-4 lg:hidden -mx-4 px-4 scroll-pl-4">
+            <div className="flex overflow-x-auto snap-x py-6 gap-5 lg:hidden -mx-6 px-6 scroll-pl-6 scroll-smooth">
               {PRD_DATA.features.map((feature, idx) => {
                 const mapping = FEATURE_MAPPING[feature.id as keyof typeof FEATURE_MAPPING];
                 return (
-                  <div key={feature.id} className="min-w-[320px] max-w-[320px] snap-center shrink-0 group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-6 md:p-7 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                  <div key={feature.id} className="min-w-[85vw] sm:min-w-[320px] max-w-[85vw] sm:max-w-[320px] snap-center shrink-0 group flex flex-col h-full bg-white rounded-3xl border border-gray-100 shadow-md p-6 md:p-7 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <div className="mb-5">
                       <div className="flex flex-wrap items-center gap-2 mb-3">
                         <span className="inline-block px-2.5 py-0.5 bg-white rounded text-[10px] font-bold border border-gray-200 text-blue-600 shadow-sm">{feature.title}</span>
@@ -602,6 +602,63 @@ export default function App() {
                           </div>
                         );
                       })()}
+
+                      {/* Mobile Details Dialog */}
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="ghost" className="w-full justify-between items-center px-3 py-2 h-auto rounded-xl bg-gray-50 font-bold text-[11px] text-gray-700 border border-gray-100 mt-2">
+                            View PRD Details <ArrowRight className="size-3.5" />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-2xl text-left">
+                          <div className="p-6 space-y-6">
+                            <div className="text-left">
+                              <DialogTitle className="text-lg font-bold text-gray-900 mb-1">{feature.title}</DialogTitle>
+                              <div className="flex gap-2 justify-start">
+                                <Badge className="bg-blue-50 text-blue-600 border-none font-bold uppercase text-[9px] px-2 py-0.5">{feature.priority}</Badge>
+                                <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase text-[9px] px-2 py-0.5">{feature.id}</Badge>
+                              </div>
+                            </div>
+                            <div className="space-y-6 text-xs text-left">
+                              <div>
+                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Value Proposition</h4>
+                                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                                  <DialogDescription className="text-blue-900 font-medium italic leading-relaxed">"{feature.valueProp}"</DialogDescription>
+                                </div>
+                              </div>
+
+                              <div>
+                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Key Features</h4>
+                                <div className="space-y-2">
+                                  {feature.userStories.slice(0, 2).map((story) => (
+                                    <div key={story.id} className="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                      <div className="font-bold text-gray-700 text-[10px] mb-1">{story.id}</div>
+                                      <p className="text-gray-600 leading-snug">{story.story}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div>
+                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Problem Statement</h4>
+                                <p className="text-gray-600 leading-relaxed">{feature.problem}</p>
+                              </div>
+
+                              <div>
+                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">User Stories</h4>
+                                <div className="space-y-3">
+                                  {feature.userStories.map((story) => (
+                                    <div key={story.id}>
+                                      <div className="font-bold text-blue-600 text-[10px] mb-0.5">{story.id}</div>
+                                      <p className="text-gray-600 leading-snug">{story.story}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
 
                       {feature.id === 'SER' ? (
                         <Button size="lg" className="w-full py-6 text-base bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl" onClick={handleMobileErrorDemo}>
@@ -786,8 +843,8 @@ export default function App() {
               <p className="text-gray-500 text-base font-medium max-w-2xl leading-relaxed mx-auto">High-fidelity schematic representation of the proposed Smart Error Recovery system.</p>
             </div>
 
-            <div className="flex overflow-x-auto snap-x py-4 px-1 gap-6 md:grid md:grid-cols-2 md:overflow-visible md:p-0">
-              <div className="min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink bg-white rounded-2xl border border-red-200 shadow-sm p-5">
+            <div className="flex overflow-x-auto snap-x py-6 gap-6 md:grid md:grid-cols-2 md:overflow-visible md:p-0 -mx-6 px-6 md:mx-0 scroll-pl-6 scroll-smooth">
+              <div className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink bg-white rounded-2xl border border-red-200 shadow-sm p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-red-100 text-red-700 text-[10px] px-2 py-0">Before</Badge>
                   <span className="text-xs font-medium text-gray-500">Current Error State</span>
@@ -802,7 +859,7 @@ export default function App() {
                 </ul>
               </div>
 
-              <div className="min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink bg-white rounded-2xl border border-green-200 shadow-sm p-5">
+              <div className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink bg-white rounded-2xl border border-green-200 shadow-sm p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-green-100 text-green-700 text-[10px] px-2 py-0">After</Badge>
                   <span className="text-xs font-medium text-gray-500">Smart Error Recovery</span>
@@ -1017,7 +1074,7 @@ export default function App() {
                           <DialogContent className="w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-2xl text-left">
                             <div className="p-6 space-y-6">
                               <div className="text-left">
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">{flaw.title}</h3>
+                                <DialogTitle className="text-lg font-bold text-gray-900 mb-1">{flaw.title}</DialogTitle>
                                 <div className="flex gap-2 justify-start">
                                   <Badge className="bg-red-50 text-red-600 border-none font-bold uppercase text-[9px] px-2 py-0.5">{flaw.severity}</Badge>
                                   <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase text-[9px] px-2 py-0.5">{flaw.risk}</Badge>
@@ -1026,12 +1083,28 @@ export default function App() {
                               <div className="space-y-4 text-xs text-left">
                                 <div>
                                   <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Context</h4>
-                                  <p className="text-gray-700 font-medium leading-relaxed">{flaw.observed}</p>
+                                  <DialogDescription className="text-gray-700 font-medium leading-relaxed">{flaw.observed}</DialogDescription>
                                 </div>
                                 <div className="p-3 bg-blue-50 rounded-lg border border-blue-100">
                                   <h4 className="font-bold text-blue-900 mb-1 uppercase tracking-widest text-[8px]">Resolution</h4>
                                   <p className="text-blue-800 font-bold italic">"{flaw.rootCause}"</p>
                                 </div>
+
+                                {flaw.screenshot && (
+                                  <div className="mt-4">
+                                    <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Visual Evidence</h4>
+                                    <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+                                      <img
+                                        src={flaw.screenshot}
+                                        alt={`Screenshot of ${flaw.title}`}
+                                        className="w-full h-auto object-cover"
+                                        onError={(e) => {
+                                          (e.target as HTMLImageElement).style.display = 'none';
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </DialogContent>
@@ -1109,8 +1182,8 @@ export default function App() {
               {/* Market Context Stats */}
               <div className="lg:col-span-8 flex flex-col">
                 <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-4">Market Scope & Growth Potential</h3>
-                <div className="flex overflow-x-auto snap-x py-2 gap-3 pb-4 md:grid md:grid-cols-2 md:pb-0">
-                  <div className="min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between group hover:border-indigo-100 transition-colors">
+                <div className="flex overflow-x-auto snap-x py-2 gap-3 pb-4 md:grid md:grid-cols-2 md:pb-0 scroll-smooth">
+                  <div className="min-w-[40vw] sm:min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between group hover:border-indigo-100 transition-colors">
                     <div>
                       <div className="text-xl font-bold text-gray-900">{DEEP_COMPETITIVE_ANALYSIS.marketContext.totalDematAccounts}</div>
                       <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-0.5">Total Demat</div>
@@ -1119,7 +1192,7 @@ export default function App() {
                       <Users className="size-5 text-indigo-600" />
                     </div>
                   </div>
-                  <div className="min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between group hover:border-indigo-100 transition-colors">
+                  <div className="min-w-[40vw] sm:min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between group hover:border-indigo-100 transition-colors">
                     <div>
                       <div className="text-xl font-bold text-gray-900">{DEEP_COMPETITIVE_ANALYSIS.marketContext.activeTraders}</div>
                       <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-0.5">Active Traders</div>
@@ -1128,7 +1201,7 @@ export default function App() {
                       <Activity className="size-5 text-indigo-600" />
                     </div>
                   </div>
-                  <div className="min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-indigo-50 rounded-xl border border-indigo-100 shadow-sm flex items-center justify-between">
+                  <div className="min-w-[40vw] sm:min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-indigo-50 rounded-xl border border-indigo-100 shadow-sm flex items-center justify-between">
                     <div>
                       <div className="text-xl font-bold text-indigo-700">{DEEP_COMPETITIVE_ANALYSIS.marketContext.untappedMarket}</div>
                       <div className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mt-0.5">Untapped</div>
@@ -1137,7 +1210,7 @@ export default function App() {
                       <Zap className="size-5 text-indigo-600" />
                     </div>
                   </div>
-                  <div className="min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
+                  <div className="min-w-[40vw] sm:min-w-[160px] snap-center shrink-0 md:min-w-0 md:shrink p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
                     <div>
                       <div className="text-sm font-bold text-gray-900 leading-tight">Tier-2/3 Retail</div>
                       <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-0.5">Next Wave</div>
@@ -1152,22 +1225,22 @@ export default function App() {
               {/* App Store Ratings */}
               <div className="lg:col-span-4 flex flex-col">
                 <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-4">App Store Sentiment</h3>
-                <div className="grid grid-rows-3 gap-3 flex-1">
-                  <div className="flex items-center justify-between px-4 py-3 bg-white rounded-xl border border-gray-100 shadow-sm">
+                <div className="flex overflow-x-auto snap-x py-2 gap-3 pb-2 -mx-6 px-6 scroll-pl-6 scroll-smooth lg:grid lg:grid-rows-3 lg:gap-3 lg:flex-none lg:mx-0 lg:px-0 lg:pb-0">
+                  <div className="min-w-[75vw] sm:min-w-[280px] snap-center shrink-0 flex items-center justify-between px-4 py-3 bg-white rounded-xl border border-gray-100 shadow-sm">
                     <span className="font-bold text-gray-900 text-sm">Zerodha</span>
                     <div className="flex items-center gap-3">
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{DEEP_COMPETITIVE_ANALYSIS.appStoreRatings.zerodha.reviews}</span>
                       <Badge variant="secondary" className="bg-green-50 text-green-700 font-bold border-green-100 text-[10px]">{DEEP_COMPETITIVE_ANALYSIS.appStoreRatings.zerodha.rating} ★</Badge>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3 bg-white rounded-xl border border-gray-100 shadow-sm">
+                  <div className="min-w-[75vw] sm:min-w-[280px] snap-center shrink-0 flex items-center justify-between px-4 py-3 bg-white rounded-xl border border-gray-100 shadow-sm">
                     <span className="font-bold text-gray-900 text-sm">Groww</span>
                     <div className="flex items-center gap-3">
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{DEEP_COMPETITIVE_ANALYSIS.appStoreRatings.groww.reviews}</span>
                       <Badge variant="secondary" className="bg-green-50 text-green-700 font-bold border-green-100 text-[10px]">{DEEP_COMPETITIVE_ANALYSIS.appStoreRatings.groww.rating} ★</Badge>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-200">
+                  <div className="min-w-[75vw] sm:min-w-[280px] snap-center shrink-0 flex items-center justify-between px-4 py-3 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-200">
                     <span className="font-bold text-white text-sm">Pocketful</span>
                     <div className="flex items-center gap-3">
                       <span className="text-[10px] font-bold text-indigo-200 uppercase tracking-wider">Target</span>
@@ -1180,10 +1253,10 @@ export default function App() {
 
             {/* 2. Market Positioning (Existing) */}
             <div className="mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6">Market Positioning</h3>
-              <div className="grid md:grid-cols-3 gap-6">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Market Positioning</h3>
+              <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0">
                 {COMPETITOR_ANALYSIS.marketPositioning.map((comp) => (
-                  <div key={comp.name} className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl transition-all group">
+                  <div key={comp.name} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl transition-all group">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-base font-bold text-gray-900">{comp.name}</h4>
                       <Badge variant="secondary" className="bg-gray-50 text-gray-500 font-bold text-[9px] px-2 py-0">{comp.share}</Badge>
@@ -1209,10 +1282,10 @@ export default function App() {
 
             {/* 3. Deep Differentiators (New) */}
             <div className="mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6">Deep Differentiators & Assets</h3>
-              <div className="grid md:grid-cols-3 gap-6">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Deep Differentiators & Assets</h3>
+              <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0">
                 {DEEP_COMPETITIVE_ANALYSIS.specificDifferentiators.map((diff) => (
-                  <div key={diff.id} className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:scale-[1.02] transition-transform">
+                  <div key={diff.id} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:scale-[1.02] transition-transform">
                     <div className="flex items-start justify-between mb-4">
                       <div className="p-2 bg-indigo-50 rounded-lg">
                         <Zap className="size-5 text-indigo-600" />
