@@ -18,7 +18,7 @@ md.renderer.rules.blockquote_close = function (tokens, idx, options, env, self) 
 const style = `
 <style>
     body {
-        font-family: 'Segoe UI', Arial, sans-serif;
+        font-family: 'Segoe UI', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', Arial, sans-serif;
         line-height: 1.6;
         max-width: 850px;
         margin: 40px auto;
