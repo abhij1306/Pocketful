@@ -1846,10 +1846,19 @@ export default function App() {
                   </div>
                 </div>
                 <div className="flex flex-col md:items-end gap-3">
-                  <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-gray-200 text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 w-full md:w-auto">
-                    Download Proposal PDF <ExternalLink className="ml-2 size-4" />
-                  </Button>
-                  <p className="text-[10px] text-gray-400 font-medium">Includes full PRD, wireframes, and strategic roadmap.</p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a href="/Pocketful_submission.pdf" download="Pocketful_Proposal_Audit.pdf" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="h-12 px-6 rounded-xl font-bold border-gray-200 text-gray-900 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 w-full md:w-auto transition-all">
+                        Download Audit Proposal <ExternalLink className="ml-2 size-4" />
+                      </Button>
+                    </a>
+                    <a href="/Feature_Design_PRD.pdf" download="Pocketful_Feature_PRD.pdf" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="h-12 px-6 rounded-xl font-bold border-gray-200 text-gray-900 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 w-full md:w-auto transition-all">
+                        Download Feature PRD <ExternalLink className="ml-2 size-4" />
+                      </Button>
+                    </a>
+                  </div>
+                  <p className="text-[10px] text-gray-400 font-medium">Strategic roadmap (Left) and Deep-dive specifications (Right).</p>
                 </div>
               </div>
             </div>
