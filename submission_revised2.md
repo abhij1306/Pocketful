@@ -488,4 +488,4 @@ While individual features have user-level risks, the broader product strategy fa
 
 > **Document prepared by:** Abhineet Jain  
 > **Contact:** abhij1306@gmail.com | [LinkedIn](https://www.linkedin.com/in/abhineet-jain/)  
-> **Full PRD:** `feature_design_prd.md` | **Live Demo:** [pocketful.vercel.app](https://pocketful.vercel.app/)
+> **Full PRD:** `feature_design_prd.pdf` | **Live Demo:** [pocketful.vercel.app](https://pocketful.vercel.app/)
