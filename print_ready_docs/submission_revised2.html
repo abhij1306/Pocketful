@@ -49,6 +49,29 @@
         color: #555;
     }
     
+    /* Image Styling */
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: block;
+        margin: 10px auto;
+    }
+    
+    /* Specific styling for images inside tables */
+    table img {
+        max-width: 300px; /* Constrain width for PDF readability */
+        max-height: 400px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* Ensure table text aligns nicely with images */
+    td {
+        vertical-align: middle;
+    }
+    
     code {
         background: #f4f4f4;
         padding: 2px 5px;
@@ -104,7 +127,7 @@
 <li><strong>Needs:</strong> Offline access, RM support, reliability</li>
 <li><strong>Feature Mapping:</strong> Resilient Offline Mode, RM Integration</li>
 </ul>
-<div class="design-box"><p><strong>Market Context Update (Jan 2025):</strong> India has <strong>212M+ demat accounts</strong> but only <strong>50M active traders</strong>. The massive <strong>~83% dormancy gap</strong> represents a “Guidance Void” that neither Zerodha (too complex) nor Groww (too basic) fills. Pocketful’s edge lies in bridging this gap with institutional-grade tools and human persistence.</p>
+<div class="design-box"><p><strong>Market Context Update (Jan 2025):</strong> India has <strong>212M+ demat accounts</strong> but only <strong>50M active traders</strong>. The massive <strong>~82% dormancy gap</strong> represents a “Guidance Void” that neither Zerodha (too complex) nor Groww (too basic) fills. Pocketful’s edge lies in bridging this gap with institutional-grade tools and human persistence.</p>
 </div><hr>
 <h1>Deliverable 1: User Journey Report</h1>
 <h2>KYC Experience Documentation</h2>
@@ -303,29 +326,79 @@
 </table>
 <hr>
 <h2>Feature 1: Smart Error Recovery</h2>
-<p><strong>Problem:</strong> Every error displays <em>“Something went wrong! Internal Server Error”</em> with no recovery guidance.
-<strong>Solution:</strong> Intelligent error classification with contextual recovery actions.
-<strong>Why First:</strong> Directly addresses the most observed pain point, builds trust, differentiates from competitors.</p>
+<p><strong>Problem:</strong> When Pocketful encounters API failures, users see ‘Something went wrong! Internal Server Error.’ Priya (active trader) loses critical seconds; Raj (beginner) panics with no guidance.</p>
+<p><strong>Solution:</strong> Transform errors into opportunities: classify issues, explain in plain language, and offer contextual recovery actions. Priya stays trading, Raj feels supported.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul>
+<li><strong>Intelligent Classification:</strong> Distinguishes between Data Unavailable, Network Timeout, and Server Error.</li>
+<li><strong>Contextual Recovery:</strong> Offers 2-3 specific actions (e.g., “View Similar: RVNL”, “Use Cached Data”).</li>
+<li><strong>Proactive Detection:</strong> Pre-emptively warns if APIs are slow (“Traffic Optimization Mode”).</li>
+</ul>
+<p><strong>Success Metrics:</strong></p>
+<ul>
+<li><strong>Error Recovery Rate:</strong> Significant increase in users completing intended actions after error.</li>
+<li><strong>Session Continuation:</strong> Reduction in abandonment during failures.</li>
+</ul>
 <hr>
 <h2>Feature 2: Transparent Status Explainers</h2>
-<p><strong>Problem:</strong> Terms like “0.0x Subscribed,” “Delta 0.65,” and “AMO” appear without explanation.
-<strong>Solution:</strong> Inline tooltips with plain-English definitions and social proof.
-<strong>Value:</strong> Aligns with Pocketful’s beginner-friendly positioning; reduces support queries.</p>
+<p><strong>Problem:</strong> Raj (beginner) sees ‘0.0x Subscribed’, ‘Delta 0.65’, and ‘AMO’ without understanding. Jargon causes hesitation and missed opportunities.</p>
+<p><strong>Solution:</strong> Make complexity accessible: inline tooltips with plain-English definitions and social proof help Raj make confident decisions.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul>
+<li><strong>Inline Context:</strong> Tapping a term like “0.0x Subscribed” opens an overlay explanation.</li>
+<li><strong>Social Proof:</strong> “2,847 users have applied” contextualizes demand.</li>
+<li><strong>Plain English:</strong> “Delta 0.65” → “Option moves ₹0.65 for every ₹1 move in Nifty”.</li>
+</ul>
+<p><strong>Success Metrics:</strong></p>
+<ul>
+<li><strong>User Confidence:</strong> Improvement in self-reported decision confidence.</li>
+<li><strong>Glossary Queries:</strong> Reduction in “What does X mean?” support tickets.</li>
+</ul>
 <hr>
 <h2>Feature 3: Resilient Offline Mode</h2>
-<p><strong>Problem:</strong> Users in tier-2/3 cities face white screens during network drops.
-<strong>Solution:</strong> Cached critical data + progressive loading + “Lite Mode” for slow connections.
-<strong>Value:</strong> Expands addressable market beyond metros; builds reliability reputation.</p>
+<p><strong>Problem:</strong> Amit (tier-2 user) faces white screens during network drops while trading. The app becomes unusable just when he needs it most.</p>
+<p><strong>Solution:</strong> Expand to 100M underserved users: cached data, progressive loading, and ‘Lite Mode’ ensure Amit can always access his portfolio.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul>
+<li><strong>Tier 1 Cache:</strong> Last known prices (with timestamp) and portfolio holdings always available.</li>
+<li><strong>Lite Mode:</strong> Toggle for 2G connections that loads text/numbers before charts.</li>
+<li><strong>Offline Queue:</strong> Allow order preparation while offline; auto-sync when network returns.</li>
+</ul>
+<p><strong>Success Metrics:</strong></p>
+<ul>
+<li><strong>Bounce Rate:</strong> Reduced sessions abandoned on slow networks.</li>
+<li><strong>Offline Access:</strong> Enabled portfolio viewing during outages.</li>
+</ul>
 <hr>
 <h2>Feature 4: Context-Aware Smart Home</h2>
-<p><strong>Problem:</strong> All users see the same static home screen regardless of intent or time.
-<strong>Solution:</strong> Adaptive layouts based on time of day, user segment, and behavior.
-<strong>Value:</strong> Reduces time-to-action; increases engagement.</p>
+<p><strong>Problem:</strong> Priya needs quick-trade access at 9:15 AM, but sees the same layout as Raj who wants to check his MF SIPs at night.</p>
+<p><strong>Solution:</strong> Personalization that understands intent: Priya gets action-focused trading at market open; Raj sees portfolio analysis in the evening.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul>
+<li><strong>Time-of-Day Intelligence:</strong> Pre-market (News), Market Hours (Trading), Post-Market (Analysis).</li>
+<li><strong>User Segmentation:</strong> Traders see heatmaps/orders; Investors see SIPs/Portfolio.</li>
+<li><strong>Behavioral Nudges:</strong> “You usually check Bank Nifty at this time.”</li>
+</ul>
+<p><strong>Success Metrics:</strong></p>
+<ul>
+<li><strong>Time-to-Action:</strong> Reduced time from launch to primary core action.</li>
+<li><strong>Feature Discovery:</strong> Increased discovery of relevant tools per segment.</li>
+</ul>
 <hr>
 <h2>Feature 5: Smart Order Assistant</h2>
-<p><strong>Problem:</strong> Retail traders lack automation tools available to institutions.
-<strong>Solution:</strong> Compliant conditional orders (Buy if drop 5%, Bracket orders) with templates.
-<strong>Note:</strong> Designed for SEBI compliance—positioned as “conditional orders” rather than “algo trading.”</p>
+<p><strong>Problem:</strong> Priya (active trader) executes orders manually while institutions use automation. This leads to emotional trading and missed opportunities.</p>
+<p><strong>Solution:</strong> Democratize smart trading: IF-THEN rules, bracket orders, and templates let Priya trade like an institution—fully SEBI compliant.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul>
+<li><strong>No-Code Automation:</strong> “Buy if price drops 5%” rules without programming.</li>
+<li><strong>Bracket Orders:</strong> Attach pre-set Stop-Loss and Take-Profit to any order.</li>
+<li><strong>Templates:</strong> Save frequent setups (e.g., “Intraday Breakout”) for one-tap execution.</li>
+</ul>
+<p><strong>Success Metrics:</strong></p>
+<ul>
+<li><strong>Adoption:</strong> % of active traders using at least one conditional order.</li>
+<li><strong>Retention:</strong> Increased platform stickiness along with feature usage.</li>
+</ul>
 <hr>
 <h2>Risk Assessment</h2>
 <table>
@@ -794,5 +867,5 @@ Implement a fully branded OAuth consent flow using custom domains and scope desc
 <hr>
 <div class="design-box"><p><strong>Document prepared by:</strong> Abhineet Jain<br>
 <strong>Contact:</strong> <a href="mailto:abhij1306@gmail.com">abhij1306@gmail.com</a> | <a href="https://www.linkedin.com/in/abhineet-jain/">LinkedIn</a><br>
-<strong>Full PRD:</strong> <code>feature_design_prd.md</code> | <strong>Live Demo:</strong> React Prototype</p>
+<strong>Full PRD:</strong> <code>feature_design_prd.md</code> | <strong>Live Demo:</strong> <a href="https://pocketful.vercel.app/">pocketful.vercel.app</a></p>
 </div></body></html>

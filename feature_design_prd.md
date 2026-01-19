@@ -1,8 +1,8 @@
 # Feature Design PRD: Smart Error Recovery
 
 > **Author:** Abhineet Jain  
-> **Version:** 2.0 | **Last Updated:** January 17, 2026  
-> **Status:** Ready for Review
+> **Version:** 2.0 | **Last Updated:** January 19, 2026  
+> **Status:** Ready for Review | **Live Demo:** [pocketful.vercel.app](https://pocketful.vercel.app/)
 
 ---
 

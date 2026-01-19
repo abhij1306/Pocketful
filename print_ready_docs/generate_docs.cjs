@@ -66,6 +66,29 @@ const style = `
         color: #555;
     }
     
+    /* Image Styling */
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: block;
+        margin: 10px auto;
+    }
+    
+    /* Specific styling for images inside tables */
+    table img {
+        max-width: 300px; /* Constrain width for PDF readability */
+        max-height: 400px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* Ensure table text aligns nicely with images */
+    td {
+        vertical-align: middle;
+    }
+    
     code {
         background: #f4f4f4;
         padding: 2px 5px;
