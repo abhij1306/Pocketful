@@ -439,21 +439,21 @@ export const COMPETITOR_ANALYSIS = {
     ],
     gapAnalysis: [
         {
-            category: "Execution Pedigree",
-            zerodha: 5,
-            groww: 3,
+            category: "Institutional Heritage",
+            zerodha: 4,
+            groww: 2,
             pocketful: 5,
-            impact: "PACE group's 25-yr institutional heritage vs pure digital startups."
+            impact: "PACE group's 25-yr institutional DNA vs pure digital startups."
         },
         {
-            category: "Retail Simplicity",
+            category: "Narrative Experience",
             zerodha: 2,
             groww: 5,
             pocketful: 4,
-            impact: "Pocketful bridges technical depth with accessible, high-density UI."
+            impact: "Pocketful bridges technical depth with jargon-free, guided UI (TSE/CASH)."
         },
         {
-            category: "Human Persistence",
+            category: "Support Availability",
             zerodha: 1,
             groww: 2,
             pocketful: 5,

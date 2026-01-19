@@ -398,54 +398,57 @@ export default function App() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Summary Card */}
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-5 h-fit">
-                <h3 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                  <Clock className="size-4 text-teal-600" />
-                  Execution Summary
-                </h3>
-                <div className="space-y-5">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 mb-1">~12 min</div>
-                    <div className="text-xs font-medium text-gray-500">Total Time to Trade-Ready</div>
-                    <div className="mt-2 w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-5 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-5">
+                  <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                    <Clock className="size-4 text-teal-600" />
+                    Execution Summary
+                  </h3>
+                  <Badge variant="outline" className="bg-teal-50 text-teal-700 border-teal-100 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">Verified</Badge>
+                </div>
+
+                <div className="space-y-4 flex-1">
+                  <div className="p-4 bg-teal-50/30 rounded-xl border border-teal-100">
+                    <div className="text-2xl font-bold text-gray-900 mb-0.5 sm:text-3xl">~12 min</div>
+                    <div className="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-3">Total Time to Trade-Ready</div>
+                    <div className="w-full bg-gray-200/50 rounded-full h-1.5 overflow-hidden">
                       <div className="bg-teal-500 h-full w-[70%]" title="Pocketful (12m)"></div>
                     </div>
-                    <div className="flex justify-between text-[9px] font-bold text-gray-400 mt-1 uppercase tracking-wide">
-                      <span>Pocketful (12m)</span>
-                      <span>Avg (15m)</span>
+                    <div className="flex justify-between items-center text-[9px] font-bold text-gray-400 mt-2 uppercase tracking-wide">
+                      <span className="text-teal-600">Pocketful (12m)</span>
+                      <span>Market Avg (15m)</span>
                     </div>
                   </div>
 
-                  <div className="pt-5 border-t border-gray-100 space-y-2.5">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-600">Platform</span>
-                      <span className="font-bold text-gray-900">{KYC_JOURNEY.summary.platform}</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    <div className="p-2.5 bg-gray-50/80 rounded-xl border border-gray-100 flex flex-col">
+                      <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1 leading-none">Platform</span>
+                      <span className="text-[10px] font-bold text-gray-900 truncate">{KYC_JOURNEY.summary.platform}</span>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-600">Network</span>
-                      <span className="font-bold text-gray-900">{KYC_JOURNEY.summary.network}</span>
+                    <div className="p-2.5 bg-gray-50/80 rounded-xl border border-gray-100 flex flex-col">
+                      <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1 leading-none">Network</span>
+                      <span className="text-[10px] font-bold text-gray-900 truncate">{KYC_JOURNEY.summary.network}</span>
                     </div>
                   </div>
 
-                  <div className="pt-5 border-t border-gray-100">
-                    <h4 className="text-[10px] font-bold text-gray-900 uppercase tracking-wide mb-2.5">Highlights</h4>
-                    <ul className="flex overflow-x-auto snap-x py-2 gap-3 -mx-4 px-4 scroll-pl-4 md:block md:space-y-1.5 md:mx-0 md:px-0 scroll-smooth">
+                  <div className="pt-2">
+                    <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-1 mb-2">Key Highlights</h4>
+                    <div className="flex overflow-x-auto snap-x py-1 gap-2 -mx-5 px-5 pb-2 scroll-smooth no-scrollbar md:flex-col md:overflow-visible md:mx-0 md:px-0 md:gap-2">
                       {KYC_JOURNEY.highlights.map((highlight, i) => (
-                        <li key={i} className="min-w-[60vw] snap-center shrink-0 md:min-w-0 md:shrink text-xs text-gray-600 flex items-start gap-2 bg-gray-50 md:bg-transparent p-2 md:p-0 rounded-lg md:rounded-none">
+                        <div key={i} className="min-w-[65vw] snap-center shrink-0 md:min-w-0 md:shrink text-[11px] text-gray-600 flex items-start gap-2 bg-white md:bg-gray-50/50 p-2.5 rounded-xl border border-gray-100 shadow-sm md:shadow-none">
                           <CheckCircle className="size-3.5 text-green-500 shrink-0 mt-0.5" />
-                          {highlight}
-                        </li>
+                          <span className="font-medium leading-tight">{highlight}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Step Timeline */}
               <div className="lg:col-span-2 space-y-5">
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-7">
-                  <h3 className="text-base font-bold text-gray-900 mb-5">Journey Timeline</h3>
-                  <div className="flex overflow-x-auto snap-x py-2 gap-4 pb-4 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 scroll-smooth">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 md:p-7">
+                  <h3 className="text-sm font-bold text-gray-900 mb-5">Journey Timeline</h3>
+                  <div className="flex overflow-x-auto snap-x py-2 gap-4 pb-4 -mx-5 px-5 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0 scroll-smooth no-scrollbar">
                     {KYC_JOURNEY.steps.map((step, i) => (
                       <div key={i} className="min-w-[75vw] sm:min-w-[280px] snap-center shrink-0 md:min-w-0 md:shrink group relative p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:border-teal-200 transition-all hover:shadow-md">
                         <div className="flex justify-between items-start mb-2">
@@ -622,35 +625,28 @@ export default function App() {
                             <div className="space-y-6 text-xs text-left">
                               <div>
                                 <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Value Proposition</h4>
-                                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                                  <DialogDescription className="text-blue-900 font-medium italic leading-relaxed">"{feature.valueProp}"</DialogDescription>
-                                </div>
-                              </div>
-
-                              <div>
-                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Key Features</h4>
-                                <div className="space-y-2">
-                                  {feature.userStories.slice(0, 2).map((story) => (
-                                    <div key={story.id} className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                                      <div className="font-bold text-gray-700 text-[10px] mb-1">{story.id}</div>
-                                      <p className="text-gray-600 leading-snug">{story.story}</p>
-                                    </div>
-                                  ))}
+                                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 shadow-sm shadow-blue-50">
+                                  <DialogDescription className="text-blue-900 font-bold italic leading-relaxed">"{feature.valueProp}"</DialogDescription>
                                 </div>
                               </div>
 
                               <div>
                                 <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Problem Statement</h4>
-                                <p className="text-gray-600 leading-relaxed">{feature.problem}</p>
+                                <p className="text-gray-700 font-medium leading-relaxed">{feature.problem}</p>
                               </div>
 
                               <div>
-                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">User Stories</h4>
+                                <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">User Stories & Acceptance Criteria</h4>
                                 <div className="space-y-3">
                                   {feature.userStories.map((story) => (
-                                    <div key={story.id}>
-                                      <div className="font-bold text-blue-600 text-[10px] mb-0.5">{story.id}</div>
-                                      <p className="text-gray-600 leading-snug">{story.story}</p>
+                                    <div key={story.id} className="p-3 bg-gray-50/50 rounded-xl border border-gray-100">
+                                      <div className="flex items-center justify-between mb-1.5">
+                                        <div className="font-bold text-blue-600 text-[9px] tracking-widest">{story.id}</div>
+                                        <Badge variant="outline" className={`text-[8px] font-bold uppercase tracking-wider h-4 px-1 ${story.priority === 'P0' ? 'text-red-500 border-red-100 bg-red-50' : 'text-amber-500 border-amber-100 bg-amber-50'}`}>
+                                          {story.priority}
+                                        </Badge>
+                                      </div>
+                                      <p className="text-gray-600 font-medium leading-snug">{story.story}</p>
                                     </div>
                                   ))}
                                 </div>
@@ -1172,9 +1168,9 @@ export default function App() {
         <section id="competitors" className="py-12 md:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col items-center text-center mb-10 md:mb-16">
-              <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 border-none font-bold mb-4 px-3 py-1 text-[11px] mx-auto uppercase tracking-widest">Market Context</Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Competitive Analysis</h2>
-              <p className="text-gray-500 text-base font-medium max-w-2xl leading-relaxed mx-auto">Evaluating the landscape to identify strategic gaps and differentiation opportunities.</p>
+              <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 border-none font-bold mb-4 px-3 py-1 text-[11px] mx-auto uppercase tracking-widest">Strategic Narrative</Badge>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Competitor Analysis</h2>
+              <p className="text-gray-500 text-base font-medium max-w-2xl leading-relaxed mx-auto">Establishing the market reality, identifying critical service gaps, and defining the path to Pocketful's dominance.</p>
             </div>
 
             {/* 1. Market Context & App Store Ratings - COMPACT REDESIGN */}
@@ -1253,7 +1249,7 @@ export default function App() {
 
             {/* 2. Market Positioning (Existing) */}
             <div className="mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Market Positioning</h3>
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Incumbent Positioning & Opportunity Gaps</h3>
               <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0">
                 {COMPETITOR_ANALYSIS.marketPositioning.map((comp) => (
                   <div key={comp.name} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl transition-all group">
@@ -1280,33 +1276,12 @@ export default function App() {
               </div>
             </div>
 
-            {/* 3. Deep Differentiators (New) */}
-            <div className="mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Deep Differentiators & Assets</h3>
-              <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0">
-                {DEEP_COMPETITIVE_ANALYSIS.specificDifferentiators.map((diff) => (
-                  <div key={diff.id} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:scale-[1.02] transition-transform">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-2 bg-indigo-50 rounded-lg">
-                        <Zap className="size-5 text-indigo-600" />
-                      </div>
-                      <Badge variant="outline" className="text-[9px] uppercase tracking-widest border-amber-200 bg-amber-50 text-amber-700">{diff.status}</Badge>
-                    </div>
-                    <h4 className="text-sm font-bold text-gray-900 mb-2">{diff.title}</h4>
-                    <p className="text-xs text-gray-500 font-medium leading-relaxed mb-4">{diff.details}</p>
-                    <div className="p-3 bg-gray-50 rounded-xl space-y-2">
-                      <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">Strategic Opportunity</span>
-                      <p className="text-xs font-bold text-gray-700 leading-tight">{diff.opportunity}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 4. Gap Analysis (Existing) */}
+            {/* 3. Gap Analysis (Existing) */}
             <div className="space-y-8 mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6">Gap Analysis & Strategic Advantage</h3>
-              <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6 px-6 md:px-0">Gap Analysis & Strategic Advantage</h3>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                 <Table>
                   <TableHeader className="bg-gray-50/50">
                     <TableRow className="border-gray-100">
@@ -1331,33 +1306,65 @@ export default function App() {
                   </TableBody>
                 </Table>
               </div>
-            </div>
 
-            {/* 5. Strategic Opportunities (Existing) */}
-            <div className="mb-16">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6">Strategic Opportunities</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {COMPETITOR_ANALYSIS.strategicOpportunities.map((opp) => (
-                  <div key={opp.title} className="p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100">
-                    <h4 className="text-base font-bold text-indigo-900 mb-2">{opp.title}</h4>
-                    <p className="text-xs text-indigo-800/80 font-medium leading-relaxed mb-4">{opp.description}</p>
-                    <div className="space-y-2">
-                      {opp.proofPoints.map((point, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <Check className="size-3 text-indigo-600" />
-                          <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide">{point}</span>
-                        </div>
-                      ))}
+              {/* Mobile Carousel View */}
+              <div className="md:hidden flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth no-scrollbar">
+                {COMPETITOR_ANALYSIS.gapAnalysis.map((gap) => (
+                  <div key={gap.category} className="min-w-[85vw] snap-center shrink-0 p-5 bg-white rounded-2xl border border-gray-100 shadow-md">
+                    <div className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-1">Strategy Vector</div>
+                    <h4 className="text-base font-bold text-gray-900 mb-2">{gap.category}</h4>
+                    <p className="text-xs text-gray-500 mb-6 leading-relaxed font-medium">{gap.impact}</p>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                        <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Zerodha</div>
+                        <div className="text-sm font-bold text-gray-700">{gap.zerodha}/5</div>
+                      </div>
+                      <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                        <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Groww</div>
+                        <div className="text-sm font-bold text-gray-700">{gap.groww}/5</div>
+                      </div>
+                      <div className="p-3 bg-indigo-50 rounded-xl border border-indigo-100 text-center">
+                        <div className="text-[9px] font-bold text-indigo-600 uppercase tracking-widest mb-1">Pocketful</div>
+                        <div className="text-sm font-bold text-indigo-700">{gap.pocketful}/5</div>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* 6. Deep Feature Comparison (Existing) */}
-            <div className="space-y-8">
-              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-6">Feature-by-Feature Deep Dive</h3>
-              <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+            {/* 4. Deep Differentiators & Assets (Solution Catalyst) */}
+            <div className="mb-16">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-6 md:px-0">Solving the Gaps: Our Strategic Assets</h3>
+              <p className="text-[11px] text-gray-500 font-medium mb-6 px-6 md:px-0 italic">Leveraging PACE Legacy and unique service models to bridge identified industry voids.</p>
+              <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0 no-scrollbar">
+                {DEEP_COMPETITIVE_ANALYSIS.specificDifferentiators.map((diff) => (
+                  <div key={diff.id} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:border-indigo-100 transition-all">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="p-2 bg-indigo-50 rounded-lg">
+                        <Zap className="size-5 text-indigo-600" />
+                      </div>
+                      <Badge variant="outline" className="text-[9px] uppercase tracking-widest border-amber-200 bg-amber-50 text-amber-700">{diff.status}</Badge>
+                    </div>
+                    <h4 className="text-sm font-bold text-gray-900 mb-2">{diff.title}</h4>
+                    <p className="text-xs text-gray-500 font-medium leading-relaxed mb-4">{diff.details}</p>
+                    <div className="p-3 bg-gray-50 rounded-xl space-y-2">
+                      <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">Strategic Opportunity</span>
+                      <p className="text-xs font-bold text-gray-700 leading-tight">{diff.opportunity}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 5. Feature-by-Feature Deep Dive (Existing) */}
+            <div className="space-y-8 mb-16">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-6 md:px-0">Competitive Edge: Feature-Level Analysis</h3>
+              <p className="text-[11px] text-gray-500 font-medium mb-6 px-6 md:px-0 italic">Contrasting incumbent stagnation with Pocketful's targeted innovation DNA.</p>
+
+              {/* Desktop View */}
+              <div className="hidden md:block border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                 <Table>
                   <TableHeader className="bg-gray-50/50">
                     <TableRow className="border-gray-100">
@@ -1380,6 +1387,56 @@ export default function App() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth no-scrollbar">
+                {DEEP_COMPETITIVE_ANALYSIS.featureByFeatureComparison.map((feat) => (
+                  <div key={feat.feature} className="min-w-[85vw] snap-center shrink-0 p-5 bg-white rounded-2xl border border-gray-100 shadow-md">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Feature Vector</div>
+                      <Badge className="bg-indigo-50 text-indigo-600 border-none text-[9px] font-bold uppercase py-0.5">{feat.winner}</Badge>
+                    </div>
+                    <h4 className="text-base font-bold text-gray-900 mb-6">{feat.feature}</h4>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Zerodha</span>
+                        <span className="text-xs font-medium text-gray-700">{feat.zerodha}</span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Groww</span>
+                        <span className="text-xs font-medium text-gray-700">{feat.groww}</span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-indigo-50 rounded-xl border border-indigo-100">
+                        <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">Pocketful</span>
+                        <span className="text-xs font-bold text-indigo-700">{feat.pocketful}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 6. Strategic Opportunities (Existing) */}
+            <div className="mb-0">
+              <h3 className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-6 md:px-0">The Path to Market Dominance</h3>
+              <p className="text-[11px] text-gray-500 font-medium mb-8 px-6 md:px-0 italic">High-level strategic execution pillars to capture and retain the next 100M users.</p>
+              <div className="flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth no-scrollbar md:grid md:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:py-0">
+                {COMPETITOR_ANALYSIS.strategicOpportunities.map((opp) => (
+                  <div key={opp.title} className="min-w-[85vw] sm:min-w-[300px] snap-center shrink-0 md:min-w-0 md:shrink p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100 flex flex-col h-full">
+                    <h4 className="text-base font-bold text-indigo-900 mb-2">{opp.title}</h4>
+                    <p className="text-xs text-indigo-800/80 font-medium leading-relaxed mb-4 flex-1">{opp.description}</p>
+                    <div className="space-y-2 mt-auto">
+                      {opp.proofPoints.map((point, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <Check className="size-3 text-indigo-600" />
+                          <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide">{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1445,39 +1502,41 @@ export default function App() {
                           </DialogTrigger>
                           <DialogContent className="w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto p-0 bg-white border-none shadow-2xl rounded-2xl text-left">
                             <div className="p-6 space-y-6">
-                              <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">{f.title}</h3>
-                                <div className="flex gap-2">
+                              <div className="text-left">
+                                <DialogTitle className="text-lg font-bold text-gray-900 mb-1">{f.title}</DialogTitle>
+                                <div className="flex gap-2 justify-start">
                                   <Badge className="bg-blue-50 text-blue-600 border-none font-bold uppercase text-[9px] px-2 py-0.5">{f.priority}</Badge>
                                   <Badge variant="secondary" className="bg-gray-100 text-gray-500 font-bold uppercase text-[9px] px-2 py-0.5">{f.id}</Badge>
                                 </div>
                               </div>
-                              <div className="space-y-4 text-xs">
-                                <div className="p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-                                  <h4 className="font-bold text-indigo-900 mb-1 uppercase tracking-widest text-[8px]">Value Proposition</h4>
-                                  <p className="text-indigo-800 font-bold italic">"{f.valueProp}"</p>
-                                </div>
-                                <div className="space-y-2">
-                                  <h4 className="font-bold text-gray-400 uppercase tracking-widest mb-1">Key Features</h4>
-                                  {f.userStories.slice(0, 2).map(story => (
-                                    <div key={story.id} className="p-2 border border-gray-50 rounded-lg bg-gray-50/50">
-                                      <span className="text-[9px] font-bold text-indigo-600">{story.id}</span>
-                                      <p className="text-[11px] font-medium leading-tight">{story.story}</p>
-                                    </div>
-                                  ))}
-                                </div>
+                              <div className="space-y-6 text-xs text-left">
                                 <div>
-                                  <h4 className="font-bold text-gray-400 uppercase tracking-widest mb-1">Problem Statement</h4>
-                                  <p className="text-gray-700 leading-relaxed font-medium">{f.problem}</p>
+                                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Value Proposition</h4>
+                                  <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 shadow-sm shadow-blue-50">
+                                    <DialogDescription className="text-blue-900 font-bold italic leading-relaxed">"{f.valueProp}"</DialogDescription>
+                                  </div>
                                 </div>
-                                <div className="space-y-2">
-                                  <h4 className="font-bold text-gray-400 uppercase tracking-widest mb-1">User Stories</h4>
-                                  {f.userStories.map(story => (
-                                    <div key={story.id} className="p-2 border border-gray-50 rounded-lg bg-gray-50/50">
-                                      <span className="text-[9px] font-bold text-indigo-600">{story.id}</span>
-                                      <p className="text-[11px] font-medium leading-tight">{story.story}</p>
-                                    </div>
-                                  ))}
+
+                                <div>
+                                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Problem Statement</h4>
+                                  <p className="text-gray-700 font-medium leading-relaxed">{f.problem}</p>
+                                </div>
+
+                                <div>
+                                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">User Stories & Acceptance Criteria</h4>
+                                  <div className="space-y-3">
+                                    {f.userStories.map((story) => (
+                                      <div key={story.id} className="p-3 bg-gray-50/50 rounded-xl border border-gray-100">
+                                        <div className="flex items-center justify-between mb-1.5">
+                                          <div className="font-bold text-blue-600 text-[9px] tracking-widest">{story.id}</div>
+                                          <Badge variant="outline" className={`text-[8px] font-bold uppercase tracking-wider h-4 px-1 ${story.priority === 'P0' ? 'text-red-500 border-red-100 bg-red-50' : 'text-amber-500 border-amber-100 bg-amber-50'}`}>
+                                            {story.priority}
+                                          </Badge>
+                                        </div>
+                                        <p className="text-gray-600 font-medium leading-snug">{story.story}</p>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -1563,59 +1622,102 @@ export default function App() {
                 <h3 className="text-xl font-bold text-gray-900">UAT: Quality Assurance Matrix</h3>
                 <div className="h-px flex-1 bg-gray-100"></div>
               </div>
-              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm overflow-x-auto">
-                <div className="min-w-[900px]">
-                  <Table>
-                    <TableHeader className="bg-gray-50/50">
-                      <TableRow>
-                        <TableHead className="w-[80px] pl-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">ID</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">User State</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Time Window</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Device</TableHead>
-                        <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Expected Behavior</TableHead>
-                        <TableHead className="text-center font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Priority</TableHead>
-                        <TableHead className="text-right pr-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Status</TableHead>
+
+              {/* Desktop View */}
+              <div className="hidden md:block bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+                <Table>
+                  <TableHeader className="bg-gray-50/50">
+                    <TableRow>
+                      <TableHead className="w-[80px] pl-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">ID</TableHead>
+                      <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">User State</TableHead>
+                      <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Time Window</TableHead>
+                      <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Device</TableHead>
+                      <TableHead className="font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Expected Behavior</TableHead>
+                      <TableHead className="text-center font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Priority</TableHead>
+                      <TableHead className="text-right pr-4 font-bold text-gray-900 text-[10px] uppercase tracking-wide py-2.5">Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {UAT_SCENARIOS.map((uat: any) => (
+                      <TableRow key={uat.id} className="hover:bg-gray-50/50 transition-colors border-gray-50">
+                        <TableCell className="pl-4 py-2.5 font-mono text-[11px] font-bold text-gray-600">{uat.id}</TableCell>
+                        <TableCell className="py-2.5">
+                          <Badge className={`text-[9px] font-medium px-1.5 py-0 ${uat.userState === 'New User' ? 'bg-green-100 text-green-700' :
+                            uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
+                              uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
+                                'bg-purple-100 text-purple-700'
+                            }`}>{uat.userState}</Badge>
+                        </TableCell>
+                        <TableCell className="py-2.5">
+                          <Badge variant="outline" className={`text-[9px] px-1.5 py-0 ${uat.timeWindow === 'Market Hours' ? 'border-green-200 text-green-700' :
+                            uat.timeWindow === 'Pre-market' ? 'border-blue-200 text-blue-700' :
+                              uat.timeWindow === 'Post-market' ? 'border-orange-200 text-orange-700' :
+                                'border-gray-200 text-gray-600'
+                            }`}>{uat.timeWindow}</Badge>
+                        </TableCell>
+                        <TableCell className="py-2.5">
+                          <Badge className={`text-[9px] px-1.5 py-0 ${uat.device === 'iOS' ? 'bg-gray-800 text-white' :
+                            uat.device === 'Android' ? 'bg-green-600 text-white' :
+                              'bg-blue-500 text-white'
+                            }`}>{uat.device}</Badge>
+                        </TableCell>
+                        <TableCell className="py-2.5 text-gray-600 text-[11px] max-w-[250px] leading-tight">{uat.behavior}</TableCell>
+                        <TableCell className="py-2.5 text-center">
+                          <Badge className={`text-[9px] px-1.5 py-0 ${uat.priority === 'P0' ? 'bg-red-100 text-red-700' :
+                            uat.priority === 'P1' ? 'bg-orange-100 text-orange-700' :
+                              'bg-gray-100 text-gray-600'
+                            }`}>{uat.priority}</Badge>
+                        </TableCell>
+                        <TableCell className="pr-4 py-2.5 text-right">
+                          <Badge variant="outline" className="border-gray-200 text-gray-500 text-[9px] px-1.5 py-0">{uat.status}</Badge>
+                        </TableCell>
                       </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {UAT_SCENARIOS.map((uat: any) => (
-                        <TableRow key={uat.id} className="hover:bg-gray-50/50 transition-colors border-gray-50">
-                          <TableCell className="pl-4 py-2.5 font-mono text-[11px] font-bold text-gray-600">{uat.id}</TableCell>
-                          <TableCell className="py-2.5">
-                            <Badge className={`text-[9px] font-medium px-1.5 py-0 ${uat.userState === 'New User' ? 'bg-green-100 text-green-700' :
-                              uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
-                                uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
-                                  'bg-purple-100 text-purple-700'
-                              }`}>{uat.userState}</Badge>
-                          </TableCell>
-                          <TableCell className="py-2.5">
-                            <Badge variant="outline" className={`text-[9px] px-1.5 py-0 ${uat.timeWindow === 'Market Hours' ? 'border-green-200 text-green-700' :
-                              uat.timeWindow === 'Pre-market' ? 'border-blue-200 text-blue-700' :
-                                uat.timeWindow === 'Post-market' ? 'border-orange-200 text-orange-700' :
-                                  'border-gray-200 text-gray-600'
-                              }`}>{uat.timeWindow}</Badge>
-                          </TableCell>
-                          <TableCell className="py-2.5">
-                            <Badge className={`text-[9px] px-1.5 py-0 ${uat.device === 'iOS' ? 'bg-gray-800 text-white' :
-                              uat.device === 'Android' ? 'bg-green-600 text-white' :
-                                'bg-blue-500 text-white'
-                              }`}>{uat.device}</Badge>
-                          </TableCell>
-                          <TableCell className="py-2.5 text-gray-600 text-[11px] max-w-[250px] leading-tight">{uat.behavior}</TableCell>
-                          <TableCell className="py-2.5 text-center">
-                            <Badge className={`text-[9px] px-1.5 py-0 ${uat.priority === 'P0' ? 'bg-red-100 text-red-700' :
-                              uat.priority === 'P1' ? 'bg-orange-100 text-orange-700' :
-                                'bg-gray-100 text-gray-600'
-                              }`}>{uat.priority}</Badge>
-                          </TableCell>
-                          <TableCell className="pr-4 py-2.5 text-right">
-                            <Badge variant="outline" className="border-gray-200 text-gray-500 text-[9px] px-1.5 py-0">{uat.status}</Badge>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth no-scrollbar">
+                {UAT_SCENARIOS.map((uat: any) => (
+                  <div key={uat.id} className="min-w-[85vw] snap-center shrink-0 p-5 bg-white rounded-2xl border border-gray-100 shadow-md">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="text-[10px] font-mono font-bold text-gray-400 tracking-wider py-1">{uat.id}</div>
+                      <Badge className={`text-[9px] font-bold px-1.5 py-0.5 ${uat.priority === 'P0' ? 'bg-red-50 text-red-600 border-red-100' : 'bg-orange-50 text-orange-600 border-orange-100'} border`}>
+                        {uat.priority}
+                      </Badge>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xs font-bold text-gray-900 leading-relaxed mb-4">{uat.behavior}</h4>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">User State</span>
+                          <Badge className={`text-[9px] font-medium px-1.5 py-0 block w-fit ${uat.userState === 'New User' ? 'bg-green-100 text-green-700' :
+                            uat.userState === 'KYC Pending' ? 'bg-yellow-100 text-yellow-700' :
+                              uat.userState === 'Active Trader' ? 'bg-blue-100 text-blue-700' :
+                                'bg-purple-100 text-purple-700'
+                            }`}>{uat.userState}</Badge>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Device</span>
+                          <Badge className={`text-[9px] px-1.5 py-0 block w-fit ${uat.device === 'iOS' ? 'bg-gray-800 text-white' :
+                            uat.device === 'Android' ? 'bg-green-600 text-white' :
+                              'bg-blue-500 text-white'
+                            }`}>{uat.device}</Badge>
+                        </div>
+                      </div>
+
+                      <div className="pt-4 border-t border-gray-50 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 text-[10px] text-gray-500 font-bold">
+                          <Clock className="size-3" /> {uat.timeWindow}
+                        </div>
+                        <Badge variant="outline" className="border-gray-200 text-gray-500 text-[9px] px-1.5 py-0 font-bold">{uat.status}</Badge>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -1628,7 +1730,9 @@ export default function App() {
                 <h3 className="text-xl font-bold text-gray-900">Lifecycle: Strategic Execution Roadmap</h3>
                 <div className="h-px flex-1 bg-gray-100"></div>
               </div>
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+
+              {/* Desktop View */}
+              <div className="hidden md:block bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader className="bg-gray-50/80">
@@ -1668,34 +1772,103 @@ export default function App() {
                   </Table>
                 </div>
               </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden flex overflow-x-auto snap-x py-6 gap-6 -mx-6 px-6 scroll-pl-6 scroll-smooth no-scrollbar">
+                {ROADMAP_TABLE.map((row, i) => (
+                  <div key={i} className="min-w-[85vw] snap-center shrink-0 p-5 bg-white rounded-2xl border border-gray-100 shadow-md">
+                    <div className="flex justify-between items-center mb-4">
+                      <Badge className={`text-[9px] font-bold px-2 py-0.5 ${row.phase === 'NOW' ? 'bg-blue-600 text-white' :
+                        row.phase === 'NEXT' ? 'bg-purple-50 text-purple-700 border-purple-100' :
+                          'bg-green-50 text-green-700 border-green-100'
+                        } border`}>
+                        {row.phase}
+                      </Badge>
+                      <Badge variant="outline" className={`text-[9px] font-bold px-1.5 py-0 ${row.effort === 'S' ? 'bg-green-50 text-green-700 border-green-100' :
+                        row.effort === 'M' ? 'bg-yellow-50 text-yellow-700 border-yellow-100' :
+                          'bg-orange-50 text-orange-700 border-orange-100'
+                        } border-none`}>Effort: {row.effort}</Badge>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-900 mb-1">{row.feature}</h4>
+                        <p className="text-[11px] text-gray-500 font-medium leading-relaxed">{row.why}</p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Key Metric</span>
+                          <span className="text-[10px] font-bold text-gray-700 leading-tight block">{row.metric}</span>
+                        </div>
+                        <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Dependencies</span>
+                          <span className="text-[10px] font-bold text-gray-700 leading-tight block truncate">{row.dependencies}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* 4. Operational Frameworks */}
             <div id="ops" className="grid gap-6 md:grid-cols-2">
-              <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-                <h4 className="font-bold text-gray-900 mb-4 text-sm">RACI Matrix</h4>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="text-[10px] font-bold uppercase w-[40%] text-gray-500">Deliverable</TableHead>
-                      <TableHead className="text-[10px] font-bold uppercase text-center text-blue-600">PM</TableHead>
-                      <TableHead className="text-[10px] font-bold uppercase text-center text-gray-500">Eng</TableHead>
-                      <TableHead className="text-[10px] font-bold uppercase text-center text-gray-500">Des</TableHead>
-                      <TableHead className="text-[10px] font-bold uppercase text-center text-gray-500">QA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {RACI_MATRIX.map((row: any, i: number) => (
-                      <TableRow key={i} className="hover:bg-gray-50/50">
-                        <TableCell className="text-[11px] font-medium text-gray-900 py-2">{row.deliverable}</TableCell>
-                        <TableCell className="text-center py-2"><Badge variant="secondary" className="bg-blue-50 text-blue-700 text-[9px] font-bold px-1.5 py-0">{row.pm}</Badge></TableCell>
-                        <TableCell className="text-center py-2"><span className="text-[11px] font-bold text-gray-500">{row.eng}</span></TableCell>
-                        <TableCell className="text-center py-2"><span className="text-[11px] font-bold text-gray-400">{row.design}</span></TableCell>
-                        <TableCell className="text-center py-2"><span className="text-[11px] font-bold text-gray-400">{row.qa}</span></TableCell>
+              <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm overflow-hidden">
+                <h4 className="font-bold text-gray-900 mb-6 text-sm">RACI Matrix</h4>
+
+                {/* Desktop view */}
+                <div className="hidden sm:block">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="border-gray-50">
+                        <TableHead className="text-[10px] font-bold uppercase w-[40%] text-gray-400">Deliverable</TableHead>
+                        <TableHead className="text-[10px] font-bold uppercase text-center text-blue-600">PM</TableHead>
+                        <TableHead className="text-[10px] font-bold uppercase text-center text-gray-400">Eng</TableHead>
+                        <TableHead className="text-[10px] font-bold uppercase text-center text-gray-400">Des</TableHead>
+                        <TableHead className="text-[10px] font-bold uppercase text-center text-gray-400">QA</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {RACI_MATRIX.map((row: any, i: number) => (
+                        <TableRow key={i} className="hover:bg-gray-50/30 border-gray-50 transition-colors">
+                          <TableCell className="text-[11px] font-bold text-gray-700 py-3">{row.deliverable}</TableCell>
+                          <TableCell className="text-center py-3"><Badge variant="secondary" className="bg-blue-50 text-blue-700 text-[9px] font-bold px-1.5 py-0 border-none">{row.pm}</Badge></TableCell>
+                          <TableCell className="text-center py-3"><span className="text-[10px] font-bold text-gray-500">{row.eng}</span></TableCell>
+                          <TableCell className="text-center py-3"><span className="text-[10px] font-bold text-gray-500">{row.design}</span></TableCell>
+                          <TableCell className="text-center py-3"><span className="text-[10px] font-bold text-gray-400">{row.qa}</span></TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+
+                {/* Mobile view */}
+                <div className="sm:hidden space-y-4">
+                  {RACI_MATRIX.map((row: any, i: number) => (
+                    <div key={i} className="p-4 bg-gray-50/50 rounded-xl border border-gray-100 flex flex-col gap-3">
+                      <div className="text-[11px] font-bold text-gray-900">{row.deliverable}</div>
+                      <div className="grid grid-cols-4 gap-2">
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none">PM</span>
+                          <Badge variant="secondary" className="bg-blue-600 text-white text-[9px] font-bold px-1.5 py-0 min-w-[24px] justify-center">{row.pm}</Badge>
+                        </div>
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none">Eng</span>
+                          <span className="text-[10px] font-bold text-gray-700">{row.eng}</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none">Des</span>
+                          <span className="text-[10px] font-bold text-gray-600">{row.design}</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none">QA</span>
+                          <span className="text-[10px] font-bold text-gray-500">{row.qa}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="bg-green-50/30 rounded-2xl border border-green-100 p-6">
                 <h4 className="font-bold text-green-800 mb-4 text-sm">Definition of Done</h4>
@@ -1771,7 +1944,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-
             <div className="mt-20 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between text-xs font-medium text-gray-400 gap-4">
               <span>© 2026 Abhineet Jain | TPM Feature Design Portfolio</span>
             </div>
