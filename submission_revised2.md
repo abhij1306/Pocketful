@@ -237,6 +237,7 @@ Replace all error states with an **Intelligent Recovery System (Actionable Toast
 | 3 | Cold Start Lag on High-End Devices | High | Performance Perception |
 | 4 | Margin Field Flicker Without Loading State | Medium-High | Execution Anxiety |
 | 5 | Inconsistent Order Lifecycle & Cancel UX | High | Trade Reliability |
+| 6 | Brand & Trust Leakage in Auth Flow (Desktop) | Medium | Trust Perception |
 
 ---
 
@@ -318,6 +319,25 @@ When switching between Delivery/Intraday, the "Margin Required" field briefly sh
 **Suggested Solution:** Add pre-flight validation; implement inline tooltips for jargon; standardize button placement.
 
 *Reference: Screenshot 4*
+
+---
+
+### Flaw #6: Brand & Trust Leakage in Authentication Flow (Desktop/Web)
+
+**Observed Behavior:**
+During Google sign-in, users are redirected to a generic OAuth screen that displays the destination as a raw Firebase project domain (`pktfl-88122.firebaseapp.com`), with no visible Pocketful branding or contextual explanation.
+
+**User Impact:**
+- **Trust Deviation:** High-sensitivity moment displays "infrastructure" instead of "brand".
+- **Conversion Risk:** Non-technical users may hesitate to authorize a "random" Firebase URL.
+
+**Root Cause Hypothesis:**
+Default Firebase OAuth configuration used without a customized, branded consent experience.
+
+**Suggested Solution:**
+Implement a fully branded OAuth consent flow using custom domains and scope descriptions (“Continue to Pocketful”).
+
+*Reference: Screenshot 5*
 
 # Deliverable 5: Competitive Differentiation Analysis
 
@@ -410,11 +430,14 @@ While individual features have user-level risks, the broader product strategy fa
 ---
 
 # Appendix: Screenshot References
-- **Screenshot 1**: Generic error message on Technicals tab
-- **Screenshot 2**: Options trading UI with navbar interference
-- **Screenshot 3**: Margin field showing "--" during async update
-- **Screenshot 4**: Order rejection after ₹0 balance placement
-- **Screenshot 5**: Desktop OAuth screen with Firebase branding
+
+| Screenshot | Description |
+|------------|-------------|
+| ![Screenshot 1](../public/Screenshot_1.png) | **Screenshot 1:** Generic error message on Technicals tab |
+| ![Screenshot 2](../public/Screenshot_2.png) | **Screenshot 2:** Options trading UI with navbar interference |
+| ![Screenshot 3](../public/Screenshot_3.png) | **Screenshot 3:** Margin field showing "--" during async update |
+| ![Screenshot 4](../public/Screenshot_4.png) | **Screenshot 4:** Order rejection after ₹0 balance placement |
+| ![Screenshot 5](../public/Screenshot_5.png) | **Screenshot 5:** Desktop OAuth screen with Firebase branding |
 
 ---
 

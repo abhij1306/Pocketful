@@ -524,6 +524,12 @@
 <td>High</td>
 <td>Trade Reliability</td>
 </tr>
+<tr>
+<td>6</td>
+<td>Brand &amp; Trust Leakage in Auth Flow (Desktop)</td>
+<td>Medium</td>
+<td>Trust Perception</td>
+</tr>
 </tbody>
 </table>
 <hr>
@@ -579,6 +585,20 @@ When switching between Delivery/Intraday, the “Margin Required” field briefl
 <p><strong>Root Cause Hypothesis:</strong> Missing pre-submission validation; insufficient progressive disclosure.</p>
 <p><strong>Suggested Solution:</strong> Add pre-flight validation; implement inline tooltips for jargon; standardize button placement.</p>
 <p><em>Reference: Screenshot 4</em></p>
+<hr>
+<h3>Flaw #6: Brand &amp; Trust Leakage in Authentication Flow (Desktop/Web)</h3>
+<p><strong>Observed Behavior:</strong>
+During Google sign-in, users are redirected to a generic OAuth screen that displays the destination as a raw Firebase project domain (<code>pktfl-88122.firebaseapp.com</code>), with no visible Pocketful branding or contextual explanation.</p>
+<p><strong>User Impact:</strong></p>
+<ul>
+<li><strong>Trust Deviation:</strong> High-sensitivity moment displays “infrastructure” instead of “brand”.</li>
+<li><strong>Conversion Risk:</strong> Non-technical users may hesitate to authorize a “random” Firebase URL.</li>
+</ul>
+<p><strong>Root Cause Hypothesis:</strong>
+Default Firebase OAuth configuration used without a customized, branded consent experience.</p>
+<p><strong>Suggested Solution:</strong>
+Implement a fully branded OAuth consent flow using custom domains and scope descriptions (“Continue to Pocketful”).</p>
+<p><em>Reference: Screenshot 5</em></p>
 <h1>Deliverable 5: Competitive Differentiation Analysis</h1>
 <h2>Market Positioning Overview (Jan 2025 Data)</h2>
 <table>
@@ -741,13 +761,36 @@ When switching between Delivery/Intraday, the “Margin Required” field briefl
 </table>
 <hr>
 <h1>Appendix: Screenshot References</h1>
-<ul>
-<li><strong>Screenshot 1</strong>: Generic error message on Technicals tab</li>
-<li><strong>Screenshot 2</strong>: Options trading UI with navbar interference</li>
-<li><strong>Screenshot 3</strong>: Margin field showing “–” during async update</li>
-<li><strong>Screenshot 4</strong>: Order rejection after ₹0 balance placement</li>
-<li><strong>Screenshot 5</strong>: Desktop OAuth screen with Firebase branding</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Screenshot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../public/Screenshot_1.png" alt="Screenshot 1"></td>
+<td><strong>Screenshot 1:</strong> Generic error message on Technicals tab</td>
+</tr>
+<tr>
+<td><img src="../public/Screenshot_2.png" alt="Screenshot 2"></td>
+<td><strong>Screenshot 2:</strong> Options trading UI with navbar interference</td>
+</tr>
+<tr>
+<td><img src="../public/Screenshot_3.png" alt="Screenshot 3"></td>
+<td><strong>Screenshot 3:</strong> Margin field showing “–” during async update</td>
+</tr>
+<tr>
+<td><img src="../public/Screenshot_4.png" alt="Screenshot 4"></td>
+<td><strong>Screenshot 4:</strong> Order rejection after ₹0 balance placement</td>
+</tr>
+<tr>
+<td><img src="../public/Screenshot_5.png" alt="Screenshot 5"></td>
+<td><strong>Screenshot 5:</strong> Desktop OAuth screen with Firebase branding</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <div class="design-box"><p><strong>Document prepared by:</strong> Abhineet Jain<br>
 <strong>Contact:</strong> <a href="mailto:abhij1306@gmail.com">abhij1306@gmail.com</a> | <a href="https://www.linkedin.com/in/abhineet-jain/">LinkedIn</a><br>
