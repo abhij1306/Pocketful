@@ -59,11 +59,11 @@ export const PERSONAS = [
     }
 ];
 
-// Why personas matter for Pocketful
+// Strategic Persona Insights - Why this matters now
 export const PERSONA_INSIGHT = {
-    headline: "Bridging the Gap Neither Competitor Serves",
-    context: "India has 140M demat accounts but only ~30M active traders. Zerodha serves Priya but intimidates Raj. Groww serves Raj but limits Priya. Neither serves Amit well.",
-    opportunity: "Pocketful can be the platform that grows WITH users—from Raj's first trade to Priya's algo strategies—while reaching Amit in tier-2 cities."
+    context: "India has 212M+ demat accounts, but only ~50M are active (Bain & Co 2026).",
+    insight: "The next 160M users are inactive because they lack TRUST, not tools.",
+    implication: "Pocketful's 'Institutional Heritage' is the perfect wedge for this 'Fearful but Aspirational' majority."
 };
 
 // TARGET BUSINESS METRICS - What we're optimizing for
@@ -482,15 +482,16 @@ export const COMPETITOR_ANALYSIS = {
 // DEEP COMPETITIVE ANALYSIS - Specific differentiators and exploitable advantages
 export const DEEP_COMPETITIVE_ANALYSIS = {
     marketContext: {
-        totalDematAccounts: '140M',
-        activeTraders: '44.8M',
-        untappedMarket: '70% Dormancy',
-        nextWaveSource: 'Tier-2/3 Retail requiring high-trust, guidance-led platforms'
+        totalDematAccounts: '212M+',
+        activeTraders: '50M',
+        untappedMarket: '82% Dormancy',
+        nextWaveSource: 'Tier-2/3 Retail requiring high-trust, guidance-led platforms',
+        sourceUrl: 'https://www.bain.com/insights/how-india-invests-2025/'
     },
     appStoreRatings: {
-        zerodha: { rating: 4.4, platform: 'Play Store', reviews: '1.2M+' },
-        groww: { rating: 4.5, platform: 'Play Store', reviews: '2.1M+' },
-        pocketful: { rating: 3.8, platform: 'Play Store', reviews: 'Growing' }
+        zerodha: { rating: 4.3, platform: 'Play Store', reviews: '380K', link: 'https://play.google.com/store/apps/details?id=com.zerodha.kite3' },
+        groww: { rating: 4.8, platform: 'Play Store', reviews: '1.97M', link: 'https://play.google.com/store/apps/details?id=com.nextbillion.groww' },
+        pocketful: { rating: 4.4, platform: 'Play Store', reviews: '280', link: 'https://play.google.com/store/apps/details?id=in.pocketful.android' }
     },
     specificDifferentiators: [
         {

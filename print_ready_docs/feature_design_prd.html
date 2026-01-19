@@ -1,0 +1,854 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>feature_design_prd.md</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #333;
+    }
+    h1 { color: #1a1a1a; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    h2 { color: #2c3e50; margin-top: 30px; border-bottom: 1px solid #eee; }
+    h3 { color: #34495e; margin-top: 25px; }
+    
+    /* Perfect Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 25px 0;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    th {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        padding: 12px 15px;
+    }
+    td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dddddd;
+    }
+    tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+    tr:last-of-type border-bottom {
+        border-bottom: 2px solid #009879;
+    }
+    
+    /* Design Boxes (Blockquotes) */
+    .design-box {
+        background: #f8f9fa;
+        border-left: 5px solid #009879;
+        margin: 20px 0;
+        padding: 15px 20px;
+        border-radius: 0 4px 4px 0;
+    }
+    .design-box p {
+        margin: 0; 
+        color: #555;
+    }
+    
+    code {
+        background: #f4f4f4;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: 'Consolas', monospace;
+    }
+    pre {
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+</style>
+</head><body><h1>Feature Design PRD: Smart Error Recovery</h1>
+<div class="design-box"><p><strong>Author:</strong> Abhineet Jain<br>
+<strong>Version:</strong> 2.0 | <strong>Last Updated:</strong> January 17, 2026<br>
+<strong>Status:</strong> Ready for Review</p>
+</div><hr>
+<h2>1. Overview</h2>
+<h3>1.1 Feature Summary</h3>
+<p>The <strong>Smart Error Recovery</strong> system transforms generic, unhelpful error messages into intelligent, context-aware recovery experiences. Instead of leaving users stuck with “Something went wrong,” the system classifies errors, explains them in plain language, and offers actionable next steps.</p>
+<h3>1.2 Problem Statement</h3>
+<p><strong>Current State:</strong><br>
+When Pocketful encounters API failures, data unavailability, or network issues, users see a generic message:</p>
+<div class="design-box"><p><em>“Something went wrong! Internal Server Error”</em></p>
+</div><p>This message:</p>
+<ul>
+<li>Provides no explanation of what went wrong</li>
+<li>Offers no alternative actions</li>
+<li>Fails to distinguish user-fixable issues (network) from platform problems (server outage)</li>
+<li>Erodes trust during critical trading moments</li>
+</ul>
+<p><strong>User Impact:</strong></p>
+<ul>
+<li>Trust erosion during high-stakes moments</li>
+<li>High session abandonment after errors</li>
+<li>Significant support ticket volume for error-related queries</li>
+<li>Users unsure whether to retry, wait, or abandon the action</li>
+</ul>
+<h3>1.3 Target Personas</h3>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Profile</th>
+<th>Pain Point</th>
+<th>Value from SER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Priya, 28</strong></td>
+<td>Active F&amp;O trader, 10+ trades/week</td>
+<td>Loses money when errors delay action</td>
+<td>Contextual alternatives keep her trading</td>
+</tr>
+<tr>
+<td><strong>Raj, 24</strong></td>
+<td>First-time investor, confused by jargon</td>
+<td>“Internal Server Error” is scary</td>
+<td>Plain-English explanations reduce anxiety</td>
+</tr>
+<tr>
+<td><strong>Amit, 45</strong></td>
+<td>Tier-2 city, patchy network</td>
+<td>Doesn’t know if it’s his network or app</td>
+<td>Network detection + RM access provides support</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>2. Value Proposition</h2>
+<div class="design-box"><p><em>“Transform every error into an opportunity to demonstrate platform reliability.”</em></p>
+</div><h3>Why This Feature Matters</h3>
+<p><strong>Business Impact:</strong></p>
+<ul>
+<li><strong>Trust Recovery:</strong> Errors are inevitable; recovery experience determines if users stay or leave</li>
+<li><strong>Differentiation:</strong> Neither Zerodha (sparse handling) nor Groww (friendly but generic) offers personalized recovery</li>
+<li><strong>Support Reduction:</strong> Clear guidance reduces ticket volume by ~40% (industry benchmark)</li>
+</ul>
+<p><strong>User Impact:</strong></p>
+<ul>
+<li>Users feel supported, not abandoned</li>
+<li>Reduces decision paralysis during critical trading moments</li>
+<li>Builds long-term platform loyalty through transparency</li>
+</ul>
+<h3>How It Works</h3>
+<p>The Smart Error Recovery System:</p>
+<ol>
+<li><strong>Diagnoses</strong> the root cause and translates it into user-friendly language</li>
+<li><strong>Offers</strong> contextually relevant alternatives based on user intent</li>
+<li><strong>Integrates</strong> with RM support for complex issues (Pocketful’s unique advantage)</li>
+<li><strong>Learns</strong> from recovery patterns to personalize future error handling</li>
+</ol>
+<hr>
+<h2>3. Success Criteria</h2>
+<h3>3.1 Primary Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What We’re Measuring</th>
+<th>How to Validate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Error Recovery Rate</strong></td>
+<td>% of users who complete intended action after encountering an error</td>
+<td>Analytics: Track user actions post-error (retry success, alternative selection, session continuation)</td>
+</tr>
+<tr>
+<td><strong>Session Continuation</strong></td>
+<td>% of sessions that continue after error vs. abandon</td>
+<td>Compare session drop-off rates before/after launch</td>
+</tr>
+<tr>
+<td><strong>Support Ticket Volume</strong></td>
+<td>Error-related support queries</td>
+<td>Track tickets tagged with error-related categories</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Qualitative Signals</h3>
+<ul>
+<li>User feedback mentions “helpful error messages”</li>
+<li>Reduced negative app store reviews citing reliability</li>
+<li>Internal QA reports fewer “dead end” scenarios</li>
+</ul>
+<hr>
+<h2>4. User Stories</h2>
+<h3>4.1 Primary Stories</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>User Story</th>
+<th>Priority</th>
+<th>Acceptance Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SER-001</td>
+<td>As a trader, I want to understand WHY an error occurred so I can decide whether to retry or try a different approach.</td>
+<td>P0</td>
+<td>Error message includes category (Network/Data/Server) and plain-English explanation.</td>
+</tr>
+<tr>
+<td>SER-002</td>
+<td>As a user experiencing an error, I want to see alternative actions so I’m not stuck.</td>
+<td>P0</td>
+<td>At least 2 contextual alternatives displayed based on error type and intended action.</td>
+</tr>
+<tr>
+<td>SER-003</td>
+<td>As a user on a poor network, I want to know if the error is on my end so I can troubleshoot my connection.</td>
+<td>P1</td>
+<td>Client-side network check runs before displaying error; shows network-specific guidance if detected.</td>
+</tr>
+<tr>
+<td>SER-004</td>
+<td>As a trader during market hours, I want the recovery options to appear instantly.</td>
+<td>P1</td>
+<td>During 9:15 AM - 3:30 PM IST, system loads &lt;100ms with pre-computed responses.</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Edge Cases</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SER-E01</td>
+<td>Multiple errors in rapid succession (&gt;3 in 60 seconds)</td>
+<td>Show consolidated error summary instead of multiple toasts</td>
+</tr>
+<tr>
+<td>SER-E02</td>
+<td>Error occurs when user is offline</td>
+<td>Show cached portfolio with “Last updated” timestamp; queue action for when online</td>
+</tr>
+<tr>
+<td>SER-E03</td>
+<td>Accessibility requirement</td>
+<td>All elements have proper labels for screen readers (WCAG 2.1 AA)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>5. User Flow</h2>
+<h3>5.1 Happy Path: Error Recovery Journey</h3>
+<pre><code>[1. USER ACTION]              [2. ERROR DETECTED]
+┌─────────────────┐          ┌─────────────────────┐
+│ User taps       │──────────│ API returns error   │
+│ &quot;Technicals&quot;    │          │ or timeout          │
+└─────────────────┘          └──────────┬──────────┘
+                                        │
+                                        ▼
+                          [3. RECOVERY ACTIVE]
+                          ┌───────────────────────────────┐
+                          │ ⚠️ Data Temporarily Unavailable │
+                          │                               │
+                          │ Technical indicators for      │
+                          │ IRCTC are being updated.      │
+                          │ Usually takes ~30 seconds.    │
+                          │                               │
+                          │ ┌─ WHAT YOU CAN DO ─────────┐ │
+                          │ │ 🔄 Retry in 30 seconds    │ │
+                          │ │ 📊 View Similar: RVNL     │ │
+                          │ │ 📈 Use Last Known Data    │ │
+                          │ └───────────────────────────┘ │
+                          │                               │
+                          │ 💬 Report this issue          │
+                          └───────────────────────────────┘
+                                        │
+          ┌─────────────────────────────┼─────────────────────────────┐
+          ▼                             ▼                             ▼
+[4a. RETRY SUCCESS]         [4b. ALTERNATIVE SELECTED]    [4c. CACHED DATA]
+┌─────────────────┐         ┌─────────────────────┐       ┌─────────────────┐
+│ ✅ Data loaded  │         │ User views RVNL     │       │ User sees data  │
+│                 │         │ technicals instead  │       │ with timestamp  │
+└─────────────────┘         └─────────────────────┘       └─────────────────┘
+          │                             │                             │
+          └─────────────────────────────┴─────────────────────────────┘
+                                        │
+                                        ▼
+                              [5. RECOVERY LOGGED]
+                          ┌───────────────────────────────┐
+                          │ Successful path saved for     │
+                          │ future personalization        │
+                          └───────────────────────────────┘
+</code></pre>
+<h3>5.2 Cascading Error Handling</h3>
+<p>When multiple errors occur within a short timeframe:</p>
+<pre><code>Error 1 → Message shown
+   │
+   ▼ (within 60 seconds)
+Error 2 → Message updated silently
+   │
+   ▼ (within 60 seconds)
+Error 3+ → CONSOLIDATED VIEW
+
+┌───────────────────────────────────┐
+│ ⚠️ Multiple Issues Detected       │
+│                                   │
+│ We're experiencing temporary      │
+│ connectivity issues.              │
+│ 3 requests affected.              │
+│                                   │
+│ [🔄 Retry All]  [⏸️ Wait &amp; Retry] │
+└───────────────────────────────────┘
+</code></pre>
+<hr>
+<h2>6. Wireframe Components</h2>
+<h3>6.1 Component Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>States</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Error Header</strong></td>
+<td>Displays categorized error type with icon</td>
+<td>Warning (⚠️), Critical (🚫), Info (ℹ️)</td>
+</tr>
+<tr>
+<td><strong>Actionable Toast</strong></td>
+<td>Plain-language root cause + estimated resolution</td>
+<td>Loading, Loaded</td>
+</tr>
+<tr>
+<td><strong>Recovery Actions</strong></td>
+<td>2-4 contextual buttons</td>
+<td>Default, Pressed, Disabled</td>
+</tr>
+<tr>
+<td><strong>Progress Indicator</strong></td>
+<td>Shows retry countdown or loading</td>
+<td>Counting, Loading, Complete</td>
+</tr>
+<tr>
+<td><strong>Feedback Link</strong></td>
+<td>Opens lightweight issue reporter</td>
+<td>Default, Expanded</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Visual Layout</h3>
+<pre><code>┌────────────────────────────────────────────┐
+│ [ICON] ERROR CATEGORY            [X Close] │  ← High contrast header
+├────────────────────────────────────────────┤
+│                                            │
+│  Explanation text in clear language        │  ← Primary content
+│  with estimated wait time if applicable.   │
+│                                            │
+│  ┌────────────────────────────────────┐   │
+│  │ [Primary Action Button]            │   │  ← Main CTA
+│  └────────────────────────────────────┘   │
+│                                            │
+│  [Secondary Action]  [Secondary Action]   │  ← Alternatives
+│                                            │
+│  ─────────────────────────────────────    │
+│  💬 Report this issue                     │  ← De-emphasized
+└────────────────────────────────────────────┘
+</code></pre>
+<hr>
+<h2>7. Error Classification System</h2>
+<p>The system requires a backend error taxonomy service to classify errors. Here’s the proposed classification:</p>
+<table>
+<thead>
+<tr>
+<th>Error Type</th>
+<th>User Message Example</th>
+<th>Recovery Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATA_UNAVAILABLE</code></td>
+<td>“Technical data for this instrument is being refreshed”</td>
+<td>Retry, View Similar, Use Cached</td>
+</tr>
+<tr>
+<td><code>NETWORK_TIMEOUT</code></td>
+<td>“Your connection seems slow. Check your network.”</td>
+<td>Retry, Switch to Lite Mode</td>
+</tr>
+<tr>
+<td><code>SERVER_ERROR</code></td>
+<td>“We’re experiencing high load. Our team is aware.”</td>
+<td>Retry Later, View Status Page</td>
+</tr>
+<tr>
+<td><code>RATE_LIMITED</code></td>
+<td>“Too many requests. Please wait a moment.”</td>
+<td>Auto-retry countdown</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>8. Technical Considerations</h2>
+<h3>8.1 Key Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Latency</strong></td>
+<td>UI must render within 100ms (pre-fetch alternatives)</td>
+</tr>
+<tr>
+<td><strong>Offline Support</strong></td>
+<td>Basic recovery should work even when partially offline</td>
+</tr>
+<tr>
+<td><strong>Client Diagnostics</strong></td>
+<td>Should detect if user’s network is the issue</td>
+</tr>
+<tr>
+<td><strong>Error Logging</strong></td>
+<td>All errors and recovery paths logged for analytics</td>
+</tr>
+</tbody>
+</table>
+<h3>8.2 Dependencies</h3>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Owner</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error classification service</td>
+<td>Backend Team</td>
+<td>Needs development</td>
+</tr>
+<tr>
+<td>Similar instruments mapping</td>
+<td>Data Team</td>
+<td>Static fallback available</td>
+</tr>
+<tr>
+<td>Client network diagnostics</td>
+<td>Mobile Team</td>
+<td>Standard SDK available</td>
+</tr>
+</tbody>
+</table>
+<h3>8.3 Security &amp; Compliance</h3>
+<ul>
+<li>Error messages must NOT expose internal system details or stack traces</li>
+<li>Recovery paths must validate user permissions before offering</li>
+<li>All logging must be anonymized for analytics</li>
+</ul>
+<hr>
+<h2>9. Rollout Plan</h2>
+<h3>9.1 Phased Rollout</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Scope</th>
+<th>Criteria to Proceed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alpha</strong></td>
+<td>Internal team (50 users)</td>
+<td>No critical bugs</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>10% of users</td>
+<td>Recovery rate improved vs. control</td>
+</tr>
+<tr>
+<td><strong>GA</strong></td>
+<td>100% of users</td>
+<td>Metrics stable; support not overwhelmed</td>
+</tr>
+</tbody>
+</table>
+<h3>9.2 Rollback Conditions</h3>
+<ul>
+<li>Recovery rate drops below current baseline for 24 hours</li>
+<li>Recovery UI load time exceeds 1 second at p95</li>
+<li>User-reported issues spike significantly</li>
+</ul>
+<hr>
+<h2>10. Success Validation</h2>
+<h3>10.1 How We’ll Know It’s Working</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users completing actions after error</td>
+<td>Analytics funnel tracking</td>
+</tr>
+<tr>
+<td>Reduced error-related tickets</td>
+<td>Support ticket categorization</td>
+</tr>
+<tr>
+<td>Improved sentiment</td>
+<td>App store reviews; in-app feedback</td>
+</tr>
+<tr>
+<td>Session continuation</td>
+<td>Compare abandonment rates pre/post launch</td>
+</tr>
+</tbody>
+</table>
+<h3>10.2 User Acceptance Test Scenarios</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Input / Action</th>
+<th>Expected Result</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ER-001</td>
+<td><strong>Server 500 Error</strong></td>
+<td>User taps “Buy” on Order Pad → Simulate 500 API Error</td>
+<td>“Retry” action toast appears &lt;100ms; Message: “Connection slow”</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>ER-002</td>
+<td><strong>Network Failure</strong></td>
+<td>User tries to load Watchlist → Simulate Offline Mode</td>
+<td>“You are offline” message; Cached data displayed (no empty state)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>ER-003</td>
+<td><strong>Latency Check</strong></td>
+<td>Market Hours (9:15-3:30) → Trigger Error</td>
+<td>Render time &lt;100ms (Measure via perf monitor)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>ER-004</td>
+<td><strong>Rate Limit</strong></td>
+<td>User rapid-taps refresh 5 times</td>
+<td>Consolidated “Too many requests” toast; cooldown timer shown</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>ER-005</td>
+<td><strong>Unclear Error</strong></td>
+<td>Trigger generic 400 error (Unknown cause)</td>
+<td>Message blames System (“We are having trouble”), NOT User</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>11. Competitive Advantage</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Error Handling Approach</th>
+<th>Our Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Zerodha</strong></td>
+<td>Minimal, functional messages</td>
+<td>We offer personalized recovery paths</td>
+</tr>
+<tr>
+<td><strong>Groww</strong></td>
+<td>Friendly but generic</td>
+<td>We classify errors and offer alternatives</td>
+</tr>
+<tr>
+<td><strong>Upstox</strong></td>
+<td>Basic retry prompts</td>
+<td>We provide context and transparency</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Positioning:</strong> Pocketful becomes the platform that helps you when things go wrong, not one that leaves you stranded.</p>
+<hr>
+<h2>12. Risk Assessment</h2>
+<h3>Identified Risks</h3>
+<table>
+<thead>
+<tr>
+<th>Risk ID</th>
+<th>Risk Type</th>
+<th>Description</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SER-R1</td>
+<td>Technical</td>
+<td>Error classification inaccuracy: System may misclassify errors, providing wrong context</td>
+<td>Medium</td>
+<td>High</td>
+<td>Conservative classification: If ambiguous, default to “Connection Issue” (blame system), NEVER blame user.</td>
+</tr>
+<tr>
+<td>SER-R2</td>
+<td>UX</td>
+<td>Alternative overload: Too many recovery options could confuse users</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Limit to max 2 critical alternatives; use compact “Toast” design</td>
+</tr>
+<tr>
+<td>SER-R3</td>
+<td>Adoption</td>
+<td>Users ignore wizard: May dismiss without reading if too intrusive</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Make dismissible but not auto-dismiss; track engagement metrics</td>
+</tr>
+<tr>
+<td>SER-R4</td>
+<td>Performance</td>
+<td>Latency overhead: Classification logic delays UI</td>
+<td>Low</td>
+<td>High</td>
+<td>Pre-fetch alternative maps; Render UI immediately (&lt;50ms) before classification finishes</td>
+</tr>
+<tr>
+<td>SER-R5</td>
+<td>Data</td>
+<td>Privacy concerns: Logging user actions during errors</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Anonymize all logged data; transparent privacy notice</td>
+</tr>
+</tbody>
+</table>
+<h3>Risk Response Strategy</h3>
+<table>
+<thead>
+<tr>
+<th>Risk ID</th>
+<th>Response</th>
+<th>Owner</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SER-R1</td>
+<td>Default to “We’re having trouble” (System blame) for all ambiguous errors</td>
+<td>Engineering</td>
+<td>&gt;0% ambiguity in testing</td>
+</tr>
+<tr>
+<td>SER-R2</td>
+<td>A/B test 2 vs. 3 alternatives; choose based on recovery rate</td>
+<td>Product</td>
+<td>Pre-launch testing</td>
+</tr>
+<tr>
+<td>SER-R3</td>
+<td>Add “helpful” rating to wizard; iterate based on feedback</td>
+<td>Product</td>
+<td>&lt;50% engagement rate</td>
+</tr>
+<tr>
+<td>SER-R4</td>
+<td>Pre-fetch “Alternative Instruments” mapping at app launch</td>
+<td>Engineering</td>
+<td>P99 latency &gt;50ms</td>
+</tr>
+<tr>
+<td>SER-R5</td>
+<td>Legal review of logging; implement data retention policy</td>
+<td>Product + Legal</td>
+<td>Before launch</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Appendix: RACI Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Deliverable</th>
+<th style="text-align:center">Product (You)</th>
+<th style="text-align:center">Engineering</th>
+<th style="text-align:center">Design</th>
+<th style="text-align:center">QA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRD &amp; Requirements</td>
+<td style="text-align:center"><strong>R/A</strong></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">I</td>
+</tr>
+<tr>
+<td>Error Taxonomy Design</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center"><strong>R/A</strong></td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td>System UI Design</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center"><strong>R</strong></td>
+<td style="text-align:center">I</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center"><strong>R/A</strong></td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td>Test Cases</td>
+<td style="text-align:center"><strong>R</strong></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center"><strong>A</strong></td>
+</tr>
+<tr>
+<td>Rollout Decision</td>
+<td style="text-align:center"><strong>R/A</strong></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">C</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend:</strong> R = Responsible, A = Accountable, C = Consulted, I = Informed</p>
+<hr>
+<h2>Appendix: User Flow Diagram</h2>
+<h3>Smart Error Recovery Flow</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                          USER FLOW: SMART ERROR RECOVERY                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────┐
+    │  START  │ User taps &quot;Technicals&quot; or triggers data request
+    └────┬────┘
+         │
+         ▼
+    ┌─────────────┐
+    │  API Call   │ Request sent to data provider
+    └──────┬──────┘
+           │
+           ▼
+    ◆ Response OK? ◆──────── YES ──────► [Display Data] ──► END
+           │
+           NO
+           │
+           ▼
+    ┌─────────────────────┐
+    │  Error Detected     │ &lt;50ms detection (Pre-fetched)
+    │  Classify Error     │
+    └──────────┬──────────┘
+               │
+    ┌──────────┴──────────┬────────────────────┐
+    │                     │                    │
+    ▼                     ▼                    ▼
+┌─────────┐        ┌───────────┐        ┌──────────┐
+│ NETWORK │        │   DATA    │        │  SERVER  │
+│  ISSUE  │        │UNAVAILABLE│        │  ERROR   │
+└────┬────┘        └─────┬─────┘        └────┬─────┘
+     │                   │                   │
+     ▼                   ▼                   ▼
+┌──────────┐       ┌───────────┐       ┌───────────┐
+│ Check    │       │ View      │       │ Retry     │
+│ Network  │       │ Similar   │       │ Later     │
+├──────────┤       │ Symbols   │       │           │
+│ Retry    │       ├───────────┤       │ Contact   │
+│          │       │ Use Cache │       │ Support   │
+└────┬─────┘       └─────┬─────┘       └─────┬─────┘
+     │                   │                   │
+     └───────────────────┴───────────────────┘
+                         │
+                         ▼
+              ┌─────────────────┐
+              │ Log Recovery    │
+              │ Path for Future │
+              │ Personalization │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │  SESSION        │
+              │  CONTINUES      │
+              └─────────────────┘
+</code></pre>
+<h3>Flow States Legend</h3>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[ ]</code> Rectangle</td>
+<td>User Action / Process</td>
+</tr>
+<tr>
+<td><code>◆</code> Diamond</td>
+<td>Decision Point</td>
+</tr>
+<tr>
+<td><code>( )</code> Rounded</td>
+<td>Start / End</td>
+</tr>
+<tr>
+<td>Arrows</td>
+<td>Flow Direction</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="design-box"><p><strong>Document Owner:</strong> Abhineet Jain<br>
+<strong>Stakeholders:</strong> Engineering, Design, QA<br>
+<strong>Review Cycle:</strong> As needed during development</p>
+</div></body></html>

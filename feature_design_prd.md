@@ -287,7 +287,7 @@ The system requires a backend error taxonomy service to classify errors. Here's 
 
 | ID | Scenario | Input / Action | Expected Result | Priority |
 |----|----------|----------------|-----------------|----------|
-| ER-001 | **Server 500 Error** | User taps "Buy" on Order Pad → Simulate 500 API Error | "Retry" action toast appears <100ms; Copy "Connection slow" | P0 |
+| ER-001 | **Server 500 Error** | User taps "Buy" on Order Pad → Simulate 500 API Error | "Retry" action toast appears <100ms; Message: "Connection slow" | P0 |
 | ER-002 | **Network Failure** | User tries to load Watchlist → Simulate Offline Mode | "You are offline" message; Cached data displayed (no empty state) | P0 |
 | ER-003 | **Latency Check** | Market Hours (9:15-3:30) → Trigger Error | Render time <100ms (Measure via perf monitor) | P0 |
 | ER-004 | **Rate Limit** | User rapid-taps refresh 5 times | Consolidated "Too many requests" toast; cooldown timer shown | P1 |
